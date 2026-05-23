@@ -61,11 +61,11 @@ export default function HomePage() {
           <section role="region" aria-label="Hero section">
             <HeroSection />
           </section>
-          <section role="region" aria-label="Lifestyle statement">
-            <LifestyleStatement />
-          </section>
           <section role="region" aria-label="Partnerships">
             <PartnershipsSection />
+          </section>
+          <section role="region" aria-label="Lifestyle statement">
+            <LifestyleStatement />
           </section>
           <section role="region" aria-label="Problem statement">
             <ProblemSection />
