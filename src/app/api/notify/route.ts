@@ -99,6 +99,10 @@ export async function POST(request: NextRequest) {
               <td style="padding:10px 0;color:rgba(245,242,236,0.5);font-size:12px;text-transform:uppercase;letter-spacing:1px;">Requested Time</td>
               <td style="padding:10px 0;color:#c9a84c;font-size:14px;font-weight:bold;">${fields.slot || '—'}</td>
             </tr>
+            <tr style="border-bottom:1px solid rgba(201,168,76,0.15);">
+              <td style="padding:10px 0;color:rgba(245,242,236,0.5);font-size:12px;text-transform:uppercase;letter-spacing:1px;">Timezone</td>
+              <td style="padding:10px 0;color:#f5f2ec;font-size:14px;">${fields.timezone || '—'}</td>
+            </tr>
             <tr>
               <td style="padding:10px 0;color:rgba(245,242,236,0.5);font-size:12px;text-transform:uppercase;letter-spacing:1px;vertical-align:top;">Message</td>
               <td style="padding:10px 0;color:#f5f2ec;font-size:14px;line-height:1.6;">${fields.message || '—'}</td>

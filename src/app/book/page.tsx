@@ -53,6 +53,9 @@ export default function BookPage() {
   const [timeHour, setTimeHour] = useState('10');
   const [timeMinute, setTimeMinute] = useState('00');
 
+  // Timezone
+  const [timezone, setTimezone] = useState('Europe/London');
+
   // Form fields
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [bookingStatus, setBookingStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -107,7 +110,7 @@ export default function BookPage() {
   };
 
   const formattedSlot = selectedDate
-    ? `${formatDisplayDate(selectedDate.year, selectedDate.month, selectedDate.day)} at ${padTwo(Number(timeHour))}:${padTwo(Number(timeMinute))}`
+    ? `${formatDisplayDate(selectedDate.year, selectedDate.month, selectedDate.day)} at ${padTwo(Number(timeHour))}:${padTwo(Number(timeMinute))} (${timezone})`
     : '';
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -128,6 +131,7 @@ export default function BookPage() {
             phone: form.phone,
             message: form.message,
             slot: formattedSlot,
+            timezone,
           },
         }),
       });
@@ -432,6 +436,71 @@ export default function BookPage() {
                           ))}
                         </select>
                       </div>
+                    </div>
+
+                    {/* Timezone Selector */}
+                    <div className="mt-4">
+                      <p
+                        className="font-ui mb-2"
+                        style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(245,242,236,0.5)', textTransform: 'uppercase' }}
+                      >
+                        Your Timezone
+                      </p>
+                      <select
+                        value={timezone}
+                        onChange={e => setTimezone(e.target.value)}
+                        aria-label="Timezone"
+                        style={{
+                          ...inputStyle,
+                          width: '100%',
+                          padding: '12px 16px',
+                          border: '1px solid rgba(201,168,76,0.25)',
+                          appearance: 'none',
+                          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c9a84c' opacity='0.6'/%3E%3C/svg%3E")`,
+                          backgroundRepeat: 'no-repeat',
+                          backgroundPosition: 'right 12px center',
+                          paddingRight: '32px',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <optgroup label="Europe" style={{ background: '#0d0d0d' }}>
+                          <option value="Europe/London" style={{ background: '#0d0d0d' }}>London (GMT/BST)</option>
+                          <option value="Europe/Dublin" style={{ background: '#0d0d0d' }}>Dublin (GMT/IST)</option>
+                          <option value="Europe/Paris" style={{ background: '#0d0d0d' }}>Paris / Berlin (CET/CEST)</option>
+                          <option value="Europe/Amsterdam" style={{ background: '#0d0d0d' }}>Amsterdam (CET/CEST)</option>
+                          <option value="Europe/Madrid" style={{ background: '#0d0d0d' }}>Madrid (CET/CEST)</option>
+                          <option value="Europe/Rome" style={{ background: '#0d0d0d' }}>Rome (CET/CEST)</option>
+                          <option value="Europe/Warsaw" style={{ background: '#0d0d0d' }}>Warsaw (CET/CEST)</option>
+                          <option value="Europe/Kyiv" style={{ background: '#0d0d0d' }}>Kyiv (EET/EEST)</option>
+                          <option value="Europe/Moscow" style={{ background: '#0d0d0d' }}>Moscow (MSK)</option>
+                          <option value="Europe/Istanbul" style={{ background: '#0d0d0d' }}>Istanbul (TRT)</option>
+                        </optgroup>
+                        <optgroup label="Americas" style={{ background: '#0d0d0d' }}>
+                          <option value="America/New_York" style={{ background: '#0d0d0d' }}>New York (ET)</option>
+                          <option value="America/Chicago" style={{ background: '#0d0d0d' }}>Chicago (CT)</option>
+                          <option value="America/Denver" style={{ background: '#0d0d0d' }}>Denver (MT)</option>
+                          <option value="America/Los_Angeles" style={{ background: '#0d0d0d' }}>Los Angeles (PT)</option>
+                          <option value="America/Toronto" style={{ background: '#0d0d0d' }}>Toronto (ET)</option>
+                          <option value="America/Vancouver" style={{ background: '#0d0d0d' }}>Vancouver (PT)</option>
+                          <option value="America/Sao_Paulo" style={{ background: '#0d0d0d' }}>São Paulo (BRT)</option>
+                          <option value="America/Mexico_City" style={{ background: '#0d0d0d' }}>Mexico City (CST)</option>
+                        </optgroup>
+                        <optgroup label="Asia / Pacific" style={{ background: '#0d0d0d' }}>
+                          <option value="Asia/Dubai" style={{ background: '#0d0d0d' }}>Dubai (GST)</option>
+                          <option value="Asia/Kolkata" style={{ background: '#0d0d0d' }}>India (IST)</option>
+                          <option value="Asia/Singapore" style={{ background: '#0d0d0d' }}>Singapore (SGT)</option>
+                          <option value="Asia/Tokyo" style={{ background: '#0d0d0d' }}>Tokyo (JST)</option>
+                          <option value="Asia/Shanghai" style={{ background: '#0d0d0d' }}>Shanghai / Beijing (CST)</option>
+                          <option value="Asia/Hong_Kong" style={{ background: '#0d0d0d' }}>Hong Kong (HKT)</option>
+                          <option value="Australia/Sydney" style={{ background: '#0d0d0d' }}>Sydney (AEST/AEDT)</option>
+                          <option value="Pacific/Auckland" style={{ background: '#0d0d0d' }}>Auckland (NZST/NZDT)</option>
+                        </optgroup>
+                        <optgroup label="Africa / Middle East" style={{ background: '#0d0d0d' }}>
+                          <option value="Africa/Johannesburg" style={{ background: '#0d0d0d' }}>Johannesburg (SAST)</option>
+                          <option value="Africa/Cairo" style={{ background: '#0d0d0d' }}>Cairo (EET)</option>
+                          <option value="Asia/Riyadh" style={{ background: '#0d0d0d' }}>Riyadh (AST)</option>
+                        </optgroup>
+                      </select>
                     </div>
 
                     {/* Selected summary */}
