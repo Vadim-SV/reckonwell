@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Radial Glow -->
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2a2210" />
+      <stop offset="60%" stop-color="#0f0c06" />
+      <stop offset="100%" stop-color="#0a0a0a" />
+    </radialGradient>
+
+    <!-- Rich Gold Shimmer Gradient -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0D080" />
+      <stop offset="22%" stop-color="#C9A84C" />
+      <stop offset="42%" stop-color="#8A6B23" />
+      <stop offset="50%" stop-color="#F9DF9F" />
+      <stop offset="58%" stop-color="#D4AF54" />
+      <stop offset="80%" stop-color="#9A7B2E" />
+      <stop offset="100%" stop-color="#4A3810" />
+    </linearGradient>
+
+    <!-- Sharp Inner Highlight Gradient -->
+    <linearGradient id="goldHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="25%" stop-color="#F0D080" stop-opacity="0.5" />
+      <stop offset="50%" stop-color="#C9A84C" stop-opacity="0.1" />
+      <stop offset="75%" stop-color="#F9DF9F" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.3" />
+    </linearGradient>
+
+    <!-- Luxury Depth & Glow Filter -->
+    <filter id="luxuryDepth" x="-30%" y="-30%" width="160%" height="160%">
+      <!-- Ambient Gold Glow -->
+      <feGaussianBlur in="SourceAlpha" stdDeviation="24" result="blurGlow" />
+      <feFlood flood-color="#C9A84C" flood-opacity="0.25" result="colorGlow" />
+      <feComposite in="colorGlow" in2="blurGlow" operator="in" result="glow" />
+
+      <!-- Deep Soft Shadow -->
+      <feGaussianBlur in="SourceAlpha" stdDeviation="16" result="blurShadow1" />
+      <feOffset dx="0" dy="18" result="offsetShadow1" />
+      <feFlood flood-color="#000000" flood-opacity="0.85" result="colorShadow1" />
+      <feComposite in="colorShadow1" in2="offsetShadow1" operator="in" result="shadow1" />
+
+      <!-- Tight Sharp Shadow -->
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blurShadow2" />
+      <feOffset dx="0" dy="6" result="offsetShadow2" />
+      <feFlood flood-color="#000000" flood-opacity="0.95" result="colorShadow2" />
+      <feComposite in="colorShadow2" in2="offsetShadow2" operator="in" result="shadow2" />
+
+      <!-- Merge Layers -->
+      <feMerge>
+        <feMergeNode in="glow" />
+        <feMergeNode in="shadow1" />
+        <feMergeNode in="shadow2" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- The Monogram Path -->
+    <path id="monogram-R" fill-rule="evenodd" d="
+      M 120,100 
+      C 145,100 155,105 155,125 
+      L 155,415 
+      C 155,435 145,440 120,440 
+      L 120,450 
+      L 260,450 
+      L 260,440 
+      C 235,440 225,435 225,415 
+      L 225,320 
+      C 260,320 280,340 300,380 
+      C 315,410 320,440 290,440 
+      L 290,450 
+      L 450,450 
+      L 450,440 
+      C 420,440 405,420 390,390 
+      C 365,340 340,300 300,285 
+      C 350,285 430,260 430,185 
+      C 430,120 380,100 300,100 
+      Z 
+      M 225,125 
+      L 290,125 
+      C 345,125 365,145 365,185 
+      C 365,235 340,265 290,265 
+      L 225,265 
+      Z
+    " />
+  </defs>
+
+  <!-- Deep Dark Background -->
+  <rect width="100%" height="100%" fill="#0a0a0a" />
+  <circle cx="256" cy="256" r="360" fill="url(#bgGlow)" />
+
+  <!-- Centered Monogram Group -->
+  <g transform="translate(-20, -19)" filter="url(#luxuryDepth)">
+    <!-- Base Gold Fill -->
+    <use href="#monogram-R" fill="url(#goldGradient)" />
+    
+    <!-- Sharp Inner Bevel / Highlight -->
+    <use href="#monogram-R" fill="none" stroke="url(#goldHighlight)" stroke-width="1.5" />
+  </g>
+</svg>
