@@ -42,9 +42,9 @@ export default function PricingSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            Simple. Transparent.
+            One flat fee.
             <br />
-            <span className="gold-italic">No surprises.</span>
+            <span className="gold-italic">Total clarity.</span>
           </motion.h2>
         </div>
 

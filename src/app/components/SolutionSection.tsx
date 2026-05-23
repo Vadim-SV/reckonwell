@@ -8,19 +8,19 @@ const cards = [
     num: '01',
     title: 'Daily Monitoring',
     body:
-      'We review your accounts every working day. Cash flow, incoming, outgoing — nothing slips through. You get a real-time picture of your business finances at all times.',
+      'Every working day, your team reviews your accounts. Cash position, incoming, outgoing — nothing moves without us knowing. You always have a live picture of where you stand.',
   },
   {
     num: '02',
     title: '48-Hour Processing',
     body:
-      'Every transaction, receipt, and invoice processed within 48 hours. No backlogs. No scrambling at month end. Your books are always current, always clean.',
+      'Every transaction, receipt, and invoice processed within 48 hours. Your books are never behind, never cluttered. Month end is just another day — because every day is month end.',
   },
   {
     num: '03',
     title: 'Your Finance Team',
     body:
-      'Not a bot. Not a portal. A dedicated team who knows your business, picks up the phone, and sends you a message when something needs your attention.',
+      'Not a bot. Not a portal. A named person who knows your business, reads the patterns, and reaches out when something deserves your attention — before you think to ask.',
   },
 ];
 
@@ -52,7 +52,7 @@ export default function SolutionSection() {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             This is what{' '}
-            <span className="gold-italic">stress-free</span> looks like.
+            <span className="gold-italic">clarity</span> looks like.
           </motion.h2>
           <motion.p
             className="pull-quote"
@@ -60,7 +60,8 @@ export default function SolutionSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Proactive, not reactive. Your finances handled before problems arise.
+            Someone on your finances every morning. Not a dashboard. Not
+            automation. A team that knows your business.
           </motion.p>
         </div>
 

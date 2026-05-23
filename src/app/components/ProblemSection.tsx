@@ -55,10 +55,9 @@ export default function ProblemSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            Most founders find out
+            Your accountant is working
             <br />
-            about problems{' '}
-            <span className="gold-italic">too late.</span>
+            <span className="gold-italic">in the past.</span>
           </motion.h2>
 
           <motion.p
@@ -68,8 +67,9 @@ export default function ProblemSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             Traditional accounting gives you a 30-day lag on your own business.
-            By the time you see the numbers, the damage is done. Decisions get
-            made on gut feeling, not data. Cash disappears before anyone notices.
+            By the time the numbers arrive, the decision is already made — on
+            instinct, not information. That is not an accounting problem. That
+            is a leadership disadvantage.
           </motion.p>
 
           {/* Cycling words */}

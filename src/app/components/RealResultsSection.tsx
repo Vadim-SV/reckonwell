@@ -58,8 +58,8 @@ export default function RealResultsSection() {
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           style={{ maxWidth: '600px' }}
         >
-          Our clients don&apos;t think about money anymore.{' '}
-          <span className="gold-italic">They think about growth.</span>
+          When the finances are handled,{' '}
+          <span className="gold-italic">everything else gets easier.</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">

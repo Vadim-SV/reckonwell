@@ -99,8 +99,8 @@ export default function AdditionalServicesSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              Everything your business needs to stay{' '}
-              <span className="gold-italic">compliant.</span>
+              Every obligation handled.{' '}
+              <span className="gold-italic">Nothing missed.</span>
             </motion.h2>
             <motion.p
               className="body-text-rw"
@@ -109,9 +109,9 @@ export default function AdditionalServicesSection() {
               transition={{ duration: 0.7, delay: 0.2 }}
               style={{ color: '#ffffff' }}
             >
-              From VAT submissions to R&D claims, our team handles every aspect
-              of your compliance obligations — so you never have to think about
-              them.
+              Compliance is not something a director should carry in their head.
+              From VAT to R&D claims, our team handles every filing, every
+              deadline, every submission — so it simply never reaches your desk.
             </motion.p>
           </div>
 

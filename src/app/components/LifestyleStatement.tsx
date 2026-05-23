@@ -44,8 +44,8 @@ export default function LifestyleStatement() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
-          Yet here you are — stressed about numbers instead of focused on
-          growth.
+          Yet the best hours of your day are going to numbers — not to the
+          decisions that actually move your business forward.
         </motion.p>
       </div>
     </section>

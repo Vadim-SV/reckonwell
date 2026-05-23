@@ -190,10 +190,10 @@ export default function FounderSection() {
                 lineHeight: 1.7,
                 fontFamily: 'var(--font-serif)'
               }}>
-              &ldquo;I started Reckonwell because I watched too many brilliant founders
-              make terrible financial decisions — not because they were careless,
-              but because no one was telling them the truth about their numbers
-              until it was too late.&rdquo;
+              &ldquo;I built Reckonwell because the directors I admired most were
+              spending their sharpest hours on things that had nothing to do
+              with why they built their business. That always struck me as wrong
+              — and entirely fixable.&rdquo;
             </p>
           </motion.blockquote>
 
@@ -203,13 +203,15 @@ export default function FounderSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}>
             <p className="body-text-rw" style={{ fontSize: '15px' }}>
-              We built a service around daily work, not monthly catch-up. Every
-              client gets a real person who knows their accounts, understands
-              their business, and is available when it matters.
+              Every client gets a dedicated team who knows their accounts,
+              understands the context behind the numbers, and is genuinely
+              available when it matters. Not a ticketing system. Not a monthly
+              catch-up. Daily work, done properly.
             </p>
             <p className="body-text-rw" style={{ fontSize: '15px' }}>
-              The goal is simple: you should never be surprised by your own
-              finances. We make sure of it.
+              The goal is simple: your finances should give you freedom, not
+              take it away. A director with clear numbers moves differently.
+              That is what we build for every client, from day one.
             </p>
             <p
               className="font-display"

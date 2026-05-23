@@ -135,11 +135,9 @@ export default function FinalCTASection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
-          Ready to stop
+          Ready to think like a
           <br />
-          worrying about
-          <br />
-          <span className="gold-italic">finances?</span>
+          <span className="gold-italic">director again?</span>
         </motion.h2>
 
         <motion.p
@@ -149,7 +147,7 @@ export default function FinalCTASection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          Fill in your details and we&apos;ll be in touch shortly.
+          Leave your details and we will be in touch to arrange a conversation.
         </motion.p>
 
         {status === 'success' ? (

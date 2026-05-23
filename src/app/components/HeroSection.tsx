@@ -98,9 +98,9 @@ export default function HeroSection() {
 
         {/* H1 */}
         <motion.h1 {...fadeUp(0.2)} className="hero-h1 mb-5 md:mb-6" suppressHydrationWarning>
-          Run your business.
+          Think like a director.
           <br />
-          <span className="gold-italic">We&apos;ll handle the rest.</span>
+          <span className="gold-italic">Live like one too.</span>
         </motion.h1>
 
         {/* Differentiator */}
@@ -111,7 +111,7 @@ export default function HeroSection() {
           suppressHydrationWarning
         >
           The only accounting firm that works on your finances every single day
-          — not just at month end.
+          — so your mind never has to.
         </motion.p>
 
         {/* Subline */}
@@ -127,7 +127,7 @@ export default function HeroSection() {
           }}
           suppressHydrationWarning
         >
-          No stress. No surprises. Just focus.
+          No lag. No guesswork. Just clarity.
         </motion.p>
 
         {/* Price line */}

@@ -4,19 +4,19 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const withoutItems = [
-  'Month-end panic when books are finally updated',
-  'No idea if you can afford to hire or invest',
-  'Chasing your accountant for basic answers',
-  'Tax surprises that wipe out your cash reserves',
-  'Making decisions on gut feel, not real data',
+  'Checking the bank account at midnight',
+  'Making strategic decisions on outdated numbers',
+  'Chasing your accountant for answers they should have given you',
+  'Finding out about tax exposure when it is already too late',
+  'Running a business and doing someone else\'s job',
 ];
 
 const withItems = [
-  'Daily visibility into your cash position',
-  'Clear picture of what you can afford and when',
-  'Proactive alerts before problems become costly',
-  'Tax planned throughout the year — no surprises',
-  'Confident decisions backed by live numbers',
+  'Sleeping soundly — the numbers are handled',
+  'Moving with confidence, backed by live data',
+  'A team that calls you — because they noticed first',
+  'Tax planned throughout the year, nothing left to chance',
+  'Running a business. Full stop.',
 ];
 
 export default function BeforeAfterSection() {
