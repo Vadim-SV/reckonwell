@@ -168,7 +168,7 @@ export default function BookPage() {
 
       {/* Hero */}
       <section
-        className="relative pt-36 pb-16 px-6 md:px-10 overflow-hidden"
+        className="relative pt-24 sm:pt-32 md:pt-36 pb-10 md:pb-16 px-5 md:px-10 overflow-hidden"
         style={{ backgroundColor: 'var(--background)' }}
       >
         <div
@@ -182,14 +182,14 @@ export default function BookPage() {
         <div className="gold-vertical-line-right" aria-hidden="true" />
 
         <div className="max-w-3xl mx-auto text-center relative z-10">
-          <p className="section-label mb-6">Book a Discovery Call</p>
-          <h1 className="section-h2 mb-5">
+          <p className="section-label mb-4 md:mb-6">Book a Discovery Call</p>
+          <h1 className="section-h2 mb-4 md:mb-5">
             Let&apos;s talk about
             <br />
             <span className="gold-italic">your finances.</span>
           </h1>
           <p
-            className="pull-quote mx-auto"
+            className="pull-quote mx-auto text-sm md:text-base"
             style={{ maxWidth: '480px', color: 'rgba(245,242,236,0.6)' }}
           >
             Pick a date and time that works for you. We&apos;ll spend 30 minutes understanding your situation and showing you how Reckonwell works.
@@ -198,13 +198,13 @@ export default function BookPage() {
       </section>
 
       {/* Booking Form */}
-      <section className="relative py-12 md:py-20 px-6 md:px-10" style={{ backgroundColor: 'var(--background)' }}>
+      <section className="relative py-8 md:py-20 px-4 sm:px-6 md:px-10" style={{ backgroundColor: 'var(--background)' }}>
         <div className="max-w-5xl mx-auto">
 
           {bookingStatus === 'success' ? (
             /* ── Success State ── */
             <div
-              className="max-w-xl mx-auto py-12 px-6 md:px-8 text-center"
+              className="max-w-xl mx-auto py-10 px-5 md:px-8 text-center"
               style={{ border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.04)' }}
             >
               <div
@@ -239,13 +239,13 @@ export default function BookPage() {
           ) : (
             /* ── Form ── */
             <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
 
                 {/* ── Left: Calendar + Time ── */}
                 <div>
                   {/* Step label */}
                   <p
-                    className="font-ui mb-6"
+                    className="font-ui mb-4 md:mb-6"
                     style={{ fontSize: '10px', letterSpacing: '3px', color: 'var(--primary)', textTransform: 'uppercase' }}
                   >
                     01 — Select a Date &amp; Time
@@ -256,11 +256,11 @@ export default function BookPage() {
                     style={{
                       border: '1px solid rgba(201,168,76,0.2)',
                       background: 'rgba(201,168,76,0.02)',
-                      padding: '24px',
+                      padding: '16px',
                     }}
                   >
                     {/* Month navigation */}
-                    <div className="flex items-center justify-between mb-5">
+                    <div className="flex items-center justify-between mb-4">
                       <button
                         type="button"
                         onClick={prevMonth}
@@ -271,9 +271,14 @@ export default function BookPage() {
                           background: 'none',
                           border: 'none',
                           cursor: canGoPrev ? 'pointer' : 'default',
-                          fontSize: '18px',
+                          fontSize: '22px',
                           lineHeight: 1,
-                          padding: '4px 8px',
+                          padding: '6px 10px',
+                          minWidth: '40px',
+                          minHeight: '40px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
                         }}
                       >
                         ‹
@@ -295,9 +300,14 @@ export default function BookPage() {
                           background: 'none',
                           border: 'none',
                           cursor: 'pointer',
-                          fontSize: '18px',
+                          fontSize: '22px',
                           lineHeight: 1,
-                          padding: '4px 8px',
+                          padding: '6px 10px',
+                          minWidth: '40px',
+                          minHeight: '40px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
                         }}
                       >
                         ›
@@ -305,12 +315,12 @@ export default function BookPage() {
                     </div>
 
                     {/* Day-of-week headers */}
-                    <div className="grid grid-cols-7 mb-2">
+                    <div className="grid grid-cols-7 mb-1">
                       {DAY_LABELS.map(d => (
                         <div
                           key={d}
                           className="text-center font-ui"
-                          style={{ fontSize: '9px', letterSpacing: '1.5px', color: 'rgba(245,242,236,0.3)', padding: '4px 0', textTransform: 'uppercase' }}
+                          style={{ fontSize: '9px', letterSpacing: '1px', color: 'rgba(245,242,236,0.3)', padding: '4px 0', textTransform: 'uppercase' }}
                         >
                           {d}
                         </div>
@@ -353,10 +363,11 @@ export default function BookPage() {
                               cursor: past ? 'default' : 'pointer',
                               fontSize: '13px',
                               fontFamily: 'var(--font-ui, Arial, sans-serif)',
-                              padding: '7px 0',
+                              padding: '9px 0',
                               textAlign: 'center',
                               transition: 'all 0.15s',
                               width: '100%',
+                              minHeight: '38px',
                             }}
                             onMouseEnter={e => {
                               if (!past && !sel) (e.currentTarget as HTMLButtonElement).style.background = 'rgba(201,168,76,0.07)';
@@ -373,7 +384,7 @@ export default function BookPage() {
                   </div>
 
                   {/* Time Picker */}
-                  <div className="mt-6">
+                  <div className="mt-5">
                     <p
                       className="font-ui mb-3"
                       style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(245,242,236,0.5)', textTransform: 'uppercase' }}
@@ -389,7 +400,7 @@ export default function BookPage() {
                           style={{
                             ...inputStyle,
                             width: '100%',
-                            padding: '12px 16px',
+                            padding: '13px 16px',
                             border: '1px solid rgba(201,168,76,0.25)',
                             appearance: 'none',
                             backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c9a84c' opacity='0.6'/%3E%3C/svg%3E")`,
@@ -418,7 +429,7 @@ export default function BookPage() {
                           style={{
                             ...inputStyle,
                             width: '100%',
-                            padding: '12px 16px',
+                            padding: '13px 16px',
                             border: '1px solid rgba(201,168,76,0.25)',
                             appearance: 'none',
                             backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c9a84c' opacity='0.6'/%3E%3C/svg%3E")`,
@@ -453,7 +464,7 @@ export default function BookPage() {
                         style={{
                           ...inputStyle,
                           width: '100%',
-                          padding: '12px 16px',
+                          padding: '13px 16px',
                           border: '1px solid rgba(201,168,76,0.25)',
                           appearance: 'none',
                           backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c9a84c' opacity='0.6'/%3E%3C/svg%3E")`,
@@ -520,7 +531,7 @@ export default function BookPage() {
                 {/* ── Right: Contact Details ── */}
                 <div>
                   <p
-                    className="font-ui mb-6"
+                    className="font-ui mb-4 md:mb-6"
                     style={{ fontSize: '10px', letterSpacing: '3px', color: 'var(--primary)', textTransform: 'uppercase' }}
                   >
                     02 — Your Details
@@ -639,7 +650,7 @@ export default function BookPage() {
                         cursor: !selectedDate || bookingStatus === 'submitting' ? 'not-allowed' : 'pointer',
                         fontSize: '11px',
                         letterSpacing: '3px',
-                        padding: '14px 32px',
+                        padding: '16px 32px',
                       }}
                     >
                       {bookingStatus === 'submitting' ? 'Sending…' : 'Request This Time'}
