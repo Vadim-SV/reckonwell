@@ -8,7 +8,7 @@ import { trackEvent } from '@/lib/analytics';
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }
 });
 
 export default function HeroSection() {
@@ -43,16 +43,16 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
       style={{ backgroundColor: 'var(--background)' }}
       aria-label="Hero"
-      suppressHydrationWarning
-    >
+      suppressHydrationWarning>
+
       {/* Radial gold glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 50% 55%, rgba(201,168,76,0.09) 0%, rgba(201,168,76,0.03) 55%, transparent 100%)',
-        }}
-      />
+          'radial-gradient(ellipse 80% 60% at 50% 55%, rgba(201,168,76,0.09) 0%, rgba(201,168,76,0.03) 55%, transparent 100%)'
+        }} />
+
 
       {/* Decorative vertical gold lines */}
       <div className="gold-vertical-line-left" aria-hidden="true" />
@@ -69,9 +69,9 @@ export default function HeroSection() {
               letterSpacing: '3px',
               color: 'var(--primary)',
               textTransform: 'uppercase',
-              fontWeight: 400,
-            }}
-          >
+              fontWeight: 400
+            }}>
+
             <span
               style={{
                 display: 'inline-block',
@@ -79,9 +79,9 @@ export default function HeroSection() {
                 height: '1px',
                 backgroundColor: 'var(--primary)',
                 opacity: 0.6,
-                flexShrink: 0,
-              }}
-            />
+                flexShrink: 0
+              }} />
+
             British Accounting Firm · Serving the UK &amp; USA
             <span
               style={{
@@ -90,9 +90,9 @@ export default function HeroSection() {
                 height: '1px',
                 backgroundColor: 'var(--primary)',
                 opacity: 0.6,
-                flexShrink: 0,
-              }}
-            />
+                flexShrink: 0
+              }} />
+
           </span>
         </motion.div>
 
@@ -108,10 +108,10 @@ export default function HeroSection() {
           {...fadeUp(0.3)}
           className="pull-quote mb-4 mx-auto"
           style={{ maxWidth: '620px', color: '#ffffff', fontSize: 'clamp(18px,2.2vw,26px)' }}
-          suppressHydrationWarning
-        >
-          The only accounting firm that works on your finances every single day
-          — so your mind never has to.
+          suppressHydrationWarning>The only accounting firm that removes the day-to-day finance workload that consumes founders — from bookkeeping and reconciliations to operational support and reporting.
+
+
+
         </motion.p>
 
         {/* Subline */}
@@ -123,10 +123,10 @@ export default function HeroSection() {
             fontWeight: 300,
             fontSize: 'clamp(18px,2.2vw,26px)',
             color: '#ffffff',
-            fontFamily: 'var(--font-serif)',
+            fontFamily: 'var(--font-serif)'
           }}
-          suppressHydrationWarning
-        >
+          suppressHydrationWarning>
+
           No lag. No guesswork. Just clarity.
         </motion.p>
 
@@ -139,10 +139,10 @@ export default function HeroSection() {
             letterSpacing: '3px',
             textTransform: 'uppercase',
             color: 'rgba(201,168,76,0.7)',
-            fontWeight: 400,
+            fontWeight: 400
           }}
-          suppressHydrationWarning
-        >
+          suppressHydrationWarning>
+
           From £200 / $300 per month
         </motion.p>
 
@@ -150,14 +150,14 @@ export default function HeroSection() {
         <motion.div
           {...fadeUp(0.45)}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 md:mb-12 w-full"
-          suppressHydrationWarning
-        >
+          suppressHydrationWarning>
+
           <Link
             href="/book"
             className="btn-gold w-full sm:w-auto"
             style={{ minWidth: '200px', textAlign: 'center' }}
-            onClick={() => trackEvent('homepage_cta_click', { cta: 'book_discovery_call', location: 'hero', page: 'home' })}
-          >
+            onClick={() => trackEvent('homepage_cta_click', { cta: 'book_discovery_call', location: 'hero', page: 'home' })}>
+
             Book Discovery Call
           </Link>
           <button
@@ -166,16 +166,16 @@ export default function HeroSection() {
             onClick={() => {
               trackEvent('homepage_cta_click', { cta: 'see_how_it_works', location: 'hero', page: 'home' });
               handleScroll('#how-it-works');
-            }}
-          >
+            }}>
+
             See How It Works
           </button>
           <Link
             href="/referrals"
             className="btn-ghost w-full sm:w-auto"
             style={{ minWidth: '200px', textAlign: 'center' }}
-            onClick={() => trackEvent('homepage_cta_click', { cta: 'partner_with_us', location: 'hero', page: 'home' })}
-          >
+            onClick={() => trackEvent('homepage_cta_click', { cta: 'partner_with_us', location: 'hero', page: 'home' })}>
+
             Partner with Us
           </Link>
         </motion.div>
@@ -184,22 +184,22 @@ export default function HeroSection() {
         <motion.div
           {...fadeUp(0.55)}
           className="flex flex-wrap items-center justify-center gap-4 sm:gap-8"
-          suppressHydrationWarning
-        >
+          suppressHydrationWarning>
+
           {[
-            'Licensed UK Practice',
-            'Xero Certified Advisor',
-            'QuickBooks ProAdvisor',
-          ].map((badge) => (
-            <span
-              key={badge}
-              className="flex items-center gap-2 font-ui"
-              style={{ fontSize: '11px', color: 'var(--muted)', letterSpacing: '0.5px' }}
-            >
+          'Licensed UK Practice',
+          'Xero Certified Advisor',
+          'QuickBooks ProAdvisor'].
+          map((badge) =>
+          <span
+            key={badge}
+            className="flex items-center gap-2 font-ui"
+            style={{ fontSize: '11px', color: 'var(--muted)', letterSpacing: '0.5px' }}>
+
               <span style={{ color: 'var(--primary)', fontSize: '14px' }}>✓</span>
               {badge}
             </span>
-          ))}
+          )}
         </motion.div>
       </div>
 
@@ -208,9 +208,9 @@ export default function HeroSection() {
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
         style={{
           background:
-            'linear-gradient(to bottom, transparent, var(--background))',
-        }}
-      />
-    </section>
-  );
+          'linear-gradient(to bottom, transparent, var(--background))'
+        }} />
+
+    </section>);
+
 }
