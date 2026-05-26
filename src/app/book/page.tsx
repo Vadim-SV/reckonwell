@@ -248,132 +248,68 @@ export default function BookPage() {
                     className="font-ui mb-4 md:mb-6"
                     style={{ fontSize: '10px', letterSpacing: '3px', color: 'var(--primary)', textTransform: 'uppercase' }}
                   >
-                    01 — Select a Date &amp; Time
+                    Step 1 of 2
                   </p>
 
                   {/* Calendar */}
                   <div
-                    style={{
-                      border: '1px solid rgba(201,168,76,0.2)',
-                      background: 'rgba(201,168,76,0.02)',
-                      padding: '16px',
-                    }}
+                    className="border rounded-none p-6 md:p-8"
+                    style={{ borderColor: 'rgba(201,168,76,0.2)', backgroundColor: 'rgba(201,168,76,0.02)' }}
                   >
-                    {/* Month navigation */}
-                    <div className="flex items-center justify-between mb-4">
+                    {/* Month/Year Header */}
+                    <div className="flex items-center justify-between mb-6">
                       <button
                         type="button"
                         onClick={prevMonth}
                         disabled={!canGoPrev}
-                        aria-label="Previous month"
-                        style={{
-                          color: canGoPrev ? 'var(--primary)' : 'rgba(201,168,76,0.2)',
-                          background: 'none',
-                          border: 'none',
-                          cursor: canGoPrev ? 'pointer' : 'default',
-                          fontSize: '22px',
-                          lineHeight: 1,
-                          padding: '6px 10px',
-                          minWidth: '40px',
-                          minHeight: '40px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
+                        className="text-sm font-ui transition-opacity"
+                        style={{ color: canGoPrev ? 'var(--primary)' : 'var(--muted)', opacity: canGoPrev ? 1 : 0.5, cursor: canGoPrev ? 'pointer' : 'not-allowed' }}
                       >
-                        ‹
+                        ← Prev
                       </button>
-
-                      <p
-                        className="font-ui"
-                        style={{ fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--foreground)' }}
-                      >
+                      <h3 className="font-ui text-sm font-semibold" style={{ color: 'var(--foreground)', letterSpacing: '1px' }}>
                         {MONTH_NAMES[calMonth]} {calYear}
-                      </p>
-
+                      </h3>
                       <button
                         type="button"
                         onClick={nextMonth}
-                        aria-label="Next month"
-                        style={{
-                          color: 'var(--primary)',
-                          background: 'none',
-                          border: 'none',
-                          cursor: 'pointer',
-                          fontSize: '22px',
-                          lineHeight: 1,
-                          padding: '6px 10px',
-                          minWidth: '40px',
-                          minHeight: '40px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
+                        className="text-sm font-ui transition-colors"
+                        style={{ color: 'var(--primary)', cursor: 'pointer' }}
                       >
-                        ›
+                        Next →
                       </button>
                     </div>
 
-                    {/* Day-of-week headers */}
-                    <div className="grid grid-cols-7 mb-1">
-                      {DAY_LABELS.map(d => (
-                        <div
-                          key={d}
-                          className="text-center font-ui"
-                          style={{ fontSize: '9px', letterSpacing: '1px', color: 'rgba(245,242,236,0.3)', padding: '4px 0', textTransform: 'uppercase' }}
-                        >
-                          {d}
+                    {/* Day labels */}
+                    <div className="grid grid-cols-7 gap-2 mb-4">
+                      {DAY_LABELS.map((label) => (
+                        <div key={label} className="text-center font-ui text-xs" style={{ color: 'var(--muted)', letterSpacing: '0.5px' }}>
+                          {label}
                         </div>
                       ))}
                     </div>
 
-                    {/* Calendar cells */}
-                    <div className="grid grid-cols-7 gap-y-1">
+                    {/* Calendar grid */}
+                    <div className="grid grid-cols-7 gap-2 mb-6">
                       {calendarCells.map((day, idx) => {
-                        if (day === null) {
-                          return <div key={`empty-${idx}`} />;
-                        }
-
-                        const past = isPast(day);
-                        const today_ = isToday(day);
-                        const sel = isSelected(day);
+                        const isDisabled = day === null || isPast(day);
+                        const isSelectedDay = !isDisabled && isSelected(day);
+                        const isTodayDay = !isDisabled && isToday(day);
 
                         return (
                           <button
-                            key={`day-${day}`}
+                            key={idx}
                             type="button"
-                            disabled={past}
-                            onClick={() => !past && setSelectedDate({ year: calYear, month: calMonth, day })}
+                            onClick={() => !isDisabled && setSelectedDate({ year: calYear, month: calMonth, day: day! })}
+                            disabled={isDisabled}
+                            className="aspect-square rounded-none text-xs font-ui transition-all"
                             style={{
-                              background: sel
-                                ? 'rgba(201,168,76,0.18)'
-                                : 'transparent',
-                              border: sel
-                                ? '1px solid rgba(201,168,76,0.6)'
-                                : today_
-                                ? '1px solid rgba(201,168,76,0.3)'
-                                : '1px solid transparent',
-                              color: past
-                                ? 'rgba(245,242,236,0.15)'
-                                : sel
-                                ? '#c9a84c'
-                                : today_
-                                ? 'var(--foreground)'
-                                : 'rgba(245,242,236,0.75)',
-                              cursor: past ? 'default' : 'pointer',
-                              fontSize: '13px',
-                              fontFamily: 'var(--font-ui, Arial, sans-serif)',
-                              padding: '9px 0',
-                              textAlign: 'center',
-                              transition: 'all 0.15s',
-                              width: '100%',
-                              minHeight: '38px',
-                            }}
-                            onMouseEnter={e => {
-                              if (!past && !sel) (e.currentTarget as HTMLButtonElement).style.background = 'rgba(201,168,76,0.07)';
-                            }}
-                            onMouseLeave={e => {
-                              if (!sel) (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
+                              backgroundColor: isSelectedDay ? 'var(--primary)' : isTodayDay ? 'rgba(201,168,76,0.15)' : 'transparent',
+                              color: isSelectedDay ? '#080808' : 'var(--foreground)',
+                              border: isTodayDay ? '1px solid var(--primary)' : '1px solid transparent',
+                              cursor: isDisabled ? 'not-allowed' : 'pointer',
+                              opacity: isDisabled ? 0.3 : 1,
+                              fontWeight: isSelectedDay || isTodayDay ? 600 : 400,
                             }}
                           >
                             {day}
@@ -381,290 +317,143 @@ export default function BookPage() {
                         );
                       })}
                     </div>
-                  </div>
 
-                  {/* Time Picker */}
-                  <div className="mt-5">
-                    <p
-                      className="font-ui mb-3"
-                      style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(245,242,236,0.5)', textTransform: 'uppercase' }}
-                    >
-                      Preferred Time
-                    </p>
-                    <div className="flex items-center gap-3">
-                      {/* Hour */}
-                      <div style={{ flex: 1 }}>
-                        <select
-                          value={timeHour}
-                          onChange={e => setTimeHour(e.target.value)}
-                          style={{
-                            ...inputStyle,
-                            width: '100%',
-                            padding: '13px 16px',
-                            border: '1px solid rgba(201,168,76,0.25)',
-                            appearance: 'none',
-                            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c9a84c' opacity='0.6'/%3E%3C/svg%3E")`,
-                            backgroundRepeat: 'no-repeat',
-                            backgroundPosition: 'right 12px center',
-                            paddingRight: '32px',
-                            cursor: 'pointer',
-                          }}
-                          aria-label="Hour"
-                        >
-                          {Array.from({ length: 24 }, (_, i) => (
-                            <option key={i} value={padTwo(i)} style={{ background: '#0d0d0d' }}>
-                              {padTwo(i)}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <span style={{ color: 'var(--primary)', fontSize: '18px', fontWeight: 300 }}>:</span>
-
-                      {/* Minute */}
-                      <div style={{ flex: 1 }}>
-                        <select
-                          value={timeMinute}
-                          onChange={e => setTimeMinute(e.target.value)}
-                          style={{
-                            ...inputStyle,
-                            width: '100%',
-                            padding: '13px 16px',
-                            border: '1px solid rgba(201,168,76,0.25)',
-                            appearance: 'none',
-                            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c9a84c' opacity='0.6'/%3E%3C/svg%3E")`,
-                            backgroundRepeat: 'no-repeat',
-                            backgroundPosition: 'right 12px center',
-                            paddingRight: '32px',
-                            cursor: 'pointer',
-                          }}
-                          aria-label="Minute"
-                        >
-                          {['00', '15', '30', '45'].map(m => (
-                            <option key={m} value={m} style={{ background: '#0d0d0d' }}>
-                              {m}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
-                    {/* Timezone Selector */}
-                    <div className="mt-4">
-                      <p
-                        className="font-ui mb-2"
-                        style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(245,242,236,0.5)', textTransform: 'uppercase' }}
-                      >
-                        Your Timezone
-                      </p>
-                      <select
-                        value={timezone}
-                        onChange={e => setTimezone(e.target.value)}
-                        aria-label="Timezone"
-                        style={{
-                          ...inputStyle,
-                          width: '100%',
-                          padding: '13px 16px',
-                          border: '1px solid rgba(201,168,76,0.25)',
-                          appearance: 'none',
-                          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c9a84c' opacity='0.6'/%3E%3C/svg%3E")`,
-                          backgroundRepeat: 'no-repeat',
-                          backgroundPosition: 'right 12px center',
-                          paddingRight: '32px',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        <optgroup label="Europe" style={{ background: '#0d0d0d' }}>
-                          <option value="Europe/London" style={{ background: '#0d0d0d' }}>London (GMT/BST)</option>
-                          <option value="Europe/Dublin" style={{ background: '#0d0d0d' }}>Dublin (GMT/IST)</option>
-                          <option value="Europe/Paris" style={{ background: '#0d0d0d' }}>Paris / Berlin (CET/CEST)</option>
-                          <option value="Europe/Amsterdam" style={{ background: '#0d0d0d' }}>Amsterdam (CET/CEST)</option>
-                          <option value="Europe/Madrid" style={{ background: '#0d0d0d' }}>Madrid (CET/CEST)</option>
-                          <option value="Europe/Rome" style={{ background: '#0d0d0d' }}>Rome (CET/CEST)</option>
-                          <option value="Europe/Warsaw" style={{ background: '#0d0d0d' }}>Warsaw (CET/CEST)</option>
-                          <option value="Europe/Kyiv" style={{ background: '#0d0d0d' }}>Kyiv (EET/EEST)</option>
-                          <option value="Europe/Moscow" style={{ background: '#0d0d0d' }}>Moscow (MSK)</option>
-                          <option value="Europe/Istanbul" style={{ background: '#0d0d0d' }}>Istanbul (TRT)</option>
-                        </optgroup>
-                        <optgroup label="Americas" style={{ background: '#0d0d0d' }}>
-                          <option value="America/New_York" style={{ background: '#0d0d0d' }}>New York (ET)</option>
-                          <option value="America/Chicago" style={{ background: '#0d0d0d' }}>Chicago (CT)</option>
-                          <option value="America/Denver" style={{ background: '#0d0d0d' }}>Denver (MT)</option>
-                          <option value="America/Los_Angeles" style={{ background: '#0d0d0d' }}>Los Angeles (PT)</option>
-                          <option value="America/Toronto" style={{ background: '#0d0d0d' }}>Toronto (ET)</option>
-                          <option value="America/Vancouver" style={{ background: '#0d0d0d' }}>Vancouver (PT)</option>
-                          <option value="America/Sao_Paulo" style={{ background: '#0d0d0d' }}>São Paulo (BRT)</option>
-                          <option value="America/Mexico_City" style={{ background: '#0d0d0d' }}>Mexico City (CST)</option>
-                        </optgroup>
-                        <optgroup label="Asia / Pacific" style={{ background: '#0d0d0d' }}>
-                          <option value="Asia/Dubai" style={{ background: '#0d0d0d' }}>Dubai (GST)</option>
-                          <option value="Asia/Kolkata" style={{ background: '#0d0d0d' }}>India (IST)</option>
-                          <option value="Asia/Singapore" style={{ background: '#0d0d0d' }}>Singapore (SGT)</option>
-                          <option value="Asia/Tokyo" style={{ background: '#0d0d0d' }}>Tokyo (JST)</option>
-                          <option value="Asia/Shanghai" style={{ background: '#0d0d0d' }}>Shanghai / Beijing (CST)</option>
-                          <option value="Asia/Hong_Kong" style={{ background: '#0d0d0d' }}>Hong Kong (HKT)</option>
-                          <option value="Australia/Sydney" style={{ background: '#0d0d0d' }}>Sydney (AEST/AEDT)</option>
-                          <option value="Pacific/Auckland" style={{ background: '#0d0d0d' }}>Auckland (NZST/NZDT)</option>
-                        </optgroup>
-                        <optgroup label="Africa / Middle East" style={{ background: '#0d0d0d' }}>
-                          <option value="Africa/Johannesburg" style={{ background: '#0d0d0d' }}>Johannesburg (SAST)</option>
-                          <option value="Africa/Cairo" style={{ background: '#0d0d0d' }}>Cairo (EET)</option>
-                          <option value="Asia/Riyadh" style={{ background: '#0d0d0d' }}>Riyadh (AST)</option>
-                        </optgroup>
-                      </select>
-                    </div>
-
-                    {/* Selected summary */}
+                    {/* Time picker */}
                     {selectedDate && (
-                      <div
-                        className="mt-4 px-4 py-3"
-                        style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)' }}
-                      >
-                        <p className="font-ui" style={{ fontSize: '11px', color: 'var(--primary)', letterSpacing: '0.5px' }}>
-                          {formattedSlot}
+                      <div>
+                        <p className="font-ui text-xs mb-3" style={{ color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                          Time
                         </p>
+                        <div className="flex gap-2 mb-4">
+                          <input
+                            type="number"
+                            min="0"
+                            max="23"
+                            value={timeHour}
+                            onChange={(e) => setTimeHour(e.target.value.padStart(2, '0'))}
+                            className={inputClass}
+                            style={inputStyle}
+                          />
+                          <span style={{ color: 'var(--foreground)', fontSize: '18px', fontWeight: 300 }}>:</span>
+                          <input
+                            type="number"
+                            min="0"
+                            max="59"
+                            value={timeMinute}
+                            onChange={(e) => setTimeMinute(e.target.value.padStart(2, '0'))}
+                            className={inputClass}
+                            style={inputStyle}
+                          />
+                        </div>
+
+                        {/* Timezone */}
+                        <p className="font-ui text-xs mb-3" style={{ color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                          Timezone
+                        </p>
+                        <select
+                          value={timezone}
+                          onChange={(e) => setTimezone(e.target.value)}
+                          className={inputClass}
+                          style={inputStyle}
+                        >
+                          <option value="Europe/London">Europe/London (GMT/BST)</option>
+                          <option value="America/New_York">America/New_York (EST/EDT)</option>
+                          <option value="America/Chicago">America/Chicago (CST/CDT)</option>
+                          <option value="America/Denver">America/Denver (MST/MDT)</option>
+                          <option value="America/Los_Angeles">America/Los_Angeles (PST/PDT)</option>
+                          <option value="Europe/Paris">Europe/Paris (CET/CEST)</option>
+                          <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+                          <option value="Australia/Sydney">Australia/Sydney (AEDT/AEST)</option>
+                        </select>
                       </div>
                     )}
                   </div>
                 </div>
 
-                {/* ── Right: Contact Details ── */}
+                {/* ── Right: Contact Form ── */}
                 <div>
+                  {/* Step label */}
                   <p
                     className="font-ui mb-4 md:mb-6"
                     style={{ fontSize: '10px', letterSpacing: '3px', color: 'var(--primary)', textTransform: 'uppercase' }}
                   >
-                    02 — Your Details
+                    Step 2 of 2
                   </p>
 
-                  <div className="flex flex-col gap-4">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="font-ui block mb-2"
-                        style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(245,242,236,0.5)', textTransform: 'uppercase' }}
-                      >
-                        Full Name *
-                      </label>
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        placeholder="Your full name"
-                        value={form.name}
-                        onChange={handleFormChange}
-                        className={inputClass}
-                        style={inputStyle}
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="font-ui block mb-2"
-                        style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(245,242,236,0.5)', textTransform: 'uppercase' }}
-                      >
-                        Email Address *
-                      </label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        placeholder="your@email.com"
-                        value={form.email}
-                        onChange={handleFormChange}
-                        className={inputClass}
-                        style={inputStyle}
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="font-ui block mb-2"
-                        style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(245,242,236,0.5)', textTransform: 'uppercase' }}
-                      >
-                        Phone Number
-                      </label>
-                      <input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        placeholder="+44 7700 000000"
-                        value={form.phone}
-                        onChange={handleFormChange}
-                        className={inputClass}
-                        style={inputStyle}
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="font-ui block mb-2"
-                        style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(245,242,236,0.5)', textTransform: 'uppercase' }}
-                      >
-                        Anything you&apos;d like us to know?
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={4}
-                        placeholder="Tell us a bit about your business or what you'd like to discuss…"
-                        value={form.message}
-                        onChange={handleFormChange}
-                        className={inputClass}
-                        style={{ ...inputStyle, resize: 'none' }}
-                      />
-                    </div>
-
-                    {/* Error */}
-                    {bookingStatus === 'error' && (
-                      <p
-                        className="font-ui"
-                        style={{ fontSize: '12px', color: '#e05c5c', letterSpacing: '0.3px' }}
-                      >
-                        {bookingError}
-                      </p>
-                    )}
-
-                    {/* Validation hint */}
-                    {!selectedDate && (
-                      <p
-                        className="font-ui"
-                        style={{ fontSize: '11px', color: 'rgba(245,242,236,0.3)', letterSpacing: '0.3px' }}
-                      >
-                        Please select a date on the calendar to continue.
-                      </p>
-                    )}
-
-                    {/* Submit */}
-                    <button
-                      type="submit"
-                      disabled={bookingStatus === 'submitting' || !selectedDate}
-                      className="btn-primary w-full mt-2"
-                      style={{
-                        opacity: !selectedDate || bookingStatus === 'submitting' ? 0.5 : 1,
-                        cursor: !selectedDate || bookingStatus === 'submitting' ? 'not-allowed' : 'pointer',
-                        fontSize: '11px',
-                        letterSpacing: '3px',
-                        padding: '16px 32px',
-                      }}
-                    >
-                      {bookingStatus === 'submitting' ? 'Sending…' : 'Request This Time'}
-                    </button>
-
-                    <p
-                      className="font-ui text-center"
-                      style={{ fontSize: '11px', color: 'rgba(245,242,236,0.25)', letterSpacing: '0.3px' }}
-                    >
-                      We&apos;ll confirm your booking by email within one business day.
-                    </p>
+                  {/* Form fields */}
+                  <div className="space-y-4 mb-6">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Full name"
+                      value={form.name}
+                      onChange={handleFormChange}
+                      className={inputClass}
+                      style={inputStyle}
+                      required
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email address"
+                      value={form.email}
+                      onChange={handleFormChange}
+                      className={inputClass}
+                      style={inputStyle}
+                      required
+                    />
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="Phone number (optional)"
+                      value={form.phone}
+                      onChange={handleFormChange}
+                      className={inputClass}
+                      style={inputStyle}
+                    />
+                    <textarea
+                      name="message"
+                      placeholder="Tell us about your business (optional)"
+                      value={form.message}
+                      onChange={handleFormChange}
+                      className={inputClass}
+                      style={{ ...inputStyle, minHeight: '120px', resize: 'none' }}
+                    />
                   </div>
-                </div>
 
+                  {/* Error message */}
+                  {bookingStatus === 'error' && (
+                    <div
+                      className="mb-4 p-3 rounded-none text-sm"
+                      style={{ backgroundColor: 'rgba(220, 38, 38, 0.1)', color: '#dc2626', border: '1px solid rgba(220, 38, 38, 0.3)' }}
+                    >
+                      {bookingError}
+                    </div>
+                  )}
+
+                  {/* Submit button */}
+                  <button
+                    type="submit"
+                    disabled={!selectedDate || bookingStatus === 'submitting'}
+                    className="w-full font-ui text-xs font-semibold uppercase tracking-widest transition-all"
+                    style={{
+                      backgroundColor: selectedDate ? 'var(--primary)' : 'var(--muted)',
+                      color: selectedDate ? '#080808' : 'var(--foreground)',
+                      padding: '14px 24px',
+                      border: 'none',
+                      cursor: selectedDate ? 'pointer' : 'not-allowed',
+                      opacity: selectedDate ? 1 : 0.5,
+                    }}
+                    onMouseEnter={(e) => {
+                      if (selectedDate) e.currentTarget.style.backgroundColor = '#DDB96A';
+                    }}
+                    onMouseLeave={(e) => {
+                      if (selectedDate) e.currentTarget.style.backgroundColor = 'var(--primary)';
+                    }}
+                  >
+                    {bookingStatus === 'submitting' ? 'Booking...' : 'Confirm Booking'}
+                  </button>
+                </div>
               </div>
             </form>
           )}

@@ -249,21 +249,10 @@ export default function ReferralsPage() {
                   document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="w-full sm:w-auto"
-                style={{ backgroundColor: 'transparent', color: '#F0EDE4', border: '1px solid rgba(201,168,76,0.4)', fontFamily: "'Montserrat', sans-serif", fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', fontWeight: 400, padding: '16px 28px', cursor: 'pointer', transition: 'all 0.2s', minHeight: '48px' }}
-                onMouseEnter={(e) => {e.currentTarget.style.borderColor = '#C9A84C';e.currentTarget.style.color = '#C9A84C';}}
-                onMouseLeave={(e) => {e.currentTarget.style.borderColor = 'rgba(201,168,76,0.4)';e.currentTarget.style.color = '#F0EDE4';}}>
+                style={{ backgroundColor: 'transparent', color: '#C9A84C', border: '1px solid #C9A84C', fontFamily: "'Montserrat', sans-serif", fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', fontWeight: 600, padding: '16px 28px', cursor: 'pointer', transition: 'all 0.2s', minHeight: '48px' }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#C9A84C'; e.currentTarget.style.color = '#080808'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#C9A84C'; }}>
                 See How It Works</button>
-            </div>
-          </Reveal>
-
-          {/* Trust badges */}
-          <Reveal delay={0.5}>
-            <div className="flex flex-wrap gap-4 justify-center">
-              {['No cap on earnings', 'Paid monthly, automatically', 'Lifetime commission'].map((b) =>
-              <span key={b} className="text-[13px]" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: "'Montserrat', sans-serif", color: '#7A7468', letterSpacing: '0.5px' }}>
-                  <span style={{ color: '#C9A84C', fontSize: '13px' }}>✓</span>{b}
-                </span>
-              )}
             </div>
           </Reveal>
         </div>
