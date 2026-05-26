@@ -108,7 +108,7 @@ export default function HeroSection() {
           {...fadeUp(0.3)}
           className="pull-quote mb-4 mx-auto"
           style={{ maxWidth: '620px', color: '#ffffff', fontSize: 'clamp(18px,2.2vw,26px)' }}
-          suppressHydrationWarning>The only accounting firm that removes the day-to-day finance workload that consumes founders — from bookkeeping and reconciliations to operational support and reporting.
+          suppressHydrationWarning>The only accounting firm that handles day-to-day finance workload that consumes founders.
 
 
 
