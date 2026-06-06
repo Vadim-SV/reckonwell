@@ -51,11 +51,28 @@ export default function Header() {
             className="flex items-center gap-3 group"
             aria-label="Reckonwell home"
           >
+            {/* Full logo — visible on md+ */}
             <img
               src="/assets/images/Reckonwell-1779490857835.png"
               alt="Reckonwell"
+              className="hidden md:block"
               style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
             />
+            {/* R monogram — visible on small screens */}
+            <span
+              className="flex md:hidden items-center justify-center font-display"
+              style={{
+                height: '36px',
+                width: '36px',
+                fontSize: '22px',
+                fontWeight: 600,
+                color: 'var(--primary)',
+                letterSpacing: '-0.5px',
+                lineHeight: 1,
+              }}
+            >
+              R
+            </span>
           </a>
 
           {/* Desktop Nav */}
