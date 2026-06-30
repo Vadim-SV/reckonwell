@@ -2,24 +2,41 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Link from 'next/link';
 
 const serviceCards = [
   {
-    id: 'vat',
-    title: 'VAT Returns',
-    body: 'Quarterly or monthly VAT submissions handled in full. MTD-compliant, accurate, and filed on time — every time.',
+    id: 'self-assessment',
+    title: 'Self Assessment',
+    body: 'Sole trader or self-employed? We file your Self Assessment and keep your tax position clear all year round.',
+    href: '/self-assessment-calculator',
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="4" y="4" width="20" height="20" rx="2" />
-        <path d="M9 14h10M9 10h6M9 18h8" />
+        <circle cx="14" cy="9" r="4" />
+        <path d="M6 24c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+        <path d="M18 14l2 2 4-4" />
       </svg>
     ),
-    span: false,
   },
   {
-    id: 'accounts',
-    title: 'Final Accounts',
-    body: 'Year-end statutory accounts prepared and filed at Companies House. Clean, compliant, and on schedule.',
+    id: 'mtd',
+    title: 'Making Tax Digital (MTD)',
+    body: 'Mandatory quarterly filing for sole traders and landlords earning £50k+. We handle every submission, on time, every time.',
+    href: '/mtd-calculator',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="4" y="5" width="20" height="18" rx="2" />
+        <path d="M4 10h20" />
+        <path d="M9 5V3M19 5V3" />
+        <path d="M9 15h2M13 15h2M17 15h2M9 19h2M13 19h2" />
+      </svg>
+    ),
+  },
+  {
+    id: 'final-accounts',
+    title: 'Final Accounts & Corporation Tax (CT600)',
+    body: 'Statutory year-end accounts, Companies House filing, and CT600 corporation tax returns — prepared and submitted in full. VAT returns included where applicable.',
+    href: '/final-accounts-ct600-calculator',
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M6 4h12l6 6v14H6z" />
@@ -27,25 +44,12 @@ const serviceCards = [
         <path d="M10 14h8M10 18h5" />
       </svg>
     ),
-    span: false,
-  },
-  {
-    id: 'corp-tax',
-    title: 'Corporation Tax',
-    body: 'CT600 prepared and submitted. We identify every allowable deduction and make sure you pay only what you owe.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="14" cy="14" r="10" />
-        <path d="M14 8v6l4 4" />
-        <path d="M10 14h4" />
-      </svg>
-    ),
-    span: false,
   },
   {
     id: 'rd',
-    title: 'R&D Tax Credits',
-    body: "If you're innovating, you're likely eligible. We identify qualifying activities, prepare the technical narrative, and maximise your claim.",
+    title: 'R&D Tax Credits & Patent Box',
+    body: "If you're innovating, you're likely eligible. We identify qualifying spend, prepare the claim, and maximise what comes back.",
+    href: '/rd-tax-relief-calculator',
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 4 L24 10 L24 20 L14 24 L4 20 L4 10 Z" />
@@ -53,20 +57,6 @@ const serviceCards = [
         <path d="M14 4v6M24 10l-6 4M24 20l-6-4M14 24v-6M4 20l6-4M4 10l6 4" />
       </svg>
     ),
-    span: false,
-  },
-  {
-    id: 'patent',
-    title: 'Patent Box',
-    body: "A 10% corporation tax rate on profits from patented inventions. Most eligible companies never claim it. We make sure you don't miss out.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 3 L14 10 M14 10 C14 10 8 12 8 18 C8 22 11 25 14 25 C17 25 20 22 20 18 C20 12 14 10 14 10Z" />
-        <path d="M11 18 L14 21 L17 16" />
-        <path d="M10 8 L4 6M18 8 L24 6" />
-      </svg>
-    ),
-    span: true,
   },
 ];
 
@@ -152,131 +142,60 @@ export default function AdditionalServicesSection() {
           </motion.div>
         </div>
 
-        {/* Right: service cards grid */}
+        {/* Right: 2x2 service cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-          {/* VAT Returns */}
-          <motion.div
-            className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div
-              className="mb-4"
-              style={{ color: 'var(--primary)', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          {serviceCards.map((card, i) => (
+            <motion.div
+              key={card.id}
+              className="service-card flex flex-col"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.15 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
+              style={{ minHeight: '200px' }}
             >
-              {serviceCards?.[0]?.icon}
-            </div>
-            <h3
-              className="font-display mb-2"
-              style={{ fontSize: '17px', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}
-            >
-              {serviceCards?.[0]?.title}
-            </h3>
-            <p className="body-text-rw" style={{ fontSize: '13px', color: '#ffffff' }}>
-              {serviceCards?.[0]?.body}
-            </p>
-          </motion.div>
-
-          {/* Final Accounts */}
-          <motion.div
-            className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div
-              className="mb-4"
-              style={{ color: 'var(--primary)', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >
-              {serviceCards?.[1]?.icon}
-            </div>
-            <h3
-              className="font-display mb-2"
-              style={{ fontSize: '17px', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}
-            >
-              {serviceCards?.[1]?.title}
-            </h3>
-            <p className="body-text-rw" style={{ fontSize: '13px', color: '#ffffff' }}>
-              {serviceCards?.[1]?.body}
-            </p>
-          </motion.div>
-
-          {/* Corporation Tax */}
-          <motion.div
-            className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div
-              className="mb-4"
-              style={{ color: 'var(--primary)', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >
-              {serviceCards?.[2]?.icon}
-            </div>
-            <h3
-              className="font-display mb-2"
-              style={{ fontSize: '17px', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}
-            >
-              {serviceCards?.[2]?.title}
-            </h3>
-            <p className="body-text-rw" style={{ fontSize: '13px', color: '#ffffff' }}>
-              {serviceCards?.[2]?.body}
-            </p>
-          </motion.div>
-
-          {/* R&D Tax Credits */}
-          <motion.div
-            className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div
-              className="mb-4"
-              style={{ color: 'var(--primary)', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >
-              {serviceCards?.[3]?.icon}
-            </div>
-            <h3
-              className="font-display mb-2"
-              style={{ fontSize: '17px', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}
-            >
-              {serviceCards?.[3]?.title}
-            </h3>
-            <p className="body-text-rw" style={{ fontSize: '13px', color: '#ffffff' }}>
-              {serviceCards?.[3]?.body}
-            </p>
-          </motion.div>
-
-          {/* Patent Box — full width */}
-          <motion.div
-            className="service-card sm:col-span-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="flex items-start gap-5">
               <div
-                className="flex-shrink-0"
+                className="mb-4"
                 style={{ color: 'var(--primary)', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >
-                {serviceCards?.[4]?.icon}
+                {card.icon}
               </div>
-              <div>
-                <h3
-                  className="font-display mb-2"
-                  style={{ fontSize: '17px', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}
+              <h3
+                className="font-display mb-2"
+                style={{ fontSize: '16px', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}
+              >
+                {card.title}
+              </h3>
+              <p className="body-text-rw flex-1" style={{ fontSize: '13px', color: '#ffffff', lineHeight: 1.65 }}>
+                {card.body}
+              </p>
+              <div className="mt-4">
+                <Link
+                  href={card.href}
+                  style={{
+                    display: 'inline-block',
+                    padding: '10px 18px',
+                    fontSize: '11px',
+                    letterSpacing: '1.5px',
+                    textTransform: 'uppercase',
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: 500,
+                    color: 'var(--primary)',
+                    border: '1px solid var(--gold-border)',
+                    borderRadius: '2px',
+                    transition: 'background 0.2s, color 0.2s',
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'var(--gold-dim)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
+                  }}
                 >
-                  {serviceCards?.[4]?.title}
-                </h3>
-                <p className="body-text-rw" style={{ fontSize: '13px', color: '#ffffff' }}>
-                  {serviceCards?.[4]?.body}
-                </p>
+                  Calculate Your Price →
+                </Link>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
