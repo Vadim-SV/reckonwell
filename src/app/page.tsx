@@ -10,6 +10,9 @@ import ProblemSection from '@/app/components/ProblemSection';
 import SolutionSection from '@/app/components/SolutionSection';
 import BeforeAfterSection from '@/app/components/BeforeAfterSection';
 import HowItWorksSection from '@/app/components/HowItWorksSection';
+import ComplianceCalculatorsSection from '@/app/components/ComplianceCalculatorsSection';
+import RDTaxReliefPreviewSection from '@/app/components/RDTaxReliefPreviewSection';
+import MakingTaxDigitalSection from '@/app/components/MakingTaxDigitalSection';
 import RealResultsSection from '@/app/components/RealResultsSection';
 import PricingSection from '@/app/components/PricingSection';
 import AdditionalServicesSection from '@/app/components/AdditionalServicesSection';
@@ -78,6 +81,15 @@ export default function HomePage() {
           </section>
           <section role="region" aria-label="How it works">
             <HowItWorksSection />
+          </section>
+          <section role="region" aria-label="Compliance pricing calculators">
+            <ComplianceCalculatorsSection />
+          </section>
+          <section role="region" aria-label="R&D Tax Relief preview">
+            <RDTaxReliefPreviewSection />
+          </section>
+          <section role="region" aria-label="Making Tax Digital">
+            <MakingTaxDigitalSection />
           </section>
           <section role="region" aria-label="Real results and testimonials">
             <RealResultsSection />
