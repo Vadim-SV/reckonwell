@@ -1,18 +1,27 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
-const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'The Problem', href: '#problem' },
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Pricing', href: '#pricing' },
+const complianceLinks = [
+  { label: 'Self-Employed Accounting', href: '/self-employed-accounting' },
+  { label: 'Limited Company Accounting', href: '/limited-company-accounting' },
+  { label: 'Making Tax Digital', href: '/making-tax-digital' },
+  { label: 'R&D Tax Relief', href: '/r-and-d-tax-relief' },
+  { label: 'Get a Quote', href: '/quotation-calculator' },
+];
+
+const fractionalLinks = [
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Pricing (£200/mo)', href: '/#pricing' },
+  { label: 'Additional Services', href: '/#additional-services' },
 ];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -29,12 +38,20 @@ export default function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  const handleNavClick = (href: string) => {
-    setMenuOpen(false);
-    if (href.startsWith('#')) {
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const navLinkStyle = {
+    color: 'var(--muted)',
+    fontWeight: 400,
+    letterSpacing: '2px',
   };
 
   return (
@@ -46,30 +63,16 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
           {/* Logo */}
-          <a
-            href="/"
-            className="flex items-center gap-3 group"
-            aria-label="Reckonwell home"
-          >
-            {/* Full logo — visible on md+ */}
+          <a href="/" className="flex items-center gap-3 group" aria-label="Reckonwell home">
             <img
               src="/assets/images/Reckonwell-1779490857835.png"
               alt="Reckonwell"
               className="hidden md:block"
               style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
             />
-            {/* R monogram — visible on small screens */}
             <span
               className="flex md:hidden items-center justify-center font-display"
-              style={{
-                height: '36px',
-                width: '36px',
-                fontSize: '22px',
-                fontWeight: 600,
-                color: 'var(--primary)',
-                letterSpacing: '-0.5px',
-                lineHeight: 1,
-              }}
+              style={{ height: '36px', width: '36px', fontSize: '22px', fontWeight: 600, color: 'var(--primary)', letterSpacing: '-0.5px', lineHeight: 1 }}
             >
               R
             </span>
@@ -77,31 +80,94 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) =>
-              link.href.startsWith('#') ? (
-                <button
-                  key={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className="font-ui text-xs tracking-widest uppercase transition-colors duration-200"
-                  style={{ color: 'var(--muted)', fontWeight: 400, letterSpacing: '2px' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+            {/* Home */}
+            <Link
+              href="/"
+              className="font-ui text-xs tracking-widest uppercase transition-colors duration-200"
+              style={navLinkStyle}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+            >
+              Home
+            </Link>
+
+            {/* Services Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setServicesOpen(!servicesOpen)}
+                className="font-ui text-xs tracking-widest uppercase transition-colors duration-200 flex items-center gap-1"
+                style={{ ...navLinkStyle, background: 'none', border: 'none', color: servicesOpen ? 'var(--foreground)' : 'var(--muted)' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                onMouseLeave={(e) => { if (!servicesOpen) e.currentTarget.style.color = 'var(--muted)'; }}
+                aria-expanded={servicesOpen}
+                aria-haspopup="true"
+              >
+                Services
+                <span style={{ fontSize: '10px', transition: 'transform 0.2s', transform: servicesOpen ? 'rotate(180deg)' : 'none', display: 'inline-block' }}>▾</span>
+              </button>
+
+              {servicesOpen && (
+                <div
+                  className="absolute top-full left-1/2 mt-3 py-6 px-0"
+                  style={{
+                    transform: 'translateX(-50%)',
+                    backgroundColor: 'rgba(8,8,8,0.97)',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid var(--gold-border)',
+                    minWidth: '480px',
+                    zIndex: 100,
+                  }}
                 >
-                  {link.label}
-                </button>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="font-ui text-xs tracking-widest uppercase transition-colors duration-200"
-                  style={{ color: 'var(--muted)', fontWeight: 400, letterSpacing: '2px' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
+                  <div className="grid grid-cols-2 gap-0">
+                    {/* Fractional Finance */}
+                    <div className="px-6 py-2" style={{ borderRight: '1px solid var(--gold-border)' }}>
+                      <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}>
+                        Fractional Finance
+                      </p>
+                      <div className="space-y-1">
+                        {fractionalLinks.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setServicesOpen(false)}
+                            className="block font-ui text-xs py-2 transition-colors duration-150"
+                            style={{ color: 'var(--muted)', letterSpacing: '0.5px' }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* UK Compliance Services */}
+                    <div className="px-6 py-2">
+                      <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}>
+                        UK Compliance Services
+                      </p>
+                      <div className="space-y-1">
+                        {complianceLinks.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setServicesOpen(false)}
+                            className="block font-ui text-xs py-2 transition-colors duration-150"
+                            style={{ color: link.href === '/quotation-calculator' ? 'var(--primary)' : 'var(--muted)', letterSpacing: '0.5px' }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = link.href === '/quotation-calculator' ? 'var(--primary)' : 'var(--muted)')}
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Partner with Us */}
             <Link
               href="/referrals"
               className="font-ui text-xs tracking-widest uppercase transition-colors duration-200"
@@ -140,94 +206,48 @@ export default function Header() {
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             style={{ cursor: 'pointer' }}
           >
-            <span
-              className="block h-px w-6 transition-all duration-300"
-              style={{
-                backgroundColor: 'var(--foreground)',
-                transform: menuOpen ? 'rotate(45deg) translate(4px, 4px)' : 'none',
-              }}
-            />
-            <span
-              className="block h-px w-4 transition-all duration-300"
-              style={{
-                backgroundColor: 'var(--foreground)',
-                opacity: menuOpen ? 0 : 1,
-              }}
-            />
-            <span
-              className="block h-px w-6 transition-all duration-300"
-              style={{
-                backgroundColor: 'var(--foreground)',
-                transform: menuOpen ? 'rotate(-45deg) translate(4px, -4px)' : 'none',
-              }}
-            />
+            <span className="block h-px w-6 transition-all duration-300" style={{ backgroundColor: 'var(--foreground)', transform: menuOpen ? 'rotate(45deg) translate(4px, 4px)' : 'none' }} />
+            <span className="block h-px w-4 transition-all duration-300" style={{ backgroundColor: 'var(--foreground)', opacity: menuOpen ? 0 : 1 }} />
+            <span className="block h-px w-6 transition-all duration-300" style={{ backgroundColor: 'var(--foreground)', transform: menuOpen ? 'rotate(-45deg) translate(4px, -4px)' : 'none' }} />
           </button>
         </div>
       </nav>
 
       {/* Mobile Full-Screen Overlay */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col items-center justify-center transition-all duration-500 ${
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center overflow-y-auto transition-all duration-500 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         style={{ backgroundColor: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)' }}
       >
-        <div className="flex flex-col items-center gap-10">
-          {navLinks.map((link, i) =>
-            link.href.startsWith('#') ? (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="font-display text-4xl transition-colors duration-200"
-                style={{
-                  color: 'var(--foreground)',
-                  fontWeight: 400,
-                  transitionDelay: menuOpen ? `${i * 80}ms` : '0ms',
-                  cursor: 'pointer',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary)')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-              >
-                {link.label}
-              </button>
-            ) : (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="font-display text-4xl transition-colors duration-200"
-                style={{
-                  color: 'var(--foreground)',
-                  fontWeight: 400,
-                  transitionDelay: menuOpen ? `${i * 80}ms` : '0ms',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary)')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-              >
-                {link.label}
-              </Link>
-            )
-          )}
-          <Link
-            href="/referrals"
-            onClick={() => setMenuOpen(false)}
-            className="font-display text-4xl transition-colors duration-200"
-            style={{
-              color: 'var(--primary)',
-              fontWeight: 400,
-              transitionDelay: menuOpen ? `${navLinks.length * 80}ms` : '0ms',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--primary)')}
-          >
+        <div className="flex flex-col items-center gap-6 py-12 w-full px-8">
+          <Link href="/" onClick={() => setMenuOpen(false)} className="font-display text-3xl transition-colors duration-200" style={{ color: 'var(--foreground)', fontWeight: 400 }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--foreground)')}>
+            Home
+          </Link>
+
+          {/* Mobile Services Section */}
+          <div className="w-full text-center">
+            <p className="font-display text-3xl mb-4" style={{ color: 'var(--foreground)', fontWeight: 400 }}>Services</p>
+            <div className="mb-3">
+              <p className="font-ui mb-2" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>Fractional Finance</p>
+              {fractionalLinks.map((link) => (
+                <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="block font-ui py-1 text-sm" style={{ color: 'var(--muted)' }}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            <div>
+              <p className="font-ui mb-2 mt-4" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>UK Compliance Services</p>
+              {complianceLinks.map((link) => (
+                <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="block font-ui py-1 text-sm" style={{ color: 'var(--muted)' }}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Link href="/referrals" onClick={() => setMenuOpen(false)} className="font-display text-3xl transition-colors duration-200" style={{ color: 'var(--primary)', fontWeight: 400 }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--primary)')}>
             Partner with Us
           </Link>
-          <Link
-            href="/book"
-            onClick={() => setMenuOpen(false)}
-            className="btn-gold mt-4"
-            style={{ cursor: 'pointer' }}
-          >
+          <Link href="/book" onClick={() => setMenuOpen(false)} className="btn-gold mt-2" style={{ cursor: 'pointer' }}>
             Book a Call
           </Link>
         </div>

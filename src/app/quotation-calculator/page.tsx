@@ -225,6 +225,19 @@ export default function QuotationCalculatorPage() {
     <>
       <Header />
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
+
+        {/* Standalone Compliance Frame */}
+        <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)' }}>
+          <div className="max-w-3xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <p className="font-ui text-xs" style={{ color: 'var(--muted)' }}>
+              <span style={{ color: 'var(--primary)' }}>Compliance services pricing</span> — for standalone compliance work only.
+            </p>
+            <Link href="/" className="font-ui text-xs" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+              Need a full finance team? See Fractional Finance →
+            </Link>
+          </div>
+        </div>
+
         {/* Hero */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto text-center">

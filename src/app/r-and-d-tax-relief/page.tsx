@@ -219,6 +219,18 @@ export default function RDTaxReliefPage() {
         </Link>
       </nav>
 
+      {/* Standalone Compliance Frame */}
+      <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid rgba(201,168,76,0.18)' }}>
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+          <p className="font-ui text-xs" style={{ color: 'rgba(154,148,144,0.9)' }}>
+            <span style={{ color: 'var(--primary)' }}>Standalone compliance service</span> — no ongoing engagement required.
+          </p>
+          <Link href="/" className="font-ui text-xs" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+            Need a full finance team? See Fractional Finance →
+          </Link>
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="py-20 md:py-32 px-6 md:px-10 text-center" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)' }}>
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>

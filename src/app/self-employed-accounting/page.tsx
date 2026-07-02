@@ -21,6 +21,18 @@ export default function SelfEmployedAccountingPage() {
       <Header />
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
 
+        {/* Standalone Compliance Frame */}
+        <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)' }}>
+          <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <p className="font-ui text-xs" style={{ color: 'var(--muted)' }}>
+              <span style={{ color: 'var(--primary)' }}>Standalone compliance service</span> — no ongoing engagement required.
+            </p>
+            <Link href="/" className="font-ui text-xs" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+              Need a full finance team? See Fractional Finance →
+            </Link>
+          </div>
+        </div>
+
         {/* Hero */}
         <section className="px-6 md:px-10 py-16 md:py-24" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
@@ -188,6 +200,18 @@ export default function SelfEmployedAccountingPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Fractional Finance Callout */}
+        <section className="px-6 md:px-10 py-8" style={{ borderTop: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.04)' }}>
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="font-ui text-sm mb-2" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>
+              Want daily bookkeeping and real-time management accounts?
+            </p>
+            <Link href="/" className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+              Our Fractional Finance Department handles all of this and more — daily →
+            </Link>
           </div>
         </section>
       </main>
