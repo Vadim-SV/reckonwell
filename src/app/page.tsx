@@ -14,6 +14,7 @@ import ComplianceCalculatorsSection from '@/app/components/ComplianceCalculators
 import RDTaxReliefPreviewSection from '@/app/components/RDTaxReliefPreviewSection';
 import MakingTaxDigitalSection from '@/app/components/MakingTaxDigitalSection';
 import RealResultsSection from '@/app/components/RealResultsSection';
+import NationwideCoverageSection from '@/app/components/NationwideCoverageSection';
 import EmbeddedCalculatorSection from '@/app/components/EmbeddedCalculatorSection';
 import PricingSection from '@/app/components/PricingSection';
 import AdditionalServicesSection from '@/app/components/AdditionalServicesSection';
@@ -83,9 +84,6 @@ export default function HomePage() {
           <section role="region" aria-label="How it works">
             <HowItWorksSection />
           </section>
-          <section role="region" aria-label="Pricing options">
-            <PricingSection />
-          </section>
           <section role="region" aria-label="Compliance pricing calculators">
             <ComplianceCalculatorsSection />
           </section>
@@ -98,8 +96,14 @@ export default function HomePage() {
           <section role="region" aria-label="Real results and testimonials">
             <RealResultsSection />
           </section>
+          <section role="region" aria-label="Nationwide coverage">
+            <NationwideCoverageSection />
+          </section>
           <section role="region" aria-label="Instant quote calculator">
             <EmbeddedCalculatorSection />
+          </section>
+          <section role="region" aria-label="Pricing options">
+            <PricingSection />
           </section>
           <section role="region" aria-label="Additional services">
             <AdditionalServicesSection />
