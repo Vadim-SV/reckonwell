@@ -1,10 +1,30 @@
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 
-export const metadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: 'Terms of Service | Reckonwell',
   description: 'Reckonwell Finance Terms and Conditions — governing the provision of accounting services.',
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/terms-of-service`,
+  },
+  openGraph: {
+    title: 'Terms of Service | Reckonwell',
+    description: 'Reckonwell Finance Terms and Conditions — governing the provision of accounting services.',
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/terms-of-service`,
+    type: 'website',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/assets/images/app_logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Reckonwell - Premium accounting firm',
+      },
+    ],
+  },
 };
 
 function Section({ number, title, children }: { number: string; title: string; children: React.ReactNode }) {

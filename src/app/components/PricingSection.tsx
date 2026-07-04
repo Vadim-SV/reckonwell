@@ -42,9 +42,9 @@ export default function PricingSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            Simple. Transparent.
+            One flat fee.
             <br />
-            <span className="gold-italic">No surprises.</span>
+            <span className="gold-italic">Total clarity.</span>
           </motion.h2>
         </div>
 
@@ -72,6 +72,21 @@ export default function PricingSection() {
               border: '1px solid var(--gold-border)',
             }}
           >
+            {/* From label */}
+            <p
+              className="font-serif text-center mb-2"
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontStyle: 'italic',
+                fontWeight: 300,
+                fontSize: '18px',
+                color: 'var(--primary)',
+                letterSpacing: '0.5px',
+              }}
+            >
+              From
+            </p>
+
             {/* Dual pricing */}
             <div className="flex items-end justify-center gap-0 mb-2">
               <div className="flex items-start">

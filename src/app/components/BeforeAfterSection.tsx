@@ -4,19 +4,20 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const withoutItems = [
-  'Month-end panic when books are finally updated',
-  'No idea if you can afford to hire or invest',
-  'Chasing your accountant for basic answers',
-  'Tax surprises that wipe out your cash reserves',
-  'Making decisions on gut feel, not real data',
+  'tabs everywhere',
+  'Slack messages',
+  'invoices missing',
+  'accountant replies late',
+  'cashflow unclear',
+  'admin ruins evenings',
 ];
 
 const withItems = [
-  'Daily visibility into your cash position',
-  'Clear picture of what you can afford and when',
-  'Proactive alerts before problems become costly',
-  'Tax planned throughout the year — no surprises',
-  'Confident decisions backed by live numbers',
+  'finance function runs',
+  'reports arrive',
+  'invoices handled',
+  'systems organised',
+  'founder has mental space again',
 ];
 
 export default function BeforeAfterSection() {
@@ -63,7 +64,7 @@ export default function BeforeAfterSection() {
                   fontWeight: 500,
                 }}
               >
-                ✕ Without Reckonwell
+                ✕ Before Reckonwell
               </span>
             </div>
             <ul className="flex flex-col gap-4 md:gap-5">
@@ -118,7 +119,7 @@ export default function BeforeAfterSection() {
                   fontWeight: 500,
                 }}
               >
-                ✓ With Reckonwell
+                ✓ After Reckonwell
               </span>
             </div>
             <ul className="flex flex-col gap-4 md:gap-5">

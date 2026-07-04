@@ -2,71 +2,76 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Link from 'next/link';
 
-const serviceCards = [
+interface ServiceCard {
+  id: string;
+  tag: string;
+  title: string;
+  body: string;
+  price: string;
+  btnLabel: string;
+  href: string;
+  featured?: boolean;
+  cta?: boolean;
+}
+
+const serviceCards: ServiceCard[] = [
   {
-    id: 'vat',
-    title: 'VAT Returns',
-    body: 'Quarterly or monthly VAT submissions handled in full. MTD-compliant, accurate, and filed on time — every time.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="4" y="4" width="20" height="20" rx="2" />
-        <path d="M9 14h10M9 10h6M9 18h8" />
-      </svg>
-    ),
-    span: false,
+    id: 'fractional-finance',
+    tag: 'Recommended',
+    title: 'Fractional Finance',
+    body: 'Daily bookkeeping, management accounts, VAT, and a dedicated finance team — one flat fee.',
+    price: 'From £200/mo',
+    btnLabel: 'Book a call',
+    href: '/book',
+    featured: true,
   },
   {
-    id: 'accounts',
-    title: 'Final Accounts',
-    body: 'Year-end statutory accounts prepared and filed at Companies House. Clean, compliant, and on schedule.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M6 4h12l6 6v14H6z" />
-        <path d="M18 4v6h6" />
-        <path d="M10 14h8M10 18h5" />
-      </svg>
-    ),
-    span: false,
+    id: 'mtd',
+    tag: 'Compliance',
+    title: 'Making Tax Digital',
+    body: 'Quarterly MTD submissions for sole traders and landlords over £50k income.',
+    price: 'From £34/mo',
+    btnLabel: 'Get quote',
+    href: '/quotation-calculator/?service=mtd',
   },
   {
-    id: 'corp-tax',
-    title: 'Corporation Tax',
-    body: 'CT600 prepared and submitted. We identify every allowable deduction and make sure you pay only what you owe.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="14" cy="14" r="10" />
-        <path d="M14 8v6l4 4" />
-        <path d="M10 14h4" />
-      </svg>
-    ),
-    span: false,
+    id: 'self-assessment',
+    tag: 'Compliance',
+    title: 'Self Assessment',
+    body: 'Self-employed and sole trader tax returns. MTD-ready bookkeeping and HMRC filing.',
+    price: 'From £80/mo',
+    btnLabel: 'Get quote',
+    href: '/quotation-calculator/?service=self-assessment',
   },
   {
     id: 'rd',
-    title: 'R&D Tax Credits',
-    body: "If you're innovating, you're likely eligible. We identify qualifying activities, prepare the technical narrative, and maximise your claim.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 4 L24 10 L24 20 L14 24 L4 20 L4 10 Z" />
-        <circle cx="14" cy="14" r="4" />
-        <path d="M14 4v6M24 10l-6 4M24 20l-6-4M14 24v-6M4 20l6-4M4 10l6 4" />
-      </svg>
-    ),
-    span: false,
+    tag: 'Compliance',
+    title: 'R&D Tax Return',
+    body: 'Recover up to 20% of qualifying R&D spend. Fixed fee, HMRC queries handled.',
+    price: 'From £850 one-off',
+    btnLabel: 'Get quote',
+    href: '/quotation-calculator/?service=rd',
   },
   {
-    id: 'patent',
-    title: 'Patent Box',
-    body: "A 10% corporation tax rate on profits from patented inventions. Most eligible companies never claim it. We make sure you don't miss out.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 3 L14 10 M14 10 C14 10 8 12 8 18 C8 22 11 25 14 25 C17 25 20 22 20 18 C20 12 14 10 14 10Z" />
-        <path d="M11 18 L14 21 L17 16" />
-        <path d="M10 8 L4 6M18 8 L24 6" />
-      </svg>
-    ),
-    span: true,
+    id: 'final-accounts',
+    tag: 'Compliance',
+    title: 'Final Accounts & CT600',
+    body: 'Statutory annual accounts, corporation tax return, and Companies House filings.',
+    price: 'From £150/mo',
+    btnLabel: 'Get quote',
+    href: '/quotation-calculator/?service=limited-company',
+  },
+  {
+    id: 'get-quote',
+    tag: 'Not sure?',
+    title: 'Get a Quote',
+    body: 'Answer a few questions and see your exact price in under two minutes.',
+    price: 'All services · instant',
+    btnLabel: 'Start now',
+    href: '/quotation-calculator/',
+    cta: true,
   },
 ];
 
@@ -81,202 +86,173 @@ export default function AdditionalServicesSection() {
       style={{ backgroundColor: 'var(--background)' }}
       aria-label="Additional services"
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
-        {/* Left */}
-        <div className="flex flex-col justify-between h-full">
-          <div>
-            <motion.p
-              className="section-label mb-5 md:mb-6"
-              initial={{ opacity: 0, y: 12 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-            >
-              Additional Services
-            </motion.p>
-            <motion.h2
-              className="section-h2-medium mb-5 md:mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              Everything your business needs to stay{' '}
-              <span className="gold-italic">compliant.</span>
-            </motion.h2>
-            <motion.p
-              className="body-text-rw"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              style={{ color: '#ffffff' }}
-            >
-              From VAT submissions to R&D claims, our team handles every aspect
-              of your compliance obligations — so you never have to think about
-              them.
-            </motion.p>
-          </div>
-
-          <motion.div
-            className="mt-8 md:mt-10 hidden md:block"
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-10 md:mb-14">
+          <motion.p
+            className="section-label mb-5 md:mb-6"
+            initial={{ opacity: 0, y: 12 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            Services
+          </motion.p>
+          <motion.h2
+            className="section-h2-medium mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div
-              className="p-6 rounded-sm"
-              style={{
-                border: '1px solid var(--gold-border)',
-                backgroundColor: 'var(--gold-dim)',
-              }}
-            >
-              <p
-                className="font-serif mb-2"
-                style={{
-                  fontStyle: 'italic',
-                  fontWeight: 300,
-                  fontSize: '17px',
-                  color: 'var(--primary)',
-                  lineHeight: 1.6,
-                  fontFamily: 'var(--font-serif)',
-                }}
-              >
-                &ldquo;We claimed £23k in R&D credits we didn&apos;t know we were owed.
-                One conversation changed everything.&rdquo;
-              </p>
-              <p
-                className="font-ui"
-                style={{ fontSize: '11px', color: 'var(--muted)', letterSpacing: '1px' }}
-              >
-                — Nathan Clarke, SaaS Founder
-              </p>
-            </div>
-          </motion.div>
+            Everything your business needs to stay{' '}
+            <span className="gold-italic">compliant.</span>
+          </motion.h2>
+          <motion.p
+            className="font-serif"
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontStyle: 'italic',
+              fontWeight: 300,
+              fontSize: '17px',
+              color: 'var(--body-text)',
+            }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            Get an instant quote for any service. No sales call required.
+          </motion.p>
         </div>
 
-        {/* Right: service cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-          {/* VAT Returns */}
-          <motion.div
-            className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div
-              className="mb-4"
-              style={{ color: 'var(--primary)', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        {/* 3×2 Card Grid */}
+        <div
+          className="grid gap-4"
+          style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}
+        >
+          {serviceCards.map((card, i) => (
+            <motion.div
+              key={card.id}
+              className="flex flex-col rounded-sm"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.15 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                padding: '24px 20px',
+                minHeight: '220px',
+                backgroundColor: card.cta ? 'transparent' : card.featured ? 'var(--card)' : 'var(--card)',
+                border: card.cta
+                  ? '1px dashed var(--gold-border)'
+                  : card.featured
+                  ? '1px solid var(--primary)'
+                  : '1px solid var(--border-subtle)',
+                background: card.featured
+                  ? 'linear-gradient(180deg, var(--card), rgba(201,168,76,0.05))'
+                  : card.cta
+                  ? 'transparent' :'var(--card)',
+                transition: 'border-color 0.3s',
+              }}
             >
-              {serviceCards?.[0]?.icon}
-            </div>
-            <h3
-              className="font-display mb-2"
-              style={{ fontSize: '17px', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}
-            >
-              {serviceCards?.[0]?.title}
-            </h3>
-            <p className="body-text-rw" style={{ fontSize: '13px', color: '#ffffff' }}>
-              {serviceCards?.[0]?.body}
-            </p>
-          </motion.div>
-
-          {/* Final Accounts */}
-          <motion.div
-            className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div
-              className="mb-4"
-              style={{ color: 'var(--primary)', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >
-              {serviceCards?.[1]?.icon}
-            </div>
-            <h3
-              className="font-display mb-2"
-              style={{ fontSize: '17px', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}
-            >
-              {serviceCards?.[1]?.title}
-            </h3>
-            <p className="body-text-rw" style={{ fontSize: '13px', color: '#ffffff' }}>
-              {serviceCards?.[1]?.body}
-            </p>
-          </motion.div>
-
-          {/* Corporation Tax */}
-          <motion.div
-            className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div
-              className="mb-4"
-              style={{ color: 'var(--primary)', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >
-              {serviceCards?.[2]?.icon}
-            </div>
-            <h3
-              className="font-display mb-2"
-              style={{ fontSize: '17px', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}
-            >
-              {serviceCards?.[2]?.title}
-            </h3>
-            <p className="body-text-rw" style={{ fontSize: '13px', color: '#ffffff' }}>
-              {serviceCards?.[2]?.body}
-            </p>
-          </motion.div>
-
-          {/* R&D Tax Credits */}
-          <motion.div
-            className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div
-              className="mb-4"
-              style={{ color: 'var(--primary)', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >
-              {serviceCards?.[3]?.icon}
-            </div>
-            <h3
-              className="font-display mb-2"
-              style={{ fontSize: '17px', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}
-            >
-              {serviceCards?.[3]?.title}
-            </h3>
-            <p className="body-text-rw" style={{ fontSize: '13px', color: '#ffffff' }}>
-              {serviceCards?.[3]?.body}
-            </p>
-          </motion.div>
-
-          {/* Patent Box — full width */}
-          <motion.div
-            className="service-card sm:col-span-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="flex items-start gap-5">
-              <div
-                className="flex-shrink-0"
-                style={{ color: 'var(--primary)', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              {/* Tag */}
+              <p
+                className="font-ui mb-3"
+                style={{
+                  fontSize: '8px',
+                  letterSpacing: '3px',
+                  textTransform: 'uppercase',
+                  color: 'var(--primary)',
+                  fontWeight: 500,
+                }}
               >
-                {serviceCards?.[4]?.icon}
-              </div>
-              <div>
-                <h3
-                  className="font-display mb-2"
-                  style={{ fontSize: '17px', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}
-                >
-                  {serviceCards?.[4]?.title}
-                </h3>
-                <p className="body-text-rw" style={{ fontSize: '13px', color: '#ffffff' }}>
-                  {serviceCards?.[4]?.body}
-                </p>
-              </div>
-            </div>
-          </motion.div>
+                {card.tag}
+              </p>
+
+              {/* Title */}
+              <h3
+                className="font-display mb-2"
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '18px',
+                  fontWeight: 400,
+                  color: card.cta ? 'var(--primary)' : 'var(--foreground)',
+                  lineHeight: 1.2,
+                  letterSpacing: '-0.3px',
+                }}
+              >
+                {card.title}
+              </h3>
+
+              {/* Body */}
+              <p
+                className="font-serif flex-1"
+                style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontStyle: 'italic',
+                  fontSize: '14px',
+                  color: 'var(--body-text)',
+                  lineHeight: 1.5,
+                  marginBottom: '14px',
+                }}
+              >
+                {card.body}
+              </p>
+
+              {/* Price */}
+              <p
+                className="font-ui mb-4"
+                style={{
+                  fontSize: '10px',
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase',
+                  color: 'var(--muted)',
+                }}
+              >
+                {card.price}
+              </p>
+
+              {/* Button */}
+              <Link
+                href={card.href}
+                className="font-ui"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  padding: '12px 16px',
+                  fontSize: '9px',
+                  letterSpacing: '3px',
+                  textTransform: 'uppercase',
+                  fontWeight: 500,
+                  fontFamily: 'var(--font-sans)',
+                  textDecoration: 'none',
+                  borderRadius: '2px',
+                  transition: 'all 0.3s',
+                  backgroundColor: card.featured ? 'var(--primary)' : 'transparent',
+                  color: card.featured ? '#080808' : 'var(--primary)',
+                  border: card.featured ? '1px solid var(--primary)' : '1px solid var(--gold-border)',
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.backgroundColor = 'var(--primary)';
+                  el.style.color = '#080808';
+                  el.style.borderColor = 'var(--primary)';
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  if (card.featured) {
+                    el.style.backgroundColor = 'var(--primary)';
+                    el.style.color = '#080808';
+                    el.style.borderColor = 'var(--primary)';
+                  } else {
+                    el.style.backgroundColor = 'transparent';
+                    el.style.color = 'var(--primary)';
+                    el.style.borderColor = 'var(--gold-border)';
+                  }
+                }}
+              >
+                {card.btnLabel} <span>→</span>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

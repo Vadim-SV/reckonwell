@@ -1,11 +1,66 @@
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 
-export const metadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: 'Privacy Policy | Reckonwell',
   description: 'Reckonwell Privacy Policy — how we collect, use, store, and share your information.',
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/privacy-policy`,
+  },
+  openGraph: {
+    title: 'Privacy Policy | Reckonwell',
+    description: 'Reckonwell Privacy Policy — how we collect, use, store, and share your information.',
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/privacy-policy`,
+    type: 'website',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/assets/images/app_logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Reckonwell - Premium accounting firm',
+      },
+    ],
+  },
 };
+
+function Section({ number, title, children }: { number: string; title: string; children: React.ReactNode }) {
+  return (
+    <section>
+      <div className="flex items-baseline gap-4 mb-5">
+        <span
+          className="font-ui text-xs"
+          style={{ color: 'var(--primary)', letterSpacing: '2px', fontSize: '10px', minWidth: '24px' }}
+        >
+          {number.padStart(2, '0')}
+        </span>
+        <h2
+          className="font-display text-xl md:text-2xl"
+          style={{ color: 'var(--foreground)', fontWeight: 300, lineHeight: 1.3 }}
+        >
+          {title}
+        </h2>
+      </div>
+      <div
+        className="pl-10 font-ui space-y-3"
+        style={{ color: 'var(--muted)', lineHeight: 1.9, fontSize: '15px' }}
+      >
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function SubHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <p style={{ color: 'var(--foreground)', fontWeight: 500, marginTop: '12px', marginBottom: '8px' }}>
+      {children}
+    </p>
+  );
+}
 
 export default function PrivacyPolicyPage() {
   return (
@@ -249,47 +304,9 @@ export default function PrivacyPolicyPage() {
             </Section>
 
           </div>
+
         </div>
       </main>
     </>
-  );
-}
-
-function Section({ number, title, children }: { number: string; title: string; children: React.ReactNode }) {
-  return (
-    <section>
-      <div className="flex items-baseline gap-3 mb-5">
-        <span
-          className="font-ui text-xs"
-          style={{ color: 'var(--primary)', letterSpacing: '1px', fontSize: '11px', minWidth: '20px' }}
-        >
-          {number}.
-        </span>
-        <h2
-          className="font-display text-xl md:text-2xl"
-          style={{ color: 'var(--foreground)', fontWeight: 400 }}
-        >
-          {title}
-        </h2>
-      </div>
-      <div
-        className="pl-8 space-y-3 font-ui"
-        style={{ color: 'var(--muted)', lineHeight: 1.9, fontSize: '15px' }}
-      >
-        {children}
-      </div>
-      <div className="mt-10" style={{ height: '1px', backgroundColor: 'var(--primary)', opacity: 0.1 }} />
-    </section>
-  );
-}
-
-function SubHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <p
-      className="font-ui text-xs uppercase tracking-widest mt-6 mb-3"
-      style={{ color: 'var(--primary)', letterSpacing: '2px', fontSize: '10px' }}
-    >
-      {children}
-    </p>
   );
 }

@@ -7,13 +7,13 @@ const steps = [
   {
     num: '01',
     title: 'Book a Free Discovery Call',
-    body: 'A 20-minute conversation to understand your business, your current setup, and exactly what you need. No obligation. No sales pressure.',
+    body: 'A 20-minute conversation. We learn your business, your current setup, and exactly what you need. You leave with a clear picture of what working together looks like. No obligation, no pressure.',
     detail: null,
   },
   {
     num: '02',
     title: 'We Set Up Your Books in 48 Hours',
-    body: 'We connect to your bank feeds, migrate your existing data, and get everything clean and current within two working days.',
+    body: 'We connect to your bank feeds, migrate your existing data, and get everything clean and current within two working days. You do not lift a finger — we coordinate everything.',
     detail: {
       items: [
         'Bank & card reconciliation',
@@ -26,13 +26,13 @@ const steps = [
   {
     num: '03',
     title: 'Daily Work Begins Immediately',
-    body: 'From day one, your dedicated team monitors your accounts every morning. Transactions processed, anomalies flagged, cash position updated.',
+    body: 'From day one, your dedicated team is in your accounts every morning. Transactions processed, positions updated, anything unusual flagged before it becomes a problem.',
     detail: null,
   },
   {
     num: '04',
     title: 'You Focus on Your Business',
-    body: "We handle the numbers. You get monthly reports, quarterly reviews, and a team you can call whenever you need clarity. That's the entire arrangement.",
+    body: 'We handle the numbers. You get monthly reports, quarterly reviews, and a team you can call whenever you want clarity. Your only job is to lead. That is the entire arrangement.',
     detail: null,
   },
 ];
@@ -77,7 +77,8 @@ export default function HowItWorksSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          From first conversation to fully operational — faster than you think.
+          From first conversation to fully operational — with less friction than
+          you expect.
         </motion.p>
 
         <div className="flex flex-col">
