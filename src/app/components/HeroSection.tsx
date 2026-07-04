@@ -98,9 +98,9 @@ export default function HeroSection() {
 
         {/* H1 */}
         <motion.h1 {...fadeUp(0.2)} className="hero-h1 mb-5 md:mb-6" suppressHydrationWarning>
-          Think like a director.
+          Run your business.
           <br />
-          <span className="gold-italic">Live like one too.</span>
+          <span className="gold-italic">We take care about your finances.</span>
         </motion.h1>
 
         {/* Differentiator */}
