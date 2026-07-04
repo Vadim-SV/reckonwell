@@ -4,6 +4,7 @@ import { Playfair_Display, Cormorant_Garamond, Montserrat } from 'next/font/goog
 import { Suspense } from 'react';
 import '../styles/tailwind.css';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import { RegionProvider } from '@/context/RegionContext';
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -163,7 +164,9 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <GoogleAnalytics />
         </Suspense>
-        {children}
+        <RegionProvider>
+          {children}
+        </RegionProvider>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useRegion, Region } from '@/context/RegionContext';
 
 const complianceLinks = [
   { label: 'Self-Employed Accounting', href: '/self-employed-accounting' },
@@ -16,6 +17,59 @@ const fractionalLinks = [
   { label: 'Pricing', href: '/#pricing' },
   { label: 'Additional Services', href: '/#additional-services' },
 ];
+
+function RegionToggle({ compact = false }: { compact?: boolean }) {
+  const { region, setRegion } = useRegion();
+
+  const isUK = region === 'UK';
+
+  return (
+    <div
+      className="flex items-center"
+      style={{
+        border: '1px solid var(--gold-border)',
+        borderRadius: '2px',
+        overflow: 'hidden',
+        fontSize: compact ? '11px' : '10px',
+        letterSpacing: '1.5px',
+      }}
+      role="group"
+      aria-label="Select region"
+    >
+      <button
+        onClick={() => setRegion('UK')}
+        className="font-ui uppercase transition-all duration-200"
+        style={{
+          padding: compact ? '7px 12px' : '6px 11px',
+          background: isUK ? 'var(--primary)' : 'transparent',
+          color: isUK ? '#080808' : 'var(--muted)',
+          border: 'none',
+          cursor: 'pointer',
+          fontWeight: isUK ? 600 : 400,
+        }}
+        aria-pressed={isUK}
+      >
+        🇬🇧 UK
+      </button>
+      <button
+        onClick={() => setRegion('USA')}
+        className="font-ui uppercase transition-all duration-200"
+        style={{
+          padding: compact ? '7px 12px' : '6px 11px',
+          background: !isUK ? 'var(--primary)' : 'transparent',
+          color: !isUK ? '#080808' : 'var(--muted)',
+          border: 'none',
+          borderLeft: '1px solid var(--gold-border)',
+          cursor: 'pointer',
+          fontWeight: !isUK ? 600 : 400,
+        }}
+        aria-pressed={!isUK}
+      >
+        🇺🇸 USA
+      </button>
+    </div>
+  );
+}
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -192,6 +246,9 @@ export default function Header() {
               )}
             </div>
 
+            {/* Region Toggle */}
+            <RegionToggle />
+
             {/* Partner with Us */}
             <Link
               href="/referrals"
@@ -301,6 +358,11 @@ export default function Header() {
                 </Link>
               ))}
             </div>
+          </div>
+
+          {/* Mobile Region Toggle */}
+          <div className="w-full flex justify-center py-5" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+            <RegionToggle compact />
           </div>
 
           <Link
