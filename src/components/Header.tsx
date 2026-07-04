@@ -246,9 +246,6 @@ export default function Header() {
               )}
             </div>
 
-            {/* Region Toggle */}
-            <RegionToggle />
-
             {/* Partner with Us */}
             <Link
               href="/referrals"
@@ -274,11 +271,14 @@ export default function Header() {
             </Link>
             <Link
               href="/quotation-calculator"
-              className="btn-ghost text-xs"
-              style={{ padding: '10px 24px', fontSize: '10px', letterSpacing: '2px' }}
+              className="btn-ghost font-ui text-xs tracking-widest uppercase transition-colors duration-200"
+              style={{ padding: '8px 18px', fontSize: '10px', letterSpacing: '2px', borderRadius: '2px' }}
             >
               Instant Quote
             </Link>
+
+            {/* Region Toggle */}
+            <RegionToggle />
           </div>
 
           {/* Mobile Hamburger */}
