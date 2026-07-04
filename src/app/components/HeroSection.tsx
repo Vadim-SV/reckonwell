@@ -108,7 +108,7 @@ export default function HeroSection() {
           {...fadeUp(0.3)}
           className="pull-quote mb-4 mx-auto"
           style={{ maxWidth: '620px', color: '#ffffff', fontSize: 'clamp(16px,2.2vw,26px)' }}
-          suppressHydrationWarning>The only accounting firm that handles day-to-day finance workload that consumes founders.
+          suppressHydrationWarning>The only accounting firm that acts as finance department - taking on day-to-day finance workload that consumes founders.
 
 
 
@@ -173,7 +173,7 @@ export default function HeroSection() {
               padding: '8px 0',
               minHeight: '44px',
               display: 'flex',
-              alignItems: 'center',
+              alignItems: 'center'
             }}
             onClick={() => trackEvent('homepage_cta_click', { cta: 'book_discovery_call', location: 'hero', page: 'home' })}>
             or book a discovery call →
