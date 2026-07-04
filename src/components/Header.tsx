@@ -13,7 +13,7 @@ const complianceLinks = [
 
 const fractionalLinks = [
   { label: 'How It Works', href: '/#how-it-works' },
-  { label: 'Pricing (£200/mo)', href: '/#pricing' },
+  { label: 'Pricing', href: '/#pricing' },
   { label: 'Additional Services', href: '/#additional-services' },
 ];
 
