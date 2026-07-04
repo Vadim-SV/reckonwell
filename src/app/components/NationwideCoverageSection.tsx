@@ -30,12 +30,12 @@ export default function NationwideCoverageSection() {
   return (
     <section
       style={{ backgroundColor: 'var(--background)', borderTop: '0.5px solid var(--border)', borderBottom: '0.5px solid var(--border)' }}
-      className="py-16 md:py-20"
+      className="py-10 md:py-14"
     >
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         {/* Label */}
         <p
-          className="text-xs tracking-[0.2em] uppercase mb-4"
+          className="text-xs tracking-[0.2em] uppercase mb-3"
           style={{ color: 'var(--gold)', fontFamily: 'var(--font-montserrat, Montserrat, sans-serif)' }}
         >
           Nationwide Coverage
@@ -43,7 +43,7 @@ export default function NationwideCoverageSection() {
 
         {/* Heading */}
         <h2
-          className="text-2xl md:text-3xl mb-3"
+          className="text-xl md:text-2xl mb-2"
           style={{
             color: 'var(--foreground)',
             fontFamily: 'var(--font-playfair, "Playfair Display", serif)',
@@ -55,12 +55,12 @@ export default function NationwideCoverageSection() {
 
         {/* Sub-copy */}
         <p
-          className="text-sm mb-10 max-w-xl"
+          className="text-sm mb-7 max-w-xl"
           style={{
             color: 'var(--muted)',
             fontFamily: 'var(--font-cormorant, "Cormorant Garamond", serif)',
             fontStyle: 'italic',
-            fontSize: '1rem',
+            fontSize: '0.95rem',
           }}
         >
           Remote-first accounting for businesses in every major UK city. Same service, same pricing, wherever you are.
@@ -68,7 +68,7 @@ export default function NationwideCoverageSection() {
 
         {/* City grid */}
         <ul
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-3"
+          className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-x-4 gap-y-2"
           role="list"
         >
           {cities.map((city) => (
