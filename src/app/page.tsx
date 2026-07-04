@@ -23,6 +23,7 @@ import FinalCTASection from '@/app/components/FinalCTASection';
 import CustomCursor from '@/app/components/CustomCursor';
 import FAQSection from '@/app/components/FAQSection';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
+import USBanner from '@/components/USBanner';
 
 export default function HomePage() {
   const serviceSchema = {
@@ -55,6 +56,7 @@ export default function HomePage() {
           __html: JSON.stringify(serviceSchema),
         }}
       />
+      <USBanner />
       <main
         className="relative overflow-x-hidden"
         style={{ backgroundColor: 'var(--background)' }}
