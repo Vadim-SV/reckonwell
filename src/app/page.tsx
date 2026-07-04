@@ -82,6 +82,9 @@ export default function HomePage() {
           <section role="region" aria-label="How it works">
             <HowItWorksSection />
           </section>
+          <section role="region" aria-label="Pricing options">
+            <PricingSection />
+          </section>
           <section role="region" aria-label="Compliance pricing calculators">
             <ComplianceCalculatorsSection />
           </section>
@@ -93,9 +96,6 @@ export default function HomePage() {
           </section>
           <section role="region" aria-label="Real results and testimonials">
             <RealResultsSection />
-          </section>
-          <section role="region" aria-label="Pricing options">
-            <PricingSection />
           </section>
           <section role="region" aria-label="Additional services">
             <AdditionalServicesSection />
