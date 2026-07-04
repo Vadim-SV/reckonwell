@@ -39,11 +39,11 @@ export const metadata: Metadata = {
   description: 'Finally, an accounting firm that doesn\'t wait until month end. Daily bookkeeping, cash flow monitoring, and real-time alerts — from £200/$300 per month. British firm serving UK & USA.',
   icons: {
     icon: [
-      { url: '/assets/images/newlogo-1783182389175.png', type: 'image/png' },
+      { url: '/assets/images/99C61B88-2C2A-4A13-BD74-35EE79D48106-1783188578397.PNG', type: 'image/png' },
       { url: '/favicon.ico', type: 'image/x-icon' },
     ],
-    shortcut: '/assets/images/newlogo-1783182389175.png',
-    apple: '/assets/images/newlogo-1783182389175.png',
+    shortcut: '/assets/images/99C61B88-2C2A-4A13-BD74-35EE79D48106-1783188578397.PNG',
+    apple: '/assets/images/99C61B88-2C2A-4A13-BD74-35EE79D48106-1783188578397.PNG',
   },
   alternates: {
     canonical: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
