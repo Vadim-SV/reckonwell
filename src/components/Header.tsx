@@ -191,11 +191,11 @@ export default function Header() {
               Partner with Us
             </Link>
             <Link
-              href="/book"
+              href="/quotation-calculator"
               className="btn-ghost text-xs"
               style={{ padding: '10px 24px', fontSize: '10px', letterSpacing: '2px' }}
             >
-              Book a Call
+              Instant Quote
             </Link>
           </div>
 
