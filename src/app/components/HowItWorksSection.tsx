@@ -45,13 +45,13 @@ export default function HowItWorksSection() {
     <section
       id="how-it-works"
       ref={ref}
-      className="py-20 md:py-36 px-6 md:px-10"
+      className="py-12 md:py-20 px-6 md:px-10"
       style={{ backgroundColor: '#080808' }}
       aria-label="How it works"
     >
       <div className="max-w-5xl mx-auto">
         <motion.p
-          className="section-label mb-5 md:mb-6"
+          className="section-label mb-4 md:mb-5"
           initial={{ opacity: 0, y: 12 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
@@ -60,7 +60,7 @@ export default function HowItWorksSection() {
         </motion.p>
 
         <motion.h2
-          className="section-h2-medium mb-5 md:mb-6"
+          className="section-h2-medium mb-4 md:mb-5"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -71,7 +71,7 @@ export default function HowItWorksSection() {
         </motion.h2>
 
         <motion.p
-          className="pull-quote mb-10 md:mb-16"
+          className="pull-quote mb-8 md:mb-12"
           style={{ maxWidth: '480px' }}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -116,16 +116,13 @@ export default function HowItWorksSection() {
                   >
                     {step?.title}
                   </h3>
-                  <p
-                    className="body-text-rw mb-4"
-                    style={{ fontSize: '15px' }}
-                  >
+                  <p className="body-text-rw mb-4" style={{ fontSize: '15px' }}>
                     {step?.body}
                   </p>
 
                   {step?.detail && (
                     <div
-                      className="mt-4 p-4 md:p-5 rounded-sm"
+                      className="mt-3 p-4 rounded-sm"
                       style={{
                         borderLeft: '2px solid var(--primary)',
                         backgroundColor: 'var(--gold-dim)',
@@ -144,10 +141,7 @@ export default function HowItWorksSection() {
                       </p>
                       <ul className="flex flex-col gap-2">
                         {step?.detail?.items?.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-center gap-3"
-                          >
+                          <li key={item} className="flex items-center gap-3">
                             <span
                               style={{
                                 width: '4px',
@@ -157,10 +151,7 @@ export default function HowItWorksSection() {
                                 flexShrink: 0,
                               }}
                             />
-                            <span
-                              className="body-text-rw"
-                              style={{ fontSize: '14px', color: 'var(--body-text)' }}
-                            >
+                            <span className="body-text-rw" style={{ fontSize: '14px', color: 'var(--body-text)' }}>
                               {item}
                             </span>
                           </li>
