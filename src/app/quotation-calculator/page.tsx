@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -128,9 +129,30 @@ function calcRD(spend: number, firstTime: boolean): QuoteResult {
   };
 }
 
-export default function QuotationCalculatorPage() {
+function QuotationCalculatorContent() {
+  const searchParams = useSearchParams();
   const [step, setStep] = useState<Step>(1);
   const [businessType, setBusinessType] = useState<BusinessType>('self-employed');
+
+  // URL param pre-selection
+  useEffect(() => {
+    const type = searchParams.get('type');
+    const service = searchParams.get('service');
+
+    if (type === 'limited-company' || service === 'limited-company') {
+      setBusinessType('limited-company');
+      setStep(2);
+    } else if (type === 'landlord') {
+      setBusinessType('landlord');
+      setStep(2);
+    } else if (type === 'rd' || service === 'rd') {
+      setBusinessType('rd-only');
+      setStep(2);
+    } else if (type === 'self-employed' || service === 'self-assessment' || service === 'mtd') {
+      setBusinessType('self-employed');
+      setStep(2);
+    }
+  }, [searchParams]);
 
   // Self-employed inputs
   const [seIncome, setSeIncome] = useState(75000);
@@ -662,5 +684,17 @@ export default function QuotationCalculatorPage() {
         }}
       />
     </>
+  );
+}
+
+export default function QuotationCalculatorPage() {
+  return (
+    <Suspense fallback={
+      <div style={{ backgroundColor: 'var(--background)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <p className="font-ui text-sm" style={{ color: 'var(--muted)' }}>Loading calculator...</p>
+      </div>
+    }>
+      <QuotationCalculatorContent />
+    </Suspense>
   );
 }

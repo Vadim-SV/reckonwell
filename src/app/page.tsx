@@ -14,6 +14,7 @@ import ComplianceCalculatorsSection from '@/app/components/ComplianceCalculators
 import RDTaxReliefPreviewSection from '@/app/components/RDTaxReliefPreviewSection';
 import MakingTaxDigitalSection from '@/app/components/MakingTaxDigitalSection';
 import RealResultsSection from '@/app/components/RealResultsSection';
+import EmbeddedCalculatorSection from '@/app/components/EmbeddedCalculatorSection';
 import PricingSection from '@/app/components/PricingSection';
 import AdditionalServicesSection from '@/app/components/AdditionalServicesSection';
 import FounderSection from '@/app/components/FounderSection';
@@ -96,6 +97,12 @@ export default function HomePage() {
           </section>
           <section role="region" aria-label="Real results and testimonials">
             <RealResultsSection />
+          </section>
+          <section role="region" aria-label="Instant quote calculator">
+            <EmbeddedCalculatorSection />
+          </section>
+          <section role="region" aria-label="Pricing options">
+            <PricingSection />
           </section>
           <section role="region" aria-label="Additional services">
             <AdditionalServicesSection />

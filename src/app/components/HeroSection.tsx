@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+
 import { trackEvent } from '@/lib/analytics';
 
 const fadeUp = (delay = 0) => ({
@@ -149,35 +149,31 @@ export default function HeroSection() {
         {/* CTAs */}
         <motion.div
           {...fadeUp(0.45)}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 md:mb-12 w-full"
+          className="flex flex-col items-center justify-center gap-3 mb-10 md:mb-12 w-full"
           suppressHydrationWarning>
 
-          <Link
-            href="/book"
-            className="btn-gold w-full sm:w-auto"
-            style={{ minWidth: '200px', textAlign: 'center' }}
-            onClick={() => trackEvent('homepage_cta_click', { cta: 'book_discovery_call', location: 'hero', page: 'home' })}>
-
-            Book Discovery Call
-          </Link>
           <button
-            className="btn-ghost w-full sm:w-auto"
-            style={{ minWidth: '200px' }}
+            className="btn-gold w-full sm:w-auto"
+            style={{ minWidth: '220px', textAlign: 'center' }}
             onClick={() => {
-              trackEvent('homepage_cta_click', { cta: 'see_how_it_works', location: 'hero', page: 'home' });
-              handleScroll('#how-it-works');
+              trackEvent('homepage_cta_click', { cta: 'get_instant_quote', location: 'hero', page: 'home' });
+              handleScroll('#quote');
             }}>
-
-            See How It Works
+            Get your instant quote →
           </button>
-          <Link
-            href="/referrals"
-            className="btn-ghost w-full sm:w-auto"
-            style={{ minWidth: '200px', textAlign: 'center' }}
-            onClick={() => trackEvent('homepage_cta_click', { cta: 'partner_with_us', location: 'hero', page: 'home' })}>
-
-            Partner with Us
-          </Link>
+          <a
+            href="/book"
+            style={{
+              fontSize: '12px',
+              color: 'var(--muted)',
+              textDecoration: 'none',
+              letterSpacing: '0.3px',
+              fontFamily: 'var(--font-sans)',
+              cursor: 'pointer',
+            }}
+            onClick={() => trackEvent('homepage_cta_click', { cta: 'book_discovery_call', location: 'hero', page: 'home' })}>
+            or book a discovery call →
+          </a>
         </motion.div>
 
         {/* Trust badges */}
