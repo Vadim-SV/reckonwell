@@ -86,7 +86,7 @@ export default function HeroSection() {
                 opacity: 0.6,
                 flexShrink: 0
               }} />
-            British Accounting Firm · Serving the UK &amp; USA
+            British Accounting Firm · Founder-Led Businesses
             <span
               className="hidden sm:inline-block"
               style={{
