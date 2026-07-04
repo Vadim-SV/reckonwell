@@ -6,12 +6,18 @@ import { motion, useInView } from 'framer-motion';
 const steps = [
   {
     num: '01',
-    title: 'Book a Free Discovery Call',
-    body: 'A 20-minute conversation. We learn your business, your current setup, and exactly what you need. You leave with a clear picture of what working together looks like. No obligation, no pressure.',
+    title: 'Get Your Instant Quote',
+    body: 'Answer a few quick questions about your business and see your exact price in under two minutes. No call required.',
     detail: null,
   },
   {
     num: '02',
+    title: 'Book a Call (Optional)',
+    body: 'Prefer to talk it through first? A 20-minute conversation. We learn your business and you leave with a clear picture of what working together looks like. No obligation, no pressure.',
+    detail: null,
+  },
+  {
+    num: '03',
     title: 'We Set Up Your Books in 48 Hours',
     body: 'We connect to your bank feeds, migrate your existing data, and get everything clean and current within two working days. You do not lift a finger — we coordinate everything.',
     detail: {
@@ -24,13 +30,13 @@ const steps = [
     },
   },
   {
-    num: '03',
+    num: '04',
     title: 'Daily Work Begins Immediately',
     body: 'From day one, your dedicated team is in your accounts every morning. Transactions processed, positions updated, anything unusual flagged before it becomes a problem.',
     detail: null,
   },
   {
-    num: '04',
+    num: '05',
     title: 'You Focus on Your Business',
     body: 'We handle the numbers. You get monthly reports, quarterly reviews, and a team you can call whenever you want clarity. Your only job is to lead. That is the entire arrangement.',
     detail: null,
