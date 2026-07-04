@@ -20,8 +20,10 @@ const fractionalLinks = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [fractionalOpen, setFractionalOpen] = useState(false);
+  const [complianceOpen, setComplianceOpen] = useState(false);
+  const fractionalRef = useRef<HTMLDivElement>(null);
+  const complianceRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -40,8 +42,11 @@ export default function Header() {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setServicesOpen(false);
+      if (fractionalRef.current && !fractionalRef.current.contains(e.target as Node)) {
+        setFractionalOpen(false);
+      }
+      if (complianceRef.current && !complianceRef.current.contains(e.target as Node)) {
+        setComplianceOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -85,76 +90,102 @@ export default function Header() {
               Home
             </Link>
 
-            {/* Services Dropdown */}
-            <div className="relative" ref={dropdownRef}>
+            {/* Fractional Finance Dropdown */}
+            <div className="relative" ref={fractionalRef}>
               <button
-                onClick={() => setServicesOpen(!servicesOpen)}
+                onClick={() => { setFractionalOpen(!fractionalOpen); setComplianceOpen(false); }}
                 className="font-ui text-xs tracking-widest uppercase transition-colors duration-200 flex items-center gap-1"
-                style={{ ...navLinkStyle, background: 'none', border: 'none', color: servicesOpen ? 'var(--foreground)' : 'var(--muted)' }}
+                style={{ ...navLinkStyle, background: 'none', border: 'none', color: fractionalOpen ? 'var(--foreground)' : 'var(--muted)' }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-                onMouseLeave={(e) => { if (!servicesOpen) e.currentTarget.style.color = 'var(--muted)'; }}
-                aria-expanded={servicesOpen}
+                onMouseLeave={(e) => { if (!fractionalOpen) e.currentTarget.style.color = 'var(--muted)'; }}
+                aria-expanded={fractionalOpen}
                 aria-haspopup="true"
               >
-                Services
-                <span style={{ fontSize: '10px', transition: 'transform 0.2s', transform: servicesOpen ? 'rotate(180deg)' : 'none', display: 'inline-block' }}>▾</span>
+                Fractional Finance
+                <span style={{ fontSize: '10px', transition: 'transform 0.2s', transform: fractionalOpen ? 'rotate(180deg)' : 'none', display: 'inline-block' }}>▾</span>
               </button>
 
-              {servicesOpen && (
+              {fractionalOpen && (
                 <div
-                  className="absolute top-full left-1/2 mt-3 py-6 px-0"
+                  className="absolute top-full left-1/2 mt-3 py-4 px-0"
                   style={{
                     transform: 'translateX(-50%)',
                     backgroundColor: 'rgba(8,8,8,0.97)',
                     backdropFilter: 'blur(20px)',
                     border: '1px solid var(--gold-border)',
-                    minWidth: '480px',
+                    minWidth: '220px',
                     zIndex: 100,
                   }}
                 >
-                  <div className="grid grid-cols-2 gap-0">
-                    {/* Fractional Finance */}
-                    <div className="px-6 py-2" style={{ borderRight: '1px solid var(--gold-border)' }}>
-                      <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}>
-                        Fractional Finance
-                      </p>
-                      <div className="space-y-1">
-                        {fractionalLinks.map((link) => (
-                          <Link
-                            key={link.href}
-                            href={link.href}
-                            onClick={() => setServicesOpen(false)}
-                            className="block font-ui text-xs py-2 transition-colors duration-150"
-                            style={{ color: 'var(--muted)', letterSpacing: '0.5px' }}
-                            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
-                          >
-                            {link.label}
-                          </Link>
-                        ))}
-                      </div>
+                  <div className="px-6 py-2">
+                    <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}>
+                      Fractional Finance
+                    </p>
+                    <div className="space-y-1">
+                      {fractionalLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={() => setFractionalOpen(false)}
+                          className="block font-ui text-xs py-2 transition-colors duration-150"
+                          style={{ color: 'var(--muted)', letterSpacing: '0.5px' }}
+                          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
                     </div>
+                  </div>
+                </div>
+              )}
+            </div>
 
-                    {/* UK Compliance Services */}
-                    <div className="px-6 py-2">
-                      <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}>
-                        UK Compliance Services
-                      </p>
-                      <div className="space-y-1">
-                        {complianceLinks.map((link) => (
-                          <Link
-                            key={link.href}
-                            href={link.href}
-                            onClick={() => setServicesOpen(false)}
-                            className="block font-ui text-xs py-2 transition-colors duration-150"
-                            style={{ color: link.href === '/quotation-calculator' ? 'var(--primary)' : 'var(--muted)', letterSpacing: '0.5px' }}
-                            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.color = link.href === '/quotation-calculator' ? 'var(--primary)' : 'var(--muted)')}
-                          >
-                            {link.label}
-                          </Link>
-                        ))}
-                      </div>
+            {/* Compliance Services Dropdown */}
+            <div className="relative" ref={complianceRef}>
+              <button
+                onClick={() => { setComplianceOpen(!complianceOpen); setFractionalOpen(false); }}
+                className="font-ui text-xs tracking-widest uppercase transition-colors duration-200 flex items-center gap-1"
+                style={{ ...navLinkStyle, background: 'none', border: 'none', color: complianceOpen ? 'var(--foreground)' : 'var(--muted)' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                onMouseLeave={(e) => { if (!complianceOpen) e.currentTarget.style.color = 'var(--muted)'; }}
+                aria-expanded={complianceOpen}
+                aria-haspopup="true"
+              >
+                Compliance Services
+                <span style={{ fontSize: '10px', transition: 'transform 0.2s', transform: complianceOpen ? 'rotate(180deg)' : 'none', display: 'inline-block' }}>▾</span>
+              </button>
+
+              {complianceOpen && (
+                <div
+                  className="absolute top-full left-1/2 mt-3 py-4 px-0"
+                  style={{
+                    transform: 'translateX(-50%)',
+                    backgroundColor: 'rgba(8,8,8,0.97)',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid var(--gold-border)',
+                    minWidth: '240px',
+                    zIndex: 100,
+                  }}
+                >
+                  <div className="px-6 py-2">
+                    <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}>
+                      UK Compliance Services
+                    </p>
+                    <div className="space-y-1">
+                      {complianceLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={() => setComplianceOpen(false)}
+                          className="block font-ui text-xs py-2 transition-colors duration-150"
+                          style={{ color: link.href === '/quotation-calculator' ? 'var(--primary)' : 'var(--muted)', letterSpacing: '0.5px' }}
+                          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                          onMouseLeave={(e) => (e.currentTarget.style.color = link.href === '/quotation-calculator' ? 'var(--primary)' : 'var(--muted)')}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -234,10 +265,10 @@ export default function Header() {
             Home
           </Link>
 
-          {/* Mobile Services Section */}
+          {/* Mobile Fractional Finance Section */}
           <div className="w-full text-center py-4" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-            <p className="font-display mb-5" style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px' }}>Services</p>
-            <div className="mb-5">
+            <p className="font-display mb-4" style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px' }}>Fractional Finance</p>
+            <div>
               <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>Fractional Finance</p>
               {fractionalLinks.map((link) => (
                 <Link
@@ -251,8 +282,13 @@ export default function Header() {
                 </Link>
               ))}
             </div>
+          </div>
+
+          {/* Mobile Compliance Services Section */}
+          <div className="w-full text-center py-4" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+            <p className="font-display mb-4" style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px' }}>Compliance Services</p>
             <div>
-              <p className="font-ui mb-3 mt-5" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>UK Compliance Services</p>
+              <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>UK Compliance Services</p>
               {complianceLinks.map((link) => (
                 <Link
                   key={link.href}
