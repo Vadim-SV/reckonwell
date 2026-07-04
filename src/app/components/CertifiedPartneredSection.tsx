@@ -55,20 +55,6 @@ export default function CertifiedPartneredSection({ variant = 'full' }: Certifie
           </div>
         </div>
 
-        {/* Text badges — shown in both variants */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6">
-          {textBadges.map((badge) => (
-            <span
-              key={badge}
-              className="flex items-center gap-2 font-ui"
-              style={{ fontSize: '11px', color: 'var(--muted)', letterSpacing: '0.5px' }}
-            >
-              <span style={{ color: 'var(--primary)', fontSize: '14px' }}>✓</span>
-              {badge}
-            </span>
-          ))}
-        </div>
-
         {/* Full variant: additional trust details */}
         {variant === 'full' && (
           <>
