@@ -31,18 +31,6 @@ export default function CertifiedPartneredSection({ variant = 'full' }: Certifie
 
         {/* Partner logos strip */}
         <div className="flex flex-col items-center gap-4 w-full">
-          <p
-            className="font-ui"
-            style={{
-              fontSize: '9px',
-              letterSpacing: '3px',
-              textTransform: 'uppercase',
-              color: 'rgba(201,168,76,0.5)',
-              fontWeight: 400,
-            }}
-          >
-            Certified &amp; Partnering With
-          </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
             {partners.map((partner) => (
               <div
@@ -54,7 +42,7 @@ export default function CertifiedPartneredSection({ variant = 'full' }: Certifie
                 <img
                   src={partner.logo}
                   alt={partner.name + ' logo'}
-                  style={{ width: '72px', height: '40px', objectFit: 'contain' }}
+                  style={{ width: '110px', height: '60px', objectFit: 'contain' }}
                 />
               </div>
             ))}
