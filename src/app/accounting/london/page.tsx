@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { CityTrustBadges, CityFounderBlock } from '@/app/components/CityPageTrustElements';
+import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
 
 const cityName = 'London';
 const citySlug = 'london';
@@ -68,7 +68,7 @@ export default function CityPage() {
           </div>
         </section>
 
-        <CityTrustBadges />
+        <CertifiedPartneredSection variant="full" />
 
         {/* Services Grid */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
@@ -150,7 +150,7 @@ export default function CityPage() {
         </section>
 
         {/* CTA */}
-        <section className="px-6 md:px-10 py-16 md:py-20">
+        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Get Started</p>
             <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
@@ -167,18 +167,8 @@ export default function CityPage() {
                 Speak to an Accountant
               </Link>
             </div>
-            <div className="flex flex-wrap justify-center gap-6 mt-8">
-              {['FIAB Certified', 'IAB Member', 'No hidden fees', 'Cancel anytime']?.map(t => (
-                <div key={t} className="flex items-center gap-2">
-                  <span style={{ color: 'var(--primary)', fontSize: '12px' }}>✓</span>
-                  <span className="font-ui text-xs" style={{ color: 'var(--muted)' }}>{t}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
-
-        <CityFounderBlock />
 
         {/* Fractional Finance Callout */}
         <section className="px-6 md:px-10 py-8" style={{ borderTop: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.04)' }}>

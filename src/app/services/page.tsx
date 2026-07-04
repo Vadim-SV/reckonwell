@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
 
 const complianceServices = [
   {
@@ -225,6 +226,8 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+
+        <CertifiedPartneredSection variant="full" />
 
         {/* Bottom CTA */}
         <section className="px-6 md:px-10 py-16 md:py-20">

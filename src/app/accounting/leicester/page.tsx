@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { CityTrustBadges, CityFounderBlock } from '@/app/components/CityPageTrustElements';
+import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
 
 const cityName = 'Leicester';
 const citySlug = 'leicester';
@@ -69,7 +69,7 @@ export default function CityPage() {
           </div>
         </section>
 
-        <CityTrustBadges />
+        <CertifiedPartneredSection variant="full" />
 
         {/* Services Grid */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
@@ -168,18 +168,8 @@ export default function CityPage() {
                 Speak to an Accountant
               </Link>
             </div>
-            <div className="flex flex-wrap justify-center gap-6 mt-8">
-              {['FIAB Certified', 'IAB Member', 'No hidden fees', 'Cancel anytime']?.map(t => (
-                <div key={t} className="flex items-center gap-2">
-                  <span style={{ color: 'var(--primary)', fontSize: '12px' }}>✓</span>
-                  <span className="font-ui text-xs" style={{ color: 'var(--muted)' }}>{t}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
-
-        <CityFounderBlock />
 
         {/* Fractional Finance Callout */}
         <section className="px-6 md:px-10 py-8" style={{ borderTop: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.04)' }}>
