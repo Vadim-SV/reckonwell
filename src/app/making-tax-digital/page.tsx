@@ -122,6 +122,29 @@ export default function MakingTaxDigitalPage() {
           </div>
         </section>
 
+        {/* How It Works */}
+        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
+          <div className="max-w-5xl mx-auto">
+            <p className="section-label mb-4">Process</p>
+            <h2 className="font-display mb-12" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              How we handle it
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { step: '01', title: 'Setup in 48 hours', desc: 'We connect your bank and accounting software. Transaction categorisation is configured. You get access to your dashboard.' },
+                { step: '02', title: 'Monthly monitoring', desc: 'Every month we review all transactions, update your tax position, and send you a report showing exactly where you stand.' },
+                { step: '03', title: 'Quarterly filing', desc: 'We file your MTD return before each deadline. We show you tax owed and due date. If HMRC questions anything, we respond.' },
+              ]?.map((item, i) => (
+                <div key={i} className="p-6 border" style={{ borderColor: 'var(--gold-border)' }}>
+                  <p className="font-display mb-4" style={{ fontSize: '48px', color: 'rgba(201,168,76,0.2)', fontWeight: 400, lineHeight: 1 }}>{item?.step}</p>
+                  <p className="font-ui font-medium mb-2" style={{ color: 'var(--foreground)', fontSize: '15px' }}>{item?.title}</p>
+                  <p className="font-ui text-sm" style={{ color: 'var(--muted)', lineHeight: 1.7 }}>{item?.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Pricing */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
@@ -155,29 +178,6 @@ export default function MakingTaxDigitalPage() {
               ))}
             </div>
             <p className="font-ui text-xs mt-4" style={{ color: 'var(--muted)' }}>Landlord pricing: additional properties +£25–50/month depending on package. Use the MTD calculator for your exact price.</p>
-          </div>
-        </section>
-
-        {/* How It Works */}
-        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-5xl mx-auto">
-            <p className="section-label mb-4">Process</p>
-            <h2 className="font-display mb-12" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              How we handle it
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { step: '01', title: 'Setup in 48 hours', desc: 'We connect your bank and accounting software. Transaction categorisation is configured. You get access to your dashboard.' },
-                { step: '02', title: 'Monthly monitoring', desc: 'Every month we review all transactions, update your tax position, and send you a report showing exactly where you stand.' },
-                { step: '03', title: 'Quarterly filing', desc: 'We file your MTD return before each deadline. We show you tax owed and due date. If HMRC questions anything, we respond.' },
-              ]?.map((item, i) => (
-                <div key={i} className="p-6 border" style={{ borderColor: 'var(--gold-border)' }}>
-                  <p className="font-display mb-4" style={{ fontSize: '48px', color: 'rgba(201,168,76,0.2)', fontWeight: 400, lineHeight: 1 }}>{item?.step}</p>
-                  <p className="font-ui font-medium mb-2" style={{ color: 'var(--foreground)', fontSize: '15px' }}>{item?.title}</p>
-                  <p className="font-ui text-sm" style={{ color: 'var(--muted)', lineHeight: 1.7 }}>{item?.desc}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
