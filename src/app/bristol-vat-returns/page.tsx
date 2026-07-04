@@ -89,37 +89,17 @@ export default function BristolVatReturnsPage() {
 
         {/* Pricing */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Pricing</p>
-            <h2 className="font-display mb-10" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Transparent VAT pricing for Bristol
+            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              See your exact Bristol VAT price
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              {[
-                { tier: 'Standard', price: '£60', unit: '/month', desc: 'Quarterly VAT returns for Bristol businesses with straightforward transactions', features: ['Quarterly VAT return preparation', 'MTD-compliant submission', 'Flat rate scheme review', 'HMRC correspondence handled'] },
-                { tier: 'Complex', price: '£90', unit: '/month', desc: 'Multiple income streams, international sales, or partial exemption', features: ['Everything in Standard', 'International VAT advice', 'Partial exemption calculations', 'VAT group management'] },
-                { tier: 'Registration', price: '£299', unit: 'one-off', desc: 'New VAT registration with HMRC and scheme selection advice', features: ['VAT registration application', 'Scheme selection advice', 'First return preparation', 'MTD software setup'] },
-              ].map((tier, i) => (
-                <div key={i} className="p-6 border flex flex-col" style={{ borderColor: i === 0 ? 'var(--primary)' : 'var(--gold-border)', backgroundColor: i === 0 ? 'rgba(201,168,76,0.04)' : 'transparent' }}>
-                  {i === 0 && <p className="section-label mb-3">Most Popular</p>}
-                  <p className="font-ui font-medium mb-1" style={{ color: 'var(--foreground)', fontSize: '14px', letterSpacing: '1px', textTransform: 'uppercase' }}>{tier.tier}</p>
-                  <p className="font-display mb-1" style={{ fontSize: '32px', color: 'var(--primary)', fontWeight: 400 }}>{tier.price}<span className="font-ui text-sm" style={{ color: 'var(--muted)' }}>{tier.unit}</span></p>
-                  <p className="font-ui text-xs mb-4" style={{ color: 'var(--muted)', lineHeight: 1.5 }}>{tier.desc}</p>
-                  <div className="space-y-2 flex-1">
-                    {tier.features.map((f, j) => (
-                      <div key={j} className="flex items-start gap-2">
-                        <span style={{ color: 'var(--primary)', fontSize: '12px', marginTop: '2px' }}>✓</span>
-                        <span className="font-ui text-sm" style={{ color: 'var(--body-text)' }}>{f}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Link href="/quotation-calculator" className="mt-6 font-ui text-xs uppercase tracking-widest" style={{ color: 'var(--primary)' }}>
-                    Calculate exact price →
-                  </Link>
-                </div>
-              ))}
-            </div>
-            <p className="font-ui text-xs" style={{ color: 'var(--muted)' }}>VAT returns are included in all limited company packages. Use the quotation calculator for your exact combined total.</p>
+            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
+              VAT pricing depends on your transaction complexity and scheme type. Use our quotation calculator to get your exact monthly price in under 2 minutes — no sales calls required.
+            </p>
+            <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 40px', lineHeight: '48px', display: 'inline-block' }}>
+              Get Your Exact Quote →
+            </Link>
           </div>
         </section>
 

@@ -56,38 +56,17 @@ export default function LimitedCompanyAccountingPage() {
 
         {/* Pricing */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Transparent Pricing</p>
-            <h2 className="font-display mb-4" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              What you&apos;ll pay
+            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              See your exact limited company price
             </h2>
-            <p className="font-ui mb-10" style={{ color: 'var(--muted)', fontSize: '14px' }}>Base prices below. Monitoring frequency and transaction volume multipliers apply — use the calculator for your exact figure.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                { tier: 'Foundation', price: '£150', period: '/month', desc: 'Profit under £250k, 0–5 employees', features: ['Annual accounts & CT600', 'Companies House filing', 'VAT returns', 'Director salary planning'] },
-                { tier: 'Growth', price: '£300', period: '/month', desc: 'Profit £250k–£500k or 6–20 employees', features: ['Everything in Foundation', 'Quarterly business reviews', 'Payroll management', 'Cash flow monitoring'] },
-                { tier: 'Scale', price: '£500', period: '/month', desc: 'Profit £500k–£1m or 20+ employees', features: ['Everything in Growth', 'Monthly management accounts', 'R&D relief support', 'Investor-ready reporting'] },
-                { tier: 'Enterprise', price: '£750', period: '/month', desc: 'Profit £1m+, complex group structures', features: ['Everything in Scale', 'Dedicated senior accountant', 'Group structure planning', 'Board-level reporting'] },
-              ].map((tier, i) => (
-                <div key={i} className="p-6 border flex flex-col" style={{ borderColor: i === 1 ? 'var(--primary)' : 'var(--gold-border)', backgroundColor: i === 1 ? 'rgba(201,168,76,0.04)' : 'transparent' }}>
-                  {i === 1 && <p className="section-label mb-3">Most Popular</p>}
-                  <p className="font-ui font-medium mb-1" style={{ color: 'var(--foreground)', fontSize: '14px', letterSpacing: '1px', textTransform: 'uppercase' }}>{tier.tier}</p>
-                  <p className="font-display mb-1" style={{ fontSize: '32px', color: 'var(--primary)', fontWeight: 400 }}>{tier.price}<span className="font-ui text-sm" style={{ color: 'var(--muted)' }}>{tier.period}</span></p>
-                  <p className="font-ui text-xs mb-4" style={{ color: 'var(--muted)', lineHeight: 1.5 }}>{tier.desc}</p>
-                  <div className="space-y-2 flex-1">
-                    {tier.features.map((f, j) => (
-                      <div key={j} className="flex items-start gap-2">
-                        <span style={{ color: 'var(--primary)', fontSize: '12px', marginTop: '2px' }}>✓</span>
-                        <span className="font-ui text-sm" style={{ color: 'var(--body-text)' }}>{f}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Link href="/quotation-calculator" className="mt-6 font-ui text-xs uppercase tracking-widest" style={{ color: 'var(--primary)' }}>
-                    Calculate exact price →
-                  </Link>
-                </div>
-              ))}
-            </div>
+            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
+              Pricing is based on your profit level, employee count, and monitoring frequency. Use our quotation calculator to get your exact monthly price in under 2 minutes — no sales calls required.
+            </p>
+            <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 40px', lineHeight: '48px', display: 'inline-block' }}>
+              Get Your Exact Quote →
+            </Link>
           </div>
         </section>
 

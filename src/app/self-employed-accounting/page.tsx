@@ -56,38 +56,17 @@ export default function SelfEmployedAccountingPage() {
 
         {/* Pricing */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Transparent Pricing</p>
-            <h2 className="font-display mb-12" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              What you&apos;ll pay
+            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              See your exact self-employed accounting price
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                { tier: 'Starter', price: '£80', period: '/month', desc: 'Income under £50k, annual filing, low transactions', features: ['Self Assessment filing', 'HMRC correspondence', 'Deadline reminders'] },
-                { tier: 'Growth', price: '£150', period: '/month', desc: 'Income £50k–£100k, or rental income, or monthly monitoring', features: ['Everything in Starter', 'Quarterly tax estimates', 'MTD compliance', 'Rental income tracking'] },
-                { tier: 'Director', price: '£250', period: '/month', desc: 'Income £100k–£250k with monthly monitoring', features: ['Everything in Growth', 'Monthly tax planning', 'Real-time tax estimates', 'Priority support'] },
-                { tier: 'Premium', price: '£400', period: '/month', desc: 'Income £250k+, complex affairs', features: ['Everything in Director', 'Dedicated accountant', 'Quarterly reviews', 'Tax strategy planning'] },
-              ]?.map((tier, i) => (
-                <div key={i} className="p-6 border flex flex-col" style={{ borderColor: i === 1 ? 'var(--primary)' : 'var(--gold-border)', backgroundColor: i === 1 ? 'rgba(201,168,76,0.04)' : 'transparent' }}>
-                  {i === 1 && <p className="section-label mb-3">Most Popular</p>}
-                  <p className="font-ui font-medium mb-1" style={{ color: 'var(--foreground)', fontSize: '14px', letterSpacing: '1px', textTransform: 'uppercase' }}>{tier?.tier}</p>
-                  <p className="font-display mb-1" style={{ fontSize: '32px', color: 'var(--primary)', fontWeight: 400 }}>{tier?.price}<span className="font-ui text-sm" style={{ color: 'var(--muted)' }}>{tier?.period}</span></p>
-                  <p className="font-ui text-xs mb-4" style={{ color: 'var(--muted)', lineHeight: 1.5 }}>{tier?.desc}</p>
-                  <div className="space-y-2 flex-1">
-                    {tier?.features?.map((f, j) => (
-                      <div key={j} className="flex items-start gap-2">
-                        <span style={{ color: 'var(--primary)', fontSize: '12px', marginTop: '2px' }}>✓</span>
-                        <span className="font-ui text-sm" style={{ color: 'var(--body-text)' }}>{f}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Link href="/quotation-calculator" className="mt-6 font-ui text-xs uppercase tracking-widest" style={{ color: 'var(--primary)' }}>
-                    Calculate exact price →
-                  </Link>
-                </div>
-              ))}
-            </div>
-            <p className="font-ui text-xs mt-4" style={{ color: 'var(--muted)' }}>* Transaction volume multipliers apply: Medium (50–200/month) ×1.2, High (200+/month) ×1.5. Use the calculator for your exact price.</p>
+            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
+              Pricing is based on your income level, transaction volume, and monitoring frequency. Use our quotation calculator to get your exact monthly price in under 2 minutes — no sales calls required.
+            </p>
+            <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 40px', lineHeight: '48px', display: 'inline-block' }}>
+              Get Your Exact Quote →
+            </Link>
           </div>
         </section>
 

@@ -126,64 +126,17 @@ export default function SelfAssessmentPage() {
 
         {/* Pricing tiers */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Pricing</p>
-            <h2 className="font-display mb-10" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Transparent pricing. <em style={{ color: 'var(--primary)' }}>No surprises.</em>
+            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              See your exact Self Assessment price
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  tier: 'Foundation',
-                  price: 'From £80/mo',
-                  desc: 'Annual Self Assessment filing for straightforward income.',
-                  items: ['Annual SA return', 'Tax calculation', 'HMRC submission', 'Deadline reminders'],
-                },
-                {
-                  tier: 'Growth',
-                  price: 'From £150/mo',
-                  desc: 'Quarterly monitoring for growing sole traders and freelancers.',
-                  items: ['Everything in Foundation', 'Quarterly tax estimates', 'MTD quarterly filings', 'HMRC query support'],
-                  featured: true,
-                },
-                {
-                  tier: 'Full Service',
-                  price: 'From £250/mo',
-                  desc: 'Monthly monitoring for complex income and high earners.',
-                  items: ['Everything in Growth', 'Monthly tax planning', 'Real-time tax estimates', 'Capital gains guidance'],
-                },
-              ]?.map(t => (
-                <div
-                  key={t?.tier}
-                  className="p-6 rounded-sm"
-                  style={{
-                    backgroundColor: 'var(--card)',
-                    border: t?.featured ? '1px solid var(--primary)' : '1px solid var(--border-subtle)',
-                    background: t?.featured ? 'linear-gradient(180deg, var(--card), rgba(201,168,76,0.05))' : 'var(--card)',
-                  }}
-                >
-                  {t?.featured && (
-                    <p className="font-ui mb-3" style={{ fontSize: '8px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>Most Popular</p>
-                  )}
-                  <h3 className="font-display mb-1" style={{ fontSize: '20px', fontWeight: 400, color: 'var(--foreground)' }}>{t?.tier}</h3>
-                  <p className="font-ui mb-3" style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)' }}>{t?.price}</p>
-                  <p className="font-serif mb-5" style={{ fontStyle: 'italic', fontSize: '14px', color: 'var(--body-text)', lineHeight: 1.5 }}>{t?.desc}</p>
-                  <ul className="space-y-2">
-                    {t?.items?.map(item => (
-                      <li key={item} className="flex items-center gap-2">
-                        <span style={{ color: 'var(--primary)', fontSize: '12px' }}>✓</span>
-                        <span className="font-ui text-xs" style={{ color: 'var(--body-text)' }}>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8 text-center">
-              <Link href="/quotation-calculator/?service=self-assessment" className="btn-gold" style={{ minHeight: '48px', padding: '0 40px', lineHeight: '48px' }}>
-                Get Your Exact Price →
-              </Link>
-            </div>
+            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
+              Pricing depends on your income level, complexity, and monitoring frequency. Use our quotation calculator to get your exact monthly price in under 2 minutes — no surprises.
+            </p>
+            <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 40px', lineHeight: '48px', display: 'inline-block' }}>
+              Get Your Exact Quote →
+            </Link>
           </div>
         </section>
 

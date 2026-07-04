@@ -44,25 +44,17 @@ export default function PayrollServicesPage() {
 
         {/* Pricing */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Pricing</p>
-            <h2 className="font-display mb-10" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Simple, per-employee pricing
+            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              See your exact payroll price
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              {[
-                { range: '1–5 employees', price: '£20–40', unit: '/employee/month', desc: 'Small team payroll with full RTI and auto-enrolment' },
-                { range: '6–20 employees', price: '£30–45', unit: '/employee/month', desc: 'Growing team with complex pay structures and benefits' },
-                { range: '20+ employees', price: '£40–50', unit: '/employee/month', desc: 'Large team payroll with dedicated payroll manager' },
-              ].map((tier, i) => (
-                <div key={i} className="p-6 border" style={{ borderColor: i === 1 ? 'var(--primary)' : 'var(--gold-border)', backgroundColor: i === 1 ? 'rgba(201,168,76,0.04)' : 'transparent' }}>
-                  <p className="font-ui font-medium mb-1" style={{ color: 'var(--foreground)', fontSize: '14px', letterSpacing: '1px', textTransform: 'uppercase' }}>{tier.range}</p>
-                  <p className="font-display mb-1" style={{ fontSize: '28px', color: 'var(--primary)', fontWeight: 400 }}>{tier.price}<span className="font-ui text-xs" style={{ color: 'var(--muted)' }}>{tier.unit}</span></p>
-                  <p className="font-ui text-sm" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>{tier.desc}</p>
-                </div>
-              ))}
-            </div>
-            <p className="font-ui text-xs" style={{ color: 'var(--muted)' }}>For limited company clients, payroll is included in the main package at £40/employee/month. Use the quotation calculator for your exact total.</p>
+            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
+              Payroll is priced per employee based on team size and complexity. Use our quotation calculator to get your exact monthly price in under 2 minutes — no sales calls required.
+            </p>
+            <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 40px', lineHeight: '48px', display: 'inline-block' }}>
+              Get Your Exact Quote →
+            </Link>
           </div>
         </section>
 
