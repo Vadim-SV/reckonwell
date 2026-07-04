@@ -31,6 +31,12 @@ export default function CertifiedPartneredSection({ variant = 'full' }: Certifie
 
         {/* Partner logos strip */}
         <div className="flex flex-col items-center gap-4 w-full">
+          <p
+            className="font-ui text-center"
+            style={{ fontSize: '11px', color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}
+          >
+            Certified &amp; Partnering With
+          </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
             {partners.map((partner) => (
               <div
