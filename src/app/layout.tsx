@@ -37,7 +37,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: 'Reckonwell | Accounting Firm Working on Your Finances Every Day',
-  description: 'Finally, an accounting firm that doesn\'t wait until month end. Daily bookkeeping, cash flow monitoring, and real-time alerts — from £200/$300 per month. British firm serving UK & USA.',
+  description: 'Finally, an accounting firm that doesn\'t wait until month end. Daily bookkeeping, cash flow monitoring, and real-time alerts — from £200 per month. British accounting firm for UK founder-led businesses.',
   icons: {
     icon: [
       { url: '/assets/images/99C61B88-2C2A-4A13-BD74-35EE79D48106-1783188578397.PNG', type: 'image/png' },
@@ -54,8 +54,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Reckonwell | Daily Accounting for UK & USA',
-    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts from £200/$300/month.',
+    title: 'Reckonwell | Daily Accounting for UK Businesses',
+    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts from £200 per month.',
     images: [
       {
         url: '/assets/images/app_logo.png',
@@ -123,7 +123,7 @@ export default function RootLayout({
     '@type': 'WebPage',
     '@id': process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     name: 'Reckonwell | Accounting Firm Working on Your Finances Every Day',
-    description: 'Finally, an accounting firm that doesn\'t wait until month end. Daily bookkeeping, cash flow monitoring, and real-time alerts — from £200/$300 per month.',
+    description: 'Finally, an accounting firm that doesn\'t wait until month end. Daily bookkeeping, cash flow monitoring, and real-time alerts — from £200 per month.',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     isPartOf: {
       '@id': process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
