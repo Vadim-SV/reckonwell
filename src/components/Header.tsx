@@ -61,21 +61,15 @@ export default function Header() {
           scrolled ? 'nav-frosted' : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-5 md:px-10 h-16 md:h-20 flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 group" aria-label="Reckonwell home">
             <img
               src="/assets/images/Reckonwell-1779490857835.png"
               alt="Reckonwell"
-              className="hidden md:block"
-              style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
+              className="block"
+              style={{ height: '28px', width: 'auto', objectFit: 'contain' }}
             />
-            <span
-              className="flex md:hidden items-center justify-center font-display"
-              style={{ height: '36px', width: '36px', fontSize: '22px', fontWeight: 600, color: 'var(--primary)', letterSpacing: '-0.5px', lineHeight: 1 }}
-            >
-              R
-            </span>
           </a>
 
           {/* Desktop Nav */}
@@ -201,10 +195,10 @@ export default function Header() {
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden flex flex-col gap-[5px] p-2"
+            className="md:hidden flex flex-col gap-[5px] p-3 -mr-1"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', minWidth: '44px', minHeight: '44px', alignItems: 'center', justifyContent: 'center' }}
           >
             <span className="block h-px w-6 transition-all duration-300" style={{ backgroundColor: 'var(--foreground)', transform: menuOpen ? 'rotate(45deg) translate(4px, 4px)' : 'none' }} />
             <span className="block h-px w-4 transition-all duration-300" style={{ backgroundColor: 'var(--foreground)', opacity: menuOpen ? 0 : 1 }} />
@@ -215,41 +209,91 @@ export default function Header() {
 
       {/* Mobile Full-Screen Overlay */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col items-center justify-center overflow-y-auto transition-all duration-500 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-        style={{ backgroundColor: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)' }}
+        className={`fixed inset-0 z-40 overflow-y-auto transition-all duration-500 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        style={{ backgroundColor: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', WebkitOverflowScrolling: 'touch' }}
       >
-        <div className="flex flex-col items-center gap-6 py-12 w-full px-8">
-          <Link href="/" onClick={() => setMenuOpen(false)} className="font-display text-3xl transition-colors duration-200" style={{ color: 'var(--foreground)', fontWeight: 400 }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--foreground)')}>
+        <div className="flex flex-col items-center gap-0 pt-20 pb-12 w-full px-6 min-h-full">
+          {/* Close button area at top */}
+          <div className="w-full flex justify-end mb-6">
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="p-3"
+              aria-label="Close menu"
+              style={{ color: 'var(--muted)', fontSize: '24px', lineHeight: 1, minWidth: '44px', minHeight: '44px' }}
+            >
+              ✕
+            </button>
+          </div>
+
+          <Link
+            href="/"
+            onClick={() => setMenuOpen(false)}
+            className="w-full text-center font-display py-4 transition-colors duration-200"
+            style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px', borderBottom: '1px solid var(--border-subtle)' }}
+          >
             Home
           </Link>
 
           {/* Mobile Services Section */}
-          <div className="w-full text-center">
-            <p className="font-display text-3xl mb-4" style={{ color: 'var(--foreground)', fontWeight: 400 }}>Services</p>
-            <div className="mb-3">
-              <p className="font-ui mb-2" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>Fractional Finance</p>
+          <div className="w-full text-center py-4" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+            <p className="font-display mb-5" style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px' }}>Services</p>
+            <div className="mb-5">
+              <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>Fractional Finance</p>
               {fractionalLinks.map((link) => (
-                <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="block font-ui py-1 text-sm" style={{ color: 'var(--muted)' }}>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="block font-ui py-3 text-sm"
+                  style={{ color: 'var(--muted)', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
                   {link.label}
                 </Link>
               ))}
             </div>
             <div>
-              <p className="font-ui mb-2 mt-4" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>UK Compliance Services</p>
+              <p className="font-ui mb-3 mt-5" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>UK Compliance Services</p>
               {complianceLinks.map((link) => (
-                <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="block font-ui py-1 text-sm" style={{ color: 'var(--muted)' }}>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="block font-ui py-3 text-sm"
+                  style={{ color: 'var(--muted)', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
                   {link.label}
                 </Link>
               ))}
             </div>
           </div>
 
-          <Link href="/referrals" onClick={() => setMenuOpen(false)} className="font-display text-3xl transition-colors duration-200" style={{ color: 'var(--primary)', fontWeight: 400 }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--primary)')}>
+          <Link
+            href="/referrals"
+            onClick={() => setMenuOpen(false)}
+            className="w-full text-center font-display py-4 transition-colors duration-200"
+            style={{ color: 'var(--primary)', fontWeight: 400, fontSize: '28px', borderBottom: '1px solid var(--border-subtle)' }}
+          >
             Partner with Us
           </Link>
-          <Link href="/book" onClick={() => setMenuOpen(false)} className="btn-gold mt-2" style={{ cursor: 'pointer' }}>
-            Book a Call
-          </Link>
+
+          <div className="w-full flex flex-col items-center gap-3 mt-8 px-4">
+            <Link
+              href="/book"
+              onClick={() => setMenuOpen(false)}
+              className="btn-gold w-full text-center"
+              style={{ maxWidth: '320px' }}
+            >
+              Book Discovery Call
+            </Link>
+            <Link
+              href="/quotation-calculator"
+              onClick={() => setMenuOpen(false)}
+              className="btn-ghost w-full text-center"
+              style={{ maxWidth: '320px' }}
+            >
+              Instant Quote
+            </Link>
+          </div>
         </div>
       </div>
     </>

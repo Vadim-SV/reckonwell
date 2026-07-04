@@ -61,7 +61,7 @@ export default function ReferralTeaserSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 md:py-32 px-6 md:px-16"
+      className="py-16 md:py-32 px-5 md:px-16"
       style={{
         backgroundColor: '#1C1A15',
         position: 'relative',
@@ -147,7 +147,7 @@ export default function ReferralTeaserSection() {
 
         {/* Badges */}
         <Reveal delay={0.35}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center', marginBottom: '40px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginBottom: '40px' }}>
             {['10% lifetime commission', 'No cap on earnings', 'Paid monthly, automatically'].map((b) =>
             <span key={b} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: "'Montserrat', sans-serif", fontSize: '12px', color: '#7A7468', letterSpacing: '0.5px' }}>
                 <span style={{ color: '#C9A84C', fontSize: '14px' }}>✓</span>{b}
@@ -169,9 +169,11 @@ export default function ReferralTeaserSection() {
               letterSpacing: '3px',
               textTransform: 'uppercase',
               fontWeight: 600,
-              padding: '16px 32px',
+              padding: '16px 28px',
               textDecoration: 'none',
-              transition: 'background 0.2s'
+              transition: 'background 0.2s',
+              minHeight: '52px',
+              lineHeight: '20px',
             }}
             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#DDB96A'}
             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#C9A84C'}

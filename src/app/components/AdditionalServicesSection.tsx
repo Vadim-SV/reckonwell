@@ -126,7 +126,7 @@ export default function AdditionalServicesSection() {
         {/* 3×2 Card Grid */}
         <div
           className="grid gap-4"
-          style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}
+          style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))' }}
         >
           {serviceCards.map((card, i) => (
             <motion.div

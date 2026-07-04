@@ -72,7 +72,7 @@ export default function RealResultsSection() {
               transition={{ duration: 0.7, delay: 0.15 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
             >
               <p
-                className="font-ui mb-5 md:mb-6"
+                className="font-ui mb-4 md:mb-6"
                 style={{
                   fontSize: '10px',
                   letterSpacing: '3px',
@@ -87,7 +87,7 @@ export default function RealResultsSection() {
                 <span
                   className="font-display"
                   style={{
-                    fontSize: 'clamp(36px, 4vw, 56px)',
+                    fontSize: 'clamp(32px, 4vw, 56px)',
                     fontWeight: 400,
                     color: 'var(--primary)',
                     lineHeight: 1,

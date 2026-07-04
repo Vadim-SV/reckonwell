@@ -115,7 +115,7 @@ export default function EmbeddedCalculatorSection() {
 
         {/* Business type tiles */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-8"
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -124,12 +124,13 @@ export default function EmbeddedCalculatorSection() {
             <Link
               key={type.id}
               href={type.href}
-              className="group flex items-center gap-5 rounded-sm transition-all duration-300"
+              className="group flex items-center gap-4 rounded-sm transition-all duration-300"
               style={{
-                padding: '24px 28px',
+                padding: '20px 22px',
                 backgroundColor: 'var(--card)',
                 border: '1px solid var(--border-subtle)',
                 textDecoration: 'none',
+                minHeight: '72px',
               }}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLAnchorElement;
@@ -152,7 +153,7 @@ export default function EmbeddedCalculatorSection() {
                 className="font-display"
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: '18px',
+                  fontSize: 'clamp(15px, 2vw, 18px)',
                   fontWeight: 400,
                   color: 'var(--foreground)',
                   lineHeight: 1.2,
@@ -173,7 +174,7 @@ export default function EmbeddedCalculatorSection() {
 
         {/* Not sure link */}
         <motion.div
-          className="text-center mb-10"
+          className="text-center mb-8 md:mb-10"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -195,7 +196,7 @@ export default function EmbeddedCalculatorSection() {
 
         {/* Trust line */}
         <motion.div
-          className="flex flex-wrap items-center justify-center gap-4 sm:gap-8"
+          className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-8"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}

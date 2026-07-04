@@ -59,9 +59,9 @@ export default function HeroSection() {
       <div className="gold-vertical-line-right" aria-hidden="true" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 text-center pt-28 pb-16 md:pb-20">
+      <div className="relative z-10 max-w-5xl mx-auto px-5 md:px-10 text-center pt-24 md:pt-28 pb-14 md:pb-20">
         {/* Tag */}
-        <motion.div {...fadeUp(0.1)} className="mb-8 md:mb-10" suppressHydrationWarning>
+        <motion.div {...fadeUp(0.1)} className="mb-6 md:mb-10" suppressHydrationWarning>
           <span
             className="inline-flex items-center gap-2 md:gap-3 font-ui"
             style={{
@@ -73,8 +73,8 @@ export default function HeroSection() {
             }}>
 
             <span
+              className="hidden sm:inline-block"
               style={{
-                display: 'inline-block',
                 width: '16px',
                 height: '1px',
                 backgroundColor: 'var(--primary)',
@@ -84,8 +84,8 @@ export default function HeroSection() {
 
             British Accounting Firm · Serving the UK &amp; USA
             <span
+              className="hidden sm:inline-block"
               style={{
-                display: 'inline-block',
                 width: '16px',
                 height: '1px',
                 backgroundColor: 'var(--primary)',
@@ -97,7 +97,7 @@ export default function HeroSection() {
         </motion.div>
 
         {/* H1 */}
-        <motion.h1 {...fadeUp(0.2)} className="hero-h1 mb-5 md:mb-6" suppressHydrationWarning>
+        <motion.h1 {...fadeUp(0.2)} className="hero-h1 mb-4 md:mb-6" suppressHydrationWarning>
           Run your business.
           <br />
           <span className="gold-italic">We take care about your finances.</span>
@@ -107,7 +107,7 @@ export default function HeroSection() {
         <motion.p
           {...fadeUp(0.3)}
           className="pull-quote mb-4 mx-auto"
-          style={{ maxWidth: '620px', color: '#ffffff', fontSize: 'clamp(18px,2.2vw,26px)' }}
+          style={{ maxWidth: '620px', color: '#ffffff', fontSize: 'clamp(16px,2.2vw,26px)' }}
           suppressHydrationWarning>The only accounting firm that handles day-to-day finance workload that consumes founders.
 
 
@@ -117,11 +117,11 @@ export default function HeroSection() {
         {/* Subline */}
         <motion.p
           {...fadeUp(0.35)}
-          className="mb-6 md:mb-8 font-serif"
+          className="mb-5 md:mb-8 font-serif"
           style={{
             fontStyle: 'italic',
             fontWeight: 300,
-            fontSize: 'clamp(18px,2.2vw,26px)',
+            fontSize: 'clamp(16px,2.2vw,26px)',
             color: '#ffffff',
             fontFamily: 'var(--font-serif)'
           }}
@@ -133,7 +133,7 @@ export default function HeroSection() {
         {/* Price line */}
         <motion.p
           {...fadeUp(0.4)}
-          className="font-ui mb-8 md:mb-10"
+          className="font-ui mb-7 md:mb-10"
           style={{
             fontSize: '10px',
             letterSpacing: '3px',
@@ -149,12 +149,12 @@ export default function HeroSection() {
         {/* CTAs */}
         <motion.div
           {...fadeUp(0.45)}
-          className="flex flex-col items-center justify-center gap-3 mb-10 md:mb-12 w-full"
+          className="flex flex-col items-center justify-center gap-3 mb-8 md:mb-12 w-full"
           suppressHydrationWarning>
 
           <button
             className="btn-gold w-full sm:w-auto"
-            style={{ minWidth: '220px', textAlign: 'center' }}
+            style={{ minWidth: '220px', maxWidth: '320px', textAlign: 'center' }}
             onClick={() => {
               trackEvent('homepage_cta_click', { cta: 'get_instant_quote', location: 'hero', page: 'home' });
               handleScroll('#quote');
@@ -164,12 +164,16 @@ export default function HeroSection() {
           <a
             href="/book"
             style={{
-              fontSize: '12px',
+              fontSize: '13px',
               color: 'var(--muted)',
               textDecoration: 'none',
               letterSpacing: '0.3px',
               fontFamily: 'var(--font-sans)',
               cursor: 'pointer',
+              padding: '8px 0',
+              minHeight: '44px',
+              display: 'flex',
+              alignItems: 'center',
             }}
             onClick={() => trackEvent('homepage_cta_click', { cta: 'book_discovery_call', location: 'hero', page: 'home' })}>
             or book a discovery call →
@@ -179,7 +183,7 @@ export default function HeroSection() {
         {/* Trust badges */}
         <motion.div
           {...fadeUp(0.55)}
-          className="flex flex-wrap items-center justify-center gap-4 sm:gap-8"
+          className="flex flex-wrap items-center justify-center gap-3 sm:gap-8"
           suppressHydrationWarning>
 
           {[

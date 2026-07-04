@@ -11,14 +11,14 @@ export default function Footer() {
       }}
       role="contentinfo"
     >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
         {/* Left: Logo + tagline */}
         <div className="flex flex-col items-center md:items-start gap-3">
           <div className="flex items-center gap-3">
             <img
               src="/assets/images/Reckonwell-1779490857835.png"
               alt="Reckonwell - Premium accounting firm"
-              style={{ height: '30px', width: 'auto', objectFit: 'contain' }}
+              style={{ height: '28px', width: 'auto', objectFit: 'contain' }}
             />
           </div>
           <address
@@ -46,8 +46,8 @@ export default function Footer() {
           <nav className="flex items-center gap-6" aria-label="Footer links">
             <Link
               href="/privacy-policy"
-              className="font-ui text-xs uppercase tracking-widest transition-colors duration-200"
-              style={{ color: 'var(--muted)', letterSpacing: '2px', fontSize: '10px' }}
+              className="font-ui text-xs uppercase tracking-widest transition-colors duration-200 py-2"
+              style={{ color: 'var(--muted)', letterSpacing: '2px', fontSize: '10px', minHeight: '44px', display: 'flex', alignItems: 'center' }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary)')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
             >
@@ -55,8 +55,8 @@ export default function Footer() {
             </Link>
             <Link
               href="/terms-of-service"
-              className="font-ui text-xs uppercase tracking-widest transition-colors duration-200"
-              style={{ color: 'var(--muted)', letterSpacing: '2px', fontSize: '10px' }}
+              className="font-ui text-xs uppercase tracking-widest transition-colors duration-200 py-2"
+              style={{ color: 'var(--muted)', letterSpacing: '2px', fontSize: '10px', minHeight: '44px', display: 'flex', alignItems: 'center' }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary)')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
             >

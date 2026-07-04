@@ -20,7 +20,7 @@ export default function FounderSection() {
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto md:mx-0 md:ml-auto"
-          style={{ maxWidth: '240px', width: '100%', position: 'relative' }}>
+          style={{ maxWidth: '220px', width: '100%', position: 'relative' }}>
 
           {/* Decorative offset background rectangle — hidden on mobile to prevent overflow */}
           <div
