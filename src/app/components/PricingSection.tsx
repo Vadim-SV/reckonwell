@@ -102,29 +102,6 @@ export default function PricingSection() {
                   200
                 </span>
               </div>
-
-              <div
-                className="mx-4 md:mx-6 self-stretch"
-                style={{
-                  width: '1px',
-                  backgroundColor: 'var(--border-subtle)',
-                  margin: '8px 16px',
-                }}
-              />
-
-              <div className="flex items-start">
-                <span
-                  className="font-display mt-3 md:mt-4"
-                  style={{ fontSize: 'clamp(22px, 3vw, 32px)', color: 'var(--primary)', fontWeight: 400 }}
-                >
-                  $
-                </span>
-                <span
-                  className="pricing-number"
-                >
-                  300
-                </span>
-              </div>
             </div>
 
             <p
