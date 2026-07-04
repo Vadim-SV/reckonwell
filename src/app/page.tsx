@@ -101,9 +101,6 @@ export default function HomePage() {
           <section role="region" aria-label="Instant quote calculator">
             <EmbeddedCalculatorSection />
           </section>
-          <section role="region" aria-label="Pricing options">
-            <PricingSection />
-          </section>
           <section role="region" aria-label="Additional services">
             <AdditionalServicesSection />
           </section>
