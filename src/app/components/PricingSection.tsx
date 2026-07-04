@@ -72,6 +72,21 @@ export default function PricingSection() {
               border: '1px solid var(--gold-border)',
             }}
           >
+            {/* From label */}
+            <p
+              className="font-serif text-center mb-2"
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontStyle: 'italic',
+                fontWeight: 300,
+                fontSize: '18px',
+                color: 'var(--primary)',
+                letterSpacing: '0.5px',
+              }}
+            >
+              From
+            </p>
+
             {/* Dual pricing */}
             <div className="flex items-end justify-center gap-0 mb-2">
               <div className="flex items-start">
