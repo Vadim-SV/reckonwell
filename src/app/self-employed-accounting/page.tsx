@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import TheDifferenceSection from '@/app/components/TheDifferenceSection';
 
 const faqs = [
   { q: 'Who needs to file a Self Assessment?', a: 'Anyone self-employed, a sole trader, or with income outside PAYE — including rental income, dividends, or foreign income. If HMRC has asked you to file, you must file.' },
@@ -53,6 +54,8 @@ export default function SelfEmployedAccountingPage() {
             </div>
           </div>
         </section>
+
+        <TheDifferenceSection />
 
         {/* Pricing */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
