@@ -90,7 +90,7 @@ export default function FinalCTASection() {
     <section
       id="final-cta"
       ref={ref}
-      className="relative py-20 md:py-36 px-6 md:px-10 overflow-hidden"
+      className="relative py-16 md:py-36 px-5 md:px-10 overflow-hidden"
       style={{ backgroundColor: '#080808' }}
       aria-label="Request a Callback"
     >
@@ -115,7 +115,7 @@ export default function FinalCTASection() {
 
       <div className="max-w-2xl mx-auto text-center relative z-10">
         <motion.p
-          className="section-label mb-6 md:mb-8"
+          className="section-label mb-5 md:mb-8"
           initial={{ opacity: 0, y: 12 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
@@ -130,7 +130,7 @@ export default function FinalCTASection() {
         </motion.p>
 
         <motion.h2
-          className="section-h2 mb-5 md:mb-6"
+          className="section-h2 mb-4 md:mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -141,7 +141,7 @@ export default function FinalCTASection() {
         </motion.h2>
 
         <motion.p
-          className="pull-quote mb-10 md:mb-12 mx-auto"
+          className="pull-quote mb-8 md:mb-12 mx-auto"
           style={{ maxWidth: '360px' }}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

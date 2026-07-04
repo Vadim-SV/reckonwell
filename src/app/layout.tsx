@@ -4,6 +4,7 @@ import { Playfair_Display, Cormorant_Garamond, Montserrat } from 'next/font/goog
 import { Suspense } from 'react';
 import '../styles/tailwind.css';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import { RegionProvider } from '@/context/RegionContext';
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -39,11 +40,11 @@ export const metadata: Metadata = {
   description: 'Finally, an accounting firm that doesn\'t wait until month end. Daily bookkeeping, cash flow monitoring, and real-time alerts — from £200/$300 per month. British firm serving UK & USA.',
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/assets/images/99C61B88-2C2A-4A13-BD74-35EE79D48106-1783188578397.PNG', type: 'image/png' },
       { url: '/favicon.ico', type: 'image/x-icon' },
     ],
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    shortcut: '/assets/images/99C61B88-2C2A-4A13-BD74-35EE79D48106-1783188578397.PNG',
+    apple: '/assets/images/99C61B88-2C2A-4A13-BD74-35EE79D48106-1783188578397.PNG',
   },
   alternates: {
     canonical: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
@@ -163,7 +164,9 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <GoogleAnalytics />
         </Suspense>
-        {children}
+        <RegionProvider>
+          {children}
+        </RegionProvider>
       </body>
     </html>
   );

@@ -48,7 +48,7 @@ export default function BeforeAfterSection() {
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="rounded-sm p-7 md:p-12"
+            className="rounded-sm p-6 md:p-12"
             style={{ backgroundColor: 'var(--card)', border: '1px solid var(--border-subtle)' }}
           >
             <div className="flex items-center gap-3 mb-6 md:mb-8">
@@ -99,7 +99,7 @@ export default function BeforeAfterSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="rounded-sm p-7 md:p-12 relative"
+            className="rounded-sm p-6 md:p-12 relative"
             style={{
               backgroundColor: 'rgba(10, 15, 8, 0.8)',
               border: '1px solid var(--gold-border)',

@@ -37,11 +37,11 @@ export default function ProblemSection() {
       style={{ backgroundColor: 'var(--background)' }}
       aria-label="The problem"
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-start">
         {/* Left */}
         <div>
           <motion.p
-            className="section-label mb-5 md:mb-6"
+            className="section-label mb-4 md:mb-6"
             initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -50,7 +50,7 @@ export default function ProblemSection() {
           </motion.p>
 
           <motion.h2
-            className="section-h2-medium mb-6 md:mb-8"
+            className="section-h2-medium mb-5 md:mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -61,7 +61,7 @@ export default function ProblemSection() {
           </motion.h2>
 
           <motion.p
-            className="body-text-rw mb-8 md:mb-10"
+            className="body-text-rw mb-7 md:mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -105,13 +105,13 @@ export default function ProblemSection() {
               <span
                 className="font-display"
                 style={{
-                  fontSize: 'clamp(20px, 3vw, 32px)',
+                  fontSize: 'clamp(18px, 3vw, 32px)',
                   color: 'var(--foreground)',
                   fontWeight: 400,
                   opacity: visible ? 1 : 0,
                   transition: 'opacity 0.3s ease',
                   display: 'block',
-                  minWidth: '200px',
+                  minWidth: '180px',
                 }}
               >
                 {cyclingWords?.[activeWord]}
@@ -125,8 +125,8 @@ export default function ProblemSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.25 }}
-          className="relative"
-          style={{ aspectRatio: '4/3' }}
+          className="relative w-full"
+          style={{ aspectRatio: '4/3', maxHeight: '400px' }}
         >
           <div
             className="w-full h-full rounded-sm relative overflow-hidden"

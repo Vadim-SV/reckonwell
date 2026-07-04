@@ -63,13 +63,13 @@ export default function ContactPage() {
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
 
         {/* Hero */}
-        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
+        <section className="px-5 md:px-10 py-12 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
             <p className="section-label mb-4">Contact</p>
-            <h1 className="font-display mb-6" style={{ fontSize: 'clamp(36px,6vw,72px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
+            <h1 className="font-display mb-5 md:mb-6" style={{ fontSize: 'clamp(32px,6vw,72px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
               Get in touch
             </h1>
-            <p className="font-ui max-w-xl" style={{ color: 'var(--muted)', fontSize: '18px', lineHeight: 1.7 }}>
+            <p className="font-ui max-w-xl" style={{ color: 'var(--muted)', fontSize: 'clamp(15px,2vw,18px)', lineHeight: 1.7 }}>
               We respond within 4 business hours. For a faster answer, book a free 15-minute call.
             </p>
           </div>

@@ -75,14 +75,14 @@ export default function SolutionSection() {
               transition={{ duration: 0.7, delay: 0.2 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
             >
               <div
-                className="card-number-bg absolute top-4 right-6 select-none pointer-events-none"
+                className="card-number-bg absolute top-4 right-4 select-none pointer-events-none"
                 aria-hidden="true"
               >
                 {card?.num}
               </div>
               <div className="relative z-10">
                 <p
-                  className="font-ui mb-3 md:mb-4"
+                  className="font-ui mb-3"
                   style={{
                     fontSize: '10px',
                     letterSpacing: '3px',
@@ -94,9 +94,9 @@ export default function SolutionSection() {
                   {card?.num}
                 </p>
                 <h3
-                  className="font-display mb-3 md:mb-4"
+                  className="font-display mb-3"
                   style={{
-                    fontSize: 'clamp(18px, 2.2vw, 26px)',
+                    fontSize: 'clamp(17px, 2.2vw, 26px)',
                     fontWeight: 400,
                     color: 'var(--foreground)',
                     lineHeight: 1.2,
@@ -104,7 +104,7 @@ export default function SolutionSection() {
                 >
                   {card?.title}
                 </h3>
-                <p className="body-text-rw" style={{ fontSize: '15px' }}>
+                <p className="body-text-rw" style={{ fontSize: '14px' }}>
                   {card?.body}
                 </p>
               </div>

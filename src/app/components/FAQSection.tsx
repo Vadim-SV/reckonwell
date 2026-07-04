@@ -62,7 +62,7 @@ export default function FAQSection() {
       style={{
         backgroundColor: '#1C1A15',
       }}
-      className="faq-section py-20 md:py-32 px-6 md:px-16"
+      className="faq-section py-16 md:py-32 px-5 md:px-16"
       aria-label="Frequently asked questions"
     >
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -85,10 +85,10 @@ export default function FAQSection() {
         <h2
           style={{
             fontFamily: "'Playfair Display', serif",
-            fontSize: 'clamp(28px, 4vw, 42px)',
+            fontSize: 'clamp(24px, 4vw, 42px)',
             fontWeight: 700,
             color: '#D4CFC4',
-            marginBottom: '40px',
+            marginBottom: '32px',
             lineHeight: 1.2,
           }}
         >
@@ -122,13 +122,15 @@ export default function FAQSection() {
                     width: '100%',
                     display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: '20px 20px',
+                    alignItems: 'flex-start',
+                    padding: '18px 16px',
                     background: isOpen ? 'rgba(201, 168, 76, 0.04)' : 'transparent',
                     border: 'none',
                     cursor: 'pointer',
                     textAlign: 'left',
                     transition: 'background 0.2s ease',
+                    minHeight: '60px',
+                    gap: '12px',
                   }}
                   onMouseEnter={(e) => {
                     if (!isOpen) {
@@ -149,7 +151,7 @@ export default function FAQSection() {
                       fontWeight: 500,
                       color: '#D4CFC4',
                       lineHeight: 1.5,
-                      paddingRight: '16px',
+                      flex: 1,
                     }}
                   >
                     {faq.question}
@@ -169,6 +171,7 @@ export default function FAQSection() {
                       display: 'inline-block',
                       width: '22px',
                       textAlign: 'center',
+                      marginTop: '2px',
                     }}
                   >
                     +
@@ -189,7 +192,7 @@ export default function FAQSection() {
                       fontSize: '14px',
                       lineHeight: 1.9,
                       color: '#D4CFC4',
-                      padding: '0 20px 20px',
+                      padding: '0 16px 18px',
                       margin: 0,
                     }}
                   >
