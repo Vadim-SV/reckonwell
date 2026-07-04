@@ -152,7 +152,7 @@ export default function Header() {
                 aria-expanded={complianceOpen}
                 aria-haspopup="true"
               >
-                Compliance Services
+                Compliance
                 <span style={{ fontSize: '10px', transition: 'transform 0.2s', transform: complianceOpen ? 'rotate(180deg)' : 'none', display: 'inline-block' }}>▾</span>
               </button>
 
