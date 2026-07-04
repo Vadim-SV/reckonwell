@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
 
 const cityName = 'Bristol';
 const citySlug = 'bristol';
@@ -64,6 +65,8 @@ export default function CityPage() {
             </div>
           </div>
         </section>
+
+        <CertifiedPartneredSection variant="full" />
 
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
@@ -142,14 +145,6 @@ export default function CityPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>Get Your Quote →</Link>
               <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>Speak to an Accountant</Link>
-            </div>
-            <div className="flex flex-wrap justify-center gap-6 mt-8">
-              {['FIAB Certified', 'IAB Member', 'No hidden fees', 'Cancel anytime']?.map(t => (
-                <div key={t} className="flex items-center gap-2">
-                  <span style={{ color: 'var(--primary)', fontSize: '12px' }}>✓</span>
-                  <span className="font-ui text-xs" style={{ color: 'var(--muted)' }}>{t}</span>
-                </div>
-              ))}
             </div>
           </div>
         </section>

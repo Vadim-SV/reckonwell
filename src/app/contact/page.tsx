@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
 
 const faqs = [
   { q: 'How quickly do you respond?', a: 'We respond to all enquiries within 4 business hours. For urgent matters, call us directly on 02038186205.' },
@@ -179,10 +180,11 @@ export default function ContactPage() {
           </div>
         </section>
 
+        <CertifiedPartneredSection variant="full" />
+
         {/* FAQ */}
         <section className="px-6 md:px-10 py-16 md:py-20">
           <div className="max-w-3xl mx-auto">
-            <p className="section-label mb-4">FAQ</p>
             <h2 className="font-display mb-10" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
               Frequently asked questions
             </h2>
