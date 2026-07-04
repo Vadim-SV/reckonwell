@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { CityTrustBadges, CityFounderBlock } from '@/app/components/CityPageTrustElements';
 
 const cityName = 'Liverpool';
 const citySlug = 'liverpool';
@@ -67,6 +68,8 @@ export default function CityPage() {
             </div>
           </div>
         </section>
+
+        <CityTrustBadges />
 
         {/* Services Grid */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
@@ -175,6 +178,8 @@ export default function CityPage() {
             </div>
           </div>
         </section>
+
+        <CityFounderBlock />
 
         {/* Fractional Finance Callout */}
         <section className="px-6 md:px-10 py-8" style={{ borderTop: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.04)' }}>

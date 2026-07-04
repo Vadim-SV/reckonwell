@@ -33,6 +33,12 @@ export default function Footer() {
           >
             Premium accounting for ambitious businesses. Daily bookkeeping, real-time insights, zero surprises.
           </p>
+          <p
+            className="font-ui text-xs text-center md:text-left"
+            style={{ color: 'var(--muted)', letterSpacing: '0.5px', maxWidth: '280px', lineHeight: 1.6 }}
+          >
+            ICO Registered · Data Protection Reg. CSN3799691
+          </p>
         </div>
 
         {/* Right: Contact + Legal */}
