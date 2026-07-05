@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 import { trackEvent } from '@/lib/analytics';
 import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
+import Link from 'next/link';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -144,15 +145,15 @@ export default function HeroSection() {
             {...fadeUp(0.45)}
             className="flex flex-col items-center justify-center gap-3 mb-8 md:mb-12 w-full"
             suppressHydrationWarning>
-            <button
+            <Link
+              href="/quotation-calculator/"
               className="btn-gold w-full sm:w-auto"
               style={{ minWidth: '220px', maxWidth: '320px', textAlign: 'center' }}
               onClick={() => {
                 trackEvent('homepage_cta_click', { cta: 'get_instant_quote', location: 'hero', page: 'home' });
-                handleScroll('#quote');
               }}>
               Get your instant quote →
-            </button>
+            </Link>
             <a
               href="/book"
               style={{

@@ -189,11 +189,11 @@ export default function ServicesAndPricingSection() {
               </ul>
 
               <Link
-                href="/book"
+                href="/quotation-calculator/"
                 className="btn-gold block text-center"
                 style={{ width: '100%', padding: '16px 36px', fontSize: '11px' }}
               >
-                Book a Discovery Call →
+                Get Quotation →
               </Link>
 
               <p
