@@ -10,24 +10,22 @@ import TheDifferenceSection from '@/app/components/TheDifferenceSection';
 import TrustHonestySection from '@/app/components/TrustHonestySection';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
-const cityName = 'London';
-const citySlug = 'london';
-const cityDesc = 'the UK\'s largest business hub';
-const businessCount = '400,000+';
-const coords = { lat: 51.5074, lng: -0.1278 };
+const boroughName = 'Islington';
+const boroughSlug = 'islington';
+const boroughDesc = 'a borough known for media and creative agencies, tech businesses near the Old Street corridor, and a strong professional services base';
 
-const nearbyCities = [
-  { name: 'Cambridge', href: '/accounting/cambridge' },
-  { name: 'Oxford', href: '/accounting/oxford' },
-  { name: 'Brighton', href: '/accounting/brighton' },
+const nearbyBoroughs = [
+  { name: 'Camden', href: '/accounting/camden' },
+  { name: 'Hackney', href: '/accounting/hackney' },
 ];
 
 const faqs = [
-  { q: `Do you work with businesses based in ${cityName}?`, a: `Yes. We work with businesses across ${cityName} and the wider UK remotely. All onboarding, filing, and communication is handled online — no need to visit an office.` },
+  { q: `Do you work with businesses based in ${boroughName}?`, a: `Yes. We work with businesses across ${boroughName} and the wider London area remotely. All onboarding, filing, and communication is handled online — no need to visit an office.` },
   { q: 'How quickly can you take over my accounting?', a: 'We typically onboard new clients within 48 hours. You share access to your bank and invoicing tools, and we start from there.' },
-  { q: 'Do I need to switch accounting software?', a: 'We work with Xero, QuickBooks, and FreeAgent. If you\'re already using one of these, we connect directly. If not, we\'ll recommend the best fit for your business.' },
+  { q: 'Do I need to switch accounting software?', a: "We work with Xero, QuickBooks, and FreeAgent. If you're already using one of these, we connect directly. If not, we'll recommend the best fit for your business." },
   { q: 'What does Making Tax Digital mean for my business?', a: 'If your income exceeds £50,000 from self-employment or property, MTD quarterly filing is mandatory from April 2026. We handle all submissions automatically.' },
-  { q: `Are your prices higher for ${cityName} businesses?`, a: 'No. Our pricing is the same nationwide. You get the same service quality regardless of location.' },
+  { q: `Are your prices higher for ${boroughName} businesses?`, a: 'No. Our pricing is the same nationwide. You get the same service quality regardless of location.' },
+  { q: `I run a tech startup near Old Street — could I qualify for R&D tax relief?`, a: "Many tech businesses near the Old Street corridor qualify for R&D tax relief on qualifying innovation and development work. We assess eligibility and handle the full claim from £850 one-off." },
 ];
 
 const services = [
@@ -37,7 +35,7 @@ const services = [
   { title: 'R&D Tax Relief', desc: 'Professional R&D claims for tech, engineering, and innovation-led businesses.', href: '/r-and-d-tax-relief', price: 'From £850 one-off' },
 ];
 
-export default function CityPage() {
+export default function BoroughPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -45,9 +43,8 @@ export default function CityPage() {
       <Header />
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
 
-        <Breadcrumb items={[{ label: 'Accounting', href: '/services' }, { label: cityName, href: `/accounting/${citySlug}` }]} />
+        <Breadcrumb items={[{ label: 'Accounting', href: '/services' }, { label: 'London', href: '/accounting/london' }, { label: boroughName, href: `/accounting/${boroughSlug}` }]} />
 
-        {/* Standalone Compliance Frame */}
         <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
             <p className="font-ui text-xs" style={{ color: 'var(--muted)' }}>
@@ -59,19 +56,18 @@ export default function CityPage() {
           </div>
         </div>
 
-        {/* Hero */}
         <section className="px-6 md:px-10 py-16 md:py-24" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
-            <p className="section-label mb-4">Local Accounting Services</p>
+            <p className="section-label mb-4">London Borough Accounting</p>
             <h1 className="font-display mb-6" style={{ fontSize: 'clamp(36px,6vw,72px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
-              Accounting Services<br />in <em style={{ color: 'var(--primary)' }}>{cityName}</em>
+              Accounting Services<br />in <em style={{ color: 'var(--primary)' }}>{boroughName}</em>
             </h1>
             <p className="font-ui mb-8 max-w-2xl" style={{ color: 'var(--muted)', fontSize: '18px', lineHeight: 1.7 }}>
-              Reckonwell serves {businessCount} businesses in {cityDesc}. Transparent pricing, no hidden fees, and a named accountant who knows your business.
+              Reckonwell serves businesses across {boroughDesc}. From creative agencies and media companies to tech businesses near the Old Street corridor — transparent pricing, no hidden fees, and a named accountant who knows your business.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>
-                Get Your {cityName} Quote →
+                Get Your {boroughName} Quote →
               </Link>
               <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>
                 Ask a Question
@@ -81,17 +77,14 @@ export default function CityPage() {
         </section>
 
         <CertifiedPartneredSection variant="full" />
-
         <TrustHonestySection />
-
         <TheDifferenceSection />
 
-        {/* Services Grid */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
             <p className="section-label mb-4">Our Services</p>
             <h2 className="font-display mb-12" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Compliance services for {cityName} businesses
+              Compliance services for {boroughName} businesses
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {services?.map((svc, i) => (
@@ -100,9 +93,7 @@ export default function CityPage() {
                   <p className="font-ui text-sm mb-4 flex-1" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>{svc?.desc}</p>
                   <div className="flex items-center justify-between mt-2">
                     <span className="font-display" style={{ color: 'var(--primary)', fontSize: '18px', fontWeight: 400 }}>{svc?.price}</span>
-                    <Link href={svc?.href} className="font-ui text-xs uppercase tracking-widest" style={{ color: 'var(--primary)' }}>
-                      Learn more →
-                    </Link>
+                    <Link href={svc?.href} className="font-ui text-xs uppercase tracking-widest" style={{ color: 'var(--primary)' }}>Learn more →</Link>
                   </div>
                 </div>
               ))}
@@ -110,12 +101,11 @@ export default function CityPage() {
           </div>
         </section>
 
-        {/* Pricing Table */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Transparent Pricing</p>
             <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              See your exact {cityName} accounting price
+              See your exact {boroughName} accounting price
             </h2>
             <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
               Pricing is based on your business type, income level, and the services you need. Use our quotation calculator to get your exact monthly price in under 2 minutes — no sales calls required.
@@ -128,118 +118,62 @@ export default function CityPage() {
 
         <ReferralTeaserSection />
 
-        {/* FAQ */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto">
             <p className="section-label mb-4">FAQ</p>
             <h2 className="font-display mb-10" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Questions from {cityName} businesses
+              Questions from {boroughName} businesses
             </h2>
             <div className="space-y-0">
               {faqs?.map((faq, i) => (
                 <div key={i} style={{ borderBottom: '1px solid var(--gold-border)' }}>
-                  <button
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    className="w-full flex justify-between items-center py-5 text-left"
-                    style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-                  >
+                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex justify-between items-center py-5 text-left" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
                     <span className="font-ui font-medium pr-4" style={{ color: 'var(--foreground)', fontSize: '15px' }}>{faq?.q}</span>
                     <span style={{ color: 'var(--primary)', fontSize: '20px', flexShrink: 0, transition: 'transform 0.2s', transform: openFaq === i ? 'rotate(45deg)' : 'none' }}>+</span>
                   </button>
-                  {openFaq === i && (
-                    <p className="font-ui text-sm pb-5" style={{ color: 'var(--muted)', lineHeight: 1.7 }}>{faq?.a}</p>
-                  )}
+                  {openFaq === i && <p className="font-ui text-sm pb-5" style={{ color: 'var(--muted)', lineHeight: 1.7 }}>{faq?.a}</p>}
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Get Started</p>
             <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Get your {cityName} accounting quote
+              Get your {boroughName} accounting quote
             </h2>
-            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
-              Transparent pricing. No sales calls. See your exact monthly price in under 2 minutes.
-            </p>
+            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>Transparent pricing. No sales calls. See your exact monthly price in under 2 minutes.</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>
-                Get Your Quote →
-              </Link>
-              <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>
-                Speak to an Accountant
-              </Link>
+              <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>Get Your Quote →</Link>
+              <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>Speak to an Accountant</Link>
             </div>
           </div>
         </section>
 
-        {/* Also Serving Nearby */}
         <section className="px-6 md:px-10 py-8" style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.03)' }}>
           <div className="max-w-5xl mx-auto">
             <p className="font-ui text-xs mb-3" style={{ color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}>Also Serving Nearby</p>
             <div className="flex flex-wrap gap-4">
-              {nearbyCities?.map((city) => (
-                <Link
-                  key={city?.href}
-                  href={city?.href}
-                  className="font-ui text-sm"
-                  style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}
-                >
-                  {city?.name}
-                </Link>
+              {nearbyBoroughs?.map((borough) => (
+                <Link key={borough?.href} href={borough?.href} className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{borough?.name}</Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* London Boroughs We Serve */}
-        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
+        <section className="px-6 md:px-10 py-6" style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.02)' }}>
           <div className="max-w-5xl mx-auto">
-            <p className="section-label mb-4">London Boroughs We Serve</p>
-            <h2 className="font-display mb-10" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Local expertise, borough by borough.
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-              {[
-                { name: 'Brent', href: '/accounting/brent' },
-                { name: 'Camden', href: '/accounting/camden' },
-                { name: 'Croydon', href: '/accounting/croydon' },
-                { name: 'Ealing', href: '/accounting/ealing' },
-                { name: 'Hackney', href: '/accounting/hackney' },
-                { name: 'Hounslow', href: '/accounting/hounslow' },
-                { name: 'Islington', href: '/accounting/islington' },
-                { name: 'Kensington & Chelsea', href: '/accounting/kensington-and-chelsea' },
-                { name: 'Lambeth', href: '/accounting/lambeth' },
-                { name: 'Newham', href: '/accounting/newham' },
-                { name: 'Southwark', href: '/accounting/southwark' },
-                { name: 'Tower Hamlets', href: '/accounting/tower-hamlets' },
-                { name: 'Wandsworth', href: '/accounting/wandsworth' },
-                { name: 'Westminster', href: '/accounting/westminster' },
-              ]?.map((borough) => (
-                <Link
-                  key={borough?.href}
-                  href={borough?.href}
-                  className="p-3 border font-ui text-sm text-center"
-                  style={{ borderColor: 'var(--gold-border)', color: 'var(--primary)', textDecoration: 'none', transition: 'background 0.15s' }}
-                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(201,168,76,0.08)')}
-                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
-                >
-                  {borough?.name}
-                </Link>
-              ))}
-            </div>
+            <Link href="/accounting/london" className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+              Part of Greater London — see our full London accounting services →
+            </Link>
           </div>
         </section>
 
-        {/* Fractional Finance Callout */}
         <section className="px-6 md:px-10 py-8" style={{ borderTop: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.04)' }}>
           <div className="max-w-3xl mx-auto text-center">
-            <p className="font-ui text-sm mb-2" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>
-              Need a full finance team for your {cityName} business?
-            </p>
+            <p className="font-ui text-sm mb-2" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>Need a full finance team for your {boroughName} business?</p>
             <Link href="/" className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
               Our Fractional Finance Department handles all of this and more — daily →
             </Link>
@@ -248,21 +182,14 @@ export default function CityPage() {
       </main>
       <Footer />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'LocalBusiness',
-        name: 'Reckonwell',
-        description: `Accounting services for businesses in ${cityName}. Self-employed, limited company, MTD, and R&D tax relief.`,
-        url: `https://reckonwell.com/accounting/${citySlug}`,
-        telephone: '',
-        areaServed: { '@type': 'City', name: cityName },
-        geo: { '@type': 'GeoCoordinates', latitude: coords?.lat, longitude: coords?.lng },
-        priceRange: '££',
-        currenciesAccepted: 'GBP',
-        openingHours: 'Mo-Fr 09:00-17:30',
+        '@context': 'https://schema.org', '@type': 'LocalBusiness', name: 'Reckonwell',
+        description: `Accounting services for businesses in ${boroughName}, London.`,
+        url: `https://reckonwell.com/accounting/${boroughSlug}`,
+        areaServed: { '@type': 'AdministrativeArea', name: `${boroughName}, London` },
+        priceRange: '££', currenciesAccepted: 'GBP', openingHours: 'Mo-Fr 09:00-17:30',
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
+        '@context': 'https://schema.org', '@type': 'FAQPage',
         mainEntity: faqs?.map(f => ({ '@type': 'Question', name: f?.q, acceptedAnswer: { '@type': 'Answer', text: f?.a } })),
       }) }} />
     </>
