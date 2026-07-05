@@ -11,6 +11,7 @@ import ServicesAndPricingSection from '@/app/components/ServicesAndPricingSectio
 import NationwideCoverageSection from '@/app/components/NationwideCoverageSection';
 import ClosingSection from '@/app/components/ClosingSection';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
+import TrustHonestySection from '@/app/components/TrustHonestySection';
 import CustomCursor from '@/app/components/CustomCursor';
 import USBanner from '@/components/USBanner';
 
@@ -74,6 +75,9 @@ export default function HomePage() {
           </section>
           <section role="region" aria-label="Get in touch">
             <ClosingSection />
+          </section>
+          <section role="region" aria-label="Trust and transparency">
+            <TrustHonestySection />
           </section>
           <section role="region" aria-label="Referral partner programme">
             <ReferralTeaserSection />

@@ -4,14 +4,23 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
+import TrustHonestySection from '@/app/components/TrustHonestySection';
+import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const cityName = 'London';
 const citySlug = 'london';
 const cityDesc = 'the UK\'s largest business hub';
 const businessCount = '400,000+';
 const coords = { lat: 51.5074, lng: -0.1278 };
+
+const nearbyCities = [
+  { name: 'Cambridge', href: '/accounting/cambridge' },
+  { name: 'Oxford', href: '/accounting/oxford' },
+  { name: 'Brighton', href: '/accounting/brighton' },
+];
 
 const faqs = [
   { q: `Do you work with businesses based in ${cityName}?`, a: `Yes. We work with businesses across ${cityName} and the wider UK remotely. All onboarding, filing, and communication is handled online — no need to visit an office.` },
@@ -35,6 +44,8 @@ export default function CityPage() {
     <>
       <Header />
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
+
+        <Breadcrumb items={[{ label: 'Accounting', href: '/services' }, { label: cityName, href: `/accounting/${citySlug}` }]} />
 
         {/* Standalone Compliance Frame */}
         <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)' }}>
@@ -70,6 +81,8 @@ export default function CityPage() {
         </section>
 
         <CertifiedPartneredSection variant="full" />
+
+        <TrustHonestySection />
 
         <TheDifferenceSection />
 
@@ -112,6 +125,8 @@ export default function CityPage() {
             </Link>
           </div>
         </section>
+
+        <ReferralTeaserSection />
 
         {/* FAQ */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
@@ -157,6 +172,64 @@ export default function CityPage() {
               <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>
                 Speak to an Accountant
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Also Serving Nearby */}
+        <section className="px-6 md:px-10 py-8" style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.03)' }}>
+          <div className="max-w-5xl mx-auto">
+            <p className="font-ui text-xs mb-3" style={{ color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}>Also Serving Nearby</p>
+            <div className="flex flex-wrap gap-4">
+              {nearbyCities?.map((city) => (
+                <Link
+                  key={city?.href}
+                  href={city?.href}
+                  className="font-ui text-sm"
+                  style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+                >
+                  {city?.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* London Boroughs We Serve */}
+        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
+          <div className="max-w-5xl mx-auto">
+            <p className="section-label mb-4">London Boroughs We Serve</p>
+            <h2 className="font-display mb-10" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              Local expertise, borough by borough.
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+              {[
+                { name: 'Brent', href: '/accounting/brent' },
+                { name: 'Camden', href: '/accounting/camden' },
+                { name: 'Croydon', href: '/accounting/croydon' },
+                { name: 'Ealing', href: '/accounting/ealing' },
+                { name: 'Hackney', href: '/accounting/hackney' },
+                { name: 'Hounslow', href: '/accounting/hounslow' },
+                { name: 'Islington', href: '/accounting/islington' },
+                { name: 'Kensington & Chelsea', href: '/accounting/kensington-and-chelsea' },
+                { name: 'Lambeth', href: '/accounting/lambeth' },
+                { name: 'Newham', href: '/accounting/newham' },
+                { name: 'Southwark', href: '/accounting/southwark' },
+                { name: 'Tower Hamlets', href: '/accounting/tower-hamlets' },
+                { name: 'Wandsworth', href: '/accounting/wandsworth' },
+                { name: 'Westminster', href: '/accounting/westminster' },
+              ]?.map((borough) => (
+                <Link
+                  key={borough?.href}
+                  href={borough?.href}
+                  className="p-3 border font-ui text-sm text-center"
+                  style={{ borderColor: 'var(--gold-border)', color: 'var(--primary)', textDecoration: 'none', transition: 'background 0.15s' }}
+                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(201,168,76,0.08)')}
+                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+                >
+                  {borough?.name}
+                </Link>
+              ))}
             </div>
           </div>
         </section>

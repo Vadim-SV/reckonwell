@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
+import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const faqs = [
   { q: 'What does corporation tax accounting include?', a: 'Annual statutory accounts, CT600 corporation tax return, Companies House filing, and ongoing tax planning. We handle every filing deadline so nothing reaches your desk.' },
@@ -21,6 +23,8 @@ export default function LimitedCompanyAccountingPage() {
     <>
       <Header />
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
+
+        <Breadcrumb items={[{ label: 'Services', href: '/services' }, { label: 'Limited Company Accounting', href: '/limited-company-accounting' }]} />
 
         {/* Standalone Compliance Frame */}
         <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)' }}>
@@ -72,6 +76,8 @@ export default function LimitedCompanyAccountingPage() {
             </Link>
           </div>
         </section>
+
+        <ReferralTeaserSection />
 
         {/* What's Included */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>

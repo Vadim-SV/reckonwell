@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
+import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const faqs = [
   { q: 'Do I actually need MTD?', a: 'If you earn over £50k as self-employed or a landlord, yes. It\'s not optional. HMRC enforces it. Some exceptions exist (recent startup, minimal income), but if you filed a tax return showing £50k+, you\'re in.' },
@@ -21,6 +23,8 @@ export default function MakingTaxDigitalPage() {
     <>
       <Header />
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
+
+        <Breadcrumb items={[{ label: 'Services', href: '/services' }, { label: 'Making Tax Digital', href: '/making-tax-digital' }]} />
 
         {/* Standalone Compliance Frame */}
         <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)' }}>
@@ -163,6 +167,8 @@ export default function MakingTaxDigitalPage() {
             </Link>
           </div>
         </section>
+
+        <ReferralTeaserSection />
 
         {/* FAQ */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>

@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
+import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const city = 'Birmingham';
 const citySlug = 'birmingham';
@@ -54,6 +56,8 @@ export default function BirminghamBookkeepingServicesPage() {
       <Header />
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
 
+        <Breadcrumb items={[{ label: 'Services', href: '/services' }, { label: 'Birmingham', href: '/accounting/birmingham' }, { label: 'Bookkeeping', href: '/birmingham-bookkeeping-services' }]} />
+
         {/* Banner */}
         <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
@@ -102,6 +106,8 @@ export default function BirminghamBookkeepingServicesPage() {
             </Link>
           </div>
         </section>
+
+        <ReferralTeaserSection />
 
         {/* What's Included */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>

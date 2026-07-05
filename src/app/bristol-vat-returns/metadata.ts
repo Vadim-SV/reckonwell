@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'VAT Returns Bristol | MTD-Compliant VAT Filing | Reckonwell',
+  title: 'VAT Returns Bristol | From £60/mo | Reckonwell',
   description: 'Quarterly VAT returns for Bristol businesses. MTD-compliant filing, flat rate scheme analysis, hospitality VAT advice, and post-Brexit EU VAT guidance. From £60/month.',
   alternates: {
     canonical: 'https://reckonwell.com/bristol-vat-returns',
   },
   openGraph: {
-    title: 'VAT Returns Bristol | MTD-Compliant VAT Filing | Reckonwell',
+    title: 'VAT Returns Bristol | From £60/mo | Reckonwell',
     description: 'Quarterly VAT returns for Bristol businesses. MTD-compliant filing, flat rate scheme analysis, hospitality VAT advice, and post-Brexit EU VAT guidance. From £60/month.',
     url: 'https://reckonwell.com/bristol-vat-returns',
     type: 'website',

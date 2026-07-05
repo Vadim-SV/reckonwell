@@ -4,11 +4,20 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
+import TrustHonestySection from '@/app/components/TrustHonestySection';
+import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const cityName = 'Sheffield';
 const citySlug = 'sheffield';
+
+const nearbyCities = [
+  { name: 'Leeds', href: '/accounting/leeds' },
+  { name: 'Manchester', href: '/accounting/manchester' },
+  { name: 'Nottingham', href: '/accounting/nottingham' },
+];
 const cityDesc = 'a dynamic northern city with a strong manufacturing and creative economy';
 const businessCount = '25,000+';
 const coords = { lat: 53.3811, lng: -1.4701 };
@@ -70,7 +79,11 @@ export default function CityPage() {
           </div>
         </section>
 
+        <Breadcrumb items={[{ label: 'Accounting', href: '/services' }, { label: cityName, href: `/accounting/${citySlug}` }]} />
+
         <CertifiedPartneredSection variant="full" />
+
+        <TrustHonestySection />
 
         <TheDifferenceSection />
 
@@ -113,6 +126,8 @@ export default function CityPage() {
             </Link>
           </div>
         </section>
+
+        <ReferralTeaserSection />
 
         {/* FAQ */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
@@ -158,6 +173,20 @@ export default function CityPage() {
               <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>
                 Speak to an Accountant
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Also Serving Nearby */}
+        <section className="px-6 md:px-10 py-8" style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.03)' }}>
+          <div className="max-w-5xl mx-auto">
+            <p className="font-ui text-xs mb-3" style={{ color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}>Also Serving Nearby</p>
+            <div className="flex flex-wrap gap-4">
+              {nearbyCities?.map((city) => (
+                <Link key={city?.href} href={city?.href} className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                  {city?.name}
+                </Link>
+              ))}
             </div>
           </div>
         </section>
