@@ -273,7 +273,7 @@ export default function Header() {
             <Link
               href="/quotation-calculator"
               className="btn-ghost font-ui tracking-widest uppercase transition-colors duration-200"
-              style={{ padding: '8px 18px', fontSize: '10px', letterSpacing: '2px', borderRadius: '2px' }}
+              style={{ padding: '8px 18px', fontSize: '10px', letterSpacing: '2px', borderRadius: '2px', border: '1px solid rgba(245, 242, 236, 1)' }}
             >
               Instant Quote
             </Link>
