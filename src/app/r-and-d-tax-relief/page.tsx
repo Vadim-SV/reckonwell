@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { trackEvent } from '@/lib/analytics';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
+import Breadcrumb from '@/components/Breadcrumb';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -221,6 +222,7 @@ export default function RDTaxReliefPage() {
       </nav>
 
       {/* Standalone Compliance Frame */}
+      <Breadcrumb items={[{ label: 'Services', href: '/services' }, { label: 'R&D Tax Relief', href: '/r-and-d-tax-relief' }]} />
       <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid rgba(201,168,76,0.18)' }}>
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <p className="font-ui text-xs" style={{ color: 'rgba(154,148,144,0.9)' }}>

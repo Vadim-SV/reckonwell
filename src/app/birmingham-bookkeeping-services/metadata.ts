@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Bookkeeping Services Birmingham | Monthly Management Accounts | Reckonwell',
+  title: 'Bookkeeping Birmingham | From £150/mo | Reckonwell',
   description: 'Professional bookkeeping for Birmingham businesses. Monthly management accounts, bank reconciliation, CIS compliance, and cloud accounting. From £150/month.',
   alternates: {
     canonical: 'https://reckonwell.com/birmingham-bookkeeping-services',
   },
   openGraph: {
-    title: 'Bookkeeping Services Birmingham | Monthly Management Accounts | Reckonwell',
+    title: 'Bookkeeping Birmingham | From £150/mo | Reckonwell',
     description: 'Professional bookkeeping for Birmingham businesses. Monthly management accounts, bank reconciliation, CIS compliance, and cloud accounting. From £150/month.',
     url: 'https://reckonwell.com/birmingham-bookkeeping-services',
     type: 'website',

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const city = 'Bristol';
 const citySlug = 'bristol';
@@ -54,6 +55,8 @@ export default function BristolVatReturnsPage() {
     <>
       <Header />
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
+
+        <Breadcrumb items={[{ label: 'Services', href: '/services' }, { label: 'Bristol', href: '/accounting/bristol' }, { label: 'VAT Returns', href: '/bristol-vat-returns' }]} />
 
         {/* Banner */}
         <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)' }}>

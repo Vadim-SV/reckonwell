@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const faqs = [
@@ -21,6 +22,8 @@ export default function PayrollServicesPage() {
     <>
       <Header />
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
+
+        <Breadcrumb items={[{ label: 'Services', href: '/services' }, { label: 'Payroll Services', href: '/payroll-services' }]} />
 
         {/* Hero */}
         <section className="px-6 md:px-10 py-16 md:py-24" style={{ borderBottom: '1px solid var(--gold-border)' }}>

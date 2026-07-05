@@ -4,8 +4,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
+import TrustHonestySection from '@/app/components/TrustHonestySection';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const cityName = 'Manchester';
@@ -13,6 +15,12 @@ const citySlug = 'manchester';
 const cityDesc = 'the North West\'s leading business centre';
 const businessCount = '80,000+';
 const coords = { lat: 53.4808, lng: -2.2426 };
+
+const nearbyCities = [
+  { name: 'Leeds', href: '/accounting/leeds' },
+  { name: 'Sheffield', href: '/accounting/sheffield' },
+  { name: 'Liverpool', href: '/accounting/liverpool' },
+];
 
 const faqs = [
   { q: `Do you work with businesses based in ${cityName}?`, a: `Yes. We work with businesses across ${cityName} and the wider UK remotely. All onboarding, filing, and communication is handled online — no need to visit an office.` },
@@ -36,6 +44,8 @@ export default function CityPage() {
     <>
       <Header />
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
+
+        <Breadcrumb items={[{ label: 'Accounting', href: '/services' }, { label: cityName, href: `/accounting/${citySlug}` }]} />
 
         <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
@@ -69,6 +79,8 @@ export default function CityPage() {
         </section>
 
         <CertifiedPartneredSection variant="full" />
+
+        <TrustHonestySection />
 
         <TheDifferenceSection />
 
@@ -130,7 +142,7 @@ export default function CityPage() {
           </div>
         </section>
 
-        <section className="px-6 md:px-10 py-16 md:py-20">
+        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Get Started</p>
             <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
@@ -142,6 +154,20 @@ export default function CityPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>Get Your Quote →</Link>
               <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>Speak to an Accountant</Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Also Serving Nearby */}
+        <section className="px-6 md:px-10 py-8" style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.03)' }}>
+          <div className="max-w-5xl mx-auto">
+            <p className="font-ui text-xs mb-3" style={{ color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}>Also Serving Nearby</p>
+            <div className="flex flex-wrap gap-4">
+              {nearbyCities?.map((city) => (
+                <Link key={city?.href} href={city?.href} className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                  {city?.name}
+                </Link>
+              ))}
             </div>
           </div>
         </section>
