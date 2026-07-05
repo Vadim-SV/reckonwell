@@ -12,7 +12,6 @@ import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 const cityName = 'Belfast';
 const citySlug = 'belfast';
 const cityDesc = 'Northern Ireland\'s capital and a thriving hub for tech, fintech, and professional services';
-const businessCount = '25,000+';
 const coords = { lat: 54.5973, lng: -5.9301 };
 
 const faqs = [
@@ -61,7 +60,7 @@ export default function CityPage() {
               Accounting Services<br />in <em style={{ color: 'var(--primary)' }}>{cityName}</em>
             </h1>
             <p className="font-ui mb-8 max-w-2xl" style={{ color: 'var(--muted)', fontSize: '18px', lineHeight: 1.7 }}>
-              Reckonwell serves {businessCount} businesses in {cityDesc}. Transparent pricing, no hidden fees, and a named accountant who knows your business.
+              Reckonwell works with founder-led businesses in {cityDesc} and across the UK. Transparent pricing, no hidden fees, and a named accountant who knows your business.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>

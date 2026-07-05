@@ -18,7 +18,6 @@ const nearbyCities = [
   { name: 'Coventry', href: '/accounting/coventry' },
 ];
 const cityDesc = 'a diverse and growing East Midlands city with strong retail, textile, and professional services sectors';
-const businessCount = '28,000+';
 const coords = { lat: 52.6369, lng: -1.1398 };
 
 const faqs = [
@@ -65,7 +64,7 @@ export default function CityPage() {
               Accounting Services<br />in <em style={{ color: 'var(--primary)' }}>{cityName}</em>
             </h1>
             <p className="font-ui mb-8 max-w-2xl" style={{ color: 'var(--muted)', fontSize: '18px', lineHeight: 1.7 }}>
-              Reckonwell serves {businessCount} businesses in {cityDesc}. Transparent pricing, no hidden fees, and a named accountant who knows your business.
+              Reckonwell works with founder-led businesses in {cityDesc} and across the UK. Transparent pricing, no hidden fees, and a named accountant who knows your business.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>
