@@ -7,7 +7,6 @@ import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
-import TrustHonestySection from '@/app/components/TrustHonestySection';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const cityName = 'Glasgow';
@@ -80,8 +79,6 @@ export default function CityPage() {
         <Breadcrumb items={[{ label: 'Accounting', href: '/services' }, { label: cityName, href: `/accounting/${citySlug}` }]} />
 
         <CertifiedPartneredSection variant="full" />
-
-        <TrustHonestySection />
 
         <TheDifferenceSection />
 
