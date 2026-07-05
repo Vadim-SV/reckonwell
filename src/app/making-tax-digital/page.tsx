@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
+import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const faqs = [
   { q: 'Do I actually need MTD?', a: 'If you earn over £50k as self-employed or a landlord, yes. It\'s not optional. HMRC enforces it. Some exceptions exist (recent startup, minimal income), but if you filed a tax return showing £50k+, you\'re in.' },
@@ -163,6 +164,8 @@ export default function MakingTaxDigitalPage() {
             </Link>
           </div>
         </section>
+
+        <ReferralTeaserSection />
 
         {/* FAQ */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>

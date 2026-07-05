@@ -4,6 +4,7 @@ import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { trackEvent } from '@/lib/analytics';
+import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -401,6 +402,8 @@ export default function RDTaxReliefPage() {
           )}
         </div>
       </section>
+
+      <ReferralTeaserSection />
 
       {/* How We Help */}
       <section className="py-20 md:py-28 px-6 md:px-10" style={{ backgroundColor: '#0a0a0a' }}>

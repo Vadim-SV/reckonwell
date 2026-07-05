@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const faqs = [
   {
@@ -128,6 +129,8 @@ export default function VatReturnsPage() {
             </Link>
           </div>
         </section>
+
+        <ReferralTeaserSection />
 
         {/* What's Included */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>

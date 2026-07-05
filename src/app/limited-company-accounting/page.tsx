@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
+import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const faqs = [
   { q: 'What does corporation tax accounting include?', a: 'Annual statutory accounts, CT600 corporation tax return, Companies House filing, and ongoing tax planning. We handle every filing deadline so nothing reaches your desk.' },
@@ -72,6 +73,8 @@ export default function LimitedCompanyAccountingPage() {
             </Link>
           </div>
         </section>
+
+        <ReferralTeaserSection />
 
         {/* What's Included */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>

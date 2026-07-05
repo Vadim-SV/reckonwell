@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
+import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const cityName = 'Bristol';
 const citySlug = 'bristol';
@@ -106,6 +107,8 @@ export default function CityPage() {
             </Link>
           </div>
         </section>
+
+        <ReferralTeaserSection />
 
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto">
