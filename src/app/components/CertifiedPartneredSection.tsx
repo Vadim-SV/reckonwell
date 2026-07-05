@@ -48,7 +48,7 @@ export default function CertifiedPartneredSection({ variant = 'full' }: Certifie
                 <img
                   src={partner.logo}
                   alt={partner.name + ' logo'}
-                  style={{ width: '110px', height: '60px', objectFit: 'contain' }}
+                  style={{ width: '160px', height: '80px', objectFit: 'contain' }}
                 />
               </div>
             ))}
