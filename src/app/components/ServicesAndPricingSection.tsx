@@ -235,13 +235,13 @@ export default function ServicesAndPricingSection() {
                     </p>
                     <h3
                       className="font-display mb-1"
-                      style={{ fontFamily: 'var(--font-display)', fontSize: '16px', fontWeight: 400, color: card.cta ? 'var(--primary)' : 'var(--foreground)', lineHeight: 1.2, letterSpacing: '-0.2px' }}
+                      style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 400, color: card.cta ? 'var(--primary)' : 'var(--foreground)', lineHeight: 1.2, letterSpacing: '-0.2px' }}
                     >
                       {card.title}
                     </h3>
                     <p
                       className="font-serif"
-                      style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '13px', color: 'var(--body-text)', lineHeight: 1.5 }}
+                      style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '15px', color: 'var(--body-text)', lineHeight: 1.5 }}
                     >
                       {card.body}
                     </p>

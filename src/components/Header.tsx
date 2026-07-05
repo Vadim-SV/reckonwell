@@ -127,7 +127,7 @@ export default function Header() {
               src="/assets/images/Reckonwell-1779490857835.png"
               alt="Reckonwell"
               className="block"
-              style={{ height: '28px', width: 'auto', objectFit: 'contain' }}
+              style={{ height: '20px', width: 'auto', objectFit: 'contain' }}
             />
           </a>
 
@@ -272,8 +272,8 @@ export default function Header() {
             </Link>
             <Link
               href="/quotation-calculator"
-              className="btn-ghost font-ui tracking-widest uppercase transition-colors duration-200"
-              style={{ padding: '8px 18px', fontSize: '10px', letterSpacing: '2px', borderRadius: '2px', border: '1px solid rgba(245, 242, 236, 1)' }}
+              className="font-ui tracking-widest uppercase transition-colors duration-200"
+              style={{ padding: '8px 18px', fontSize: '10px', letterSpacing: '2px', borderRadius: '2px', border: '1px solid rgba(245, 242, 236, 1)', color: 'var(--foreground)', backgroundColor: 'transparent' }}
             >
               Instant Quote
             </Link>

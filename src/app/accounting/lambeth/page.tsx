@@ -7,7 +7,6 @@ import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
-import TrustHonestySection from '@/app/components/TrustHonestySection';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const boroughName = 'Lambeth';
@@ -66,7 +65,6 @@ export default function BoroughPage() {
           </div>
         </section>
         <CertifiedPartneredSection variant="full" />
-        <TrustHonestySection />
         <TheDifferenceSection />
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">

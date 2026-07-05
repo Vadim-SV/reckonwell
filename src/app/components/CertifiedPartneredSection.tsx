@@ -33,7 +33,7 @@ export default function CertifiedPartneredSection({ variant = 'full' }: Certifie
         <div className="flex flex-col items-center gap-4 w-full">
           <p
             className="font-ui text-center"
-            style={{ fontSize: '11px', color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}
+            style={{ fontSize: '11px', color: 'var(--primary)', letterSpacing: '1px', textTransform: 'uppercase' }}
           >
             Certified &amp; Partnering With
           </p>
@@ -41,9 +41,9 @@ export default function CertifiedPartneredSection({ variant = 'full' }: Certifie
             {partners.map((partner) => (
               <div
                 key={partner.name}
-                style={{ opacity: 0.4, transition: 'opacity 0.3s ease' }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = '0.85')}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = '0.4')}
+                style={{ opacity: 1, transition: 'opacity 0.3s ease' }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = '1')}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = '1')}
               >
                 <img
                   src={partner.logo}

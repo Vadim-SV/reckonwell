@@ -252,9 +252,6 @@ function QuotationCalculatorContent() {
   const [vatRegRequired, setVatRegRequired] = useState(false);
   const [softwareSetupRequired, setSoftwareSetupRequired] = useState(false);
 
-  // Panel
-  const [panelExpanded, setPanelExpanded] = useState(false);
-
   // Lead capture modal
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState('');
@@ -373,7 +370,7 @@ function QuotationCalculatorContent() {
           backgroundColor: 'var(--background)',
           minHeight: '100vh',
           paddingTop: '80px',
-          paddingBottom: '200px',
+          paddingBottom: '60px',
         }}
       >
         {/* Hero */}
@@ -664,6 +661,73 @@ function QuotationCalculatorContent() {
               </div>
             </QuestionBlock>
 
+            {/* ── Totals & Breakdown ──────────────────────────────────────── */}
+            <div
+              className="p-5 md:p-6"
+              style={{ border: '1px solid var(--primary)', backgroundColor: 'rgba(201,168,76,0.04)' }}
+            >
+              {/* Totals row */}
+              <div className="flex gap-10 mb-6">
+                <div>
+                  <p className="font-ui text-xs uppercase tracking-widest mb-1" style={{ color: 'var(--muted)' }}>Monthly Recurring</p>
+                  <p className="font-display" style={{ fontSize: '28px', color: 'var(--primary)', fontWeight: 400 }}>
+                    {fmt(quote.monthlyTotal)}<span className="font-ui text-xs" style={{ color: 'var(--muted)' }}>/mo</span>
+                  </p>
+                </div>
+                <div>
+                  <p className="font-ui text-xs uppercase tracking-widest mb-1" style={{ color: 'var(--muted)' }}>One-Off Fees</p>
+                  <p className="font-display" style={{ fontSize: '28px', color: 'var(--foreground)', fontWeight: 400 }}>
+                    {fmt(quote.oneoffTotal)}
+                  </p>
+                </div>
+              </div>
+
+              {/* Breakdown */}
+              {quote.monthlyBreakdown.length === 0 && quote.oneoffBreakdown.length === 0 ? (
+                <p className="font-ui text-sm" style={{ color: 'var(--muted)' }}>
+                  Select services above to see your breakdown.
+                </p>
+              ) : (
+                <div className="space-y-5" style={{ borderTop: '1px solid var(--gold-border)', paddingTop: '20px' }}>
+                  {quote.monthlyBreakdown.length > 0 && (
+                    <div>
+                      <p className="font-ui text-xs uppercase tracking-widest mb-3" style={{ color: 'var(--muted)' }}>Monthly Recurring</p>
+                      <div className="space-y-2">
+                        {quote.monthlyBreakdown.map((item, i) => (
+                          <div key={i} className="flex justify-between">
+                            <span className="font-ui text-sm" style={{ color: 'var(--foreground)' }}>{item.label}</span>
+                            <span className="font-ui text-sm" style={{ color: 'var(--primary)' }}>{fmt(item.amount)}</span>
+                          </div>
+                        ))}
+                        <div className="flex justify-between pt-2" style={{ borderTop: '1px solid var(--gold-border)' }}>
+                          <span className="font-ui text-sm font-medium" style={{ color: 'var(--foreground)' }}>Monthly Total</span>
+                          <span className="font-ui text-sm font-medium" style={{ color: 'var(--primary)' }}>{fmt(quote.monthlyTotal)}/mo</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {quote.oneoffBreakdown.length > 0 && (
+                    <div>
+                      <p className="font-ui text-xs uppercase tracking-widest mb-3" style={{ color: 'var(--muted)' }}>One-Off Fees</p>
+                      <div className="space-y-2">
+                        {quote.oneoffBreakdown.map((item, i) => (
+                          <div key={i} className="flex justify-between">
+                            <span className="font-ui text-sm" style={{ color: 'var(--foreground)' }}>{item.label}</span>
+                            <span className="font-ui text-sm" style={{ color: 'var(--foreground)' }}>{fmt(item.amount)}</span>
+                          </div>
+                        ))}
+                        <div className="flex justify-between pt-2" style={{ borderTop: '1px solid var(--gold-border)' }}>
+                          <span className="font-ui text-sm font-medium" style={{ color: 'var(--foreground)' }}>One-Off Total</span>
+                          <span className="font-ui text-sm font-medium" style={{ color: 'var(--foreground)' }}>{fmt(quote.oneoffTotal)}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
             {/* Bottom actions */}
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
               <button
@@ -686,102 +750,6 @@ function QuotationCalculatorContent() {
           </div>
         </section>
       </main>
-
-      {/* ── Fixed price panel ─────────────────────────────────────────────── */}
-      <div
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          backgroundColor: '#0d0d0d',
-          borderTop: '1px solid var(--primary)',
-          zIndex: 50,
-          maxHeight: panelExpanded ? '70vh' : 'auto',
-          overflowY: panelExpanded ? 'auto' : 'visible',
-          transition: 'max-height 0.3s ease',
-        }}
-      >
-        {/* Compact summary — always visible */}
-        <button
-          type="button"
-          onClick={() => setPanelExpanded(p => !p)}
-          className="w-full"
-          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-        >
-          <div className="flex items-center justify-between px-6 py-4">
-            <div className="flex gap-8">
-              <div className="text-left">
-                <p className="font-ui text-xs uppercase tracking-widest mb-1" style={{ color: 'var(--muted)' }}>Monthly</p>
-                <p className="font-display" style={{ fontSize: '22px', color: 'var(--primary)', fontWeight: 400 }}>
-                  {fmt(quote.monthlyTotal)}<span className="font-ui text-xs" style={{ color: 'var(--muted)' }}>/mo</span>
-                </p>
-              </div>
-              <div className="text-left">
-                <p className="font-ui text-xs uppercase tracking-widest mb-1" style={{ color: 'var(--muted)' }}>One-Off</p>
-                <p className="font-display" style={{ fontSize: '22px', color: 'var(--foreground)', fontWeight: 400 }}>
-                  {fmt(quote.oneoffTotal)}
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="font-ui text-xs" style={{ color: 'var(--muted)' }}>
-                {panelExpanded ? 'Hide breakdown' : 'See breakdown'}
-              </span>
-              <span style={{ color: 'var(--primary)', fontSize: '12px', transform: panelExpanded ? 'rotate(180deg)' : 'none', display: 'inline-block', transition: 'transform 0.2s' }}>▲</span>
-            </div>
-          </div>
-        </button>
-
-        {/* Expanded breakdown */}
-        {panelExpanded && (
-          <div className="px-6 pb-6" style={{ borderTop: '1px solid var(--gold-border)' }}>
-            <div className="max-w-2xl mx-auto pt-4">
-              {quote.monthlyBreakdown.length > 0 && (
-                <div className="mb-4">
-                  <p className="font-ui text-xs uppercase tracking-widest mb-3" style={{ color: 'var(--muted)' }}>Monthly Recurring</p>
-                  <div className="space-y-2">
-                    {quote.monthlyBreakdown.map((item, i) => (
-                      <div key={i} className="flex justify-between">
-                        <span className="font-ui text-sm" style={{ color: 'var(--foreground)' }}>{item.label}</span>
-                        <span className="font-ui text-sm" style={{ color: 'var(--primary)' }}>{fmt(item.amount)}</span>
-                      </div>
-                    ))}
-                    <div className="flex justify-between pt-2" style={{ borderTop: '1px solid var(--gold-border)' }}>
-                      <span className="font-ui text-sm font-medium" style={{ color: 'var(--foreground)' }}>Monthly Total</span>
-                      <span className="font-ui text-sm font-medium" style={{ color: 'var(--primary)' }}>{fmt(quote.monthlyTotal)}/mo</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {quote.oneoffBreakdown.length > 0 && (
-                <div>
-                  <p className="font-ui text-xs uppercase tracking-widest mb-3" style={{ color: 'var(--muted)' }}>One-Off Fees</p>
-                  <div className="space-y-2">
-                    {quote.oneoffBreakdown.map((item, i) => (
-                      <div key={i} className="flex justify-between">
-                        <span className="font-ui text-sm" style={{ color: 'var(--foreground)' }}>{item.label}</span>
-                        <span className="font-ui text-sm" style={{ color: 'var(--foreground)' }}>{fmt(item.amount)}</span>
-                      </div>
-                    ))}
-                    <div className="flex justify-between pt-2" style={{ borderTop: '1px solid var(--gold-border)' }}>
-                      <span className="font-ui text-sm font-medium" style={{ color: 'var(--foreground)' }}>One-Off Total</span>
-                      <span className="font-ui text-sm font-medium" style={{ color: 'var(--foreground)' }}>{fmt(quote.oneoffTotal)}</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {quote.monthlyBreakdown.length === 0 && quote.oneoffBreakdown.length === 0 && (
-                <p className="font-ui text-sm" style={{ color: 'var(--muted)' }}>
-                  Select services above to see your breakdown.
-                </p>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
 
       {/* ── Lead capture modal ────────────────────────────────────────────── */}
       {showModal && (

@@ -98,7 +98,7 @@ export default function HeroSection() {
           <motion.h1 {...fadeUp(0.2)} className="hero-h1 mb-4 md:mb-6" suppressHydrationWarning>
             Run your business.
             <br />
-            <span className="gold-italic">We take care about your finances.</span>
+            <span className="gold-italic" suppressHydrationWarning>We take care of your finances.</span>
           </motion.h1>
 
           {/* Differentiator */}
@@ -183,6 +183,6 @@ export default function HeroSection() {
 
       {/* Certified & Partnered — shared component, compact variant */}
       <CertifiedPartneredSection variant="compact" />
-    </>
-  );
+    </>);
+
 }

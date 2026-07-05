@@ -7,7 +7,6 @@ import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
-import TrustHonestySection from '@/app/components/TrustHonestySection';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const boroughName = 'Camden';
@@ -80,8 +79,6 @@ export default function BoroughPage() {
         </section>
 
         <CertifiedPartneredSection variant="full" />
-
-        <TrustHonestySection />
 
         <TheDifferenceSection />
 
