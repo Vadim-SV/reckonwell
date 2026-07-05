@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useRegion, Region } from '@/context/RegionContext';
 
 const complianceLinks = [
@@ -78,6 +79,9 @@ export default function Header() {
   const [complianceOpen, setComplianceOpen] = useState(false);
   const fractionalRef = useRef<HTMLDivElement>(null);
   const complianceRef = useRef<HTMLDivElement>(null);
+
+  const pathname = usePathname();
+  const isUSSite = pathname?.startsWith('/us');
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -196,6 +200,7 @@ export default function Header() {
             </div>
 
             {/* Compliance Services Dropdown */}
+            {!isUSSite && (
             <div className="relative" ref={complianceRef}>
               <button
                 onClick={() => { setComplianceOpen(!complianceOpen); setFractionalOpen(false); }}
@@ -245,6 +250,7 @@ export default function Header() {
                 </div>
               )}
             </div>
+            )}
 
             {/* Partner with Us */}
             <Link
@@ -343,6 +349,7 @@ export default function Header() {
           </div>
 
           {/* Mobile Compliance Services Section */}
+          {!isUSSite && (
           <div className="w-full text-center py-4" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
             <p className="font-display mb-4" style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px' }}>Compliance Services</p>
             <div>
@@ -360,6 +367,7 @@ export default function Header() {
               ))}
             </div>
           </div>
+          )}
 
           {/* Mobile Region Toggle */}
           <div className="w-full flex justify-center py-5" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
