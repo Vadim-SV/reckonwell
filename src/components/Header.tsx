@@ -127,7 +127,7 @@ export default function Header() {
               src="/assets/images/Reckonwell-1779490857835.png"
               alt="Reckonwell"
               className="block"
-              style={{ height: '16x', width: 'auto', objectFit: 'contain' }}
+              style={{ height: '10x', width: 'auto', objectFit: 'contain' }}
             />
           </a>
 
