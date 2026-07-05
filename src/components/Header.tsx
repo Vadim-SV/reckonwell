@@ -31,7 +31,7 @@ function RegionToggle({ compact = false }: { compact?: boolean }) {
         borderRadius: '2px',
         overflow: 'hidden',
         fontSize: compact ? '11px' : '10px',
-        letterSpacing: '1.5px',
+        letterSpacing: '2px',
       }}
       role="group"
       aria-label="Select region"
@@ -40,7 +40,7 @@ function RegionToggle({ compact = false }: { compact?: boolean }) {
         onClick={() => setRegion('UK')}
         className="font-ui uppercase transition-all duration-200"
         style={{
-          padding: compact ? '7px 12px' : '6px 11px',
+          padding: compact ? '7px 12px' : '8px 18px',
           background: isUK ? 'var(--primary)' : 'transparent',
           color: isUK ? '#080808' : 'var(--muted)',
           border: 'none',
@@ -55,7 +55,7 @@ function RegionToggle({ compact = false }: { compact?: boolean }) {
         onClick={() => setRegion('USA')}
         className="font-ui uppercase transition-all duration-200"
         style={{
-          padding: compact ? '7px 12px' : '6px 11px',
+          padding: compact ? '7px 12px' : '8px 18px',
           background: !isUK ? 'var(--primary)' : 'transparent',
           color: !isUK ? '#080808' : 'var(--muted)',
           border: 'none',
@@ -249,10 +249,11 @@ export default function Header() {
             {/* Partner with Us */}
             <Link
               href="/referrals"
-              className="font-ui text-xs tracking-widest uppercase transition-colors duration-200"
+              className="font-ui tracking-widest uppercase transition-colors duration-200"
               style={{
                 color: 'var(--primary)',
                 fontWeight: 400,
+                fontSize: '10px',
                 letterSpacing: '2px',
                 border: '1px solid var(--primary)',
                 padding: '8px 18px',
@@ -271,7 +272,7 @@ export default function Header() {
             </Link>
             <Link
               href="/quotation-calculator"
-              className="btn-ghost font-ui text-xs tracking-widest uppercase transition-colors duration-200"
+              className="btn-ghost font-ui tracking-widest uppercase transition-colors duration-200"
               style={{ padding: '8px 18px', fontSize: '10px', letterSpacing: '2px', borderRadius: '2px' }}
             >
               Instant Quote
