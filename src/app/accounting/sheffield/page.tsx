@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
+import TheDifferenceSection from '@/app/components/TheDifferenceSection';
 
 const cityName = 'Sheffield';
 const citySlug = 'sheffield';
@@ -71,6 +72,8 @@ export default function CityPage() {
 
         <CertifiedPartneredSection variant="full" />
 
+        <TheDifferenceSection />
+
         {/* Services Grid */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
@@ -97,29 +100,17 @@ export default function CityPage() {
 
         {/* Pricing Table */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Transparent Pricing</p>
-            <h2 className="font-display mb-12" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              What {cityName} businesses pay
+            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              See your exact {cityName} accounting price
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                { type: 'Self-Employed', price: '£80–£400', period: '/month', desc: 'Based on income level and complexity', cta: '/self-employed-accounting' },
-                { type: 'Limited Company', price: '£150–£750', period: '/month', desc: 'Based on profit, employees, and monitoring level', cta: '/limited-company-accounting' },
-                { type: 'Making Tax Digital', price: '£100–£250', period: '/month', desc: 'Quarterly MTD submissions for £50k+ earners', cta: '/making-tax-digital' },
-                { type: 'R&D Tax Relief', price: '£850–£2,500+', period: ' one-off', desc: 'Fixed fee to prepare and submit your R&D claim', cta: '/r-and-d-tax-relief' },
-              ]?.map((item, i) => (
-                <div key={i} className="p-6 border flex flex-col" style={{ borderColor: 'var(--gold-border)' }}>
-                  <p className="font-ui font-medium mb-2" style={{ color: 'var(--foreground)', fontSize: '13px', letterSpacing: '1px', textTransform: 'uppercase' }}>{item?.type}</p>
-                  <p className="font-display mb-1" style={{ fontSize: '24px', color: 'var(--primary)', fontWeight: 400 }}>{item?.price}<span className="font-ui text-xs" style={{ color: 'var(--muted)' }}>{item?.period}</span></p>
-                  <p className="font-ui text-xs mb-4 flex-1" style={{ color: 'var(--muted)', lineHeight: 1.5 }}>{item?.desc}</p>
-                  <Link href={item?.cta} className="font-ui text-xs uppercase tracking-widest" style={{ color: 'var(--primary)' }}>
-                    See details →
-                  </Link>
-                </div>
-              ))}
-            </div>
-            <p className="font-ui text-xs mt-6" style={{ color: 'var(--muted)' }}>Use our calculator for an exact price based on your specific situation.</p>
+            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
+              Pricing is based on your business type, income level, and the services you need. Use our quotation calculator to get your exact monthly price in under 2 minutes — no sales calls required.
+            </p>
+            <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 40px', lineHeight: '48px', display: 'inline-block' }}>
+              Get Your Exact Quote →
+            </Link>
           </div>
         </section>
 

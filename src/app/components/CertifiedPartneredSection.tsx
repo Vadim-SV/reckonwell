@@ -32,14 +32,8 @@ export default function CertifiedPartneredSection({ variant = 'full' }: Certifie
         {/* Partner logos strip */}
         <div className="flex flex-col items-center gap-4 w-full">
           <p
-            className="font-ui"
-            style={{
-              fontSize: '9px',
-              letterSpacing: '3px',
-              textTransform: 'uppercase',
-              color: 'rgba(201,168,76,0.5)',
-              fontWeight: 400,
-            }}
+            className="font-ui text-center"
+            style={{ fontSize: '11px', color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}
           >
             Certified &amp; Partnering With
           </p>
@@ -54,25 +48,11 @@ export default function CertifiedPartneredSection({ variant = 'full' }: Certifie
                 <img
                   src={partner.logo}
                   alt={partner.name + ' logo'}
-                  style={{ width: '72px', height: '40px', objectFit: 'contain' }}
+                  style={{ width: '160px', height: '80px', objectFit: 'contain' }}
                 />
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Text badges — shown in both variants */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6">
-          {textBadges.map((badge) => (
-            <span
-              key={badge}
-              className="flex items-center gap-2 font-ui"
-              style={{ fontSize: '11px', color: 'var(--muted)', letterSpacing: '0.5px' }}
-            >
-              <span style={{ color: 'var(--primary)', fontSize: '14px' }}>✓</span>
-              {badge}
-            </span>
-          ))}
         </div>
 
         {/* Full variant: additional trust details */}

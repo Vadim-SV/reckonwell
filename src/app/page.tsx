@@ -20,7 +20,7 @@ export default function HomePage() {
     '@type': 'Service',
     '@id': `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}#bookkeeping-service`,
     name: 'Daily Bookkeeping & Cash Flow Management',
-    description: 'Real-time bookkeeping, cash flow monitoring, and financial alerts for UK and USA businesses. From £200/$300 per month.',
+    description: 'Real-time bookkeeping, cash flow monitoring, and financial alerts for UK founder-led businesses. From £200 per month.',
     provider: {
       '@type': 'LocalBusiness',
       name: 'Reckonwell',

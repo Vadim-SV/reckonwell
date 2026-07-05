@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import TheDifferenceSection from '@/app/components/TheDifferenceSection';
 
 const faqs = [
   { q: 'Do I actually need MTD?', a: 'If you earn over £50k as self-employed or a landlord, yes. It\'s not optional. HMRC enforces it. Some exceptions exist (recent startup, minimal income), but if you filed a tax return showing £50k+, you\'re in.' },
@@ -57,6 +58,8 @@ export default function MakingTaxDigitalPage() {
             </div>
           </div>
         </section>
+
+        <TheDifferenceSection />
 
         {/* Who needs it */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
@@ -147,37 +150,17 @@ export default function MakingTaxDigitalPage() {
 
         {/* Pricing */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Pricing</p>
-            <h2 className="font-display mb-10" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              MTD packages
+            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              See your exact MTD price
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                { name: 'MTD Filing Only', price: '£100', desc: 'Quarterly MTD submissions to HMRC. No monitoring.', features: ['4 quarterly MTD filings/year', 'HMRC correspondence', 'Deadline reminders'] },
-                { name: 'MTD + Monitoring', price: '£175', desc: 'Quarterly filing plus monthly transaction review.', features: ['Everything in Filing Only', 'Monthly transaction review', 'Running tax estimate', 'Monthly financial report'] },
-                { name: 'MTD + Full Accounting', price: '£250', desc: 'Complete accounting package with MTD included.', features: ['Everything in Monitoring', 'Self Assessment filing', 'Expense optimisation', 'Priority support'] },
-              ]?.map((pkg, i) => (
-                <div key={i} className="p-6 border flex flex-col" style={{ borderColor: i === 1 ? 'var(--primary)' : 'var(--gold-border)', backgroundColor: i === 1 ? 'rgba(201,168,76,0.04)' : 'transparent' }}>
-                  {i === 1 && <p className="section-label mb-3">Recommended</p>}
-                  <p className="font-ui font-medium mb-1" style={{ color: 'var(--foreground)', fontSize: '14px', letterSpacing: '1px', textTransform: 'uppercase' }}>{pkg?.name}</p>
-                  <p className="font-display mb-1" style={{ fontSize: '32px', color: 'var(--primary)', fontWeight: 400 }}>{pkg?.price}<span className="font-ui text-sm" style={{ color: 'var(--muted)' }}>/month</span></p>
-                  <p className="font-ui text-xs mb-4" style={{ color: 'var(--muted)', lineHeight: 1.5 }}>{pkg?.desc}</p>
-                  <div className="space-y-2 flex-1">
-                    {pkg?.features?.map((f, j) => (
-                      <div key={j} className="flex items-start gap-2">
-                        <span style={{ color: 'var(--primary)', fontSize: '12px', marginTop: '2px' }}>✓</span>
-                        <span className="font-ui text-sm" style={{ color: 'var(--body-text)' }}>{f}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Link href="/mtd-calculator" className="mt-6 font-ui text-xs uppercase tracking-widest" style={{ color: 'var(--primary)' }}>
-                    Calculate exact price →
-                  </Link>
-                </div>
-              ))}
-            </div>
-            <p className="font-ui text-xs mt-4" style={{ color: 'var(--muted)' }}>Landlord pricing: additional properties +£25–50/month depending on package. Use the MTD calculator for your exact price.</p>
+            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
+              MTD pricing depends on your income level, property count, and monitoring needs. Use our quotation calculator to get your exact monthly price in under 2 minutes — no sales calls required.
+            </p>
+            <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 40px', lineHeight: '48px', display: 'inline-block' }}>
+              Get Your Exact Quote →
+            </Link>
           </div>
         </section>
 

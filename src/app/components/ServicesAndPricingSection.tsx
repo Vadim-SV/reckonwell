@@ -169,14 +169,6 @@ export default function ServicesAndPricingSection() {
                   <span className="font-display mt-2" style={{ fontSize: 'clamp(20px, 2.5vw, 28px)', color: 'var(--primary)', fontWeight: 400 }}>£</span>
                   <span className="pricing-number">200</span>
                 </div>
-                <div
-                  className="mx-4 self-stretch"
-                  style={{ width: '1px', backgroundColor: 'var(--border-subtle)', margin: '8px 16px' }}
-                />
-                <div className="flex items-start">
-                  <span className="font-display mt-2" style={{ fontSize: 'clamp(20px, 2.5vw, 28px)', color: 'var(--primary)', fontWeight: 400 }}>$</span>
-                  <span className="pricing-number">300</span>
-                </div>
               </div>
               <p
                 className="font-ui mb-6"
