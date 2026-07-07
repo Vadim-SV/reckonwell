@@ -112,6 +112,12 @@ export default function ServicesPage() {
               <Link href="/" className="btn-gold inline-block text-center" style={{ minHeight: '48px', lineHeight: '48px', padding: '0 24px' }}>
                 Learn More →
               </Link>
+              <Link
+                href="/fractional-finance-department/"
+                className="font-ui block mt-3"
+                style={{ fontSize: '12px', color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                See how much you could save vs. hiring →
+              </Link>
             </div>
 
             {/* Tier 2: Compliance Services */}

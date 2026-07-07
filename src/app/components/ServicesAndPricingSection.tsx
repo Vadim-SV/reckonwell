@@ -196,6 +196,13 @@ export default function ServicesAndPricingSection() {
                 Get Quotation →
               </Link>
 
+              <Link
+                href="/fractional-finance-department/"
+                className="font-ui block text-center mt-3"
+                style={{ fontSize: '12px', color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                See how much you could save vs. hiring →
+              </Link>
+
               <p
                 className="font-ui text-center mt-4"
                 style={{ fontSize: '11px', color: 'var(--muted)', letterSpacing: '0.5px' }}>
