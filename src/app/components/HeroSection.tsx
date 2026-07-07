@@ -82,7 +82,7 @@ export default function HeroSection() {
                   opacity: 0.6,
                   flexShrink: 0
                 }} />
-              British Accounting Firm · Founder-Led Businesses
+              Virtual Finance Office
               <span
                 className="hidden sm:inline-block"
                 style={{
