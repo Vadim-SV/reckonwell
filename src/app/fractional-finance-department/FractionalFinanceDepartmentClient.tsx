@@ -374,7 +374,29 @@ function BeforeAfterFFD() {
   );
 }
 
-// ── 7. How It Works ───────────────────────────────────────────────────────
+// ── 7. Calculator Section ─────────────────────────────────────────────────
+function CalculatorFFD() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  return (
+    <section ref={ref} className="py-20 md:py-28 px-6 md:px-10" style={{ backgroundColor: 'var(--background)', borderBottom: '1px solid var(--gold-border)' }} aria-label="Cost comparison calculator">
+      <div className="max-w-5xl mx-auto">
+        <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+          Cost Comparison
+        </motion.p>
+        <motion.h2 className="section-h2-medium mb-4" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
+          What does it actually <em style={{ color: 'var(--primary)' }}>cost to hire?</em>
+        </motion.h2>
+        <motion.p className="body-text-rw mb-10 max-w-2xl" style={{ ...wt }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
+          Configure your requirements below and see a side-by-side comparison of the true cost of hiring in-house versus working with Reckonwell. Limited Company only.
+        </motion.p>
+        <FractionalFinanceCalculator />
+      </div>
+    </section>
+  );
+}
+
+// ── 8. How It Works ───────────────────────────────────────────────────────
 function HowItWorksFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -422,28 +444,6 @@ function HowItWorksFFD() {
             </motion.div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-// ── 8. Calculator Section ─────────────────────────────────────────────────
-function CalculatorFFD() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
-  return (
-    <section ref={ref} className="py-20 md:py-28 px-6 md:px-10" style={{ backgroundColor: 'var(--background)', borderBottom: '1px solid var(--gold-border)' }} aria-label="Cost comparison calculator">
-      <div className="max-w-5xl mx-auto">
-        <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-          Cost Comparison
-        </motion.p>
-        <motion.h2 className="section-h2-medium mb-4" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-          What does it actually <em style={{ color: 'var(--primary)' }}>cost to hire?</em>
-        </motion.h2>
-        <motion.p className="body-text-rw mb-10 max-w-2xl" style={{ ...wt }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
-          Configure your requirements below and see a side-by-side comparison of the true cost of hiring in-house versus working with Reckonwell. Limited Company only.
-        </motion.p>
-        <FractionalFinanceCalculator />
       </div>
     </section>
   );
@@ -662,10 +662,10 @@ export default function FractionalFinanceDepartmentPage() {
       <ThreePillarsFFD />
       {/* 6. Before / After */}
       <BeforeAfterFFD />
-      {/* 7. How It Works */}
-      <HowItWorksFFD />
-      {/* 8. Calculator */}
+      {/* 7. Calculator */}
       <CalculatorFFD />
+      {/* 8. How It Works */}
+      <HowItWorksFFD />
       {/* 9. Ideal Customer Profile */}
       <IdealCustomerFFD />
       {/* 10. Real Results */}
