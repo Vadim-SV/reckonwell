@@ -177,7 +177,7 @@ function HeroFFD() {
       <div className="relative z-10 max-w-5xl mx-auto text-center pt-28 pb-16">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }} className="mb-8">
           <span className="font-ui" style={{ fontSize: '9px', letterSpacing: '3px', color: 'var(--primary)', textTransform: 'uppercase' }}>
-            Fractional Finance Department · Founder-Led Businesses
+            Fractional Finance Department 
           </span>
         </motion.div>
         <motion.h1 initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} className="hero-h1 mb-6">
