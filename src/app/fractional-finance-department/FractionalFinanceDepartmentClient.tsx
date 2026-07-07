@@ -407,7 +407,7 @@ function HowItWorksFFD() {
           How It Works
         </motion.p>
         <motion.h2 className="section-h2-medium mb-4" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-          One call. 48 hours. <em style={{ color: 'var(--primary)' }}>Done.</em>
+          One Quote. 48 hours. <em style={{ color: 'var(--primary)' }}>Done.</em>
         </motion.h2>
         <motion.p className="body-text-rw mb-10 max-w-lg" style={{ ...wt }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
           From first conversation to fully operational — with less friction than you expect.
