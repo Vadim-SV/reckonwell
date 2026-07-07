@@ -31,20 +31,20 @@ const pillars = [
 ];
 
 const withoutItems = [
-  'tabs everywhere',
-  'Slack messages',
-  'invoices missing',
-  'accountant replies late',
-  'cashflow unclear',
-  'admin ruins evenings',
+  'chaotic decision making',
+  'not sure if business is profitable',
+  'sales invoices are not paid',
+  'accountant is not responding',
+  'cashflow position is unclear',
+  'constant stress',
 ];
 
 const withItems = [
-  'finance function runs',
-  'reports arrive',
-  'invoices handled',
-  'systems organised',
-  'founder has mental space again',
+  'finance function runs without director constant involvement',
+  'dashbaords are up to date - clearest visibility of business finances',
+  'sales invoices are chased and paid - nothing is forgotten',
+  'systems are organised',
+  'directors can focuse on running a business',
 ];
 
 export default function WhyReckonwellSection() {
