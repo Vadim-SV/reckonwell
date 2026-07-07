@@ -183,7 +183,7 @@ function HeroFFD() {
         <motion.h1 initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} className="hero-h1 mb-6">
           Why the best-run businesses{' '}
           <em style={{ color: 'var(--primary)' }}>don&apos;t hire</em> a finance team —
-          <br className="hidden md:block" /> they get one.
+          <br className="hidden md:block" /> they get Reckonwell.
         </motion.h1>
         <motion.p initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }} className="font-ui mb-10 mx-auto" style={{ fontSize: 'clamp(15px,1.8vw,19px)', ...wt, lineHeight: 1.75, maxWidth: '600px', fontWeight: 300 }}>
           A dedicated finance team for founder-led businesses — bookkeeping, compliance, and founder support, without the cost or risk of hiring in-house.
