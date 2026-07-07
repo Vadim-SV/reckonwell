@@ -63,11 +63,11 @@ export default function HomePage() {
           <section role="region" aria-label="How it works">
             <HowItWorksSection />
           </section>
-          <section role="region" aria-label="Real results and testimonials">
-            <RealResultsSection />
-          </section>
           <section role="region" aria-label="Services and pricing">
             <ServicesAndPricingSection />
+          </section>
+          <section role="region" aria-label="Real results and testimonials">
+            <RealResultsSection />
           </section>
           <section role="region" aria-label="Nationwide coverage">
             <NationwideCoverageSection />
