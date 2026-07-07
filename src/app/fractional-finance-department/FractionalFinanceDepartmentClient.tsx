@@ -196,29 +196,49 @@ function HeroFFD() {
   );
 }
 
-// ── 2. The Problem ────────────────────────────────────────────────────────
-function ProblemFFD() {
+// ── 2. Certified & Partnering With ────────────────────────────────────────
+function CertifiedPartneredSectionFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
   return (
-    <section ref={ref} className="py-20 md:py-32 px-6 md:px-10" style={{ backgroundColor: 'var(--background)', borderBottom: '1px solid var(--gold-border)' }} aria-label="The Problem">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-start">
-        <div>
-          <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-            The Problem
-          </motion.p>
-          <motion.h2 className="section-h2-medium mb-6" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-            Your accountant is working <span className="gold-italic">in the past.</span>
-          </motion.h2>
-          <motion.p className="body-text-rw" style={{ ...wt }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
-            Traditional accounting gives you a 30-day lag on your own business. By the time the numbers arrive, the decision is already made — on instinct, not information. That is not an accounting problem. That is a leadership disadvantage.
-          </motion.p>
-        </div>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.25 }} className="relative w-full" style={{ aspectRatio: '4/3', maxHeight: '400px' }}>
-          <div className="w-full h-full rounded-sm relative overflow-hidden">
-            <img src="/assets/images/Stressed_businessman_in_cluttered_office-1779495675852.png" alt="Stressed businessman overwhelmed at a cluttered office desk, representing the chaos of unmanaged finances" className="w-full h-full object-cover" />
-            <span className="absolute top-0 left-0" style={{ width: '20px', height: '20px', borderTop: '1px solid var(--primary)', borderLeft: '1px solid var(--primary)', opacity: 0.5 }} />
-            <span className="absolute bottom-0 right-0" style={{ width: '20px', height: '20px', borderBottom: '1px solid var(--primary)', borderRight: '1px solid var(--primary)', opacity: 0.5 }} />
+    <section ref={ref} className="py-20 md:py-32 px-6 md:px-10" style={{ backgroundColor: 'var(--background)', borderBottom: '1px solid var(--gold-border)' }} aria-label="Certified & Partnering With">
+      <div className="max-w-7xl mx-auto">
+        <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+          Certified & Partnering With
+        </motion.p>
+        <motion.h2 className="section-h2-medium mb-6" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
+          Built with <em style={{ color: 'var(--primary)' }}>Certified Partners</em>
+        </motion.h2>
+        <motion.p className="body-text-rw max-w-3xl" style={{ ...wt, fontSize: 'clamp(15px,1.8vw,18px)' }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
+          We work with a network of certified partners who provide the technology and infrastructure that powers Reckonwell. These partners are subject to strict quality control and security standards, ensuring the highest level of service and data protection.
+        </motion.p>
+        <motion.div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="partner-card">
+            <Icon name="partner-1" size={24} />
+            <p className="font-ui mt-2" style={{ fontSize: '14px', ...wt, fontWeight: 300 }}>
+              Partner Name
+            </p>
+            <p className="font-ui" style={{ fontSize: '12px', ...wt, color: 'var(--border-subtle)' }}>
+              Partner Role
+            </p>
+          </div>
+          <div className="partner-card">
+            <Icon name="partner-2" size={24} />
+            <p className="font-ui mt-2" style={{ fontSize: '14px', ...wt, fontWeight: 300 }}>
+              Partner Name
+            </p>
+            <p className="font-ui" style={{ fontSize: '12px', ...wt, color: 'var(--border-subtle)' }}>
+              Partner Role
+            </p>
+          </div>
+          <div className="partner-card">
+            <Icon name="partner-3" size={24} />
+            <p className="font-ui mt-2" style={{ fontSize: '14px', ...wt, fontWeight: 300 }}>
+              Partner Name
+            </p>
+            <p className="font-ui" style={{ fontSize: '12px', ...wt, color: 'var(--border-subtle)' }}>
+              Partner Role
+            </p>
           </div>
         </motion.div>
       </div>
@@ -226,7 +246,90 @@ function ProblemFFD() {
   );
 }
 
-// ── 3. Before / After ─────────────────────────────────────────────────────
+// ── 3. What Is It ─────────────────────────────────────────────────────────
+function WhatIsItFFD() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  return (
+    <section ref={ref} className="py-20 md:py-28 px-6 md:px-10" style={{ backgroundColor: '#080808', borderBottom: '1px solid var(--gold-border)' }} aria-label="What is a Fractional Finance Department">
+      <div className="max-w-5xl mx-auto">
+        <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+          What Is It?
+        </motion.p>
+        <motion.h2 className="section-h2-medium mb-6" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
+          What is a <em style={{ color: 'var(--primary)' }}>Fractional Finance Department?</em>
+        </motion.h2>
+        <motion.p className="body-text-rw max-w-3xl" style={{ ...wt, fontSize: 'clamp(15px,1.8vw,18px)' }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
+          A Fractional Finance Department is a dedicated scalable finance team — covering bookkeeping, management accounts, compliance, and founder support — delivered as a flat monthly service instead of hiring in-house. You get the capability of a full finance function at a fraction of the cost, with none of the employment risk, recruitment overhead, or management burden.
+        </motion.p>
+      </div>
+    </section>
+  );
+}
+
+// ── 4. The Difference ────────────────────────────────────────────────────
+function TheDifferenceSectionFFD() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  return (
+    <section ref={ref} className="py-20 md:py-32 px-6 md:px-10" style={{ backgroundColor: 'var(--background)', borderBottom: '1px solid var(--gold-border)' }} aria-label="The Difference">
+      <div className="max-w-7xl mx-auto">
+        <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+          The Difference
+        </motion.p>
+        <motion.h2 className="section-h2-medium mb-6" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
+          The difference is <span className="gold-italic">everything.</span>
+        </motion.h2>
+        <motion.p className="body-text-rw max-w-3xl" style={{ ...wt, fontSize: 'clamp(15px,1.8vw,18px)' }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
+          From the chaos of unmanaged finances to the clarity of a dedicated team — the difference is everything.
+        </motion.p>
+      </div>
+    </section>
+  );
+}
+
+// ── 5. Three Pillars / What We Cover ────────────────────────────────────
+function ThreePillarsFFD() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  return (
+    <section ref={ref} className="py-20 md:py-28 px-6 md:px-10" style={{ backgroundColor: 'var(--background)', borderBottom: '1px solid var(--gold-border)' }} aria-label="Three pillars">
+      <div className="max-w-5xl mx-auto">
+        <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+          What We Cover
+        </motion.p>
+        <motion.h2 className="section-h2-medium mb-4" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
+          Three pillars. <em style={{ color: 'var(--primary)' }}>One team.</em>
+        </motion.h2>
+        <motion.p className="body-text-rw mb-12 max-w-xl" style={{ ...wt }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
+          Every Fractional Finance Department engagement covers all three areas — not as add-ons, but as a single integrated service.
+        </motion.p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          {pillars.map((pillar, i) => {
+            const Icon = pillar.icon;
+            return (
+              <motion.div key={pillar.title} className="solution-card" initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}>
+                <div className="relative z-10">
+                  <div className="mb-4">
+                    <Icon size={24} strokeWidth={1.5} style={{ color: 'var(--primary)' }} />
+                  </div>
+                  <h3 className="font-display mb-3" style={{ fontSize: 'clamp(17px,2.2vw,24px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}>
+                    {pillar.title}
+                  </h3>
+                  <p className="font-ui" style={{ fontSize: '14px', ...wt, lineHeight: 1.75, fontWeight: 300 }}>
+                    {pillar.body}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── 6. Before / After ─────────────────────────────────────────────────────
 function BeforeAfterFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -265,68 +368,6 @@ function BeforeAfterFFD() {
               ))}
             </ul>
           </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── 4. What Is It ─────────────────────────────────────────────────────────
-function WhatIsItFFD() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
-  return (
-    <section ref={ref} className="py-20 md:py-28 px-6 md:px-10" style={{ backgroundColor: '#080808', borderBottom: '1px solid var(--gold-border)' }} aria-label="What is a Fractional Finance Department">
-      <div className="max-w-5xl mx-auto">
-        <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-          What Is It?
-        </motion.p>
-        <motion.h2 className="section-h2-medium mb-6" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-          What is a <em style={{ color: 'var(--primary)' }}>Fractional Finance Department?</em>
-        </motion.h2>
-        <motion.p className="body-text-rw max-w-3xl" style={{ ...wt, fontSize: 'clamp(15px,1.8vw,18px)' }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
-          A Fractional Finance Department is a dedicated scalable finance team — covering bookkeeping, management accounts, compliance, and founder support — delivered as a flat monthly service instead of hiring in-house. You get the capability of a full finance function at a fraction of the cost, with none of the employment risk, recruitment overhead, or management burden.
-        </motion.p>
-      </div>
-    </section>
-  );
-}
-
-// ── 6. Three Pillars ──────────────────────────────────────────────────────
-function ThreePillarsFFD() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
-  return (
-    <section ref={ref} className="py-20 md:py-28 px-6 md:px-10" style={{ backgroundColor: 'var(--background)', borderBottom: '1px solid var(--gold-border)' }} aria-label="Three pillars">
-      <div className="max-w-5xl mx-auto">
-        <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-          What We Cover
-        </motion.p>
-        <motion.h2 className="section-h2-medium mb-4" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-          Three pillars. <em style={{ color: 'var(--primary)' }}>One team.</em>
-        </motion.h2>
-        <motion.p className="body-text-rw mb-12 max-w-xl" style={{ ...wt }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
-          Every Fractional Finance Department engagement covers all three areas — not as add-ons, but as a single integrated service.
-        </motion.p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          {pillars.map((pillar, i) => {
-            const Icon = pillar.icon;
-            return (
-              <motion.div key={pillar.title} className="solution-card" initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}>
-                <div className="relative z-10">
-                  <div className="mb-4">
-                    <Icon size={24} strokeWidth={1.5} style={{ color: 'var(--primary)' }} />
-                  </div>
-                  <h3 className="font-display mb-3" style={{ fontSize: 'clamp(17px,2.2vw,24px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.2 }}>
-                    {pillar.title}
-                  </h3>
-                  <p className="font-ui" style={{ fontSize: '14px', ...wt, lineHeight: 1.75, fontWeight: 300 }}>
-                    {pillar.body}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
         </div>
       </div>
     </section>
@@ -386,7 +427,7 @@ function HowItWorksFFD() {
   );
 }
 
-// ── 9. Calculator Section ─────────────────────────────────────────────────
+// ── 8. Calculator Section ─────────────────────────────────────────────────
 function CalculatorFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -408,7 +449,7 @@ function CalculatorFFD() {
   );
 }
 
-// ── 10. Ideal Customer Profile ────────────────────────────────────────────
+// ── 9. Ideal Customer Profile ────────────────────────────────────────────
 function IdealCustomerFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -450,7 +491,7 @@ function IdealCustomerFFD() {
   );
 }
 
-// ── 11. Real Results ──────────────────────────────────────────────────────
+// ── 10. Real Results ──────────────────────────────────────────────────────
 function RealResultsFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -497,7 +538,7 @@ function RealResultsFFD() {
   );
 }
 
-// ── 12. Founder Message ───────────────────────────────────────────────────
+// ── 11. Founder Message ───────────────────────────────────────────────────
 function FounderFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -537,7 +578,7 @@ function FounderFFD() {
   );
 }
 
-// ── 13. FAQ ───────────────────────────────────────────────────────────────
+// ── 12. FAQ ───────────────────────────────────────────────────────────────
 function FAQFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -579,7 +620,7 @@ function FAQFFD() {
   );
 }
 
-// ── 14. Final CTA ─────────────────────────────────────────────────────────
+// ── 13. Final CTA ─────────────────────────────────────────────────────────
 function FinalCTAFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -611,31 +652,29 @@ export default function FractionalFinanceDepartmentPage() {
     <main>
       {/* 1. Hero */}
       <HeroFFD />
-      {/* 2. The Problem */}
-      <ProblemFFD />
-      {/* 3. Before / After */}
-      <BeforeAfterFFD />
-      {/* 4. What Is It */}
+      {/* 2. Certified & Partnering With */}
+      <CertifiedPartneredSection variant="full" />
+      {/* 3. What Is It */}
       <WhatIsItFFD />
-      {/* 5. The Difference — imported component */}
+      {/* 4. The Difference */}
       <TheDifferenceSection />
-      {/* 6. Three Pillars */}
+      {/* 5. Three Pillars / What We Cover */}
       <ThreePillarsFFD />
+      {/* 6. Before / After */}
+      <BeforeAfterFFD />
       {/* 7. How It Works */}
       <HowItWorksFFD />
-      {/* 8. Technology Ecosystem — imported component */}
-      <CertifiedPartneredSection variant="full" />
-      {/* 9. Calculator */}
+      {/* 8. Calculator */}
       <CalculatorFFD />
-      {/* 10. Ideal Customer Profile */}
+      {/* 9. Ideal Customer Profile */}
       <IdealCustomerFFD />
-      {/* 11. Real Results */}
+      {/* 10. Real Results */}
       <RealResultsFFD />
-      {/* 12. Founder Message */}
+      {/* 11. Founder Message */}
       <FounderFFD />
-      {/* 13. FAQ */}
+      {/* 12. FAQ */}
       <FAQFFD />
-      {/* 14. Final CTA */}
+      {/* 13. Final CTA */}
       <FinalCTAFFD />
     </main>
   );
