@@ -285,7 +285,7 @@ function WhatIsItFFD() {
           What is a <em style={{ color: 'var(--primary)' }}>Fractional Finance Department?</em>
         </motion.h2>
         <motion.p className="body-text-rw max-w-3xl" style={{ ...wt, fontSize: 'clamp(15px,1.8vw,18px)' }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
-          A Fractional Finance Department is a dedicated finance team — covering bookkeeping, management accounts, compliance, and founder support — delivered as a flat monthly service instead of hiring in-house. You get the capability of a full finance function at a fraction of the cost, with none of the employment risk, recruitment overhead, or management burden.
+          A Fractional Finance Department is a dedicated scalable finance team — covering bookkeeping, management accounts, compliance, and founder support — delivered as a flat monthly service instead of hiring in-house. You get the capability of a full finance function at a fraction of the cost, with none of the employment risk, recruitment overhead, or management burden.
         </motion.p>
       </div>
     </section>
