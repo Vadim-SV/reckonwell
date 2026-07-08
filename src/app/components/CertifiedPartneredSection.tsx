@@ -92,23 +92,6 @@ export default function CertifiedPartneredSection({ variant = 'full' }: Certifie
                   </p>
                 </div>
               </div>
-
-              {/* Google reviews link — no rating or count */}
-              <a
-                href="https://www.google.com/maps/search/Reckonwell+124+City+Road+London"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-ui"
-                style={{
-                  fontSize: '12px',
-                  color: 'var(--primary)',
-                  textDecoration: 'underline',
-                  textUnderlineOffset: '3px',
-                  letterSpacing: '0.3px',
-                }}
-              >
-                Read our reviews on Google →
-              </a>
             </div>
           </>
         )}
