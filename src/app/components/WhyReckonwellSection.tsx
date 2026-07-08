@@ -31,20 +31,21 @@ const pillars = [
 ];
 
 const withoutItems = [
-  'chaotic decision making',
-  'not sure if business is profitable',
-  'sales invoices are not paid',
-  'accountant is not responding',
-  'cashflow position is unclear',
-  'constant stress',
+  'Sales invoices go unchased for weeks — customers who owe you money, and nobody's following up',
+  'You dont actually know your working capital position — is there real cash to spend, or is it all owed out?',
+  'Your accountant closes the books once a month, so a cash flow problem is often three or four weeks old before anyone notices',
+  'Your in-house bookkeeper can enter the numbers, but cant tell you what they mean for your next six months',
+  'Youre making decisions — hiring, spending, holding back — on gut feel, because nobody's shown you a real forecast',
+  'Every quiet moment gets swallowed by "just checking the numbers" instead of running the business',
 ];
 
 const withItems = [
-  'finance function runs without director constant involvement',
-  'dashbaords are up to date - clearest visibility of business finances',
-  'sales invoices are chased and paid - nothing is forgotten',
-  'systems are organised',
-  'directors can focuse on running a business',
+  'Every invoice is tracked and chased as a matter of course — unpaid customers dont slip through',
+  'You know your real working capital position, whenever you need it — not a guess based on the bank balance',
+  'Daily monitoring means a cash flow issue is caught within days, not discovered a month later at close',
+  'A qualified finance professional runs the actual analysis — working capital, cash flow forecasting, runway — not just data entry',
+  'Every major decision is backed by real numbers and a real forecast, not gut feel',
+  'The numbers are someone elses job now. You get your time and headspace back'
 ];
 
 export default function WhyReckonwellSection() {
