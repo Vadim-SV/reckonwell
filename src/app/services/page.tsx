@@ -114,8 +114,8 @@ export default function ServicesPage() {
               </Link>
               <Link
                 href="/fractional-finance-department/"
-                className="font-ui block mt-3"
-                style={{ fontSize: '12px', color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                className="btn-ghost block text-center mt-3"
+                style={{ width: '100%', padding: '16px 36px', fontSize: '11px' }}>
                 See how much you could save vs. hiring →
               </Link>
             </div>
