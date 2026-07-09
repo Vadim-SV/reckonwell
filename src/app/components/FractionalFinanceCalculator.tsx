@@ -1,225 +1,263 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
-interface CalcInputs {
-  isGroup: boolean;
-  groupCount: number;
-  bookkeepingRequired: boolean;
-  transactionsPerMonth: number;
-  payrollRequired: boolean;
-  employeeCount: number;
-  vatRequired: boolean;
-  vatReturnsPerYear: number;
-  finalAccountsRequired: boolean;
+// ── Fixed market rates (not user-inputted) ──────────────────────────────────
+const BK_SALARY = 30000;   // Bookkeeper / Accounts Assistant
+const CFO_MONTHLY = 3000;  // Fractional CFO retainer per month
+
+// ── Types ───────────────────────────────────────────────────────────────────
+interface CalcState {
+  businessType: 'sole-trader' | 'limited-company';
+  industry: string;
+  bookkeeping: boolean;
+  transactions: number;
+  ar: boolean;
+  ap: boolean;
+  chasing: boolean;
+  budgets: boolean;
+  workingcap: boolean;
+  forecasting: boolean;
+  mgmtaccounts: boolean;
+  kpi: boolean;
+  scenario: boolean;
+  fundraising: boolean;
+  creditcontrol: boolean;
+  payroll: boolean;
+  employees: number;
+  vat: boolean;
+  vatReturns: number;
+  oneoff: boolean;
   monthlyRevenue: number;
-  assumedSalary: number;
 }
 
-interface CalcResults {
-  bookkeepingFee: number;
-  payrollFee: number;
-  vatMonthly: number;
-  monthlyTotal: number;
-  finalAccountsFee: number;
-  oneOffTotal: number;
-  employerNI: number;
+interface QuoteResult {
+  monthly: number;
+  oneoff: number;
+  baseMonthly: number;
+  advisoryFee: number;
+  seniorTicked: boolean;
+}
+
+interface HiringCost {
+  salary: number;
+  ni: number;
   pension: number;
-  trueAnnualCost: number;
-  trueMonthlyHiringCost: number;
-  monthlySaving: number;
-  annualSaving: number;
+  trueAnnual: number;
 }
 
-function computeResults(inputs: CalcInputs): CalcResults {
-  const bookkeepingFee = inputs.bookkeepingRequired ? inputs.transactionsPerMonth * 2 : 0;
-  const payrollFee = inputs.payrollRequired ? inputs.employeeCount * 3 : 0;
-  const vatMonthly = inputs.vatRequired ? (inputs.vatReturnsPerYear * 150) / 12 : 0;
-  const monthlyTotal = bookkeepingFee + payrollFee + vatMonthly;
-
-  let finalAccountsBase = 500;
-  if (inputs.monthlyRevenue > 10000) finalAccountsBase = 1000;
-  else if (inputs.monthlyRevenue >= 1000) finalAccountsBase = 750;
-
-  const finalAccountsFee = inputs.finalAccountsRequired
-    ? finalAccountsBase * (inputs.isGroup ? inputs.groupCount : 1)
-    : 0;
-  const oneOffTotal = finalAccountsFee;
-
-  const employerNI = 0.15 * Math.max(0, inputs.assumedSalary - 5000);
-  const pension = 0.03 * inputs.assumedSalary;
-  const trueAnnualCost = inputs.assumedSalary + employerNI + pension;
-  const trueMonthlyHiringCost = trueAnnualCost / 12;
-
-  const monthlySaving = trueMonthlyHiringCost - monthlyTotal;
-  const annualSaving = monthlySaving * 12;
-
-  return {
-    bookkeepingFee,
-    payrollFee,
-    vatMonthly,
-    monthlyTotal,
-    finalAccountsFee,
-    oneOffTotal,
-    employerNI,
-    pension,
-    trueAnnualCost,
-    trueMonthlyHiringCost,
-    monthlySaving,
-    annualSaving,
-  };
+// ── Helpers ─────────────────────────────────────────────────────────────────
+function fmt(n: number): string {
+  return '£' + Math.round(n).toLocaleString('en-GB');
 }
 
-function fmt(n: number, decimals = 0): string {
-  return '£' + n.toLocaleString('en-GB', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+function calculateQuote(s: CalcState): QuoteResult {
+  let baseMonthly = 0;
+  if (s.bookkeeping && s.transactions > 0) baseMonthly += s.transactions * 2;
+  if (s.payroll && s.employees > 0) baseMonthly += s.employees * 3;
+  const vatMonthly = s.vat && s.vatReturns > 0 ? (s.vatReturns * 150) / 12 : 0;
+
+  const seniorTicked =
+    s.budgets || s.workingcap || s.forecasting || s.mgmtaccounts || s.kpi || s.scenario || s.fundraising;
+  const advisoryFee = seniorTicked ? Math.max(250, baseMonthly) : 0;
+
+  const monthly = baseMonthly + vatMonthly + advisoryFee;
+
+  let oneoff = 0;
+  if (s.oneoff) {
+    if (s.businessType === 'sole-trader') {
+      oneoff = 200;
+    } else {
+      oneoff = s.monthlyRevenue > 10000 ? 1000 : s.monthlyRevenue >= 1000 ? 750 : 500;
+    }
+  }
+
+  return { monthly, oneoff, baseMonthly: baseMonthly + vatMonthly, advisoryFee, seniorTicked };
 }
 
-interface ToggleRowProps {
-  label: string;
+function hiringCost(salary: number): HiringCost {
+  const ni = 0.15 * Math.max(0, salary - 5000);
+  const pension = 0.03 * salary;
+  return { salary, ni, pension, trueAnnual: salary + ni + pension };
+}
+
+// ── Sub-components ───────────────────────────────────────────────────────────
+
+interface CheckRowProps {
   checked: boolean;
-  onChange: (v: boolean) => void;
+  label: string;
+  tag?: string;
+  dim?: boolean;
+  onToggle: () => void;
 }
 
-function ToggleRow({ label, checked, onChange }: ToggleRowProps) {
+function CheckRow({ checked, label, tag, dim, onToggle }: CheckRowProps) {
   return (
-    <div className="flex items-center justify-between py-3" style={{ borderBottom: '1px solid rgba(201,168,76,0.12)' }}>
-      <span className="font-ui" style={{ fontSize: '14px', color: '#ffffff', fontWeight: 400 }}>
+    <div
+      onClick={onToggle}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        padding: '9px 0',
+        cursor: 'pointer',
+        opacity: dim ? 0.55 : 1,
+      }}
+    >
+      <div
+        style={{
+          width: '20px',
+          height: '20px',
+          border: `1px solid ${checked ? 'var(--primary)' : 'rgba(201,168,76,0.25)'}`,
+          flexShrink: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '12px',
+          color: 'var(--primary)',
+          backgroundColor: checked ? 'rgba(201,168,76,0.10)' : 'transparent',
+        }}
+      >
+        {checked ? '✓' : ''}
+      </div>
+      <span className="font-ui" style={{ fontSize: '13px', color: '#F0EDE4' }}>
         {label}
       </span>
-      <button
-        type="button"
-        onClick={() => onChange(!checked)}
-        style={{
-          width: '48px',
-          height: '26px',
-          borderRadius: '13px',
-          backgroundColor: checked ? 'var(--primary)' : 'rgba(255,255,255,0.1)',
-          border: 'none',
-          position: 'relative',
-          transition: 'background-color 0.2s ease',
-          flexShrink: 0,
-          cursor: 'pointer',
-        }}
-        aria-checked={checked}
-        role="switch"
-      >
+      {tag && (
         <span
+          className="font-ui"
           style={{
-            position: 'absolute',
-            top: '3px',
-            left: checked ? '25px' : '3px',
-            width: '20px',
-            height: '20px',
-            borderRadius: '50%',
-            backgroundColor: '#ffffff',
-            transition: 'left 0.2s ease',
+            fontSize: '8px',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+            color: 'var(--primary)',
+            marginLeft: 'auto',
+            padding: '2px 6px',
+            border: '1px solid rgba(201,168,76,0.25)',
+            flexShrink: 0,
           }}
-        />
-      </button>
-    </div>
-  );
-}
-
-interface NumberInputProps {
-  label: string;
-  value: number;
-  onChange: (v: number) => void;
-  min?: number;
-  prefix?: string;
-  helperText?: string;
-}
-
-function NumberInput({ label, value, onChange, min = 0, prefix, helperText }: NumberInputProps) {
-  return (
-    <div className="mt-3 mb-1">
-      <label className="font-ui block mb-1" style={{ fontSize: '12px', color: '#ffffff', letterSpacing: '0.3px' }}>
-        {label}
-      </label>
-      <div className="flex items-center" style={{ border: '1px solid rgba(201,168,76,0.3)', backgroundColor: 'rgba(201,168,76,0.04)' }}>
-        {prefix && (
-          <span className="font-ui px-3 py-2" style={{ fontSize: '14px', color: 'var(--primary)', borderRight: '1px solid rgba(201,168,76,0.2)' }}>
-            {prefix}
-          </span>
-        )}
-        <input
-          type="number"
-          min={min}
-          value={value}
-          onChange={(e) => onChange(Math.max(min, Number(e.target.value) || 0))}
-          className="w-full bg-transparent px-3 py-2 outline-none font-ui"
-          style={{ fontSize: '14px', color: '#ffffff' }}
-        />
-      </div>
-      {helperText && (
-        <p className="font-ui mt-1" style={{ fontSize: '11px', color: '#ffffff', lineHeight: 1.5 }}>
-          {helperText}
-        </p>
+        >
+          {tag}
+        </span>
       )}
     </div>
   );
 }
 
+interface ToggleSwitchProps {
+  checked: boolean;
+  label: string;
+  onToggle: () => void;
+}
+
+function ToggleSwitch({ checked, label, onToggle }: ToggleSwitchProps) {
+  return (
+    <div
+      onClick={onToggle}
+      style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer', padding: '5px 0' }}
+    >
+      <div
+        style={{
+          width: '44px',
+          height: '24px',
+          borderRadius: '12px',
+          backgroundColor: checked ? 'var(--primary)' : 'rgba(201,168,76,0.2)',
+          border: `1px solid ${checked ? 'var(--primary)' : 'rgba(201,168,76,0.25)'}`,
+          position: 'relative',
+          flexShrink: 0,
+          transition: 'all 0.15s',
+        }}
+      >
+        <div
+          style={{
+            width: '18px',
+            height: '18px',
+            borderRadius: '50%',
+            backgroundColor: checked ? '#080808' : 'rgba(201,168,76,0.5)',
+            position: 'absolute',
+            top: '2px',
+            left: checked ? '22px' : '2px',
+            transition: 'left 0.15s',
+          }}
+        />
+      </div>
+      <span className="font-ui" style={{ fontSize: '13px', color: '#F0EDE4', fontWeight: 500 }}>
+        {label}
+      </span>
+    </div>
+  );
+}
+
+// ── Main Component ───────────────────────────────────────────────────────────
 export default function FractionalFinanceCalculator() {
-  const [inputs, setInputs] = useState<CalcInputs>({
-    isGroup: false,
-    groupCount: 1,
-    bookkeepingRequired: false,
-    transactionsPerMonth: 100,
-    payrollRequired: false,
-    employeeCount: 1,
-    vatRequired: false,
-    vatReturnsPerYear: 4,
-    finalAccountsRequired: false,
-    monthlyRevenue: 5000,
-    assumedSalary: 30000,
+  const [s, setS] = useState<CalcState>({
+    businessType: 'sole-trader',
+    industry: 'SaaS / Technology',
+    bookkeeping: true,
+    transactions: 150,
+    ar: true,
+    ap: true,
+    chasing: true,
+    budgets: false,
+    workingcap: false,
+    forecasting: false,
+    mgmtaccounts: false,
+    kpi: false,
+    scenario: false,
+    fundraising: false,
+    creditcontrol: false,
+    payroll: false,
+    employees: 0,
+    vat: false,
+    vatReturns: 4,
+    oneoff: false,
+    monthlyRevenue: 8000,
   });
 
-  const [showResults, setShowResults] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalName, setModalName] = useState('');
   const [modalEmail, setModalEmail] = useState('');
   const [modalStatus, setModalStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [modalError, setModalError] = useState('');
 
-  const set = useCallback(<K extends keyof CalcInputs>(key: K, value: CalcInputs[K]) => {
-    setInputs((prev) => ({ ...prev, [key]: value }));
+  const toggle = useCallback(<K extends keyof CalcState>(key: K) => {
+    setS((prev) => ({ ...prev, [key]: !prev[key] }));
   }, []);
 
-  const results = computeResults(inputs);
+  const set = useCallback(<K extends keyof CalcState>(key: K, value: CalcState[K]) => {
+    setS((prev) => ({ ...prev, [key]: value }));
+  }, []);
 
-  const handleCalculate = () => {
-    setShowResults(true);
-    setTimeout(() => {
-      document.getElementById('ffd-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-  };
+  const quote = calculateQuote(s);
+  const bk = hiringCost(BK_SALARY);
+  const cfoAnnual = CFO_MONTHLY * 12;
+
+  let trueAnnual: number;
+  let trueMonthly: number;
+  if (quote.seniorTicked) {
+    trueAnnual = bk.trueAnnual + cfoAnnual;
+    trueMonthly = trueAnnual / 12;
+  } else {
+    trueAnnual = bk.trueAnnual;
+    trueMonthly = trueAnnual / 12;
+  }
+
+  const monthlySavings = Math.max(0, trueMonthly - quote.monthly);
+  const annualSavings = Math.max(0, trueAnnual - quote.monthly * 12);
 
   const handleSendComparison = async () => {
     if (!modalName.trim() || !modalEmail.trim()) return;
     setModalStatus('submitting');
     setModalError('');
     try {
-      const monthlyBreakdown = [];
-      if (inputs.bookkeepingRequired && results.bookkeepingFee > 0) monthlyBreakdown.push({ label: 'Bookkeeping', amount: results.bookkeepingFee });
-      if (inputs.payrollRequired && results.payrollFee > 0) monthlyBreakdown.push({ label: 'Payroll', amount: results.payrollFee });
-      if (inputs.vatRequired && results.vatMonthly > 0) monthlyBreakdown.push({ label: 'VAT Returns (monthly equivalent)', amount: Math.round(results.vatMonthly * 100) / 100 });
-
-      const oneoffBreakdown = [];
-      if (inputs.finalAccountsRequired && results.finalAccountsFee > 0) oneoffBreakdown.push({ label: 'Final Accounts & Corporation Tax Return', amount: results.finalAccountsFee });
-
       const res = await fetch('/api/calculator-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          business_type: 'limited-company',
-          industry: 'Fractional Finance Department',
-          is_group: inputs.isGroup,
-          group_company_count: inputs.groupCount,
-          monthly_total: results.monthlyTotal,
-          monthly_breakdown: monthlyBreakdown,
-          oneoff_total: results.oneOffTotal,
-          oneoff_breakdown: oneoffBreakdown,
-          quote_valid_until: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+          business_type: s.businessType,
+          industry: s.industry,
+          monthly_total: quote.monthly,
+          oneoff_total: quote.oneoff,
           quote_reference: `FFD-${Date.now().toString(36).toUpperCase()}`,
           name: modalName,
           email: modalEmail,
@@ -233,263 +271,475 @@ export default function FractionalFinanceCalculator() {
     }
   };
 
+  const qBlockStyle: React.CSSProperties = {
+    border: '1px solid rgba(201,168,76,0.25)',
+    backgroundColor: 'rgba(201,168,76,0.03)',
+    padding: '22px',
+    marginBottom: '14px',
+  };
+
+  const qLabelStyle: React.CSSProperties = {
+    fontSize: '10px',
+    letterSpacing: '2px',
+    textTransform: 'uppercase',
+    color: '#F0EDE4',
+    marginBottom: '16px',
+    fontWeight: 500,
+    display: 'flex',
+    alignItems: 'center',
+  };
+
+  const qNumStyle: React.CSSProperties = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '20px',
+    height: '20px',
+    border: '1px solid var(--primary)',
+    color: 'var(--primary)',
+    fontSize: '10px',
+    marginRight: '8px',
+    flexShrink: 0,
+  };
+
+  const dividerStyle: React.CSSProperties = {
+    borderTop: '1px dashed rgba(201,168,76,0.18)',
+    margin: '10px 0',
+    paddingTop: '10px',
+    fontSize: '9px',
+    letterSpacing: '1px',
+    textTransform: 'uppercase',
+    color: 'var(--primary)',
+    opacity: 0.7,
+  };
+
+  const numberFieldStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    border: '1px solid rgba(201,168,76,0.25)',
+    padding: '9px 12px',
+    backgroundColor: '#1C1A15',
+  };
+
+  const followupStyle: React.CSSProperties = {
+    marginTop: '14px',
+    paddingTop: '14px',
+    borderTop: '1px solid rgba(201,168,76,0.18)',
+  };
+
+  const fieldLabelStyle: React.CSSProperties = {
+    fontSize: '10px',
+    color: '#F0EDE4',
+    letterSpacing: '1px',
+    marginBottom: '8px',
+    display: 'block',
+  };
+
+  const oneoffLabel = s.businessType === 'sole-trader' ? 'Self Assessment' : 'Corporation Tax';
+  const oneoffToggleLabel =
+    s.businessType === 'sole-trader' ?'Is Self Assessment to be done?' :'Final Accounts and Corporation Tax Return required?';
+
   return (
     <div id="ffd-calculator">
-      {/* ── Question Flow ── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        {/* Q1: Group */}
-        <div style={{ border: '1px solid rgba(201,168,76,0.18)', backgroundColor: 'rgba(201,168,76,0.03)', padding: '20px' }}>
-          <p className="font-ui mb-2" style={{ fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)' }}>
-            01 — Company Structure
-          </p>
-          <ToggleRow label="Is this a group of companies?" checked={inputs.isGroup} onChange={(v) => set('isGroup', v)} />
-          {inputs.isGroup && (
-            <NumberInput label="How many companies?" value={inputs.groupCount} onChange={(v) => set('groupCount', v)} min={1} />
-          )}
-        </div>
+      {/* Live badge */}
+      <div
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          fontSize: '9px',
+          letterSpacing: '1px',
+          textTransform: 'uppercase',
+          color: 'var(--primary)',
+          backgroundColor: 'rgba(201,168,76,0.10)',
+          border: '1px solid rgba(201,168,76,0.25)',
+          padding: '5px 10px',
+          marginBottom: '20px',
+        }}
+      >
+        <span
+          style={{
+            width: '6px',
+            height: '6px',
+            borderRadius: '50%',
+            backgroundColor: 'var(--primary)',
+            animation: 'ffd-pulse 1.5s infinite',
+            display: 'inline-block',
+          }}
+        />
+        <style>{`@keyframes ffd-pulse{0%,100%{opacity:1}50%{opacity:0.3}}`}</style>
+        Live — updates instantly
+      </div>
 
-        {/* Q2: Bookkeeping */}
-        <div style={{ border: '1px solid rgba(201,168,76,0.18)', backgroundColor: 'rgba(201,168,76,0.03)', padding: '20px' }}>
-          <p className="font-ui mb-2" style={{ fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)' }}>
-            02 — Bookkeeping
-          </p>
-          <ToggleRow label="Is bookkeeping required?" checked={inputs.bookkeepingRequired} onChange={(v) => set('bookkeepingRequired', v)} />
-          {inputs.bookkeepingRequired && (
-            <NumberInput
-              label="Transactions per month (average)"
-              value={inputs.transactionsPerMonth}
-              onChange={(v) => set('transactionsPerMonth', v)}
-              min={1}
-              helperText="Includes accounts payable and accounts receivable management — no separate charge."
-            />
-          )}
+      {/* Q1: Business Type */}
+      <div style={qBlockStyle}>
+        <div className="font-ui" style={qLabelStyle}>
+          <span style={qNumStyle}>1</span>Business Type
         </div>
-
-        {/* Q3: Payroll */}
-        <div style={{ border: '1px solid rgba(201,168,76,0.18)', backgroundColor: 'rgba(201,168,76,0.03)', padding: '20px' }}>
-          <p className="font-ui mb-2" style={{ fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)' }}>
-            03 — Payroll
-          </p>
-          <ToggleRow label="Is payroll required?" checked={inputs.payrollRequired} onChange={(v) => set('payrollRequired', v)} />
-          {inputs.payrollRequired && (
-            <NumberInput label="How many employees?" value={inputs.employeeCount} onChange={(v) => set('employeeCount', v)} min={1} />
-          )}
-        </div>
-
-        {/* Q4: VAT */}
-        <div style={{ border: '1px solid rgba(201,168,76,0.18)', backgroundColor: 'rgba(201,168,76,0.03)', padding: '20px' }}>
-          <p className="font-ui mb-2" style={{ fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)' }}>
-            04 — VAT Returns
-          </p>
-          <ToggleRow label="Do you need VAT returns filed?" checked={inputs.vatRequired} onChange={(v) => set('vatRequired', v)} />
-          {inputs.vatRequired && (
-            <NumberInput
-              label="How many VAT returns per year?"
-              value={inputs.vatReturnsPerYear}
-              onChange={(v) => set('vatReturnsPerYear', v)}
-              min={1}
-              helperText="£150 per return. Most businesses file quarterly (4 per year)."
-            />
-          )}
-        </div>
-
-        {/* Q5: Corporation Tax */}
-        <div style={{ border: '1px solid rgba(201,168,76,0.18)', backgroundColor: 'rgba(201,168,76,0.03)', padding: '20px' }}>
-          <p className="font-ui mb-2" style={{ fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)' }}>
-            05 — Final Accounts & Corporation Tax
-          </p>
-          <ToggleRow label="Final Accounts and Corporation Tax Return required?" checked={inputs.finalAccountsRequired} onChange={(v) => set('finalAccountsRequired', v)} />
-          {inputs.finalAccountsRequired && (
-            <NumberInput label="Average monthly revenue" value={inputs.monthlyRevenue} onChange={(v) => set('monthlyRevenue', v)} min={0} prefix="£" />
-          )}
-        </div>
-
-        {/* Q6: Hiring cost */}
-        <div style={{ border: '1px solid rgba(201,168,76,0.18)', backgroundColor: 'rgba(201,168,76,0.03)', padding: '20px' }}>
-          <p className="font-ui mb-2" style={{ fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)' }}>
-            06 — What Would Hiring Cost?
-          </p>
-          <NumberInput
-            label="Estimated annual salary for this role"
-            value={inputs.assumedSalary}
-            onChange={(v) => set('assumedSalary', v)}
-            min={0}
-            prefix="£"
-            helperText="UK bookkeeper salaries typically range £28,000–£38,000/year (source: Indeed, Glassdoor, Morgan McKinley, 2026 data)."
-          />
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+          {(['sole-trader', 'limited-company'] as const).map((type) => (
+            <button
+              key={type}
+              type="button"
+              onClick={() => set('businessType', type)}
+              className="font-ui"
+              style={{
+                padding: '13px',
+                border: `1px solid ${s.businessType === type ? 'var(--primary)' : 'rgba(201,168,76,0.25)'}`,
+                backgroundColor: s.businessType === type ? 'rgba(201,168,76,0.10)' : 'transparent',
+                color: s.businessType === type ? 'var(--primary)' : '#F0EDE4',
+                opacity: s.businessType === type ? 1 : 0.6,
+                fontSize: '13px',
+                cursor: 'pointer',
+                transition: 'all 0.15s',
+              }}
+            >
+              {type === 'sole-trader' ? 'Sole Trader' : 'Limited Company'}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Calculate button */}
-      <div className="text-center mb-10">
-        <button
-          onClick={handleCalculate}
+      {/* Q2: Industry */}
+      <div style={qBlockStyle}>
+        <div className="font-ui" style={qLabelStyle}>
+          <span style={qNumStyle}>2</span>Industry
+        </div>
+        <select
+          value={s.industry}
+          onChange={(e) => set('industry', e.target.value)}
           className="font-ui"
           style={{
-            backgroundColor: 'var(--primary)',
-            color: '#080808',
-            padding: '16px 40px',
+            width: '100%',
+            backgroundColor: '#1C1A15',
+            border: '1px solid rgba(201,168,76,0.25)',
+            color: '#F0EDE4',
+            padding: '11px 14px',
             fontSize: '13px',
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-            fontWeight: 600,
-            border: 'none',
-            cursor: 'pointer',
+            outline: 'none',
           }}
         >
-          Calculate My Comparison →
-        </button>
+          {[
+            'SaaS / Technology',
+            'Retail / E-commerce',
+            'Professional Services',
+            'Creative / Media',
+            'Construction / Trades',
+            'Landlord / Property',
+            'Other',
+          ].map((opt) => (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
       </div>
 
-      {/* ── Results ── */}
-      {showResults && (
-        <div id="ffd-results">
-          {/* Three-column results */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            {/* Cost to Hire In-House */}
-            <div style={{ border: '1px solid rgba(255,255,255,0.1)', backgroundColor: 'rgba(255,255,255,0.03)', padding: '24px' }}>
-              <p className="font-ui mb-4" style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: '#ffffff' }}>
-                Cost to Hire In-House
-              </p>
-              <div className="mb-1">
-                <span className="font-display" style={{ fontSize: 'clamp(28px,3.5vw,44px)', fontWeight: 400, color: '#ffffff', lineHeight: 1 }}>
-                  {fmt(results.trueMonthlyHiringCost, 2)}
-                </span>
-                <span className="font-ui ml-1" style={{ fontSize: '13px', color: '#ffffff' }}>/mo</span>
-              </div>
-              <p className="font-ui mb-5" style={{ fontSize: '12px', color: '#ffffff' }}>
-                {fmt(results.trueAnnualCost)} / year
-              </p>
-              <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '16px' }}>
-                <p className="font-ui mb-3" style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: '#ffffff' }}>Breakdown</p>
-                {[
-                  { label: 'Gross Salary', amount: inputs.assumedSalary },
-                  { label: "Employer's NI (15%)", amount: Math.round(results.employerNI * 100) / 100 },
-                  { label: 'Pension (3%)', amount: Math.round(results.pension * 100) / 100 },
-                ].map((item) => (
-                  <div key={item.label} className="flex justify-between py-1" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                    <span className="font-ui" style={{ fontSize: '13px', color: '#ffffff' }}>{item.label}</span>
-                    <span className="font-ui" style={{ fontSize: '13px', color: '#ffffff' }}>{fmt(item.amount)}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Cost With Reckonwell */}
-            <div style={{ border: '2px solid var(--primary)', backgroundColor: 'rgba(201,168,76,0.05)', padding: '24px', position: 'relative' }}>
-              <div style={{ position: 'absolute', top: '-1px', left: '50%', transform: 'translateX(-50%)', backgroundColor: 'var(--primary)', padding: '3px 12px' }}>
-                <span className="font-ui" style={{ fontSize: '9px', letterSpacing: '2px', textTransform: 'uppercase', color: '#080808', fontWeight: 600 }}>Reckonwell</span>
-              </div>
-              <p className="font-ui mb-4 mt-2" style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>
-                Cost With Reckonwell
-              </p>
-              <div className="mb-1">
-                <span className="font-display" style={{ fontSize: 'clamp(28px,3.5vw,44px)', fontWeight: 400, color: 'var(--primary)', lineHeight: 1 }}>
-                  {fmt(results.monthlyTotal)}
-                </span>
-                <span className="font-ui ml-1" style={{ fontSize: '13px', color: 'var(--primary)' }}>/mo</span>
-              </div>
-              <p className="font-ui mb-5" style={{ fontSize: '12px', color: '#ffffff' }}>
-                {fmt(results.monthlyTotal * 12)} / year
-                {results.oneOffTotal > 0 && (
-                  <span style={{ display: 'block', marginTop: '2px' }}>+ {fmt(results.oneOffTotal)} one-off</span>
-                )}
-              </p>
-              <div style={{ borderTop: '1px solid rgba(201,168,76,0.2)', paddingTop: '16px' }}>
-                <p className="font-ui mb-3" style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)' }}>Monthly Breakdown</p>
-                {inputs.bookkeepingRequired && results.bookkeepingFee > 0 && (
-                  <div className="flex justify-between py-1" style={{ borderBottom: '1px solid rgba(201,168,76,0.1)' }}>
-                    <span className="font-ui" style={{ fontSize: '13px', color: '#ffffff' }}>Bookkeeping</span>
-                    <span className="font-ui" style={{ fontSize: '13px', color: 'var(--primary)' }}>{fmt(results.bookkeepingFee)}</span>
-                  </div>
-                )}
-                {inputs.payrollRequired && results.payrollFee > 0 && (
-                  <div className="flex justify-between py-1" style={{ borderBottom: '1px solid rgba(201,168,76,0.1)' }}>
-                    <span className="font-ui" style={{ fontSize: '13px', color: '#ffffff' }}>Payroll</span>
-                    <span className="font-ui" style={{ fontSize: '13px', color: 'var(--primary)' }}>{fmt(results.payrollFee)}</span>
-                  </div>
-                )}
-                {inputs.vatRequired && results.vatMonthly > 0 && (
-                  <div className="flex justify-between py-1" style={{ borderBottom: '1px solid rgba(201,168,76,0.1)' }}>
-                    <span className="font-ui" style={{ fontSize: '13px', color: '#ffffff' }}>VAT Returns (monthly)</span>
-                    <span className="font-ui" style={{ fontSize: '13px', color: 'var(--primary)' }}>{fmt(results.vatMonthly, 2)}</span>
-                  </div>
-                )}
-                {results.monthlyTotal === 0 && (
-                  <p className="font-ui" style={{ fontSize: '12px', color: '#ffffff' }}>Enable services above to see breakdown</p>
-                )}
-                {results.oneOffTotal > 0 && (
-                  <>
-                    <p className="font-ui mt-3 mb-2" style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)' }}>One-Off</p>
-                    <div className="flex justify-between py-1" style={{ borderBottom: '1px solid rgba(201,168,76,0.1)' }}>
-                      <span className="font-ui" style={{ fontSize: '13px', color: '#ffffff' }}>Final Accounts & CT Return</span>
-                      <span className="font-ui" style={{ fontSize: '13px', color: 'var(--primary)' }}>{fmt(results.finalAccountsFee)}</span>
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-
-            {/* You Could Save */}
-            <div style={{ border: '1px solid rgba(45,106,79,0.3)', backgroundColor: 'rgba(45,106,79,0.06)', padding: '24px' }}>
-              <p className="font-ui mb-4" style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: '#52B788' }}>
-                You Could Save
-              </p>
-              <div className="mb-1">
-                <span className="font-display" style={{ fontSize: 'clamp(28px,3.5vw,44px)', fontWeight: 400, color: '#52B788', lineHeight: 1 }}>
-                  {fmt(Math.max(0, results.monthlySaving), 2)}
-                </span>
-                <span className="font-ui ml-1" style={{ fontSize: '13px', color: '#52B788' }}>/mo</span>
-              </div>
-              <p className="font-ui mb-5" style={{ fontSize: '12px', color: '#ffffff' }}>
-                {fmt(Math.max(0, results.annualSaving))} / year
-              </p>
-              <div style={{ borderTop: '1px solid rgba(45,106,79,0.2)', paddingTop: '16px' }}>
-                <p className="font-ui mb-2" style={{ fontSize: '12px', color: '#ffffff', lineHeight: 1.6 }}>
-                  Compared to hiring a full-time bookkeeper at {fmt(inputs.assumedSalary)}/year, the true employer cost is{' '}
-                  <strong style={{ color: '#ffffff' }}>{fmt(results.trueAnnualCost)}/year</strong> — versus{' '}
-                  <strong style={{ color: 'var(--primary)' }}>{fmt(results.monthlyTotal * 12)}/year</strong> with Reckonwell.
-                </p>
-              </div>
+      {/* Q3: Bookkeeping */}
+      <div style={qBlockStyle}>
+        <div className="font-ui" style={qLabelStyle}>
+          <span style={qNumStyle}>3</span>Bookkeeping
+        </div>
+        <ToggleSwitch checked={s.bookkeeping} label="Is bookkeeping required?" onToggle={() => toggle('bookkeeping')} />
+        {s.bookkeeping && (
+          <div style={followupStyle}>
+            <span className="font-ui" style={fieldLabelStyle}>
+              Roughly how many transactions per month?
+            </span>
+            <div style={numberFieldStyle}>
+              <input
+                type="number"
+                min={0}
+                value={s.transactions}
+                onChange={(e) => set('transactions', Math.max(0, Number(e.target.value) || 0))}
+                className="font-ui"
+                style={{ background: 'transparent', border: 'none', outline: 'none', color: '#F0EDE4', fontSize: '14px', width: '100%' }}
+              />
             </div>
           </div>
+        )}
+      </div>
 
-          {/* Disclaimer */}
-          <div className="mb-8 p-5" style={{ border: '1px solid rgba(255,255,255,0.08)', backgroundColor: 'rgba(255,255,255,0.02)' }}>
-            <p className="font-ui" style={{ fontSize: '11px', color: '#ffffff', lineHeight: 1.7 }}>
-              This shows the gross cost of employment before Employment Allowance. Most eligible small employers can claim up to £10,500/year in Employment Allowance, which may reduce or eliminate employer NI on a single hire — this doesn&apos;t apply to sole-director-only companies. Pension is calculated as a simplified 3% of salary; actual auto-enrolment contributions are based on qualifying earnings bands, which may differ slightly. This comparison doesn&apos;t include recruitment costs, onboarding time, sick pay, or management overhead, which add further real cost to hiring but vary too much to estimate reliably here.
+      {/* Q4: What's Included */}
+      <div style={qBlockStyle}>
+        <div className="font-ui" style={qLabelStyle}>
+          <span style={qNumStyle}>4</span>What&apos;s Included
+        </div>
+        <CheckRow checked={s.ar} label="Accounts Receivable" onToggle={() => toggle('ar')} />
+        <CheckRow checked={s.ap} label="Accounts Payable" onToggle={() => toggle('ap')} />
+        <CheckRow checked={s.chasing} label="Invoice chasing" onToggle={() => toggle('chasing')} />
+
+        <div className="font-ui" style={dividerStyle}>
+          Senior-level analysis — triggers Fractional CFO comparison
+        </div>
+
+        <CheckRow checked={s.budgets} label="Dynamic budgets" onToggle={() => toggle('budgets')} />
+        <CheckRow checked={s.workingcap} label="Working capital monitoring &amp; calculations" onToggle={() => toggle('workingcap')} />
+        <CheckRow checked={s.forecasting} label="Forecasting" onToggle={() => toggle('forecasting')} />
+        <CheckRow checked={s.mgmtaccounts} label="Management accounts / reporting pack" onToggle={() => toggle('mgmtaccounts')} />
+        <CheckRow checked={s.kpi} label="KPI dashboards" onToggle={() => toggle('kpi')} />
+        <CheckRow checked={s.scenario} label="Scenario planning" onToggle={() => toggle('scenario')} />
+        <CheckRow checked={s.fundraising} label="Fundraising &amp; investor support" onToggle={() => toggle('fundraising')} />
+
+        <div className="font-ui" style={dividerStyle}>
+          Suggested addition — confirm before including
+        </div>
+
+        <CheckRow
+          checked={s.creditcontrol}
+          label="Credit control"
+          tag="Suggested"
+          dim={!s.creditcontrol}
+          onToggle={() => toggle('creditcontrol')}
+        />
+      </div>
+
+      {/* Q5: Payroll */}
+      <div style={qBlockStyle}>
+        <div className="font-ui" style={qLabelStyle}>
+          <span style={qNumStyle}>5</span>Payroll
+        </div>
+        <ToggleSwitch checked={s.payroll} label="Is payroll required?" onToggle={() => toggle('payroll')} />
+        {s.payroll && (
+          <div style={followupStyle}>
+            <span className="font-ui" style={fieldLabelStyle}>
+              How many employees?
+            </span>
+            <div style={numberFieldStyle}>
+              <input
+                type="number"
+                min={0}
+                value={s.employees}
+                onChange={(e) => set('employees', Math.max(0, Number(e.target.value) || 0))}
+                className="font-ui"
+                style={{ background: 'transparent', border: 'none', outline: 'none', color: '#F0EDE4', fontSize: '14px', width: '100%' }}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Q6: VAT Returns */}
+      <div style={qBlockStyle}>
+        <div className="font-ui" style={qLabelStyle}>
+          <span style={qNumStyle}>6</span>VAT Returns
+        </div>
+        <ToggleSwitch checked={s.vat} label="Do you need VAT returns filed?" onToggle={() => toggle('vat')} />
+        {s.vat && (
+          <div style={followupStyle}>
+            <span className="font-ui" style={fieldLabelStyle}>
+              How many VAT returns per year?
+            </span>
+            <div style={numberFieldStyle}>
+              <input
+                type="number"
+                min={1}
+                value={s.vatReturns}
+                onChange={(e) => set('vatReturns', Math.max(1, Number(e.target.value) || 1))}
+                className="font-ui"
+                style={{ background: 'transparent', border: 'none', outline: 'none', color: '#F0EDE4', fontSize: '14px', width: '100%' }}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Q7: Self Assessment / Corporation Tax */}
+      <div style={qBlockStyle}>
+        <div className="font-ui" style={qLabelStyle}>
+          <span style={qNumStyle}>7</span>{oneoffLabel}
+        </div>
+        <ToggleSwitch checked={s.oneoff} label={oneoffToggleLabel} onToggle={() => toggle('oneoff')} />
+        {s.oneoff && s.businessType === 'limited-company' && (
+          <div style={followupStyle}>
+            <span className="font-ui" style={fieldLabelStyle}>
+              Average monthly revenue
+            </span>
+            <div style={{ ...numberFieldStyle }}>
+              <span className="font-ui" style={{ color: '#F0EDE4', marginRight: '6px', opacity: 0.6 }}>£</span>
+              <input
+                type="number"
+                min={0}
+                value={s.monthlyRevenue}
+                onChange={(e) => set('monthlyRevenue', Math.max(0, Number(e.target.value) || 0))}
+                className="font-ui"
+                style={{ background: 'transparent', border: 'none', outline: 'none', color: '#F0EDE4', fontSize: '14px', width: '100%' }}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Q8: How We Calculate */}
+      <div style={{ ...qBlockStyle, opacity: 0.85 }}>
+        <div className="font-ui" style={qLabelStyle}>
+          <span style={qNumStyle}>8</span>How We Calculate &ldquo;Cost to Hire&rdquo;
+        </div>
+        <p className="font-ui" style={{ fontSize: '12px', color: '#F0EDE4', lineHeight: 1.7 }}>
+          We use real UK market averages, not a number you type in — so the comparison stays honest and consistent.
+        </p>
+        <div style={{ marginTop: '14px', paddingTop: '14px', borderTop: '1px solid rgba(201,168,76,0.18)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#F0EDE4', padding: '6px 0', borderBottom: '1px solid rgba(201,168,76,0.18)' }}>
+            <span className="font-ui">Bookkeeper / Accounts Assistant</span>
+            <span className="font-ui">£30,000/year</span>
+          </div>
+          <p className="font-ui" style={{ fontSize: '11px', color: '#F0EDE4', marginTop: '4px', lineHeight: 1.6, opacity: 0.75 }}>
+            Source: Indeed, Glassdoor, Morgan McKinley, 2026 data (range £28,000–£38,000/year)
+          </p>
+        </div>
+        <div style={{ marginTop: '12px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#F0EDE4', padding: '6px 0', borderBottom: '1px solid rgba(201,168,76,0.18)' }}>
+            <span className="font-ui">Fractional CFO retainer</span>
+            <span className="font-ui">£3,000/month</span>
+          </div>
+          <p className="font-ui" style={{ fontSize: '11px', color: '#F0EDE4', marginTop: '4px', lineHeight: 1.6, opacity: 0.75 }}>
+            Source: LJS Accounting, Leadership Services, FD Capital, Consult EFC, 2026 data (range £1,500–£7,000/month). No employer NI or pension — this is a contractor fee, only used when a senior-level item is ticked above.
+          </p>
+        </div>
+      </div>
+
+      {/* ── Results Panel ── */}
+      <div
+        style={{
+          border: '2px solid var(--primary)',
+          backgroundColor: 'rgba(201,168,76,0.05)',
+          padding: '24px 22px',
+          marginTop: '20px',
+        }}
+      >
+        <p
+          className="font-ui"
+          style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)', marginBottom: '16px', fontWeight: 600 }}
+        >
+          Your Comparison
+        </p>
+
+        {/* Scope header — only when senior items ticked */}
+        {quote.seniorTicked && (
+          <>
+            <p className="font-display" style={{ fontSize: '15px', color: '#F0EDE4', marginBottom: '16px', lineHeight: 1.4 }}>
+              To replicate this scope, you&apos;d need a bookkeeper plus senior support:
+            </p>
+            <div style={{ marginBottom: '16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#F0EDE4', padding: '6px 0', borderBottom: '1px solid rgba(201,168,76,0.18)' }}>
+                <span className="font-ui">Bookkeeper / Accounts Assistant</span>
+                <span className="font-ui">{fmt(bk.trueAnnual)}/year</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#F0EDE4', padding: '6px 0', borderBottom: '1px solid rgba(201,168,76,0.18)' }}>
+                <span className="font-ui">Fractional CFO ({fmt(CFO_MONTHLY)}/mo retainer)</span>
+                <span className="font-ui">{fmt(cfoAnnual)}/year</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: 'var(--primary)', padding: '10px 0 6px', fontWeight: 600 }}>
+                <span className="font-ui">Combined true cost</span>
+                <span className="font-ui">{fmt(trueAnnual)}/year</span>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* RW breakdown when senior ticked */}
+        {quote.seniorTicked && (
+          <div style={{ marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid rgba(201,168,76,0.18)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#F0EDE4', padding: '6px 0', borderBottom: '1px solid rgba(201,168,76,0.18)' }}>
+              <span className="font-ui">Base operations (bookkeeping + payroll)</span>
+              <span className="font-ui">{fmt(quote.baseMonthly)}/mo</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: 'var(--primary)', padding: '6px 0' }}>
+              <span className="font-ui">+ Advisory &amp; Analysis</span>
+              <span className="font-ui">{fmt(quote.advisoryFee)}/mo</span>
+            </div>
+          </div>
+        )}
+
+        {/* Three-column results grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '14px', margin: '18px 0' }}>
+          {/* Cost to Hire */}
+          <div>
+            <p className="font-ui" style={{ fontSize: '9px', letterSpacing: '1px', textTransform: 'uppercase', color: '#F0EDE4', marginBottom: '6px', opacity: 0.7 }}>
+              Cost to Hire
+            </p>
+            <p className="font-display" style={{ fontSize: '22px', color: '#F0EDE4' }}>
+              {fmt(trueMonthly)}
+            </p>
+            <p className="font-ui" style={{ fontSize: '10px', color: '#F0EDE4', marginTop: '2px', opacity: 0.6 }}>
+              {fmt(trueAnnual)}/year
             </p>
           </div>
 
-          {/* Bottom actions */}
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <button
-              onClick={() => setShowModal(true)}
-              className="font-ui"
-              style={{
-                backgroundColor: 'var(--primary)',
-                color: '#080808',
-                padding: '14px 32px',
-                fontSize: '13px',
-                letterSpacing: '1.5px',
-                textTransform: 'uppercase',
-                fontWeight: 600,
-                border: 'none',
-                cursor: 'pointer',
-              }}
-            >
-              Send Me This Comparison →
-            </button>
-            <a
-              href="/contact/"
-              className="font-ui"
-              style={{ fontSize: '13px', color: '#ffffff', textDecoration: 'underline', textUnderlineOffset: '3px' }}
-            >
-              Looking for something else? Contact us →
-            </a>
+          {/* With Reckonwell */}
+          <div>
+            <p className="font-ui" style={{ fontSize: '9px', letterSpacing: '1px', textTransform: 'uppercase', color: '#F0EDE4', marginBottom: '6px', opacity: 0.7 }}>
+              With Reckonwell
+            </p>
+            <p className="font-display" style={{ fontSize: '22px', color: '#F0EDE4' }}>
+              {fmt(quote.monthly)}
+            </p>
+            <p className="font-ui" style={{ fontSize: '10px', color: '#F0EDE4', marginTop: '2px', opacity: 0.6 }}>
+              {fmt(quote.monthly * 12)}
+              {quote.oneoff > 0 ? ` + ${fmt(quote.oneoff)} one-off` : '/year'}
+            </p>
+          </div>
+
+          {/* You Save */}
+          <div>
+            <p className="font-ui" style={{ fontSize: '9px', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--primary)', marginBottom: '6px' }}>
+              You Save
+            </p>
+            <p className="font-display" style={{ fontSize: '22px', color: 'var(--primary)' }}>
+              {fmt(monthlySavings)}
+            </p>
+            <p className="font-ui" style={{ fontSize: '10px', color: '#F0EDE4', marginTop: '2px', opacity: 0.6 }}>
+              {fmt(annualSavings)}/year
+            </p>
           </div>
         </div>
-      )}
+
+        {/* Explain line — only when senior items ticked */}
+        {quote.seniorTicked && (
+          <p
+            className="font-ui"
+            style={{ fontSize: '11.5px', color: '#F0EDE4', lineHeight: 1.6, marginTop: '14px', paddingTop: '14px', borderTop: '1px solid rgba(201,168,76,0.25)' }}
+          >
+            A bookkeeper handles day-to-day data entry. Forecasting, board reporting, and fundraising support are genuinely CFO-level work — the same scope UK businesses typically hire a Fractional CFO for. Reckonwell provides both, in one service.
+          </p>
+        )}
+
+        {/* Disclaimer */}
+        <p
+          className="font-ui"
+          style={{ fontSize: '10px', color: '#F0EDE4', lineHeight: 1.6, marginTop: '14px', paddingTop: '14px', borderTop: '1px solid rgba(201,168,76,0.18)', opacity: 0.65 }}
+        >
+          This shows the gross cost of employment before Employment Allowance. Pension is a simplified 3% estimate. Doesn&apos;t include recruitment, onboarding, sick pay, or management overhead.
+        </p>
+
+        {/* CTA */}
+        <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
+          <button
+            onClick={() => setShowModal(true)}
+            className="font-ui"
+            style={{
+              backgroundColor: 'var(--primary)',
+              color: '#080808',
+              padding: '14px 32px',
+              fontSize: '13px',
+              letterSpacing: '1.5px',
+              textTransform: 'uppercase',
+              fontWeight: 600,
+              border: 'none',
+              cursor: 'pointer',
+            }}
+          >
+            Send Me This Comparison →
+          </button>
+          <a
+            href="/contact/"
+            className="font-ui"
+            style={{ fontSize: '13px', color: '#F0EDE4', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+          >
+            Looking for something else? Contact us →
+          </a>
+        </div>
+      </div>
 
       {/* ── Lead Capture Modal ── */}
       {showModal && (
@@ -505,7 +755,7 @@ export default function FractionalFinanceCalculator() {
           <div style={{ backgroundColor: '#0f0f0f', border: '1px solid rgba(201,168,76,0.3)', padding: '40px', maxWidth: '480px', width: '100%', position: 'relative' }}>
             <button
               onClick={() => setShowModal(false)}
-              style={{ position: 'absolute', top: '16px', right: '16px', background: 'none', border: 'none', color: '#ffffff', fontSize: '20px', cursor: 'pointer', lineHeight: 1 }}
+              style={{ position: 'absolute', top: '16px', right: '16px', background: 'none', border: 'none', color: '#F0EDE4', fontSize: '20px', cursor: 'pointer', lineHeight: 1 }}
               aria-label="Close"
             >
               ×
@@ -513,18 +763,18 @@ export default function FractionalFinanceCalculator() {
             {modalStatus === 'success' ? (
               <div className="text-center">
                 <p style={{ color: 'var(--primary)', fontSize: '32px', marginBottom: '12px' }}>✓</p>
-                <h3 className="font-display mb-3" style={{ fontSize: '22px', fontWeight: 400, color: '#ffffff' }}>Comparison sent</h3>
-                <p className="font-ui" style={{ fontSize: '14px', color: '#ffffff', lineHeight: 1.6 }}>
+                <h3 className="font-display mb-3" style={{ fontSize: '22px', fontWeight: 400, color: '#F0EDE4' }}>Comparison sent</h3>
+                <p className="font-ui" style={{ fontSize: '14px', color: '#F0EDE4', lineHeight: 1.6 }}>
                   Check your inbox — we&apos;ve sent your personalised comparison to {modalEmail}.
                 </p>
               </div>
             ) : (
               <>
                 <p className="section-label mb-3">Send My Comparison</p>
-                <h3 className="font-display mb-2" style={{ fontSize: '22px', fontWeight: 400, color: '#ffffff' }}>
+                <h3 className="font-display mb-2" style={{ fontSize: '22px', fontWeight: 400, color: '#F0EDE4' }}>
                   Get this comparison by email
                 </h3>
-                <p className="font-ui mb-6" style={{ fontSize: '13px', color: '#ffffff', lineHeight: 1.6 }}>
+                <p className="font-ui mb-6" style={{ fontSize: '13px', color: '#F0EDE4', lineHeight: 1.6 }}>
                   We&apos;ll send you a summary of your personalised cost comparison — no spam, no obligation.
                 </p>
                 <div className="flex flex-col gap-3 mb-5">
@@ -534,7 +784,7 @@ export default function FractionalFinanceCalculator() {
                     value={modalName}
                     onChange={(e) => setModalName(e.target.value)}
                     className="font-ui w-full bg-transparent px-4 py-3 outline-none"
-                    style={{ border: '1px solid rgba(201,168,76,0.3)', color: '#ffffff', fontSize: '14px' }}
+                    style={{ border: '1px solid rgba(201,168,76,0.3)', color: '#F0EDE4', fontSize: '14px' }}
                   />
                   <input
                     type="email"
@@ -542,7 +792,7 @@ export default function FractionalFinanceCalculator() {
                     value={modalEmail}
                     onChange={(e) => setModalEmail(e.target.value)}
                     className="font-ui w-full bg-transparent px-4 py-3 outline-none"
-                    style={{ border: '1px solid rgba(201,168,76,0.3)', color: '#ffffff', fontSize: '14px' }}
+                    style={{ border: '1px solid rgba(201,168,76,0.3)', color: '#F0EDE4', fontSize: '14px' }}
                   />
                 </div>
                 {modalError && (
@@ -562,7 +812,7 @@ export default function FractionalFinanceCalculator() {
                     fontWeight: 600,
                     border: 'none',
                     cursor: modalStatus === 'submitting' ? 'not-allowed' : 'pointer',
-                    opacity: (!modalName.trim() || !modalEmail.trim()) ? 0.6 : 1,
+                    opacity: !modalName.trim() || !modalEmail.trim() ? 0.6 : 1,
                   }}
                 >
                   {modalStatus === 'submitting' ? 'Sending…' : 'Send My Comparison →'}
