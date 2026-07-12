@@ -17,6 +17,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    // ── Core Service Pages ────────────────────────────────────────────────────
+    {
+      url: `${baseUrl}/fractional-finance-department`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
     // US City pages
     {
       url: `${baseUrl}/us/accounting/austin`,

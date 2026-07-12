@@ -71,7 +71,7 @@ export default function HowItWorksSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
-          One call. 48 hours.
+          One Quote. 48 hours.
           <br />
           <span className="gold-italic">Done.</span>
         </motion.h2>

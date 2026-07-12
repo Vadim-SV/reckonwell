@@ -31,20 +31,21 @@ const pillars = [
 ];
 
 const withoutItems = [
-  'tabs everywhere',
-  'Slack messages',
-  'invoices missing',
-  'accountant replies late',
-  'cashflow unclear',
-  'admin ruins evenings',
+  "Sales invoices go unchased for weeks — customers who owe you money, and nobody's following up",
+  "You don't actually know your working capital position — is there real cash to spend, or is it all owed out?",
+  "Your accountant closes the books once a month, so a cash flow problem is often three or four weeks old before anyone notices",
+  "Your in-house bookkeeper can enter the numbers, but can't tell you what they mean for your next six months",
+  "You're making decisions — hiring, spending, holding back — on gut feel, because nobody's shown you a real forecast",
+  'Every quiet moment gets swallowed by "just checking the numbers" instead of running the business',
 ];
 
 const withItems = [
-  'finance function runs',
-  'reports arrive',
-  'invoices handled',
-  'systems organised',
-  'founder has mental space again',
+  "Every invoice is tracked and chased as a matter of course — unpaid customers don't slip through",
+  "You know your real working capital position, whenever you need it — not a guess based on the bank balance",
+  "Daily monitoring means a cash flow issue is caught within days, not discovered a month later at close",
+  "A qualified finance professional runs the actual analysis — working capital, cash flow forecasting, runway — not just data entry",
+  "Every major decision is backed by real numbers and a real forecast, not gut feel",
+  "The numbers are someone else's job now. You get your time and headspace back",
 ];
 
 export default function WhyReckonwellSection() {
