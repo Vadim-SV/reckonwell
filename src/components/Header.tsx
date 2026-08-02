@@ -50,7 +50,7 @@ function RegionToggle({ compact = false }: { compact?: boolean }) {
         }}
         aria-pressed={isUK}
       >
-        🇬🇧 UK
+        GB
       </button>
       <button
         onClick={() => setRegion('USA')}
@@ -66,7 +66,7 @@ function RegionToggle({ compact = false }: { compact?: boolean }) {
         }}
         aria-pressed={!isUK}
       >
-        🇺🇸 USA
+        US
       </button>
     </div>
   );
