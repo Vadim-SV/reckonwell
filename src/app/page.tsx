@@ -11,7 +11,7 @@ import ServicesAndPricingSection from '@/app/components/ServicesAndPricingSectio
 import NationwideCoverageSection from '@/app/components/NationwideCoverageSection';
 import ClosingSection from '@/app/components/ClosingSection';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
-import CustomCursor from '@/app/components/CustomCursor';
+
 import USBanner from '@/components/USBanner';
 
 export default function HomePage() {
@@ -51,7 +51,6 @@ export default function HomePage() {
         style={{ backgroundColor: 'var(--background)' }}
         role="main"
       >
-        <CustomCursor />
         <Header />
         <article role="article">
           <section role="region" aria-label="Hero section">
