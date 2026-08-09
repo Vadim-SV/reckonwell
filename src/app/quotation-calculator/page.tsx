@@ -599,10 +599,6 @@ function QuotationCalculatorContent() {
                             min={0}
                             placeholder="e.g. 15000"
                           />
-                          <p className="font-ui text-xs mt-2" style={{ color: 'var(--muted)' }}>
-                            Fee: &lt;£1k/mo → £500 · £1k–£10k/mo → £750 · &gt;£10k/mo → £1,000
-                            {isGroup && groupCompanyCount > 1 ? ` × ${groupCompanyCount} companies` : ''}
-                          </p>
                         </div>
                       )}
                     </div>
