@@ -51,10 +51,13 @@ export default function BoroughPage() {
         </div>
         <section className="px-6 md:px-10 py-16 md:py-24" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
-            <p className="section-label mb-4">London Borough Accounting</p>
-            <h1 className="font-display mb-6" style={{ fontSize: 'clamp(36px,6vw,72px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
-              Accounting Services<br />in <em style={{ color: 'var(--primary)' }}>{boroughName}</em>
+            <p className="section-label mb-4">Remote Accounting &amp; Bookkeeping in {boroughName}</p>
+            <h1 className="font-display mb-4" style={{ fontSize: 'clamp(36px,6vw,72px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
+              Accounting &amp; Bookkeeping<br />in <em style={{ color: 'var(--primary)' }}>{boroughName}</em>
             </h1>
+            <p className="font-ui font-semibold mb-6" style={{ color: 'var(--primary)', fontSize: '16px' }}>
+              100% remote — no trip to Waterloo for a meeting.
+            </p>
             <p className="font-ui mb-8 max-w-2xl" style={{ color: 'var(--muted)', fontSize: '18px', lineHeight: 1.7 }}>
               Reckonwell serves businesses across {boroughDesc}. From professional services firms in Vauxhall and Waterloo to creative industries and hospitality businesses along the South Bank — transparent pricing, no hidden fees, and a named accountant who knows your business.
             </p>
@@ -84,6 +87,30 @@ export default function BoroughPage() {
             </div>
           </div>
         </section>
+        {/* Working With Lambeth Businesses */}
+        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
+          <div className="max-w-3xl mx-auto">
+            <p className="section-label mb-4">Local Context</p>
+            <h2 className="font-display mb-8" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>Working With {boroughName} Businesses</h2>
+            <div className="space-y-6">
+              <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>Lambeth spans a wide range of business types. Vauxhall and Waterloo form a significant professional services and office district, with a mix of consultancies, media businesses, and government-adjacent organisations. The South Bank — Waterloo, Southbank, and the areas around the cultural venues — has a dense hospitality and creative-economy character, with restaurants, bars, and creative businesses benefiting from the tourist and office-worker footfall. Brixton has a strong independent retail and food scene, with a growing number of small creative and digital businesses. The compliance picture spans professional-services limited company accounts, VAT-heavy hospitality, and self-employed accounting for the creative and freelance community.</p>
+              <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>Reckonwell is a fully remote practice — there's no office near Waterloo or Brixton. That means no trip across Lambeth for a meeting, no waiting rooms. Onboarding takes 48 hours, everything runs through Xero, QuickBooks, or FreeAgent, and your accountant is reachable directly. For Lambeth businesses that want straightforward, transparent accounting support, that tends to be a better fit than a traditional local firm.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Compliance Deadlines */}
+        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
+          <div className="max-w-3xl mx-auto">
+            <p className="section-label mb-4">Compliance Deadlines</p>
+            <h2 className="font-display mb-8" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>MTD &amp; Companies House — what applies to you</h2>
+            <div className="space-y-6">
+              <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>Making Tax Digital for Income Tax became mandatory from 6 April 2026 for sole traders and landlords with gross qualifying income over £50,000, based on your 2024/25 Self Assessment return. If that's you, you're already required to keep digital records and file quarterly updates rather than a single annual return — the first quarterly deadline for the 2026/27 tax year fell on 7 August 2026. The threshold drops to £30,000 from April 2027 and £20,000 from April 2028, so many more {boroughName} sole traders and landlords currently below the £50k line will be brought into MTD over the next two years. We handle the quarterly submissions directly, so you're not tracking deadlines across four separate filings a year.</p>
+              <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>For limited companies, Companies House filings and Corporation Tax remain unaffected by the MTD ITSA rollout — annual accounts and CT600 deadlines still apply as before. If you're running a limited company from {boroughName} and also have personal rental income or self-employment earnings above the threshold, both sets of obligations run in parallel, which is where most of the confusion — and most of the missed deadlines — tends to happen. We track both for clients who fall into that overlap.</p>
+            </div>
+          </div>
+        </section>
+
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Transparent Pricing</p>

@@ -9,35 +9,35 @@ import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSectio
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
-const boroughName = 'Southwark';
-const boroughSlug = 'southwark';
-const boroughDesc = 'home to the London Bridge and Bermondsey business district, creative agencies, and food businesses around Borough Market';
+const cityName = 'Old Street';
+const citySlug = 'old-street';
+const cityDesc = "London's Silicon Roundabout — the UK's most concentrated tech startup district";
 
-const nearbyBoroughs = [
-  { name: 'Lambeth', href: '/accounting/lambeth' },
-  { name: 'Tower Hamlets', href: '/accounting/tower-hamlets' },
-  { name: 'Westminster', href: '/accounting/westminster' },
-  { name: 'City of London', href: '/accounting/city-of-london' },
+const nearbyCities = [
+  { name: 'Islington', href: '/accounting/islington' },
+  { name: 'Hackney', href: '/accounting/hackney' },
   { name: 'Moorgate', href: '/accounting/moorgate' },
+  { name: 'City of London', href: '/accounting/city-of-london' },
 ];
 
 const faqs = [
-  { q: `Do you work with businesses based in ${boroughName}?`, a: `Yes. We work with businesses across ${boroughName} and the wider London area remotely. All onboarding, filing, and communication is handled online — no need to visit an office.` },
+  { q: `Do you work with businesses based in ${cityName}?`, a: `Yes. We work with startups and businesses across ${cityName} and the wider London area remotely. All onboarding, filing, and communication is handled online — no need to visit an office.` },
   { q: 'How quickly can you take over my accounting?', a: 'We typically onboard new clients within 48 hours. You share access to your bank and invoicing tools, and we start from there.' },
   { q: 'Do I need to switch accounting software?', a: "We work with Xero, QuickBooks, and FreeAgent. If you're already using one of these, we connect directly. If not, we'll recommend the best fit for your business." },
   { q: 'What does Making Tax Digital mean for my business?', a: 'If your income exceeds £50,000 from self-employment or property, MTD quarterly filing is mandatory from April 2026. We handle all submissions automatically.' },
-  { q: `Are your prices higher for ${boroughName} businesses?`, a: 'No. Our pricing is the same nationwide. You get the same service quality regardless of location.' },
-  { q: `I run a food business near Borough Market — what accounting do I need?`, a: "Food businesses and hospitality operators in Southwark typically need self-employed or limited company accounting, VAT returns, and bookkeeping. We handle all of this under one monthly fee." },
+  { q: `Are your prices higher for ${cityName} businesses?`, a: 'No. Our pricing is the same nationwide. You get the same service quality regardless of location.' },
+  { q: 'Can you help with R&D tax relief for our startup?', a: 'Yes. R&D tax relief claims are one of the most common services we provide for Old Street tech and SaaS businesses. We handle the technical narrative and HMRC submission from £850 one-off.' },
+  { q: 'We just hired our first employees — what payroll do we need?', a: 'We set up and run PAYE payroll for growing teams, including RTI submissions to HMRC, payslips, and employer NI calculations. This is a common step for Old Street startups scaling past 2-3 people.' },
 ];
 
 const services = [
   { title: 'Self-Employed Accounting', desc: 'Self Assessment, MTD compliance, and year-round tax monitoring for freelancers and sole traders.', href: '/self-employed-accounting', price: 'From £80/mo' },
   { title: 'Limited Company Accounting', desc: 'CT600, statutory accounts, Companies House filings, and payroll for limited companies.', href: '/limited-company-accounting', price: 'From £150/mo' },
+  { title: 'R&D Tax Relief', desc: 'Professional R&D claims for tech, SaaS, and innovation-led businesses. Common for Old Street startups.', href: '/r-and-d-tax-relief', price: 'From £850 one-off' },
   { title: 'Making Tax Digital', desc: 'Quarterly MTD submissions for sole traders and landlords earning £50k+.', href: '/making-tax-digital', price: 'From £100/mo' },
-  { title: 'R&D Tax Relief', desc: 'Professional R&D claims for tech, engineering, and innovation-led businesses.', href: '/r-and-d-tax-relief', price: 'From £850 one-off' },
 ];
 
-export default function BoroughPage() {
+export default function CityPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -45,43 +45,54 @@ export default function BoroughPage() {
       <Header />
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
 
-        <Breadcrumb items={[{ label: 'Accounting', href: '/services' }, { label: 'London', href: '/accounting/london' }, { label: boroughName, href: `/accounting/${boroughSlug}` }]} />
+        <Breadcrumb items={[{ label: 'Accounting', href: '/services' }, { label: 'London', href: '/accounting/london' }, { label: cityName, href: `/accounting/${citySlug}` }]} />
 
         <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
-            <p className="font-ui text-xs" style={{ color: 'var(--muted)' }}><span style={{ color: 'var(--primary)' }}>Standalone compliance service</span> — no ongoing engagement required.</p>
-            <Link href="/" className="font-ui text-xs" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>Need a full finance team? See Fractional Finance →</Link>
+            <p className="font-ui text-xs" style={{ color: 'var(--muted)' }}>
+              <span style={{ color: 'var(--primary)' }}>Standalone compliance service</span> — no ongoing engagement required.
+            </p>
+            <Link href="/" className="font-ui text-xs" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+              Need a full finance team? See Fractional Finance →
+            </Link>
           </div>
         </div>
 
         {/* Hero */}
         <section className="px-6 md:px-10 py-16 md:py-24" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
-            <p className="section-label mb-4">Remote Accounting &amp; Bookkeeping in {boroughName}</p>
+            <p className="section-label mb-4">Remote Accounting &amp; Bookkeeping in {cityName}</p>
             <h1 className="font-display mb-4" style={{ fontSize: 'clamp(36px,6vw,72px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
-              Accounting &amp; Bookkeeping<br />in <em style={{ color: 'var(--primary)' }}>{boroughName}</em>
+              Accounting &amp; Bookkeeping<br />in <em style={{ color: 'var(--primary)' }}>{cityName}</em>
             </h1>
             <p className="font-ui font-semibold mb-6" style={{ color: 'var(--primary)', fontSize: '16px' }}>
-              100% remote — no trip to London Bridge for a meeting.
+              100% remote — no trip to the Old Street roundabout for a meeting.
             </p>
             <p className="font-ui mb-8 max-w-2xl" style={{ color: 'var(--muted)', fontSize: '18px', lineHeight: 1.7 }}>
-              Reckonwell serves businesses across {boroughDesc}. From professional services firms at London Bridge to creative agencies in Bermondsey and food businesses around Borough Market — transparent pricing, no hidden fees, and a named accountant who knows your business.
+              Reckonwell works with founder-led businesses in {cityDesc}. Transparent pricing, no hidden fees, and a named accountant who knows your business.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>Get Your {boroughName} Quote →</Link>
-              <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>Ask a Question</Link>
+              <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>
+                Get Your {cityName} Quote →
+              </Link>
+              <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>
+                Ask a Question
+              </Link>
             </div>
           </div>
         </section>
 
         <CertifiedPartneredSection variant="full" />
+
         <TheDifferenceSection />
 
         {/* Services Grid */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
             <p className="section-label mb-4">Our Services</p>
-            <h2 className="font-display mb-12" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>Compliance services for {boroughName} businesses</h2>
+            <h2 className="font-display mb-12" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              Compliance for {cityName} founders starts here
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {services?.map((svc, i) => (
                 <div key={i} className="p-6 border flex flex-col" style={{ borderColor: 'var(--gold-border)' }}>
@@ -97,19 +108,19 @@ export default function BoroughPage() {
           </div>
         </section>
 
-        {/* Working With Southwark Businesses */}
+        {/* Working With Old Street Businesses */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto">
             <p className="section-label mb-4">Local Context</p>
             <h2 className="font-display mb-8" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Working With {boroughName} Businesses
+              Working With {cityName} Businesses
             </h2>
             <div className="space-y-6">
               <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
-                Southwark spans a wide range of business types. London Bridge and Bankside form a major office and professional-services district — home to The Shard and a dense cluster of office space — where established professional-services firms and consultancies are the dominant occupiers. Bermondsey has a strong food, drink, and independent retail scene, with a mix of sole traders and small limited companies. Elephant and Castle is a growing base for smaller creative and digital SMEs. The compliance picture spans established professional-services company accounts at one end and newer, smaller creative-sector businesses at the other — both needing consistent bookkeeping and VAT management.
+                Old Street — Silicon Roundabout — is the historic centre of London's tech startup scene, straddling the Islington and Hackney border around the roundabout itself. The area has a dense concentration of early-stage tech and SaaS startups, digital agencies, and scale-ups, many of which are still handling their own bookkeeping before their first finance hire. The compliance picture here is distinct: R&D tax relief eligibility is unusually common, EMI share schemes for early employees come up regularly, and the jump from founder-only bookkeeping to proper payroll as teams scale past two or three people is one of the most frequent transitions we help with.
               </p>
               <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
-                Reckonwell is a fully remote practice — there's no office near London Bridge or Borough Market. That means no trip across Southwark for a meeting, no waiting rooms. Onboarding takes 48 hours, everything runs through Xero, QuickBooks, or FreeAgent, and your accountant is reachable directly. For businesses across Southwark's varied districts, that flexibility tends to be a better fit than a traditional local firm.
+                We don't have an office near the Old Street roundabout — Reckonwell is a fully remote practice. That means no trip to EC1 for a meeting, no waiting for a local accountant to fit you in. Onboarding takes 48 hours, everything runs through Xero, QuickBooks, or FreeAgent, and your accountant is reachable directly. For fast-moving startups, that's usually a better fit than a traditional local firm.
               </p>
             </div>
           </div>
@@ -124,30 +135,40 @@ export default function BoroughPage() {
             </h2>
             <div className="space-y-6">
               <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
-                Making Tax Digital for Income Tax became mandatory from 6 April 2026 for sole traders and landlords with gross qualifying income over £50,000, based on your 2024/25 Self Assessment return. If that's you, you're already required to keep digital records and file quarterly updates rather than a single annual return — the first quarterly deadline for the 2026/27 tax year fell on 7 August 2026. The threshold drops to £30,000 from April 2027 and £20,000 from April 2028, so many more {boroughName} sole traders and landlords currently below the £50k line will be brought into MTD over the next two years. We handle the quarterly submissions directly, so you're not tracking deadlines across four separate filings a year.
+                Making Tax Digital for Income Tax became mandatory from 6 April 2026 for sole traders and landlords with gross qualifying income over £50,000, based on your 2024/25 Self Assessment return. If that's you, you're already required to keep digital records and file quarterly updates rather than a single annual return — the first quarterly deadline for the 2026/27 tax year fell on 7 August 2026. The threshold drops to £30,000 from April 2027 and £20,000 from April 2028, so many more {cityName} sole traders and landlords currently below the £50k line will be brought into MTD over the next two years. We handle the quarterly submissions directly, so you're not tracking deadlines across four separate filings a year.
               </p>
               <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
-                For limited companies, Companies House filings and Corporation Tax remain unaffected by the MTD ITSA rollout — annual accounts and CT600 deadlines still apply as before. If you're running a limited company from {boroughName} and also have personal rental income or self-employment earnings above the threshold, both sets of obligations run in parallel, which is where most of the confusion — and most of the missed deadlines — tends to happen. We track both for clients who fall into that overlap.
+                For limited companies, Companies House filings and Corporation Tax remain unaffected by the MTD ITSA rollout — annual accounts and CT600 deadlines still apply as before. If you're running a limited company from {cityName} and also have personal rental income or self-employment earnings above the threshold, both sets of obligations run in parallel, which is where most of the confusion — and most of the missed deadlines — tends to happen. We track both for clients who fall into that overlap.
               </p>
             </div>
           </div>
         </section>
 
+        {/* Pricing */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Transparent Pricing</p>
-            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>See your exact {boroughName} accounting price</h2>
-            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>Pricing is based on your business type, income level, and the services you need. Use our quotation calculator to get your exact monthly price in under 2 minutes — no sales calls required.</p>
-            <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 40px', lineHeight: '48px', display: 'inline-block' }}>Get Your Exact Quote →</Link>
+            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              See your exact {cityName} accounting price
+            </h2>
+            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
+              Pricing is based on your business type, income level, and the services you need. Use our quotation calculator to get your exact monthly price in under 2 minutes — no sales calls required.
+            </p>
+            <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 40px', lineHeight: '48px', display: 'inline-block' }}>
+              Get Your Exact Quote →
+            </Link>
           </div>
         </section>
 
         <ReferralTeaserSection />
 
+        {/* FAQ */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto">
             <p className="section-label mb-4">FAQ</p>
-            <h2 className="font-display mb-10" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>Questions from {boroughName} businesses</h2>
+            <h2 className="font-display mb-10" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              Questions from {cityName} businesses
+            </h2>
             <div className="space-y-0">
               {faqs?.map((faq, i) => (
                 <div key={i} style={{ borderBottom: '1px solid var(--gold-border)' }}>
@@ -162,11 +183,16 @@ export default function BoroughPage() {
           </div>
         </section>
 
+        {/* CTA */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Get Started</p>
-            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>Get your {boroughName} accounting quote</h2>
-            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>Transparent pricing. No sales calls. See your exact monthly price in under 2 minutes.</p>
+            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              Get your {cityName} accounting quote
+            </h2>
+            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
+              Transparent pricing. No sales calls. See your exact monthly price in under 2 minutes.
+            </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>Get Your Quote →</Link>
               <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>Speak to an Accountant</Link>
@@ -174,12 +200,15 @@ export default function BoroughPage() {
           </div>
         </section>
 
+        {/* Also Serving Nearby */}
         <section className="px-6 md:px-10 py-8" style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.03)' }}>
           <div className="max-w-5xl mx-auto">
             <p className="font-ui text-xs mb-3" style={{ color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}>Also Serving Nearby</p>
             <div className="flex flex-wrap gap-4">
-              {nearbyBoroughs?.map((borough) => (
-                <Link key={borough?.href} href={borough?.href} className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{borough?.name}</Link>
+              {nearbyCities?.map((city) => (
+                <Link key={city?.href} href={city?.href} className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                  {city?.name}
+                </Link>
               ))}
             </div>
           </div>
@@ -187,27 +216,36 @@ export default function BoroughPage() {
 
         <section className="px-6 md:px-10 py-6" style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.02)' }}>
           <div className="max-w-5xl mx-auto">
-            <Link href="/accounting/london" className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>Part of Greater London — see our full London accounting services →</Link>
+            <Link href="/accounting/london" className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+              Part of Greater London — see our full London accounting services →
+            </Link>
           </div>
         </section>
 
         <section className="px-6 md:px-10 py-8" style={{ borderTop: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.04)' }}>
           <div className="max-w-3xl mx-auto text-center">
-            <p className="font-ui text-sm mb-2" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>Need a full finance team for your {boroughName} business?</p>
-            <Link href="/" className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>Our Fractional Finance Department handles all of this and more — daily →</Link>
+            <p className="font-ui text-sm mb-2" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>Need a full finance team for your {cityName} business?</p>
+            <Link href="/" className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+              Our Fractional Finance Department handles all of this and more — daily →
+            </Link>
           </div>
         </section>
       </main>
       <Footer />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Reckonwell',
-        description: `Accounting and bookkeeping services for businesses in ${boroughName}, London.`,
-        url: `https://reckonwell.com/accounting/${boroughSlug}`,
-        areaServed: { '@type': 'AdministrativeArea', name: `${boroughName}, London` },
-        priceRange: '££', currenciesAccepted: 'GBP', openingHours: 'Mo-Fr 09:00-17:30',
+        '@context': 'https://schema.org',
+        '@type': 'ProfessionalService',
+        name: 'Reckonwell',
+        description: `Accounting and bookkeeping services for businesses in ${cityName}. Self-employed, limited company, R&D tax relief, MTD, and payroll.`,
+        url: `https://reckonwell.com/accounting/${citySlug}`,
+        areaServed: { '@type': 'Place', name: `${cityName}, London` },
+        priceRange: '££',
+        currenciesAccepted: 'GBP',
+        openingHours: 'Mo-Fr 09:00-17:30',
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org', '@type': 'FAQPage',
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
         mainEntity: faqs?.map(f => ({ '@type': 'Question', name: f?.q, acceptedAnswer: { '@type': 'Answer', text: f?.a } })),
       }) }} />
     </>

@@ -11,7 +11,7 @@ import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
 const boroughName = 'Kensington and Chelsea';
 const boroughSlug = 'kensington-and-chelsea';
-const boroughDesc = 'home to high-end retail and luxury brands, professional services firms, and hospitality businesses around King\'s Road';
+const boroughDesc = "home to high-end retail and luxury brands, professional services firms, and hospitality businesses around King's Road";
 
 const nearbyBoroughs = [
   { name: 'Westminster', href: '/accounting/westminster' },
@@ -30,8 +30,8 @@ const faqs = [
 const services = [
   { title: 'Self-Employed Accounting', desc: 'Self Assessment, MTD compliance, and year-round tax monitoring for freelancers and sole traders.', href: '/self-employed-accounting', price: 'From £80/mo' },
   { title: 'Limited Company Accounting', desc: 'CT600, statutory accounts, Companies House filings, and payroll for limited companies.', href: '/limited-company-accounting', price: 'From £150/mo' },
+  { title: 'VAT Returns', desc: 'Quarterly VAT returns including luxury retail and hospitality VAT treatment for Kensington and Chelsea businesses.', href: '/vat-returns', price: 'From £80/mo' },
   { title: 'Making Tax Digital', desc: 'Quarterly MTD submissions for sole traders and landlords earning £50k+.', href: '/making-tax-digital', price: 'From £100/mo' },
-  { title: 'R&D Tax Relief', desc: 'Professional R&D claims for tech, engineering, and innovation-led businesses.', href: '/r-and-d-tax-relief', price: 'From £850 one-off' },
 ];
 
 export default function BoroughPage() {
@@ -48,12 +48,17 @@ export default function BoroughPage() {
             <Link href="/" className="font-ui text-xs" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>Need a full finance team? See Fractional Finance →</Link>
           </div>
         </div>
+
+        {/* Hero */}
         <section className="px-6 md:px-10 py-16 md:py-24" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
-            <p className="section-label mb-4">London Borough Accounting</p>
-            <h1 className="font-display mb-6" style={{ fontSize: 'clamp(36px,6vw,72px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
-              Accounting Services<br />in <em style={{ color: 'var(--primary)' }}>{boroughName}</em>
+            <p className="section-label mb-4">Remote Accounting &amp; Bookkeeping in {boroughName}</p>
+            <h1 className="font-display mb-4" style={{ fontSize: 'clamp(36px,6vw,72px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
+              Accounting &amp; Bookkeeping<br />in <em style={{ color: 'var(--primary)' }}>Kensington &amp; Chelsea</em>
             </h1>
+            <p className="font-ui font-semibold mb-6" style={{ color: 'var(--primary)', fontSize: '16px' }}>
+              100% remote — no trip to King's Road for a meeting.
+            </p>
             <p className="font-ui mb-8 max-w-2xl" style={{ color: 'var(--muted)', fontSize: '18px', lineHeight: 1.7 }}>
               Reckonwell serves businesses across {boroughDesc}. From luxury retailers and professional services firms to hospitality businesses on King's Road — transparent pricing, no hidden fees, and a named accountant who knows your business.
             </p>
@@ -63,12 +68,15 @@ export default function BoroughPage() {
             </div>
           </div>
         </section>
+
         <CertifiedPartneredSection variant="full" />
         <TheDifferenceSection />
+
+        {/* Services Grid */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
             <p className="section-label mb-4">Our Services</p>
-            <h2 className="font-display mb-12" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>Compliance services for {boroughName} businesses</h2>
+            <h2 className="font-display mb-12" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>Compliance for Kensington &amp; Chelsea businesses</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {services?.map((svc, i) => (
                 <div key={i} className="p-6 border flex flex-col" style={{ borderColor: 'var(--gold-border)' }}>
@@ -83,6 +91,43 @@ export default function BoroughPage() {
             </div>
           </div>
         </section>
+
+        {/* Working With Kensington and Chelsea Businesses */}
+        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
+          <div className="max-w-3xl mx-auto">
+            <p className="section-label mb-4">Local Context</p>
+            <h2 className="font-display mb-8" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              Working With Kensington &amp; Chelsea Businesses
+            </h2>
+            <div className="space-y-6">
+              <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
+                Kensington and Chelsea has a distinct business character shaped by its geography. Chelsea and Knightsbridge are home to luxury retail, high-end hospitality, and a significant concentration of professional and financial advisory firms — the VAT treatment of high-value transactions and the bookkeeping requirements of premium hospitality businesses are recurring themes. Notting Hill and Portobello have a strong independent retail and creative-business character, with a mix of sole traders and small limited companies. The compliance picture spans luxury retail VAT treatment and higher-value transaction accounting at one end, alongside standard professional-services limited company work at the other.
+              </p>
+              <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
+                Reckonwell is a fully remote practice — there's no office near King's Road or Notting Hill Gate. That means no trip across the borough for a meeting, no waiting rooms. Onboarding takes 48 hours, everything runs through Xero, QuickBooks, or FreeAgent, and your accountant is reachable directly. For businesses in one of London's most time-pressured districts, that tends to be a more practical arrangement.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Compliance Deadlines */}
+        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
+          <div className="max-w-3xl mx-auto">
+            <p className="section-label mb-4">Compliance Deadlines</p>
+            <h2 className="font-display mb-8" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
+              MTD &amp; Companies House — what applies to you
+            </h2>
+            <div className="space-y-6">
+              <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
+                Making Tax Digital for Income Tax became mandatory from 6 April 2026 for sole traders and landlords with gross qualifying income over £50,000, based on your 2024/25 Self Assessment return. If that's you, you're already required to keep digital records and file quarterly updates rather than a single annual return — the first quarterly deadline for the 2026/27 tax year fell on 7 August 2026. The threshold drops to £30,000 from April 2027 and £20,000 from April 2028, so many more Kensington and Chelsea sole traders and landlords currently below the £50k line will be brought into MTD over the next two years. We handle the quarterly submissions directly, so you're not tracking deadlines across four separate filings a year.
+              </p>
+              <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
+                For limited companies, Companies House filings and Corporation Tax remain unaffected by the MTD ITSA rollout — annual accounts and CT600 deadlines still apply as before. If you're running a limited company from {boroughName} and also have personal rental income or self-employment earnings above the threshold, both sets of obligations run in parallel, which is where most of the confusion — and most of the missed deadlines — tends to happen. We track both for clients who fall into that overlap.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Transparent Pricing</p>
@@ -91,7 +136,9 @@ export default function BoroughPage() {
             <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 40px', lineHeight: '48px', display: 'inline-block' }}>Get Your Exact Quote →</Link>
           </div>
         </section>
+
         <ReferralTeaserSection />
+
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto">
             <p className="section-label mb-4">FAQ</p>
@@ -109,6 +156,7 @@ export default function BoroughPage() {
             </div>
           </div>
         </section>
+
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Get Started</p>
@@ -120,6 +168,7 @@ export default function BoroughPage() {
             </div>
           </div>
         </section>
+
         <section className="px-6 md:px-10 py-8" style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.03)' }}>
           <div className="max-w-5xl mx-auto">
             <p className="font-ui text-xs mb-3" style={{ color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}>Also Serving Nearby</p>
@@ -130,11 +179,13 @@ export default function BoroughPage() {
             </div>
           </div>
         </section>
+
         <section className="px-6 md:px-10 py-6" style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.02)' }}>
           <div className="max-w-5xl mx-auto">
             <Link href="/accounting/london" className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>Part of Greater London — see our full London accounting services →</Link>
           </div>
         </section>
+
         <section className="px-6 md:px-10 py-8" style={{ borderTop: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.04)' }}>
           <div className="max-w-3xl mx-auto text-center">
             <p className="font-ui text-sm mb-2" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>Need a full finance team for your {boroughName} business?</p>
@@ -143,7 +194,7 @@ export default function BoroughPage() {
         </section>
       </main>
       <Footer />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'LocalBusiness', name: 'Reckonwell', description: `Accounting services for businesses in ${boroughName}, London.`, url: `https://reckonwell.com/accounting/${boroughSlug}`, areaServed: { '@type': 'AdministrativeArea', name: `${boroughName}, London` }, priceRange: '££', currenciesAccepted: 'GBP', openingHours: 'Mo-Fr 09:00-17:30' }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Reckonwell', description: `Accounting and bookkeeping services for businesses in ${boroughName}, London.`, url: `https://reckonwell.com/accounting/${boroughSlug}`, areaServed: { '@type': 'AdministrativeArea', name: `${boroughName}, London` }, priceRange: '££', currenciesAccepted: 'GBP', openingHours: 'Mo-Fr 09:00-17:30' }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs?.map(f => ({ '@type': 'Question', name: f?.q, acceptedAnswer: { '@type': 'Answer', text: f?.a } })) }) }} />
     </>
   );

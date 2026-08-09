@@ -9,34 +9,35 @@ import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSectio
 import TheDifferenceSection from '@/app/components/TheDifferenceSection';
 import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
 
-const boroughName = 'Camden';
-const boroughSlug = 'camden';
-const boroughDesc = "a hub for creative industries, media, and the growing tech cluster around King's Cross";
+const cityName = 'City of London';
+const citySlug = 'city-of-london';
+const cityDesc = "the Square Mile — London's historic financial district and one of the world's leading financial centres";
 
-const nearbyBoroughs = [
-  { name: 'Westminster', href: '/accounting/westminster' },
+const nearbyCities = [
+  { name: 'Moorgate', href: '/accounting/moorgate' },
+  { name: 'Southwark', href: '/accounting/southwark' },
+  { name: 'Tower Hamlets', href: '/accounting/tower-hamlets' },
   { name: 'Islington', href: '/accounting/islington' },
-  { name: 'Brent', href: '/accounting/brent' },
 ];
 
 const faqs = [
-  { q: `Do you work with businesses based in ${boroughName}?`, a: `Yes. We work with businesses across ${boroughName} and the wider London area remotely. All onboarding, filing, and communication is handled online — no need to visit an office.` },
+  { q: `Do you work with businesses based in the ${cityName}?`, a: `Yes. We work with financial services firms, fintechs, and professional services businesses across the ${cityName} remotely. All onboarding, filing, and communication is handled online — no need to visit an office.` },
   { q: 'How quickly can you take over my accounting?', a: 'We typically onboard new clients within 48 hours. You share access to your bank and invoicing tools, and we start from there.' },
   { q: 'Do I need to switch accounting software?', a: "We work with Xero, QuickBooks, and FreeAgent. If you're already using one of these, we connect directly. If not, we'll recommend the best fit for your business." },
   { q: 'What does Making Tax Digital mean for my business?', a: 'If your income exceeds £50,000 from self-employment or property, MTD quarterly filing is mandatory from April 2026. We handle all submissions automatically.' },
-  { q: `Are your prices higher for ${boroughName} businesses?`, a: 'No. Our pricing is the same nationwide. You get the same service quality regardless of location.' },
-  { q: `I'm a freelancer in Camden's creative sector — what do I need?`, a: "Freelancers and sole traders in Camden's creative and media industries typically need Self Assessment, MTD compliance if income exceeds £50k, and year-round tax monitoring. We handle all of this from £80/mo." },
-  { q: 'We are a tech startup near King\'s Cross — could we qualify for R&D tax relief?', a: "Many tech and software businesses near King's Cross qualify for R&D tax relief on qualifying development work. We assess eligibility and handle the full HMRC claim from £850 one-off." },
+  { q: `Are your prices higher for ${cityName} businesses?`, a: 'No. Our pricing is the same nationwide. You get the same service quality regardless of location.' },
+  { q: 'We are a fintech startup in the Square Mile — what accounting do we need?', a: 'Fintech companies in the City of London typically need limited company accounting, VAT returns, and payroll. If you have a tech development team, R&D tax relief is often applicable. We handle all of this under one monthly fee.' },
+  { q: 'How is accounting for City of London different from general London accounting?', a: 'The City of London has a distinct business character — financial services, insurance, legal, and professional advisory firms dominate. The compliance considerations around VAT, IR35, and corporate tax are often more complex than for general London businesses, and we have experience with that specific mix.' },
 ];
 
 const services = [
-  { title: 'Self-Employed Accounting', desc: 'Self Assessment, MTD compliance, and year-round tax monitoring for freelancers and sole traders.', href: '/self-employed-accounting', price: 'From £80/mo' },
-  { title: 'Limited Company Accounting', desc: 'CT600, statutory accounts, Companies House filings, and payroll for limited companies.', href: '/limited-company-accounting', price: 'From £150/mo' },
-  { title: 'R&D Tax Relief', desc: "Professional R&D claims for tech and creative businesses — common for Camden\'s King\'s Cross tech cluster.", href: '/r-and-d-tax-relief', price: 'From £850 one-off' },
+  { title: 'Limited Company Accounting', desc: 'CT600, statutory accounts, Companies House filings, and payroll for financial services and professional firms.', href: '/limited-company-accounting', price: 'From £150/mo' },
+  { title: 'R&D Tax Relief', desc: 'Professional R&D claims for fintech and innovation-led businesses in the Square Mile.', href: '/r-and-d-tax-relief', price: 'From £850 one-off' },
+  { title: 'VAT Returns', desc: 'Quarterly VAT returns and MTD for VAT compliance for City of London businesses.', href: '/vat-returns', price: 'From £80/mo' },
   { title: 'Making Tax Digital', desc: 'Quarterly MTD submissions for sole traders and landlords earning £50k+.', href: '/making-tax-digital', price: 'From £100/mo' },
 ];
 
-export default function BoroughPage() {
+export default function CityPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -44,7 +45,7 @@ export default function BoroughPage() {
       <Header />
       <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
 
-        <Breadcrumb items={[{ label: 'Accounting', href: '/services' }, { label: 'London', href: '/accounting/london' }, { label: boroughName, href: `/accounting/${boroughSlug}` }]} />
+        <Breadcrumb items={[{ label: 'Accounting', href: '/services' }, { label: 'London', href: '/accounting/london' }, { label: cityName, href: `/accounting/${citySlug}` }]} />
 
         <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
@@ -60,19 +61,19 @@ export default function BoroughPage() {
         {/* Hero */}
         <section className="px-6 md:px-10 py-16 md:py-24" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-5xl mx-auto">
-            <p className="section-label mb-4">Remote Accounting &amp; Bookkeeping in {boroughName}</p>
+            <p className="section-label mb-4">Remote Accounting &amp; Bookkeeping in {cityName}</p>
             <h1 className="font-display mb-4" style={{ fontSize: 'clamp(36px,6vw,72px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
-              Accounting &amp; Bookkeeping<br />in <em style={{ color: 'var(--primary)' }}>{boroughName}</em>
+              Accounting &amp; Bookkeeping<br />in the <em style={{ color: 'var(--primary)' }}>City of London</em>
             </h1>
             <p className="font-ui font-semibold mb-6" style={{ color: 'var(--primary)', fontSize: '16px' }}>
-              100% remote — no trip to King's Cross for a meeting.
+              100% remote — no trip to Threadneedle Street for a meeting.
             </p>
             <p className="font-ui mb-8 max-w-2xl" style={{ color: 'var(--muted)', fontSize: '18px', lineHeight: 1.7 }}>
-              Reckonwell serves businesses across {boroughDesc}. From independent businesses and media agencies to tech startups near King's Cross — transparent pricing, no hidden fees, and a named accountant who knows your business.
+              Reckonwell works with financial services firms, fintechs, and professional services businesses in {cityDesc}. Transparent pricing, no hidden fees, and a named accountant who knows your business.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>
-                Get Your {boroughName} Quote →
+                Get Your Quote →
               </Link>
               <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>
                 Ask a Question
@@ -90,7 +91,7 @@ export default function BoroughPage() {
           <div className="max-w-5xl mx-auto">
             <p className="section-label mb-4">Our Services</p>
             <h2 className="font-display mb-12" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Compliance services for {boroughName} businesses
+              Accounting support in the City of London
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {services?.map((svc, i) => (
@@ -99,9 +100,7 @@ export default function BoroughPage() {
                   <p className="font-ui text-sm mb-4 flex-1" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>{svc?.desc}</p>
                   <div className="flex items-center justify-between mt-2">
                     <span className="font-display" style={{ color: 'var(--primary)', fontSize: '18px', fontWeight: 400 }}>{svc?.price}</span>
-                    <Link href={svc?.href} className="font-ui text-xs uppercase tracking-widest" style={{ color: 'var(--primary)' }}>
-                      Learn more →
-                    </Link>
+                    <Link href={svc?.href} className="font-ui text-xs uppercase tracking-widest" style={{ color: 'var(--primary)' }}>Learn more →</Link>
                   </div>
                 </div>
               ))}
@@ -109,19 +108,19 @@ export default function BoroughPage() {
           </div>
         </section>
 
-        {/* Working With Camden Businesses */}
+        {/* Working With City of London Businesses */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto">
             <p className="section-label mb-4">Local Context</p>
             <h2 className="font-display mb-8" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Working With {boroughName} Businesses
+              Working With City of London Businesses
             </h2>
             <div className="space-y-6">
               <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
-                Camden has one of the most varied business mixes of any London borough. King's Cross has become a major tech and creative-industry hub — Google UK, Meta, and numerous scale-ups are based in the redeveloped area around the station — alongside Camden Town's long-standing music, media, and creative-economy businesses, and Bloomsbury's publishing and academic-adjacent firms. The compliance picture for fast-growing tech and creative businesses here is distinct: R&D tax relief eligibility is common, payroll set-up as teams scale from founder-only to their first hires is a recurring need, and the jump from sole trader to limited company structure happens frequently as businesses grow past the VAT threshold.
+                The City of London — the Square Mile — is London's historic financial district and one of the world's most recognised financial centres. Banks, insurance firms, legal practices, and professional services businesses are the dominant occupiers, but a growing base of fintech companies has established itself here alongside the traditional institutions. Searches for "accountant City of London" carry meaningfully different intent from generic "accountant London" queries — businesses here are typically looking for a firm with experience in financial-services-adjacent compliance, including corporate tax, VAT for professional services, and the specific considerations that arise when your clients are regulated institutions.
               </p>
               <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
-                Reckonwell is a fully remote practice — there's no office near King's Cross or Camden Town. That means no trip across the borough for a meeting, no waiting rooms. Onboarding takes 48 hours, everything runs through Xero, QuickBooks, or FreeAgent, and your accountant is reachable directly. For fast-moving creative and tech businesses, that kind of responsiveness tends to be a better fit than a traditional local firm.
+                Reckonwell is a fully remote practice — there's no office near Threadneedle Street or the Guildhall. That means no scheduling around the Square Mile's peak-hour congestion, no waiting rooms. Onboarding takes 48 hours, everything runs through Xero, QuickBooks, or FreeAgent, and your accountant is reachable directly. For City businesses that value efficiency and directness, that tends to be a better fit than a traditional local firm.
               </p>
             </div>
           </div>
@@ -136,21 +135,21 @@ export default function BoroughPage() {
             </h2>
             <div className="space-y-6">
               <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
-                Making Tax Digital for Income Tax became mandatory from 6 April 2026 for sole traders and landlords with gross qualifying income over £50,000, based on your 2024/25 Self Assessment return. If that's you, you're already required to keep digital records and file quarterly updates rather than a single annual return — the first quarterly deadline for the 2026/27 tax year fell on 7 August 2026. The threshold drops to £30,000 from April 2027 and £20,000 from April 2028, so many more {boroughName} sole traders and landlords currently below the £50k line will be brought into MTD over the next two years. We handle the quarterly submissions directly, so you're not tracking deadlines across four separate filings a year.
+                Making Tax Digital for Income Tax became mandatory from 6 April 2026 for sole traders and landlords with gross qualifying income over £50,000, based on your 2024/25 Self Assessment return. If that's you, you're already required to keep digital records and file quarterly updates rather than a single annual return — the first quarterly deadline for the 2026/27 tax year fell on 7 August 2026. The threshold drops to £30,000 from April 2027 and £20,000 from April 2028, so many more City of London sole traders and landlords currently below the £50k line will be brought into MTD over the next two years. We handle the quarterly submissions directly, so you're not tracking deadlines across four separate filings a year.
               </p>
               <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
-                For limited companies, Companies House filings and Corporation Tax remain unaffected by the MTD ITSA rollout — annual accounts and CT600 deadlines still apply as before. If you're running a limited company from {boroughName} and also have personal rental income or self-employment earnings above the threshold, both sets of obligations run in parallel, which is where most of the confusion — and most of the missed deadlines — tends to happen. We track both for clients who fall into that overlap.
+                For limited companies, Companies House filings and Corporation Tax remain unaffected by the MTD ITSA rollout — annual accounts and CT600 deadlines still apply as before. If you're running a limited company from the City of London and also have personal rental income or self-employment earnings above the threshold, both sets of obligations run in parallel, which is where most of the confusion — and most of the missed deadlines — tends to happen. We track both for clients who fall into that overlap.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Pricing Table */}
+        {/* Pricing */}
         <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
           <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Transparent Pricing</p>
             <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              See your exact {boroughName} accounting price
+              See your exact City of London accounting price
             </h2>
             <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
               Pricing is based on your business type, income level, and the services you need. Use our quotation calculator to get your exact monthly price in under 2 minutes — no sales calls required.
@@ -168,22 +167,16 @@ export default function BoroughPage() {
           <div className="max-w-3xl mx-auto">
             <p className="section-label mb-4">FAQ</p>
             <h2 className="font-display mb-10" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Questions from {boroughName} businesses
+              Questions from City of London businesses
             </h2>
             <div className="space-y-0">
               {faqs?.map((faq, i) => (
                 <div key={i} style={{ borderBottom: '1px solid var(--gold-border)' }}>
-                  <button
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    className="w-full flex justify-between items-center py-5 text-left"
-                    style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-                  >
+                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex justify-between items-center py-5 text-left" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
                     <span className="font-ui font-medium pr-4" style={{ color: 'var(--foreground)', fontSize: '15px' }}>{faq?.q}</span>
                     <span style={{ color: 'var(--primary)', fontSize: '20px', flexShrink: 0, transition: 'transform 0.2s', transform: openFaq === i ? 'rotate(45deg)' : 'none' }}>+</span>
                   </button>
-                  {openFaq === i && (
-                    <p className="font-ui text-sm pb-5" style={{ color: 'var(--muted)', lineHeight: 1.7 }}>{faq?.a}</p>
-                  )}
+                  {openFaq === i && <p className="font-ui text-sm pb-5" style={{ color: 'var(--muted)', lineHeight: 1.7 }}>{faq?.a}</p>}
                 </div>
               ))}
             </div>
@@ -195,18 +188,14 @@ export default function BoroughPage() {
           <div className="max-w-3xl mx-auto text-center">
             <p className="section-label mb-4">Get Started</p>
             <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Get your {boroughName} accounting quote
+              Get your City of London accounting quote
             </h2>
             <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
               Transparent pricing. No sales calls. See your exact monthly price in under 2 minutes.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>
-                Get Your Quote →
-              </Link>
-              <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>
-                Speak to an Accountant
-              </Link>
+              <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>Get Your Quote →</Link>
+              <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>Speak to an Accountant</Link>
             </div>
           </div>
         </section>
@@ -216,14 +205,9 @@ export default function BoroughPage() {
           <div className="max-w-5xl mx-auto">
             <p className="font-ui text-xs mb-3" style={{ color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}>Also Serving Nearby</p>
             <div className="flex flex-wrap gap-4">
-              {nearbyBoroughs?.map((borough) => (
-                <Link
-                  key={borough?.href}
-                  href={borough?.href}
-                  className="font-ui text-sm"
-                  style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}
-                >
-                  {borough?.name}
+              {nearbyCities?.map((city) => (
+                <Link key={city?.href} href={city?.href} className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                  {city?.name}
                 </Link>
               ))}
             </div>
@@ -240,9 +224,7 @@ export default function BoroughPage() {
 
         <section className="px-6 md:px-10 py-8" style={{ borderTop: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.04)' }}>
           <div className="max-w-3xl mx-auto text-center">
-            <p className="font-ui text-sm mb-2" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>
-              Need a full finance team for your {boroughName} business?
-            </p>
+            <p className="font-ui text-sm mb-2" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>Need a full finance team for your City of London business?</p>
             <Link href="/" className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
               Our Fractional Finance Department handles all of this and more — daily →
             </Link>
@@ -254,9 +236,9 @@ export default function BoroughPage() {
         '@context': 'https://schema.org',
         '@type': 'ProfessionalService',
         name: 'Reckonwell',
-        description: `Accounting and bookkeeping services for businesses in ${boroughName}, London. Self-employed, limited company, MTD, and R&D tax relief.`,
-        url: `https://reckonwell.com/accounting/${boroughSlug}`,
-        areaServed: { '@type': 'AdministrativeArea', name: `${boroughName}, London` },
+        description: `Accounting and bookkeeping services for businesses in the City of London. Financial services, fintech, professional services, limited company, and VAT.`,
+        url: `https://reckonwell.com/accounting/${citySlug}`,
+        areaServed: { '@type': 'Place', name: 'City of London' },
         priceRange: '££',
         currenciesAccepted: 'GBP',
         openingHours: 'Mo-Fr 09:00-17:30',
