@@ -70,7 +70,7 @@ export default function WhyReckonwellSection() {
       id="why-reckonwell"
       ref={ref}
       className="py-16 md:py-28 px-6 md:px-10"
-      style={{ backgroundColor: '#FA8072' }}
+      style={{ backgroundColor: '#FFF1E5' }}
       aria-label="Why Reckonwell"
     >
       <div className="max-w-7xl mx-auto">
