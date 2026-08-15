@@ -7,7 +7,7 @@ interface CertifiedPartneredSectionProps {
 }
 
 const partners = [
-  { name: 'Revolut Business', logo: '/assets/images/Revolut-1779495022321.png' },
+  { name: 'Revolut Business', logo: '/assets/images/Revolut-02-business-wordmark-vertical-1786798770904.png' },
   { name: 'Tide Bank', logo: '/assets/images/Tide-1779494967883.png' },
   { name: 'Xero', logo: '/assets/images/Xero-1779495015718.png' },
   { name: 'QuickBooks', logo: '/assets/images/Quickbooks-1779494986853.png' },
