@@ -297,7 +297,7 @@ export default function ClosingSection() {
                     }}
                   >
                     <span
-                      className="text-[rgba(15,15,15,1)]"
+                      className="text-[rgba(45,42,37,1)]"
                       style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(14px, 2vw, 16px)', fontWeight: 500, color: '#D4CFC4', lineHeight: 1.5, flex: 1 }}
                     >
                       {faq.question}
@@ -315,6 +315,7 @@ export default function ClosingSection() {
                   </button>
                   <div style={{ maxHeight: isOpen ? '400px' : '0', overflow: 'hidden', transition: 'max-height 0.4s ease' }}>
                     <p
+                      className="text-[rgba(14,13,12,1)]"
                       style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '14px', lineHeight: 1.9, color: '#D4CFC4', padding: '0 16px 18px', margin: 0 }}
                     >
                       {faq.answer}
