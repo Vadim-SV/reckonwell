@@ -305,7 +305,7 @@ function BeforeAfterFFD() {
               ))}
             </ul>
           </motion.div>
-          <motion.div initial={{ opacity: 0, x: 20 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }} className="rounded-sm p-6 md:p-10" style={{ backgroundColor: 'rgba(10,15,8,0.8)', border: '1px solid var(--gold-border)', borderLeft: '3px solid var(--primary)' }}>
+          <motion.div initial={{ opacity: 0, x: 20 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }} className="rounded-sm p-6 md:p-10" style={{ backgroundColor: '#FFF1E5', border: '1px solid var(--gold-border)', borderLeft: '3px solid var(--primary)' }}>
             <span className="inline-flex items-center gap-2 font-ui px-3 py-1 mb-6" style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', backgroundColor: 'rgba(45,106,79,0.15)', color: '#52B788', border: '1px solid rgba(45,106,79,0.25)', fontWeight: 500 }}>
               ✓ After Reckonwell
             </span>
