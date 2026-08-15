@@ -177,6 +177,7 @@ export default function FAQSection() {
                       lineHeight: 1.9,
                       padding: '0 16px 18px',
                       margin: 0,
+                      color: '#000000',
                     }}
                   >
                     {faq.answer}

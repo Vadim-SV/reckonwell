@@ -128,7 +128,7 @@ export default function Header() {
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 group" aria-label="Reckonwell home">
             <img
-              src="/assets/images/Reckonwell-1779490857835.png"
+              src="/assets/images/reckonwell-high-resolution-logo-grayscale-transparent-1786798505479.png"
               alt="Reckonwell"
               className="block"
               style={{ height: '20px', width: 'auto', objectFit: 'contain' }}

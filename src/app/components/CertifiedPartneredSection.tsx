@@ -12,7 +12,7 @@ const partners = [
   { name: 'Xero', logo: '/assets/images/Xero-1779495015718.png' },
   { name: 'QuickBooks', logo: '/assets/images/Quickbooks-1779494986853.png' },
   { name: 'IAB', logo: '/assets/images/iab-logo-1785704327906.png' },
-  { name: 'HMRC AML Supervised', logo: '/assets/images/ChatGPT_Image_Aug_2__2026__10_03_33_PM-1785706547048.png' },
+  { name: 'HMRC AML Supervised', logo: '/assets/images/photo_2025-08-02_16-32-37-removebg-preview-300x300-1786798510237.png' },
   { name: 'ICO Registered', logo: '/assets/images/ICO_logo-1785706115266.png' },
 ];
 
