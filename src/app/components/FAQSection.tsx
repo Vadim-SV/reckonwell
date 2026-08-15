@@ -60,46 +60,30 @@ export default function FAQSection() {
   return (
     <section
       style={{
-        backgroundColor: '#1C1A15',
+        backgroundColor: 'var(--surface)',
       }}
       className="faq-section py-16 md:py-32 px-5 md:px-16"
       aria-label="Frequently asked questions"
     >
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
         {/* Section label */}
-        <p
-          style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: '11px',
-            fontVariant: 'small-caps',
-            color: '#C9A84C',
-            letterSpacing: '4px',
-            textTransform: 'uppercase',
-            marginBottom: '20px',
-          }}
-        >
+        <p className="section-label" style={{ marginBottom: '20px' }}>
           Questions &amp; Answers
         </p>
 
         {/* Heading */}
         <h2
-          style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: 'clamp(24px, 4vw, 42px)',
-            fontWeight: 700,
-            color: '#D4CFC4',
-            marginBottom: '32px',
-            lineHeight: 1.2,
-          }}
+          className="section-h2-medium"
+          style={{ marginBottom: '32px' }}
         >
           Frequently asked{' '}
-          <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>questions</em>
+          <em className="gold-italic">questions</em>
         </h2>
 
         {/* Accordion list */}
         <div
           style={{
-            border: '1px solid rgba(201, 168, 76, 0.18)',
+            border: '1px solid var(--border)',
             borderRadius: '2px',
           }}
         >
@@ -111,7 +95,7 @@ export default function FAQSection() {
               <div
                 key={index}
                 style={{
-                  borderBottom: isLast ? 'none' : '1px solid rgba(201, 168, 76, 0.18)',
+                  borderBottom: isLast ? 'none' : '1px solid var(--border)',
                 }}
               >
                 {/* Question row */}
@@ -124,7 +108,7 @@ export default function FAQSection() {
                     justifyContent: 'space-between',
                     alignItems: 'flex-start',
                     padding: '18px 16px',
-                    background: isOpen ? 'rgba(201, 168, 76, 0.04)' : 'transparent',
+                    background: isOpen ? 'var(--primary-dim)' : 'transparent',
                     border: 'none',
                     cursor: 'pointer',
                     textAlign: 'left',
@@ -135,7 +119,7 @@ export default function FAQSection() {
                   onMouseEnter={(e) => {
                     if (!isOpen) {
                       (e.currentTarget as HTMLButtonElement).style.background =
-                        'rgba(255,255,255,0.03)';
+                        'var(--border-subtle)';
                     }
                   }}
                   onMouseLeave={(e) => {
@@ -145,11 +129,11 @@ export default function FAQSection() {
                   }}
                 >
                   <span
+                    className="font-display"
                     style={{
-                      fontFamily: "'Playfair Display', serif",
                       fontSize: 'clamp(14px, 2vw, 16px)',
                       fontWeight: 500,
-                      color: '#D4CFC4',
+                      color: 'var(--foreground)',
                       lineHeight: 1.5,
                       flex: 1,
                     }}
@@ -161,7 +145,7 @@ export default function FAQSection() {
                   <span
                     aria-hidden="true"
                     style={{
-                      color: '#C9A84C',
+                      color: 'var(--primary)',
                       fontSize: '22px',
                       fontWeight: 300,
                       lineHeight: 1,
@@ -187,11 +171,10 @@ export default function FAQSection() {
                   }}
                 >
                   <p
+                    className="body-text-rw"
                     style={{
-                      fontFamily: "'Montserrat', sans-serif",
                       fontSize: '14px',
                       lineHeight: 1.9,
-                      color: '#D4CFC4',
                       padding: '0 16px 18px',
                       margin: 0,
                     }}

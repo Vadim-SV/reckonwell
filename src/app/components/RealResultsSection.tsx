@@ -38,7 +38,7 @@ export default function RealResultsSection() {
     <section
       ref={ref}
       className="py-20 md:py-36 px-6 md:px-10"
-      style={{ backgroundColor: '#080808' }}
+      style={{ backgroundColor: 'var(--surface)' }}
       aria-label="Real results"
     >
       <div className="max-w-7xl mx-auto">
@@ -111,7 +111,7 @@ export default function RealResultsSection() {
 
               <p
                 className="body-text-rw mb-5 md:mb-6 flex-1"
-                style={{ fontSize: '14px', color: '#ffffff' }}
+                style={{ fontSize: '14px' }}
               >
                 {result?.body}
               </p>

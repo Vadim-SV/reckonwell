@@ -125,7 +125,7 @@ export default function TheDifferenceSection() {
                     color: 'var(--primary)',
                     borderBottom: '2px solid var(--primary)',
                     width: '26%',
-                    backgroundColor: 'rgba(201,168,76,0.04)',
+                    backgroundColor: 'var(--primary-dim)',
                   }}
                 >
                   Reckonwell
@@ -179,7 +179,7 @@ export default function TheDifferenceSection() {
                       borderBottom: '1px solid var(--gold-border)',
                       verticalAlign: 'top',
                       lineHeight: 1.6,
-                      backgroundColor: 'rgba(201,168,76,0.04)',
+                      backgroundColor: 'var(--primary-dim)',
                       fontWeight: 500,
                     }}
                   >
@@ -241,7 +241,7 @@ export default function TheDifferenceSection() {
                     letterSpacing: '1.5px',
                     textTransform: 'uppercase',
                     color: 'var(--primary)',
-                    backgroundColor: 'rgba(201,168,76,0.06)',
+                    backgroundColor: 'var(--primary-dim)',
                   }}
                 >
                   Reckonwell
@@ -277,7 +277,7 @@ export default function TheDifferenceSection() {
                     color: 'var(--foreground)',
                     lineHeight: 1.5,
                     fontWeight: 500,
-                    backgroundColor: 'rgba(201,168,76,0.04)',
+                    backgroundColor: 'var(--primary-dim)',
                   }}
                 >
                   {row?.reckonwell}

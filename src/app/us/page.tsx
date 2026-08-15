@@ -130,10 +130,7 @@ const usFaqs = [
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p
-      className="text-xs tracking-[0.2em] uppercase mb-4"
-      style={{ color: 'var(--gold, #C9A84C)', fontFamily: 'var(--font-montserrat, Montserrat, sans-serif)' }}
-    >
+    <p className="section-label mb-4">
       {children}
     </p>
   );
@@ -142,12 +139,12 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function FAQAccordion({ faqs }: { faqs: { question: string; answer: string }[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
-    <div style={{ border: '1px solid rgba(201,168,76,0.18)', borderRadius: '2px' }}>
+    <div style={{ border: '1px solid var(--border)', borderRadius: '2px' }}>
       {faqs.map((faq, index) => {
         const isOpen = openIndex === index;
         const isLast = index === faqs.length - 1;
         return (
-          <div key={index} style={{ borderBottom: isLast ? 'none' : '1px solid rgba(201,168,76,0.18)' }}>
+          <div key={index} style={{ borderBottom: isLast ? 'none' : '1px solid var(--border)' }}>
             <button
               onClick={() => setOpenIndex(isOpen ? null : index)}
               aria-expanded={isOpen}
@@ -157,7 +154,7 @@ function FAQAccordion({ faqs }: { faqs: { question: string; answer: string }[] }
                 justifyContent: 'space-between',
                 alignItems: 'flex-start',
                 padding: '18px 16px',
-                background: isOpen ? 'rgba(201,168,76,0.04)' : 'transparent',
+                background: isOpen ? 'var(--primary-dim)' : 'transparent',
                 border: 'none',
                 cursor: 'pointer',
                 textAlign: 'left',
@@ -166,13 +163,13 @@ function FAQAccordion({ faqs }: { faqs: { question: string; answer: string }[] }
                 gap: '12px',
               }}
             >
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(14px,2vw,16px)', fontWeight: 500, color: '#D4CFC4', lineHeight: 1.5, flex: 1 }}>
+              <span className="font-display" style={{ fontSize: 'clamp(14px,2vw,16px)', fontWeight: 500, color: 'var(--foreground)', lineHeight: 1.5, flex: 1 }}>
                 {faq.question}
               </span>
               <span
                 aria-hidden="true"
                 style={{
-                  color: '#C9A84C', fontSize: '22px', fontWeight: 300, lineHeight: 1, flexShrink: 0,
+                  color: 'var(--primary)', fontSize: '22px', fontWeight: 300, lineHeight: 1, flexShrink: 0,
                   transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease',
                   display: 'inline-block', width: '22px', textAlign: 'center', marginTop: '2px',
                 }}
@@ -181,7 +178,7 @@ function FAQAccordion({ faqs }: { faqs: { question: string; answer: string }[] }
               </span>
             </button>
             <div style={{ maxHeight: isOpen ? '600px' : '0', overflow: 'hidden', transition: 'max-height 0.4s ease' }}>
-              <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '14px', lineHeight: 1.9, color: '#D4CFC4', padding: '0 16px 18px', margin: 0 }}>
+              <p className="body-text-rw" style={{ fontSize: '14px', lineHeight: 1.9, padding: '0 16px 18px', margin: 0 }}>
                 {faq.answer}
               </p>
             </div>
@@ -206,10 +203,6 @@ export default function USHomePage() {
           style={{ backgroundColor: 'var(--background)' }}
           aria-label="Hero"
         >
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 55%, rgba(201,168,76,0.09) 0%, rgba(201,168,76,0.03) 55%, transparent 100%)' }}
-          />
           <div className="gold-vertical-line-left" aria-hidden="true" />
           <div className="gold-vertical-line-right" aria-hidden="true" />
 
@@ -233,21 +226,21 @@ export default function USHomePage() {
 
             <p
               className="pull-quote mb-4 mx-auto"
-              style={{ maxWidth: '620px', color: '#ffffff', fontSize: 'clamp(16px,2.2vw,26px)' }}
+              style={{ maxWidth: '620px', color: 'var(--body-text)', fontSize: 'clamp(16px,2.2vw,26px)' }}
             >
               Daily bookkeeping and finance operations for founder-led businesses — done properly, every day, not once a month.
             </p>
 
             <p
               className="mb-5 md:mb-8 font-serif"
-              style={{ fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(16px,2.2vw,26px)', color: '#ffffff', fontFamily: 'var(--font-serif)' }}
+              style={{ fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(16px,2.2vw,26px)', color: 'var(--muted)', fontFamily: 'var(--font-serif)' }}
             >
               No stress. No surprises. Just clean books.
             </p>
 
             <p
               className="font-ui mb-7 md:mb-10"
-              style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(201,168,76,0.7)', fontWeight: 400 }}
+              style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}
             >
               From $300/month
             </p>
@@ -320,7 +313,7 @@ export default function USHomePage() {
         {/* ── 3. SOLUTION ─────────────────────────────────────────────────── */}
         <section
           className="py-20 md:py-36 px-6 md:px-10"
-          style={{ backgroundColor: '#080808' }}
+          style={{ backgroundColor: 'var(--surface)' }}
           aria-label="Solution"
         >
           <div className="max-w-5xl mx-auto">
@@ -438,7 +431,7 @@ export default function USHomePage() {
         {/* ── 5. CPA PARTNER MODEL ────────────────────────────────────────── */}
         <section
           className="py-20 md:py-36 px-6 md:px-10"
-          style={{ backgroundColor: '#080808' }}
+          style={{ backgroundColor: 'var(--surface)' }}
           aria-label="How tax filing works"
         >
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
@@ -578,7 +571,7 @@ export default function USHomePage() {
         <section
           id="pricing"
           className="py-20 md:py-36 px-6 md:px-10"
-          style={{ backgroundColor: '#080808' }}
+          style={{ backgroundColor: 'var(--surface)' }}
           aria-label="Pricing"
         >
           <div className="max-w-7xl mx-auto">
@@ -632,7 +625,7 @@ export default function USHomePage() {
               <div className="hidden md:block" style={{ position: 'absolute', top: '18px', left: '-18px', right: '18px', bottom: '-18px', border: '1px solid var(--primary)', opacity: 0.25, zIndex: 0, pointerEvents: 'none' }} />
               <div className="relative overflow-hidden" style={{ aspectRatio: '3/4', zIndex: 1 }}>
                 <img src="/assets/images/Vadim-1779496555261.jpg" alt="Vadim, Founder of Reckonwell" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
-                <div className="absolute bottom-0 left-0 right-0" style={{ height: '30%', background: 'linear-gradient(to top, rgba(8,8,8,0.55) 0%, transparent 100%)' }} />
+                <div className="absolute bottom-0 left-0 right-0" style={{ height: '30%', background: 'linear-gradient(to top, rgba(246,233,216,0.55) 0%, transparent 100%)' }} />
                 <span className="absolute top-0 left-0" style={{ width: '22px', height: '22px', borderTop: '2px solid var(--primary)', borderLeft: '2px solid var(--primary)', opacity: 0.85 }} />
                 <span className="absolute top-0 right-0" style={{ width: '22px', height: '22px', borderTop: '2px solid var(--primary)', borderRight: '2px solid var(--primary)', opacity: 0.85 }} />
                 <span className="absolute bottom-0 left-0" style={{ width: '22px', height: '22px', borderBottom: '2px solid var(--primary)', borderLeft: '2px solid var(--primary)', opacity: 0.85 }} />
@@ -643,7 +636,7 @@ export default function USHomePage() {
               <SectionLabel>Message from the Founder</SectionLabel>
               <h3 className="font-display mb-1" style={{ fontSize: 'clamp(22px,3vw,32px)', fontWeight: 400, color: 'var(--foreground)' }}>Hello, I am Vadim</h3>
               <blockquote className="mb-6 md:mb-8" style={{ borderLeft: '2px solid var(--primary)', paddingLeft: '20px' }}>
-                <p className="font-serif" style={{ fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(18px,2.2vw,26px)', color: '#ffffff', lineHeight: 1.7, fontFamily: 'var(--font-serif)' }}>
+                <p className="font-serif" style={{ fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(18px,2.2vw,26px)', color: 'var(--body-text)', lineHeight: 1.7, fontFamily: 'var(--font-serif)' }}>
                   &ldquo;I built Reckonwell because the founders I admired most were spending their sharpest hours on things that had nothing to do with why they built their business. That always struck me as wrong — and entirely fixable.&rdquo;
                 </p>
               </blockquote>
@@ -659,7 +652,7 @@ export default function USHomePage() {
         {/* ── 10. CONTACT / CTA ───────────────────────────────────────────── */}
         <section
           className="py-20 md:py-36 px-6 md:px-10 text-center"
-          style={{ backgroundColor: '#080808' }}
+          style={{ backgroundColor: 'var(--surface)' }}
           aria-label="Book a call"
         >
           <div className="max-w-3xl mx-auto">
@@ -681,17 +674,17 @@ export default function USHomePage() {
 
         {/* ── 11. FAQ ─────────────────────────────────────────────────────── */}
         <section
-          style={{ backgroundColor: '#1C1A15' }}
+          style={{ backgroundColor: 'var(--background)' }}
           className="py-16 md:py-32 px-5 md:px-16"
           aria-label="Frequently asked questions"
         >
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', fontVariant: 'small-caps', color: '#C9A84C', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '20px' }}>
+            <p className="section-label" style={{ marginBottom: '20px' }}>
               Questions &amp; Answers
             </p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(24px,4vw,42px)', fontWeight: 700, color: '#D4CFC4', marginBottom: '32px', lineHeight: 1.2 }}>
+            <h2 className="section-h2-medium" style={{ marginBottom: '32px' }}>
               Frequently asked{' '}
-              <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>questions</em>
+              <em className="gold-italic">questions</em>
             </h2>
             <FAQAccordion faqs={usFaqs} />
           </div>

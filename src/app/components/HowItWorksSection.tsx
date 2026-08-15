@@ -52,7 +52,7 @@ export default function HowItWorksSection() {
       id="how-it-works"
       ref={ref}
       className="py-12 md:py-20 px-6 md:px-10"
-      style={{ backgroundColor: '#080808' }}
+      style={{ backgroundColor: 'var(--surface)' }}
       aria-label="How it works"
     >
       <div className="max-w-5xl mx-auto">

@@ -33,10 +33,8 @@ function Reveal({ children, delay = 0, className = '' }: {children: React.ReactN
         transform: visible ? 'translateY(0)' : 'translateY(24px)',
         transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`
       }}>
-
       {children}
     </div>);
-
 }
 
 /* ─── FAQ data ─── */
@@ -66,14 +64,12 @@ const faqs = [
   a: 'Partners can be based anywhere, but referred clients must be UK-registered businesses as Reckonwell operates under UK accountancy regulations. International partners are paid via bank transfer or a payment platform of mutual agreement.'
 }];
 
-
 /* ─── Earnings rows ─── */
 const earningsRows = [
 { fee: '£1,500/mo', cut: '£150', annual: '£1,800', threeYear: '£5,400' },
 { fee: '£3,000/mo', cut: '£300', annual: '£3,600', threeYear: '£10,800' },
 { fee: '£5,000/mo', cut: '£500', annual: '£6,000', threeYear: '£18,000' },
 { fee: '£10,000/mo', cut: '£1,000', annual: '£12,000', threeYear: '£36,000' }];
-
 
 /* ─── Who-it's-for cards ─── */
 const partnerCards = [
@@ -83,7 +79,6 @@ const partnerCards = [
 { emoji: '🚀', title: 'Startup Ecosystem Players', body: 'Accelerators, angel investors, co-working spaces, startup coaches — your portfolio companies need solid accounting. Become the partner who delivers it.' },
 { emoji: '🤝', title: 'HR & Payroll Specialists', body: 'You already manage the people side of the payroll. Connect us with your clients and let Reckonwell own the finance side — everybody wins.' },
 { emoji: '🌐', title: 'Anyone with the Right Network', body: 'If you regularly talk to business owners and they trust your word, you already have everything you need to become a Reckonwell partner.' }];
-
 
 /* ─── Main Page ─── */
 export default function ReferralsPage() {
@@ -109,7 +104,6 @@ export default function ReferralsPage() {
     { id: 'earnings', label: 'Earnings Table' },
     { id: 'apply', label: 'Application Form' },
     { id: 'faq', label: 'FAQ' }];
-
 
     sections.forEach(({ id, label }) => {
       const el = id === 'hero' || id === 'reward' || id === 'who-its-for' ?
@@ -181,10 +175,10 @@ export default function ReferralsPage() {
 
   const inputStyle: React.CSSProperties = {
     width: '100%',
-    backgroundColor: '#111008',
-    border: '1px solid rgba(201,168,76,0.2)',
-    color: '#F0EDE4',
-    fontFamily: "'Montserrat', sans-serif",
+    backgroundColor: 'var(--background)',
+    border: '1px solid var(--border)',
+    color: 'var(--foreground)',
+    fontFamily: 'var(--font-sans)',
     fontSize: '14px',
     padding: '14px 16px',
     outline: 'none',
@@ -193,39 +187,36 @@ export default function ReferralsPage() {
   };
 
   return (
-    <div style={{ backgroundColor: '#080808', minHeight: '100vh', fontFamily: "'Montserrat', sans-serif", overflowX: 'hidden' }}>
-      {/* Shared Header — same as homepage */}
+    <div style={{ backgroundColor: 'var(--background)', minHeight: '100vh', fontFamily: 'var(--font-sans)', overflowX: 'hidden' }}>
+      {/* Shared Header */}
       <Header />
 
       {/* ── SECTION 1: HERO ── */}
-      <section ref={(el) => {sectionRefs.current['hero'] = el;}} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', backgroundColor: '#080808', overflow: 'hidden' }}>
-        {/* Radial glow */}
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.09) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        {/* Vertical gold lines — hidden on mobile */}
-        <div className="hidden md:block" style={{ position: 'absolute', left: '40px', top: '15%', bottom: '15%', width: '1px', background: 'linear-gradient(180deg, transparent, rgba(201,168,76,0.25) 30%, rgba(201,168,76,0.25) 70%, transparent)', pointerEvents: 'none' }} />
-        <div className="hidden md:block" style={{ position: 'absolute', right: '40px', top: '15%', bottom: '15%', width: '1px', background: 'linear-gradient(180deg, transparent, rgba(201,168,76,0.25) 30%, rgba(201,168,76,0.25) 70%, transparent)', pointerEvents: 'none' }} />
+      <section ref={(el) => {sectionRefs.current['hero'] = el;}} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
+        <div className="gold-vertical-line-left" aria-hidden="true" />
+        <div className="gold-vertical-line-right" aria-hidden="true" />
 
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '860px', margin: '0 auto', padding: '120px 24px 60px', textAlign: 'center' }}>
           {/* Label */}
           <Reveal delay={0.1}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '32px' }}>
-              <span style={{ display: 'inline-block', width: '24px', height: '1px', backgroundColor: '#C9A84C', opacity: 0.6 }} />
-              <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '4px', textTransform: 'uppercase', color: '#C9A84C', fontWeight: 400 }}>Partner Program</span>
-              <span style={{ display: 'inline-block', width: '24px', height: '1px', backgroundColor: '#C9A84C', opacity: 0.6 }} />
+              <span style={{ display: 'inline-block', width: '24px', height: '1px', backgroundColor: 'var(--primary)', opacity: 0.6 }} />
+              <span className="section-label">Partner Program</span>
+              <span style={{ display: 'inline-block', width: '24px', height: '1px', backgroundColor: 'var(--primary)', opacity: 0.6 }} />
             </div>
           </Reveal>
 
           {/* H1 */}
           <Reveal delay={0.2}>
-            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(36px, 8vw, 90px)', fontWeight: 400, lineHeight: 1.05, color: '#F0EDE4', marginBottom: '24px', letterSpacing: '-0.02em' }}>
+            <h1 className="hero-h1" style={{ marginBottom: '24px' }}>
               Refer once.<br />
-              <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Earn forever.</em>
+              <em className="gold-italic">Earn forever.</em>
             </h1>
           </Reveal>
 
           {/* Subheading */}
           <Reveal delay={0.3}>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 'clamp(17px, 2.5vw, 28px)', color: '#ffffff', lineHeight: 1.6, marginBottom: '36px', maxWidth: '720px', margin: '0 auto 36px' }}>
+            <p className="pull-quote" style={{ color: 'var(--body-text)', lineHeight: 1.6, marginBottom: '36px', maxWidth: '720px', margin: '0 auto 36px' }}>
               Know a company still drowning in spreadsheets or overpaying a slow accounting firm? Send them our way — and collect 10% of their monthly bill for as long as they stay with us.
             </p>
           </Reveal>
@@ -238,20 +229,14 @@ export default function ReferralsPage() {
                   trackEvent('referral_cta_click', { cta: 'become_a_partner', location: 'hero', page: 'referrals' });
                   document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto"
-                style={{ backgroundColor: '#C9A84C', color: '#080808', border: 'none', fontFamily: "'Montserrat', sans-serif", fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', fontWeight: 600, padding: '16px 28px', cursor: 'pointer', transition: 'background 0.2s', minHeight: '48px' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#DDB96A'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#C9A84C'}>
+                className="btn-gold w-full sm:w-auto">
                 Become a Partner</button>
               <button
                 onClick={() => {
                   trackEvent('referral_cta_click', { cta: 'see_how_it_works', location: 'hero', page: 'referrals' });
                   document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto"
-                style={{ backgroundColor: 'transparent', color: '#C9A84C', border: '1px solid #C9A84C', fontFamily: "'Montserrat', sans-serif", fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', fontWeight: 600, padding: '16px 28px', cursor: 'pointer', transition: 'all 0.2s', minHeight: '48px' }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#C9A84C'; e.currentTarget.style.color = '#080808'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#C9A84C'; }}>
+                className="btn-ghost w-full sm:w-auto">
                 See How It Works</button>
             </div>
           </Reveal>
@@ -259,16 +244,15 @@ export default function ReferralsPage() {
       </section>
 
       {/* ── SECTION 2: REWARD CALLOUT ── */}
-      <section ref={(el) => {sectionRefs.current['reward'] = el;}} className="py-20 md:py-28 px-6" style={{ backgroundColor: '#1C1A15', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px', background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)' }} />
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '200px', background: 'radial-gradient(ellipse 60% 100% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 100%)', pointerEvents: 'none' }} />
+      <section ref={(el) => {sectionRefs.current['reward'] = el;}} className="py-20 md:py-28 px-6" style={{ backgroundColor: 'var(--surface)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px', background: 'var(--primary)', opacity: 0.3 }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
-            <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(64px, 14vw, 160px)', fontWeight: 700, color: '#C9A84C', opacity: 0.9, lineHeight: 1 }}>10%</div>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase', color: 'rgba(201,168,76,0.6)', marginTop: '12px', marginBottom: '24px' }}>
+            <div className="font-display" style={{ fontSize: 'clamp(64px, 14vw, 160px)', fontWeight: 700, color: 'var(--primary)', opacity: 0.9, lineHeight: 1 }}>10%</div>
+            <p className="section-label" style={{ marginTop: '12px', marginBottom: '24px' }}>
               of every monthly bill · for the lifetime of the client
             </p>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 'clamp(16px, 3vw, 28px)', color: '#D4CFC4', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
+            <p className="pull-quote" style={{ color: 'var(--body-text)', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
               One successful introduction. One client that stays. A revenue stream that never stops.
             </p>
           </Reveal>
@@ -276,20 +260,20 @@ export default function ReferralsPage() {
       </section>
 
       {/* ── SECTION 3: HOW IT WORKS ── */}
-      <section id="how-it-works" className="py-20 md:py-32 px-6 md:px-16" style={{ backgroundColor: '#111008' }}>
+      <section id="how-it-works" className="py-20 md:py-32 px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '4px', textTransform: 'uppercase', color: '#C9A84C', marginBottom: '20px' }}>The Process</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px, 5vw, 56px)', fontWeight: 400, color: '#F0EDE4', marginBottom: '20px', lineHeight: 1.1 }}>
-              How the partnership <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>works</em>
+            <p className="section-label" style={{ marginBottom: '20px' }}>The Process</p>
+            <h2 className="section-h2-medium" style={{ marginBottom: '20px' }}>
+              How the partnership <em className="gold-italic">works</em>
             </h2>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '15px', fontWeight: 300, color: '#D4CFC4', lineHeight: 1.75, marginBottom: '48px', maxWidth: '640px' }}>
+            <p className="body-text-rw" style={{ lineHeight: 1.75, marginBottom: '48px', maxWidth: '640px' }}>
               No cold calling. No contracts to manage. You simply connect us with a business that needs better accounting — and we take it from there.
             </p>
           </Reveal>
 
           {/* Steps */}
-          <div style={{ border: '1px solid rgba(201,168,76,0.18)', borderRadius: '2px' }}>
+          <div style={{ border: '1px solid var(--border)', borderRadius: '2px' }}>
             {[
             {
               num: '01', title: 'Apply to become a partner',
@@ -313,18 +297,18 @@ export default function ReferralsPage() {
             }].
             map((step, i, arr) =>
             <Reveal key={step.num} delay={i * 0.1}>
-                <div style={{ display: 'flex', borderBottom: i < arr.length - 1 ? '1px solid rgba(201,168,76,0.18)' : 'none' }}>
+                <div style={{ display: 'flex', borderBottom: i < arr.length - 1 ? '1px solid var(--border)' : 'none' }}>
                   {/* Step number */}
-                  <div style={{ width: '52px', flexShrink: 0, borderRight: '1px solid rgba(201,168,76,0.18)', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: '24px' }}>
-                    <span className="text-[42px]" style={{ fontFamily: "'Playfair Display', serif", fontWeight: 400, color: 'rgba(201,168,76,0.22)', lineHeight: 1 }}>{step.num}</span>
+                  <div style={{ width: '52px', flexShrink: 0, borderRight: '1px solid var(--border)', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: '24px' }}>
+                    <span className="font-display" style={{ fontSize: '42px', fontWeight: 400, color: 'var(--primary)', opacity: 0.22, lineHeight: 1 }}>{step.num}</span>
                   </div>
                   {/* Content */}
                   <div style={{ padding: '24px 16px', flex: 1, minWidth: 0 }}>
-                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(15px, 2.5vw, 20px)', fontWeight: 400, color: '#F0EDE4', marginBottom: '12px' }}>{step.title}</h3>
-                    <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '14px', fontWeight: 300, color: '#D4CFC4', lineHeight: 1.75, marginBottom: step.detail ? '16px' : 0 }}>{step.body}</p>
+                    <h3 className="font-display" style={{ fontSize: 'clamp(15px, 2.5vw, 20px)', fontWeight: 400, color: 'var(--foreground)', marginBottom: '12px' }}>{step.title}</h3>
+                    <p className="body-text-rw" style={{ lineHeight: 1.75, marginBottom: step.detail ? '16px' : 0 }}>{step.body}</p>
                     {step.detail &&
-                  <div style={{ borderLeft: '2px solid #C9A84C', background: 'rgba(201,168,76,0.04)', padding: '12px 16px' }}>
-                        <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', color: '#D4CFC4', lineHeight: 1.7, margin: 0 }}>{step.detail}</p>
+                  <div style={{ borderLeft: '2px solid var(--primary)', backgroundColor: 'var(--primary-dim)', padding: '12px 16px' }}>
+                        <p className="body-text-rw" style={{ fontSize: '13px', lineHeight: 1.7, margin: 0 }}>{step.detail}</p>
                       </div>
                   }
                   </div>
@@ -336,14 +320,14 @@ export default function ReferralsPage() {
       </section>
 
       {/* ── SECTION 4: WHO IT'S FOR ── */}
-      <section ref={(el) => {sectionRefs.current['who-its-for'] = el;}} className="py-20 md:py-32 px-6 md:px-16" style={{ backgroundColor: '#EDE8DF' }}>
+      <section ref={(el) => {sectionRefs.current['who-its-for'] = el;}} className="py-20 md:py-32 px-6 md:px-16" style={{ backgroundColor: 'var(--surface)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <Reveal>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '4px', textTransform: 'uppercase', color: '#8A6820', marginBottom: '20px' }}>Perfect For</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px, 5vw, 56px)', fontWeight: 400, color: '#16140F', marginBottom: '20px', lineHeight: 1.1 }}>
-              Partners who <em style={{ color: '#8A6820', fontStyle: 'italic' }}>already know</em> the right people
+            <p className="section-label" style={{ marginBottom: '20px' }}>Perfect For</p>
+            <h2 className="section-h2-medium" style={{ marginBottom: '20px' }}>
+              Partners who <em className="gold-italic">already know</em> the right people
             </h2>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '15px', fontWeight: 300, color: '#3D3A32', lineHeight: 1.75, marginBottom: '48px', maxWidth: '600px' }}>
+            <p className="body-text-rw" style={{ lineHeight: 1.75, marginBottom: '48px', maxWidth: '600px' }}>
               You don&apos;t need to be an accountant. You need a network of business owners who trust your judgment.
             </p>
           </Reveal>
@@ -354,11 +338,10 @@ export default function ReferralsPage() {
                 <div
                 onMouseEnter={() => setHoveredCard(i)}
                 onMouseLeave={() => setHoveredCard(null)}
-                style={{ backgroundColor: hoveredCard === i ? '#F7F3EC' : '#FFFFFF', padding: '28px 20px', borderTop: hoveredCard === i ? '2px solid #C9A84C' : '2px solid transparent', transition: 'all 0.3s ease', cursor: 'default', height: '100%' }}>
-
+                style={{ backgroundColor: hoveredCard === i ? 'var(--surface)' : 'var(--card)', padding: '28px 20px', borderTop: hoveredCard === i ? '2px solid var(--primary)' : '2px solid transparent', border: '1px solid var(--border)', transition: 'all 0.3s ease', cursor: 'default', height: '100%' }}>
                   <div style={{ fontSize: '26px', marginBottom: '14px' }}>{card.emoji}</div>
-                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(15px, 2.5vw, 20px)', fontWeight: 400, color: '#16140F', marginBottom: '10px', lineHeight: 1.3 }}>{card.title}</h3>
-                  <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '14px', fontWeight: 300, color: '#3D3A32', lineHeight: 1.75, margin: 0 }}>{card.body}</p>
+                  <h3 className="font-display" style={{ fontSize: 'clamp(15px, 2.5vw, 20px)', fontWeight: 400, color: 'var(--foreground)', marginBottom: '10px', lineHeight: 1.3 }}>{card.title}</h3>
+                  <p className="body-text-rw" style={{ margin: 0 }}>{card.body}</p>
                 </div>
               </Reveal>
             )}
@@ -367,25 +350,27 @@ export default function ReferralsPage() {
       </section>
 
       {/* ── SECTION 5: EARNINGS TABLE ── */}
-      <section id="earnings" className="py-20 md:py-32 px-6 md:px-16" style={{ backgroundColor: '#111008' }}>
+      <section id="earnings" className="py-20 md:py-32 px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '4px', textTransform: 'uppercase', color: '#C9A84C', marginBottom: '20px' }}>Earnings Potential</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px, 5vw, 56px)', fontWeight: 400, color: '#F0EDE4', marginBottom: '20px', lineHeight: 1.1 }}>
-              What your referrals <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>actually pay</em>
+            <p className="section-label" style={{ marginBottom: '20px' }}>Earnings Potential</p>
+            <h2 className="section-h2-medium" style={{ marginBottom: '20px' }}>
+              What your referrals <em className="gold-italic">actually pay</em>
             </h2>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '15px', fontWeight: 300, color: '#D4CFC4', lineHeight: 1.75, marginBottom: '40px', maxWidth: '600px' }}>
+            <p className="body-text-rw" style={{ lineHeight: 1.75, marginBottom: '40px', maxWidth: '600px' }}>
               Our clients stay long-term because we deliver results. That loyalty translates directly into recurring income for you.
             </p>
           </Reveal>
 
-          {/* Table — responsive: 2 cols on mobile, 4 on desktop */}
+          {/* Table */}
           <Reveal>
-            <div style={{ border: '1px solid rgba(201,168,76,0.18)', borderRadius: '2px', overflow: 'hidden' }}>
+            <div style={{ border: '1px solid var(--border)', borderRadius: '2px', overflow: 'hidden' }}>
               {/* Header */}
-              <div className="grid grid-cols-2 md:grid-cols-4" style={{ background: 'rgba(201,168,76,0.08)', borderBottom: '1px solid rgba(201,168,76,0.18)' }}>
+              <div className="grid grid-cols-2 md:grid-cols-4" style={{ background: 'var(--primary-dim)', borderBottom: '1px solid var(--border)' }}>
                 {['Client Fee', 'Monthly Cut', 'Annual', '3 Years'].map((h, idx) =>
-                <div key={h} className={idx >= 2 ? 'hidden md:block' : ''} style={{ padding: '14px 12px', fontFamily: "'Montserrat', sans-serif", fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: '#C9A84C', fontWeight: 400 }}>{h}</div>
+                <div key={h} className={idx >= 2 ? 'hidden md:block' : ''} style={{ padding: '14px 12px' }}>
+                  <span className="section-label" style={{ letterSpacing: '3px' }}>{h}</span>
+                </div>
                 )}
               </div>
               {/* Rows */}
@@ -395,28 +380,27 @@ export default function ReferralsPage() {
                 onMouseEnter={() => setHoveredRow(i)}
                 onMouseLeave={() => setHoveredRow(null)}
                 className="grid grid-cols-2 md:grid-cols-4"
-                style={{ borderBottom: i < earningsRows.length - 1 ? '1px solid rgba(201,168,76,0.1)' : 'none', background: hoveredRow === i ? '#1E1B14' : 'transparent', transition: 'background 0.2s' }}>
-
-                  <div style={{ padding: '16px 12px', fontFamily: "'Montserrat', sans-serif", fontSize: '13px', color: '#D4CFC4' }}>{row.fee}</div>
-                  <div style={{ padding: '16px 12px', fontFamily: "'Playfair Display', serif", fontSize: 'clamp(15px, 3vw, 22px)', fontWeight: 700, color: '#C9A84C' }}>{row.cut}</div>
-                  <div className="hidden md:block" style={{ padding: '16px 12px', fontFamily: "'Montserrat', sans-serif", fontSize: '13px', color: '#D4CFC4' }}>{row.annual}</div>
-                  <div className="hidden md:block" style={{ padding: '16px 12px', fontFamily: "'Playfair Display', serif", fontSize: 'clamp(14px, 2.5vw, 20px)', fontWeight: 600, color: '#F0EDE4' }}>{row.threeYear}</div>
+                style={{ borderBottom: i < earningsRows.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: hoveredRow === i ? 'var(--surface)' : 'transparent', transition: 'background 0.2s' }}>
+                  <div className="body-text-rw" style={{ padding: '16px 12px' }}>{row.fee}</div>
+                  <div className="font-display" style={{ padding: '16px 12px', fontSize: 'clamp(15px, 3vw, 22px)', fontWeight: 700, color: 'var(--primary)' }}>{row.cut}</div>
+                  <div className="body-text-rw hidden md:block" style={{ padding: '16px 12px' }}>{row.annual}</div>
+                  <div className="font-display hidden md:block" style={{ padding: '16px 12px', fontSize: 'clamp(14px, 2.5vw, 20px)', fontWeight: 600, color: 'var(--foreground)' }}>{row.threeYear}</div>
                 </div>
               )}
             </div>
             {/* Mobile note */}
-            <p className="md:hidden" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', color: '#7A7468', marginTop: '12px', textAlign: 'center', letterSpacing: '0.5px' }}>
+            <p className="md:hidden body-text-rw" style={{ fontSize: '11px', marginTop: '12px', textAlign: 'center', letterSpacing: '0.5px' }}>
               Annual &amp; 3-year totals visible on larger screens
             </p>
           </Reveal>
 
-          {/* Stat blocks — 2 cols on mobile, 4 on desktop */}
+          {/* Stat blocks */}
           <Reveal delay={0.2}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6" style={{ marginTop: '48px', borderTop: '1px solid rgba(201,168,76,0.18)', paddingTop: '40px' }}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6" style={{ marginTop: '48px', borderTop: '1px solid var(--border)', paddingTop: '40px' }}>
               {[['10%', 'Commission Rate'], ['∞', 'No Earning Cap'], ['Monthly', 'Payment Frequency'], ['Lifetime', 'Commission Duration']].map(([val, label]) =>
               <div key={label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(22px, 4vw, 48px)', fontWeight: 700, color: '#C9A84C', lineHeight: 1 }}>{val}</div>
-                  <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: '#7A7468', marginTop: '10px' }}>{label}</div>
+                  <div className="font-display" style={{ fontSize: 'clamp(22px, 4vw, 48px)', fontWeight: 700, color: 'var(--primary)', lineHeight: 1 }}>{val}</div>
+                  <div className="section-label" style={{ marginTop: '10px' }}>{label}</div>
                 </div>
               )}
             </div>
@@ -425,107 +409,100 @@ export default function ReferralsPage() {
       </section>
 
       {/* ── SECTION 6: APPLICATION FORM ── */}
-      <section id="apply" className="py-20 md:py-32 px-6" style={{ backgroundColor: '#080808' }}>
+      <section id="apply" className="py-20 md:py-32 px-6" style={{ backgroundColor: 'var(--surface)' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center', marginBottom: '48px' }}>
           <Reveal>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '4px', textTransform: 'uppercase', color: '#C9A84C', marginBottom: '20px' }}>Apply Now</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px, 5vw, 52px)', fontWeight: 400, color: '#F0EDE4', marginBottom: '16px', lineHeight: 1.1 }}>
-              Join the <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>partner programme</em>
+            <p className="section-label" style={{ marginBottom: '20px' }}>Apply Now</p>
+            <h2 className="section-h2-medium" style={{ marginBottom: '16px' }}>
+              Join the <em className="gold-italic">partner programme</em>
             </h2>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '15px', fontWeight: 300, color: '#D4CFC4', lineHeight: 1.75 }}>
+            <p className="body-text-rw" style={{ lineHeight: 1.75 }}>
               Tell us a little about yourself. We&apos;ll confirm your partner status and send your unique referral link within 48 hours.
             </p>
           </Reveal>
         </div>
 
         <Reveal delay={0.1}>
-          <div style={{ maxWidth: '640px', margin: '0 auto', backgroundColor: '#1E1B14', padding: '32px 20px', position: 'relative' }} className="md:p-14">
-            {/* Gold top border */}
-            <div style={{ position: 'absolute', top: 0, left: '20%', right: '20%', height: '2px', background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)' }} />
+          <div style={{ maxWidth: '640px', margin: '0 auto', backgroundColor: 'var(--card)', padding: '32px 20px', position: 'relative', border: '1px solid var(--border)' }} className="md:p-14">
+            {/* Top border accent */}
+            <div style={{ position: 'absolute', top: 0, left: '20%', right: '20%', height: '2px', background: 'var(--primary)' }} />
 
             {submitted ?
             <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                <div style={{ width: '64px', height: '64px', borderRadius: '50%', border: '2px solid #C9A84C', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 28px', fontSize: '28px', color: '#C9A84C' }}>✓</div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '28px', fontWeight: 400, color: '#F0EDE4', marginBottom: '16px' }}>Thank you.</h3>
-                <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '15px', color: '#D4CFC4', lineHeight: 1.75 }}>We&apos;ll confirm your partner status within 48 hours.</p>
+                <div style={{ width: '64px', height: '64px', borderRadius: '50%', border: '2px solid var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 28px', fontSize: '28px', color: 'var(--primary)' }}>✓</div>
+                <h3 className="font-display" style={{ fontSize: '28px', fontWeight: 400, color: 'var(--foreground)', marginBottom: '16px' }}>Thank you.</h3>
+                <p className="body-text-rw" style={{ lineHeight: 1.75 }}>We&apos;ll confirm your partner status within 48 hours.</p>
               </div> :
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                {/* Name row — stacked on mobile, side-by-side on sm+ */}
+                {/* Name row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[['firstName', 'First Name'], ['lastName', 'Last Name']].map(([field, label]) =>
                 <div key={field}>
-                      <label style={{ display: 'block', fontFamily: "'Montserrat', sans-serif", fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: '#C9A84C', marginBottom: '8px' }}>{label}</label>
+                      <label className="section-label" style={{ display: 'block', marginBottom: '8px' }}>{label}</label>
                       <input
                     type="text" required
                     value={form[field as keyof typeof form]}
                     onChange={(e) => setForm((f) => ({ ...f, [field]: e.target.value }))}
                     style={inputStyle}
-                    onFocus={(e) => e.currentTarget.style.borderColor = '#C9A84C'}
-                    onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.2)'} />
-
+                    onFocus={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
+                    onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'} />
                     </div>
                 )}
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label style={{ display: 'block', fontFamily: "'Montserrat', sans-serif", fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: '#C9A84C', marginBottom: '8px' }}>Email Address</label>
+                  <label className="section-label" style={{ display: 'block', marginBottom: '8px' }}>Email Address</label>
                   <input type="email" required value={form.email} onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                 style={inputStyle}
-                onFocus={(e) => e.currentTarget.style.borderColor = '#C9A84C'}
-                onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.2)'} />
-
+                onFocus={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
+                onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'} />
                 </div>
 
                 {/* Phone */}
                 <div>
-                  <label style={{ display: 'block', fontFamily: "'Montserrat', sans-serif", fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: '#C9A84C', marginBottom: '8px' }}>Phone Number</label>
+                  <label className="section-label" style={{ display: 'block', marginBottom: '8px' }}>Phone Number</label>
                   <input type="tel" value={form.phone} onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
                 style={inputStyle}
-                onFocus={(e) => e.currentTarget.style.borderColor = '#C9A84C'}
-                onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.2)'} />
-
+                onFocus={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
+                onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'} />
                 </div>
 
                 {/* Role */}
                 <div>
-                  <label style={{ display: 'block', fontFamily: "'Montserrat', sans-serif", fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: '#C9A84C', marginBottom: '8px' }}>Role / Profession</label>
+                  <label className="section-label" style={{ display: 'block', marginBottom: '8px' }}>Role / Profession</label>
                   <select required value={form.role} onChange={(e) => setForm((f) => ({ ...f, role: e.target.value }))}
-                style={{ ...inputStyle, color: form.role ? '#F0EDE4' : '#7A7468', appearance: 'none', cursor: 'pointer' }}
-                onFocus={(e) => e.currentTarget.style.borderColor = '#C9A84C'}
-                onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.2)'}>
-
+                style={{ ...inputStyle, color: form.role ? 'var(--foreground)' : 'var(--muted)', appearance: 'none', cursor: 'pointer' }}
+                onFocus={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
+                onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}>
                     <option value="" disabled>Select your role…</option>
-                    {['Business Consultant / Advisor', 'Finance Broker / IFA', 'Solicitor / Legal Professional', 'Startup / Investor Ecosystem', 'HR / Payroll Specialist', 'Entrepreneur / Business Owner', 'Other'].map((o) => <option key={o} value={o} style={{ backgroundColor: '#1E1B14' }}>{o}</option>)}
+                    {['Business Consultant / Advisor', 'Finance Broker / IFA', 'Solicitor / Legal Professional', 'Startup / Investor Ecosystem', 'HR / Payroll Specialist', 'Entrepreneur / Business Owner', 'Other'].map((o) => <option key={o} value={o} style={{ backgroundColor: 'var(--card)' }}>{o}</option>)}
                   </select>
                 </div>
 
                 {/* Network */}
                 <div>
-                  <label style={{ display: 'block', fontFamily: "'Montserrat', sans-serif", fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: '#C9A84C', marginBottom: '8px' }}>Tell us about your network</label>
+                  <label className="section-label" style={{ display: 'block', marginBottom: '8px' }}>Tell us about your network</label>
                   <textarea rows={4} value={form.network} onChange={(e) => setForm((f) => ({ ...f, network: e.target.value }))}
                 placeholder="Briefly describe the types of businesses you work with and how you plan to refer clients to Reckonwell…"
                 style={{ ...inputStyle, resize: 'vertical', lineHeight: 1.6 }}
-                onFocus={(e) => e.currentTarget.style.borderColor = '#C9A84C'}
-                onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.2)'} />
-
+                onFocus={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
+                onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'} />
                 </div>
 
                 {/* Submit */}
-                <button type="submit" disabled={submitting}
-              style={{ width: '100%', backgroundColor: submitting ? 'rgba(201,168,76,0.5)' : '#C9A84C', color: '#080808', border: 'none', fontFamily: "'Montserrat', sans-serif", fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', fontWeight: 600, padding: '18px', cursor: submitting ? 'not-allowed' : 'pointer', transition: 'background 0.2s', marginTop: '4px', minHeight: '52px' }}
-              onMouseEnter={(e) => {if (!submitting) e.currentTarget.style.backgroundColor = '#DDB96A';}}
-              onMouseLeave={(e) => {if (!submitting) e.currentTarget.style.backgroundColor = '#C9A84C';}}>
+                <button type="submit" disabled={submitting} className="btn-gold"
+              style={{ width: '100%', opacity: submitting ? 0.6 : 1, cursor: submitting ? 'not-allowed' : 'pointer', marginTop: '4px' }}>
                 {submitting ? 'Submitting…' : 'Submit Application'}</button>
 
                 {submitError &&
-              <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', color: '#e07070', textAlign: 'center', lineHeight: 1.6, margin: 0, padding: '8px 0' }}>
+              <p className="body-text-rw" style={{ fontSize: '13px', color: 'var(--red-accent)', textAlign: 'center', lineHeight: 1.6, margin: 0, padding: '8px 0' }}>
                     {submitError}
                   </p>
               }
 
-                <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '12px', color: '#7A7468', textAlign: 'center', lineHeight: 1.6, margin: 0 }}>
+                <p className="body-text-rw" style={{ fontSize: '12px', textAlign: 'center', lineHeight: 1.6, margin: 0 }}>
                   We review every application within 48 hours. No spam, no commitments — just a confirmation email and your unique referral link.
                 </p>
               </form>
@@ -535,35 +512,33 @@ export default function ReferralsPage() {
       </section>
 
       {/* ── SECTION 7: FAQ ── */}
-      <section id="faq" className="py-20 md:py-32 px-6 md:px-16" style={{ backgroundColor: '#1C1A15' }}>
+      <section id="faq" className="py-20 md:py-32 px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '4px', textTransform: 'uppercase', color: '#C9A84C', marginBottom: '20px' }}>Questions</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(24px, 4vw, 48px)', fontWeight: 400, color: '#F0EDE4', marginBottom: '40px', lineHeight: 1.1 }}>
-              Frequently asked <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>questions</em>
+            <p className="section-label" style={{ marginBottom: '20px' }}>Questions</p>
+            <h2 className="section-h2-medium" style={{ marginBottom: '40px' }}>
+              Frequently asked <em className="gold-italic">questions</em>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div style={{ border: '1px solid rgba(201,168,76,0.18)', borderRadius: '2px' }}>
+            <div style={{ border: '1px solid var(--border)', borderRadius: '2px' }}>
               {faqs.map((faq, i) => {
                 const isOpen = openFaq === i;
                 return (
-                  <div key={i} style={{ borderBottom: i < faqs.length - 1 ? '1px solid rgba(201,168,76,0.18)' : 'none' }}>
+                  <div key={i} style={{ borderBottom: i < faqs.length - 1 ? '1px solid var(--border)' : 'none' }}>
                     <button
                       onClick={() => setOpenFaq(isOpen ? null : i)}
-                      style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '18px 16px', background: isOpen ? 'rgba(201,168,76,0.04)' : 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', transition: 'background 0.2s', minHeight: '56px' }}
-                      onMouseEnter={(e) => {if (!isOpen) e.currentTarget.style.background = 'rgba(255,255,255,0.02)';}}
+                      style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '18px 16px', background: isOpen ? 'var(--primary-dim)' : 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', transition: 'background 0.2s', minHeight: '56px' }}
+                      onMouseEnter={(e) => {if (!isOpen) e.currentTarget.style.background = 'var(--border-subtle)';}}
                       onMouseLeave={(e) => {if (!isOpen) e.currentTarget.style.background = 'transparent';}}>
-
-                      <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(13px, 2vw, 16px)', fontWeight: 400, color: '#F0EDE4', lineHeight: 1.5, paddingRight: '16px' }}>{faq.q}</span>
-                      <span style={{ color: '#C9A84C', fontSize: '22px', fontWeight: 300, flexShrink: 0, transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease', display: 'inline-block', width: '22px', textAlign: 'center' }}>+</span>
+                      <span className="font-display" style={{ fontSize: 'clamp(13px, 2vw, 16px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.5, paddingRight: '16px' }}>{faq.q}</span>
+                      <span style={{ color: 'var(--primary)', fontSize: '22px', fontWeight: 300, flexShrink: 0, transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease', display: 'inline-block', width: '22px', textAlign: 'center' }}>+</span>
                     </button>
                     <div style={{ maxHeight: isOpen ? '400px' : '0', overflow: 'hidden', transition: 'max-height 0.4s ease' }}>
-                      <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '14px', lineHeight: 1.9, color: '#D4CFC4', padding: '0 16px 18px', margin: 0 }}>{faq.a}</p>
+                      <p className="body-text-rw" style={{ fontSize: '14px', lineHeight: 1.9, padding: '0 16px 18px', margin: 0 }}>{faq.a}</p>
                     </div>
                   </div>);
-
               })}
             </div>
           </Reveal>
@@ -571,7 +546,7 @@ export default function ReferralsPage() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="py-12 px-6" style={{ backgroundColor: '#111008', borderTop: '1px solid rgba(201,168,76,0.18)' }}>
+      <footer className="py-12 px-6" style={{ backgroundColor: '#000000', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }} className="flex flex-col md:grid md:grid-cols-3 items-center gap-6 text-center md:text-left">
           {/* Logo */}
           <div>
@@ -580,29 +555,27 @@ export default function ReferralsPage() {
                 src="/assets/images/Reckonwell-1779490857835.png"
                 alt="Reckonwell"
                 style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
-
             </Link>
           </div>
           {/* Nav */}
           <nav style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
             {[['How It Works', 'how-it-works'], ['Your Earnings', 'earnings'], ['Become a Partner', 'apply']].map(([label, id]) =>
             <button key={id} onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })}
-            style={{ background: 'none', border: 'none', fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: '#7A7468', cursor: 'pointer', transition: 'color 0.2s', minHeight: '44px' }}
-            onMouseEnter={(e) => e.currentTarget.style.color = '#C9A84C'}
-            onMouseLeave={(e) => e.currentTarget.style.color = '#7A7468'}>
+            style={{ background: 'none', border: 'none', fontFamily: 'var(--font-sans)', fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: '#B8B8B8', cursor: 'pointer', transition: 'color 0.2s', minHeight: '44px' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#B8B8B8'}>
               {label}</button>
             )}
-            <Link href="/" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: '#7A7468', transition: 'color 0.2s', display: 'flex', alignItems: 'center', minHeight: '44px' }}
-            onMouseEnter={(e) => e.currentTarget.style.color = '#C9A84C'}
-            onMouseLeave={(e) => e.currentTarget.style.color = '#7A7468'}>
+            <Link href="/" style={{ fontFamily: 'var(--font-sans)', fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: '#B8B8B8', transition: 'color 0.2s', display: 'flex', alignItems: 'center', minHeight: '44px' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#B8B8B8'}>
               Contact</Link>
           </nav>
           {/* Copyright */}
           <div className="md:text-right">
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', color: '#7A7468' }}>© 2025 Reckonwell.</p>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '11px', color: '#B8B8B8' }}>© 2025 Reckonwell.</p>
           </div>
         </div>
       </footer>
     </div>);
-
 }

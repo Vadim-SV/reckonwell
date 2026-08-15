@@ -8,8 +8,8 @@
   /* Backgrounds */
   --background: #FFF1E0;
   --surface: #F6E9D8;
-  --card: #E9DECF;
-  --card-darker: #E0D5C5;
+  --card: #FFFFFF;
+  --card-darker: #E9DECF;
 
   /* Primary accent — dark navy */
   --primary: #12233F;
@@ -20,7 +20,11 @@
 
   /* Secondary accent — mid blue */
   --secondary: #275E86;
+  --secondary-foreground: #FFF1E0;
   --secondary-light: #E4EAEF;
+
+  /* Accent tint */
+  --accent-tint: #E3E7ED;
 
   /* Text */
   --foreground: #000000;
@@ -29,14 +33,14 @@
   --muted-foreground: #8A8378;
 
   /* Borders */
-  --border: #CEC6B9;
-  --border-subtle: rgba(206, 198, 185, 0.5);
+  --border: rgba(18, 35, 63, 0.15);
+  --border-subtle: rgba(0, 0, 0, 0.08);
 
   /* Legacy aliases kept for compatibility */
   --gold-light: #E3E7ED;
-  --gold-dim: rgba(18, 35, 63, 0.06);
-  --gold-border: #CEC6B9;
-  --red-accent: #C0392B;
+  --gold-dim: rgba(18, 35, 63, 0.08);
+  --gold-border: rgba(18, 35, 63, 0.15);
+  --red-accent: #8C3D2B;
   --green-accent: #2D6A4F;
 
   /* Radius — small/editorial */

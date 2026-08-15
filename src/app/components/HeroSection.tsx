@@ -52,8 +52,7 @@ export default function HeroSection() {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background:
-            'radial-gradient(ellipse 80% 60% at 50% 55%, rgba(201,168,76,0.09) 0%, rgba(201,168,76,0.03) 55%, transparent 100%)'
+            background: 'transparent'
           }} />
 
         {/* Decorative vertical gold lines */}
@@ -106,7 +105,7 @@ export default function HeroSection() {
           <motion.p
             {...fadeUp(0.3)}
             className="pull-quote mb-4 mx-auto"
-            style={{ maxWidth: '620px', color: '#ffffff', fontSize: 'clamp(16px,2.2vw,26px)' }}
+            style={{ maxWidth: '620px', color: 'var(--body-text)', fontSize: 'clamp(16px,2.2vw,26px)' }}
             suppressHydrationWarning>The only accounting firm that acts as finance department - taking on day-to-day finance workload that consumes founders.
           </motion.p>
 
@@ -118,7 +117,7 @@ export default function HeroSection() {
               fontStyle: 'italic',
               fontWeight: 300,
               fontSize: 'clamp(16px,2.2vw,26px)',
-              color: '#ffffff',
+              color: 'var(--muted)',
               fontFamily: 'var(--font-serif)'
             }}
             suppressHydrationWarning>
@@ -133,7 +132,7 @@ export default function HeroSection() {
               fontSize: '10px',
               letterSpacing: '3px',
               textTransform: 'uppercase',
-              color: 'rgba(201,168,76,0.7)',
+              color: 'var(--primary)',
               fontWeight: 400
             }}
             suppressHydrationWarning>
