@@ -6,8 +6,8 @@ export default function Footer() {
     <footer
       className="border-t py-12 md:py-16 px-6 md:px-10"
       style={{
-        backgroundColor: 'var(--surface)',
-        borderColor: 'var(--primary)',
+        backgroundColor: '#000000',
+        borderColor: '#333333',
       }}
       role="contentinfo"
     >
@@ -18,24 +18,24 @@ export default function Footer() {
             <img
               src="/assets/images/Reckonwell-1779490857835.png"
               alt="Reckonwell - Premium accounting firm"
-              style={{ height: '28px', width: 'auto', objectFit: 'contain' }}
+              style={{ height: '28px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
             />
           </div>
           <address
             className="font-ui text-xs text-center md:text-left not-italic"
-            style={{ color: 'var(--muted)', letterSpacing: '0.5px', maxWidth: '260px', lineHeight: 1.6 }}
+            style={{ color: '#B8B8B8', letterSpacing: '0.5px', maxWidth: '260px', lineHeight: 1.6 }}
           >
             124 City Road, London EC1V 2NX
           </address>
           <p
             className="font-ui text-xs text-center md:text-left"
-            style={{ color: 'var(--muted)', letterSpacing: '0.5px', maxWidth: '260px', lineHeight: 1.6 }}
+            style={{ color: '#B8B8B8', letterSpacing: '0.5px', maxWidth: '260px', lineHeight: 1.6 }}
           >
             Premium accounting for ambitious businesses. Daily bookkeeping, real-time insights, zero surprises.
           </p>
           <p
             className="font-ui text-xs text-center md:text-left"
-            style={{ color: 'var(--muted)', letterSpacing: '0.5px', maxWidth: '280px', lineHeight: 1.6 }}
+            style={{ color: '#B8B8B8', letterSpacing: '0.5px', maxWidth: '280px', lineHeight: 1.6 }}
           >
             ICO Registered · Data Protection Reg. CSN3799691
           </p>
@@ -45,7 +45,7 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-end gap-3">
           <p
             className="font-ui text-xs"
-            style={{ color: 'var(--muted)', letterSpacing: '0.5px' }}
+            style={{ color: '#B8B8B8', letterSpacing: '0.5px' }}
           >
             02038186205
           </p>
@@ -53,18 +53,18 @@ export default function Footer() {
             <Link
               href="/privacy-policy"
               className="font-ui text-xs uppercase tracking-widest transition-colors duration-200 py-2"
-              style={{ color: 'var(--muted)', letterSpacing: '2px', fontSize: '10px', minHeight: '44px', display: 'flex', alignItems: 'center' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+              style={{ color: '#B8B8B8', letterSpacing: '2px', fontSize: '10px', minHeight: '44px', display: 'flex', alignItems: 'center' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#D69AAB')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#B8B8B8')}
             >
               Privacy
             </Link>
             <Link
               href="/terms-of-service"
               className="font-ui text-xs uppercase tracking-widest transition-colors duration-200 py-2"
-              style={{ color: 'var(--muted)', letterSpacing: '2px', fontSize: '10px', minHeight: '44px', display: 'flex', alignItems: 'center' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+              style={{ color: '#B8B8B8', letterSpacing: '2px', fontSize: '10px', minHeight: '44px', display: 'flex', alignItems: 'center' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#D69AAB')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#B8B8B8')}
             >
               Terms
             </Link>

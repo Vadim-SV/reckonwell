@@ -15,8 +15,12 @@ module.exports = {
         primary: {
           DEFAULT: 'var(--primary)',
           foreground: 'var(--primary-foreground)',
-          light: 'var(--gold-light)',
-          dim: 'var(--gold-dim)',
+          light: 'var(--primary-light)',
+          dim: 'var(--primary-dim)',
+        },
+        secondary: {
+          DEFAULT: 'var(--secondary)',
+          light: 'var(--secondary-light)',
         },
         foreground: { DEFAULT: 'var(--foreground)' },
         'body-text': { DEFAULT: 'var(--body-text)' },
@@ -28,14 +32,14 @@ module.exports = {
         'border-subtle': { DEFAULT: 'var(--border-subtle)' },
       },
       fontFamily: {
-        sans: ['var(--font-montserrat)', 'sans-serif'],
-        display: ['var(--font-playfair)', 'serif'],
-        serif: ['var(--font-cormorant)', 'serif'],
+        sans: ['var(--font-work-sans)', 'sans-serif'],
+        display: ['var(--font-newsreader)', 'serif'],
+        serif: ['var(--font-newsreader)', 'serif'],
       },
       borderRadius: {
         DEFAULT: 'var(--radius)',
-        sm: 'calc(var(--radius) / 2)',
-        lg: 'calc(var(--radius) * 2)',
+        sm: 'var(--radius)',
+        lg: 'var(--radius)',
       },
       animation: {
         'fade-up': 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
