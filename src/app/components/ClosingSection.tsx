@@ -297,7 +297,7 @@ export default function ClosingSection() {
                     }}
                   >
                     <span
-                      className="text-[rgba(11,10,10,1)]"
+                      className="text-[rgba(15,15,15,1)]"
                       style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(14px, 2vw, 16px)', fontWeight: 500, color: '#D4CFC4', lineHeight: 1.5, flex: 1 }}
                     >
                       {faq.question}
