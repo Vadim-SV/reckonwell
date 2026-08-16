@@ -90,7 +90,7 @@ export default function ClosingSection() {
   const inputBase =
     'w-full bg-transparent border rounded-none px-4 py-3 text-sm font-ui outline-none transition-colors duration-200 placeholder-[var(--muted)]';
   const inputStyle = {
-    borderColor: 'rgba(201,168,76,0.25)',
+    borderColor: 'var(--border)',
     color: 'var(--foreground)',
     fontSize: '13px',
     letterSpacing: '0.3px',
@@ -102,16 +102,13 @@ export default function ClosingSection() {
       id="get-in-touch"
       ref={ref}
       className="relative py-16 md:py-28 px-5 md:px-10 overflow-hidden"
-      style={{ backgroundColor: '#080808' }}
+      style={{ backgroundColor: 'var(--surface)' }}
       aria-label="Get in Touch"
     >
-      {/* Radial gold glow */}
+      {/* Radial glow */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.10) 0%, rgba(201,168,76,0.04) 55%, transparent 100%)',
-        }}
+        style={{ background: 'transparent' }}
       />
       {/* Top border */}
       <div
@@ -119,7 +116,7 @@ export default function ClosingSection() {
         style={{
           width: '40%',
           height: '1px',
-          background: 'linear-gradient(90deg, transparent, var(--primary), transparent)',
+          background: 'var(--primary)',
           opacity: 0.4,
         }}
       />
@@ -165,7 +162,7 @@ export default function ClosingSection() {
               />
               <div
                 className="absolute bottom-0 left-0 right-0"
-                style={{ height: '30%', background: 'linear-gradient(to top, rgba(8,8,8,0.55) 0%, transparent 100%)' }}
+                style={{ height: '30%', background: 'linear-gradient(to top, rgba(246,233,216,0.55) 0%, transparent 100%)' }}
               />
               {[
                 { top: 0, left: 0, borderTop: '2px solid var(--primary)', borderLeft: '2px solid var(--primary)' },
@@ -206,7 +203,7 @@ export default function ClosingSection() {
             >
               <p
                 className="font-serif"
-                style={{ fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(16px, 2vw, 22px)', color: '#ffffff', lineHeight: 1.7, fontFamily: 'var(--font-serif)' }}
+                style={{ fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(16px, 2vw, 22px)', color: 'var(--body-text)', lineHeight: 1.7, fontFamily: 'var(--font-serif)' }}
               >
                 &ldquo;I built Reckonwell because the directors I admired most were
                 spending their sharpest hours on things that had nothing to do
@@ -300,6 +297,7 @@ export default function ClosingSection() {
                     }}
                   >
                     <span
+                      className="text-[rgba(45,42,37,1)]"
                       style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(14px, 2vw, 16px)', fontWeight: 500, color: '#D4CFC4', lineHeight: 1.5, flex: 1 }}
                     >
                       {faq.question}
@@ -317,6 +315,7 @@ export default function ClosingSection() {
                   </button>
                   <div style={{ maxHeight: isOpen ? '400px' : '0', overflow: 'hidden', transition: 'max-height 0.4s ease' }}>
                     <p
+                      className="text-[rgba(14,13,12,1)]"
                       style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '14px', lineHeight: 1.9, color: '#D4CFC4', padding: '0 16px 18px', margin: 0 }}
                     >
                       {faq.answer}

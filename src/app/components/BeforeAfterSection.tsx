@@ -102,7 +102,7 @@ export default function BeforeAfterSection() {
             transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="rounded-sm p-6 md:p-12 relative"
             style={{
-              backgroundColor: 'rgba(10, 15, 8, 0.8)',
+              backgroundColor: '#FFF1E5',
               border: '1px solid var(--gold-border)',
               borderLeft: '3px solid var(--primary)',
             }}

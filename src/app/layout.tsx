@@ -1,31 +1,24 @@
 import React from 'react';
 import type { Metadata, Viewport } from 'next';
-import { Playfair_Display, Cormorant_Garamond, Montserrat } from 'next/font/google';
+import { Newsreader, Work_Sans } from 'next/font/google';
 import { Suspense } from 'react';
 import '../styles/tailwind.css';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { RegionProvider } from '@/context/RegionContext';
+import CustomCursor from '@/app/components/CustomCursor';
 
-const playfairDisplay = Playfair_Display({
+const newsreader = Newsreader({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
-  variable: '--font-playfair',
+  variable: '--font-newsreader',
   display: 'swap',
 });
 
-const cormorantGaramond = Cormorant_Garamond({
+const workSans = Work_Sans({
   subsets: ['latin'],
-  weight: ['300', '400'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
-  display: 'swap',
-});
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-montserrat',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-work-sans',
   display: 'swap',
 });
 
@@ -140,7 +133,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfairDisplay.variable} ${cormorantGaramond.variable} ${montserrat.variable}`}
+      className={`${newsreader.variable} ${workSans.variable}`}
     >
       <head>
         <script
@@ -162,9 +155,10 @@ export default function RootLayout({
           }}
         />
 
-        <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Freckonwell9518back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.19" />
+        <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Freckonwell9518back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.20" />
         <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" /></head>
-      <body className={montserrat.className}>
+      <body className={workSans.className}>
+        <CustomCursor />
         <Suspense fallback={null}>
           <GoogleAnalytics />
         </Suspense>

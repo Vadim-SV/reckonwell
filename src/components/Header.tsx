@@ -28,7 +28,7 @@ function RegionToggle({ compact = false }: { compact?: boolean }) {
     <div
       className="flex items-center"
       style={{
-        border: '1px solid var(--gold-border)',
+        border: '1px solid var(--border)',
         borderRadius: '2px',
         overflow: 'hidden',
         fontSize: compact ? '11px' : '10px',
@@ -43,14 +43,14 @@ function RegionToggle({ compact = false }: { compact?: boolean }) {
         style={{
           padding: compact ? '7px 12px' : '8px 18px',
           background: isUK ? 'var(--primary)' : 'transparent',
-          color: isUK ? '#080808' : 'var(--muted)',
+          color: isUK ? 'var(--primary-foreground)' : 'var(--muted)',
           border: 'none',
           cursor: 'pointer',
           fontWeight: isUK ? 600 : 400,
         }}
         aria-pressed={isUK}
       >
-        🇬🇧 UK
+        GB
       </button>
       <button
         onClick={() => setRegion('USA')}
@@ -58,15 +58,15 @@ function RegionToggle({ compact = false }: { compact?: boolean }) {
         style={{
           padding: compact ? '7px 12px' : '8px 18px',
           background: !isUK ? 'var(--primary)' : 'transparent',
-          color: !isUK ? '#080808' : 'var(--muted)',
+          color: !isUK ? 'var(--primary-foreground)' : 'var(--muted)',
           border: 'none',
-          borderLeft: '1px solid var(--gold-border)',
+          borderLeft: '1px solid var(--border)',
           cursor: 'pointer',
           fontWeight: !isUK ? 600 : 400,
         }}
         aria-pressed={!isUK}
       >
-        🇺🇸 USA
+        US
       </button>
     </div>
   );
@@ -113,7 +113,7 @@ export default function Header() {
 
   const navLinkStyle = {
     color: 'var(--muted)',
-    fontWeight: 400,
+    fontWeight: 400 as const,
     letterSpacing: '2px',
   };
 
@@ -128,7 +128,7 @@ export default function Header() {
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 group" aria-label="Reckonwell home">
             <img
-              src="/assets/images/Reckonwell-1779490857835.png"
+              src="/assets/images/reckonwell-high-resolution-logo-grayscale-transparent-1786798505479.png"
               alt="Reckonwell"
               className="block"
               style={{ height: '20px', width: 'auto', objectFit: 'contain' }}
@@ -168,15 +168,15 @@ export default function Header() {
                   className="absolute top-full left-1/2 mt-3 py-4 px-0"
                   style={{
                     transform: 'translateX(-50%)',
-                    backgroundColor: 'rgba(8,8,8,0.97)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid var(--gold-border)',
+                    backgroundColor: 'var(--background)',
+                    border: '1px solid var(--border)',
                     minWidth: '220px',
                     zIndex: 100,
+                    borderRadius: '2px',
                   }}
                 >
                   <div className="px-6 py-2">
-                    <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}>
+                    <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 500 }}>
                       Fractional Finance
                     </p>
                     <div className="space-y-1">
@@ -220,15 +220,15 @@ export default function Header() {
                   className="absolute top-full left-1/2 mt-3 py-4 px-0"
                   style={{
                     transform: 'translateX(-50%)',
-                    backgroundColor: 'rgba(8,8,8,0.97)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid var(--gold-border)',
+                    backgroundColor: 'var(--background)',
+                    border: '1px solid var(--border)',
                     minWidth: '240px',
                     zIndex: 100,
+                    borderRadius: '2px',
                   }}
                 >
                   <div className="px-6 py-2">
-                    <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}>
+                    <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 500 }}>
                       UK Compliance Services
                     </p>
                     <div className="space-y-1">
@@ -258,7 +258,7 @@ export default function Header() {
               className="font-ui tracking-widest uppercase transition-colors duration-200"
               style={{
                 color: 'var(--primary)',
-                fontWeight: 400,
+                fontWeight: 500,
                 fontSize: '10px',
                 letterSpacing: '2px',
                 border: '1px solid var(--primary)',
@@ -267,7 +267,7 @@ export default function Header() {
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'var(--primary)';
-                (e.currentTarget as HTMLAnchorElement).style.color = '#080808';
+                (e.currentTarget as HTMLAnchorElement).style.color = 'var(--primary-foreground)';
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
@@ -279,7 +279,15 @@ export default function Header() {
             <Link
               href="/quotation-calculator"
               className="font-ui tracking-widest uppercase transition-colors duration-200"
-              style={{ padding: '8px 18px', fontSize: '10px', letterSpacing: '2px', borderRadius: '2px', border: '1px solid rgba(245, 242, 236, 1)', color: 'var(--foreground)', backgroundColor: 'transparent' }}
+              style={{ padding: '8px 18px', fontSize: '10px', letterSpacing: '2px', borderRadius: '2px', border: '1px solid var(--primary)', color: 'var(--primary-foreground)', backgroundColor: 'var(--primary)', fontWeight: 600 }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'var(--primary-hover)';
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--primary-hover)';
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'var(--primary)';
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--primary)';
+              }}
             >
               Instant Quote
             </Link>
@@ -305,7 +313,7 @@ export default function Header() {
       {/* Mobile Full-Screen Overlay */}
       <div
         className={`fixed inset-0 z-40 overflow-y-auto transition-all duration-500 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-        style={{ backgroundColor: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', WebkitOverflowScrolling: 'touch' }}
+        style={{ backgroundColor: 'var(--background)', WebkitOverflowScrolling: 'touch' }}
       >
         <div className="flex flex-col items-center gap-0 pt-20 pb-12 w-full px-6 min-h-full">
           {/* Close button area at top */}
@@ -324,16 +332,16 @@ export default function Header() {
             href="/"
             onClick={() => setMenuOpen(false)}
             className="w-full text-center font-display py-4 transition-colors duration-200"
-            style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px', borderBottom: '1px solid var(--border-subtle)' }}
+            style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px', borderBottom: '1px solid var(--border)' }}
           >
             Home
           </Link>
 
           {/* Mobile Fractional Finance Section */}
-          <div className="w-full text-center py-4" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+          <div className="w-full text-center py-4" style={{ borderBottom: '1px solid var(--border)' }}>
             <p className="font-display mb-4" style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px' }}>Fractional Finance</p>
             <div>
-              <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>Fractional Finance</p>
+              <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 500 }}>Fractional Finance</p>
               {fractionalLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -350,10 +358,10 @@ export default function Header() {
 
           {/* Mobile Compliance Services Section */}
           {!isUSSite && (
-          <div className="w-full text-center py-4" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+          <div className="w-full text-center py-4" style={{ borderBottom: '1px solid var(--border)' }}>
             <p className="font-display mb-4" style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px' }}>Compliance Services</p>
             <div>
-              <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>UK Compliance Services</p>
+              <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 500 }}>UK Compliance Services</p>
               {complianceLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -370,7 +378,7 @@ export default function Header() {
           )}
 
           {/* Mobile Region Toggle */}
-          <div className="w-full flex justify-center py-5" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+          <div className="w-full flex justify-center py-5" style={{ borderBottom: '1px solid var(--border)' }}>
             <RegionToggle compact />
           </div>
 
@@ -378,7 +386,7 @@ export default function Header() {
             href="/referrals"
             onClick={() => setMenuOpen(false)}
             className="w-full text-center font-display py-4 transition-colors duration-200"
-            style={{ color: 'var(--primary)', fontWeight: 400, fontSize: '28px', borderBottom: '1px solid var(--border-subtle)' }}
+            style={{ color: 'var(--primary)', fontWeight: 400, fontSize: '28px', borderBottom: '1px solid var(--border)' }}
           >
             Partner with Us
           </Link>

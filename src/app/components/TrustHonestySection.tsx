@@ -6,7 +6,7 @@ export default function TrustHonestySection() {
   return (
     <section
       className="px-6 md:px-10 py-10 md:py-14"
-      style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.03)' }}
+      style={{ borderBottom: '1px solid var(--border)', backgroundColor: 'var(--primary-dim)' }}
       aria-label="Why you can trust us"
     >
       <div className="max-w-3xl mx-auto">

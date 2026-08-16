@@ -15,7 +15,7 @@ import Icon from '@/components/ui/AppIcon';
 
 
 // ── Shared white text style (no italic, no grey) ──────────────────────────
-const wt: React.CSSProperties = { color: '#ffffff', fontStyle: 'normal' };
+const wt: React.CSSProperties = { color: 'var(--body-text)', fontStyle: 'normal' };
 
 // ── Data ──────────────────────────────────────────────────────────────────
 
@@ -126,33 +126,13 @@ function DualCTA() {
       <a
         href="#ffd-calculator"
         onClick={handleScrollToCalc}
-        className="font-ui"
-        style={{
-          backgroundColor: 'var(--primary)',
-          color: '#080808',
-          padding: '14px 32px',
-          fontSize: '13px',
-          letterSpacing: '2px',
-          textTransform: 'uppercase',
-          fontWeight: 600,
-          display: 'inline-block',
-        }}
+        className="btn-gold font-ui"
       >
         See What You Could Save →
       </a>
       <Link
         href="/book"
-        className="font-ui"
-        style={{
-          border: '1px solid rgba(201,168,76,0.4)',
-          color: '#ffffff',
-          padding: '14px 32px',
-          fontSize: '13px',
-          letterSpacing: '2px',
-          textTransform: 'uppercase',
-          fontWeight: 400,
-          display: 'inline-block',
-        }}
+        className="btn-ghost font-ui"
       >
         Book a Discovery Call
       </Link>
@@ -171,12 +151,11 @@ function HeroFFD() {
       style={{ backgroundColor: 'var(--background)' }}
       aria-label="Hero"
     >
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 55%, rgba(201,168,76,0.09) 0%, rgba(201,168,76,0.03) 55%, transparent 100%)' }} />
       <div className="gold-vertical-line-left" aria-hidden="true" />
       <div className="gold-vertical-line-right" aria-hidden="true" />
       <div className="relative z-10 max-w-5xl mx-auto text-center pt-28 pb-16">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }} className="mb-8">
-          <span className="font-ui" style={{ fontSize: '9px', letterSpacing: '3px', color: 'var(--primary)', textTransform: 'uppercase' }}>
+          <span className="section-label">
             Fractional Finance Department 
           </span>
         </motion.div>
@@ -185,7 +164,7 @@ function HeroFFD() {
           <em style={{ color: 'var(--primary)' }}>don&apos;t hire</em> a finance team —
           <br className="hidden md:block" /> they get Reckonwell.
         </motion.h1>
-        <motion.p initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }} className="font-ui mb-10 mx-auto" style={{ fontSize: 'clamp(15px,1.8vw,19px)', ...wt, lineHeight: 1.75, maxWidth: '600px', fontWeight: 300 }}>
+        <motion.p initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }} className="body-text-rw mb-10 mx-auto" style={{ fontSize: 'clamp(15px,1.8vw,19px)', lineHeight: 1.75, maxWidth: '600px', fontWeight: 300 }}>
           A dedicated scalable finance team for founder-led businesses — bookkeeping, compliance, and founder support, without the cost or risk of hiring in-house.
         </motion.p>
         <motion.div initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}>
@@ -209,38 +188,9 @@ function CertifiedPartneredSectionFFD() {
         <motion.h2 className="section-h2-medium mb-6" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
           Built with <em style={{ color: 'var(--primary)' }}>Certified Partners</em>
         </motion.h2>
-        <motion.p className="body-text-rw max-w-3xl" style={{ ...wt, fontSize: 'clamp(15px,1.8vw,18px)' }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
+        <motion.p className="body-text-rw max-w-3xl" style={{ fontSize: 'clamp(15px,1.8vw,18px)' }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
           We work with a network of certified partners who provide the technology and infrastructure that powers Reckonwell. These partners are subject to strict quality control and security standards, ensuring the highest level of service and data protection.
         </motion.p>
-        <motion.div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          <div className="partner-card">
-            <Icon name="partner-1" size={24} />
-            <p className="font-ui mt-2" style={{ fontSize: '14px', ...wt, fontWeight: 300 }}>
-              Partner Name
-            </p>
-            <p className="font-ui" style={{ fontSize: '12px', ...wt, color: 'var(--border-subtle)' }}>
-              Partner Role
-            </p>
-          </div>
-          <div className="partner-card">
-            <Icon name="partner-2" size={24} />
-            <p className="font-ui mt-2" style={{ fontSize: '14px', ...wt, fontWeight: 300 }}>
-              Partner Name
-            </p>
-            <p className="font-ui" style={{ fontSize: '12px', ...wt, color: 'var(--border-subtle)' }}>
-              Partner Role
-            </p>
-          </div>
-          <div className="partner-card">
-            <Icon name="partner-3" size={24} />
-            <p className="font-ui mt-2" style={{ fontSize: '14px', ...wt, fontWeight: 300 }}>
-              Partner Name
-            </p>
-            <p className="font-ui" style={{ fontSize: '12px', ...wt, color: 'var(--border-subtle)' }}>
-              Partner Role
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
@@ -251,7 +201,7 @@ function WhatIsItFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
   return (
-    <section ref={ref} className="py-20 md:py-28 px-6 md:px-10" style={{ backgroundColor: '#080808', borderBottom: '1px solid var(--gold-border)' }} aria-label="What is a Fractional Finance Department">
+    <section ref={ref} className="py-20 md:py-28 px-6 md:px-10" style={{ backgroundColor: 'var(--surface)', borderBottom: '1px solid var(--gold-border)' }} aria-label="What is a Fractional Finance Department">
       <div className="max-w-5xl mx-auto">
         <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
           What Is It?
@@ -355,7 +305,7 @@ function BeforeAfterFFD() {
               ))}
             </ul>
           </motion.div>
-          <motion.div initial={{ opacity: 0, x: 20 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }} className="rounded-sm p-6 md:p-10" style={{ backgroundColor: 'rgba(10,15,8,0.8)', border: '1px solid var(--gold-border)', borderLeft: '3px solid var(--primary)' }}>
+          <motion.div initial={{ opacity: 0, x: 20 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }} className="rounded-sm p-6 md:p-10" style={{ backgroundColor: '#FFF1E5', border: '1px solid var(--gold-border)', borderLeft: '3px solid var(--primary)' }}>
             <span className="inline-flex items-center gap-2 font-ui px-3 py-1 mb-6" style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', backgroundColor: 'rgba(45,106,79,0.15)', color: '#52B788', border: '1px solid rgba(45,106,79,0.25)', fontWeight: 500 }}>
               ✓ After Reckonwell
             </span>
@@ -401,7 +351,7 @@ function HowItWorksFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
   return (
-    <section ref={ref} className="py-16 md:py-24 px-6 md:px-10" style={{ backgroundColor: '#080808', borderBottom: '1px solid var(--gold-border)' }} aria-label="How it works">
+    <section ref={ref} className="py-16 md:py-24 px-6 md:px-10" style={{ backgroundColor: 'var(--surface)', borderBottom: '1px solid var(--gold-border)' }} aria-label="How it works">
       <div className="max-w-5xl mx-auto">
         <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
           How It Works
@@ -460,7 +410,7 @@ function IdealCustomerFFD() {
     'Want daily visibility, not a monthly surprise',
   ];
   return (
-    <section ref={ref} className="py-20 md:py-28 px-6 md:px-10" style={{ backgroundColor: '#080808', borderBottom: '1px solid var(--gold-border)' }} aria-label="Who this is for">
+    <section ref={ref} className="py-20 md:py-28 px-6 md:px-10" style={{ backgroundColor: 'var(--surface)', borderBottom: '1px solid var(--gold-border)' }} aria-label="Who this is for">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
         <div>
           <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
@@ -543,13 +493,13 @@ function FounderFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
   return (
-    <section ref={ref} className="py-20 md:py-32 px-6 md:px-10" style={{ backgroundColor: '#080808', borderBottom: '1px solid var(--gold-border)' }} aria-label="Message from the founder">
+    <section ref={ref} className="py-20 md:py-32 px-6 md:px-10" style={{ backgroundColor: 'var(--surface)', borderBottom: '1px solid var(--gold-border)' }} aria-label="Message from the founder">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="mx-auto md:mx-0 md:ml-auto" style={{ maxWidth: '200px', width: '100%', position: 'relative' }}>
           <div className="hidden md:block" style={{ position: 'absolute', top: '14px', left: '-14px', right: '14px', bottom: '-14px', border: '1px solid var(--primary)', opacity: 0.25, zIndex: 0, pointerEvents: 'none' }} />
           <div className="relative overflow-hidden" style={{ aspectRatio: '3/4', zIndex: 1 }}>
             <img src="/assets/images/Vadim-1779496555261.jpg" alt="Vadim, Founder of Reckonwell" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
-            <div className="absolute bottom-0 left-0 right-0" style={{ height: '30%', background: 'linear-gradient(to top, rgba(8,8,8,0.55) 0%, transparent 100%)' }} />
+            <div className="absolute bottom-0 left-0 right-0" style={{ height: '30%', background: 'linear-gradient(to top, rgba(246,233,216,0.55) 0%, transparent 100%)' }} />
             {[
               { top: 0, left: 0, borderTop: '2px solid var(--primary)', borderLeft: '2px solid var(--primary)' } as React.CSSProperties,
               { top: 0, right: 0, borderTop: '2px solid var(--primary)', borderRight: '2px solid var(--primary)' } as React.CSSProperties,
@@ -568,7 +518,7 @@ function FounderFFD() {
             Hello, I am Vadim
           </motion.h3>
           <motion.blockquote className="mb-5" style={{ borderLeft: '2px solid var(--primary)', paddingLeft: '20px' }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
-            <p className="font-serif" style={{ fontWeight: 300, fontSize: 'clamp(16px,2vw,22px)', color: '#ffffff', lineHeight: 1.7, fontFamily: 'var(--font-serif)', fontStyle: 'normal' }}>
+            <p className="font-serif" style={{ fontWeight: 300, fontSize: 'clamp(16px,2vw,22px)', color: 'var(--body-text)', lineHeight: 1.7, fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
               &ldquo;I built Reckonwell because the directors I admired most were spending their sharpest hours on things that had nothing to do with why they built their business. That always struck me as wrong — and entirely fixable.&rdquo;
             </p>
           </motion.blockquote>
@@ -598,7 +548,7 @@ function FAQFFD() {
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between py-5 text-left font-ui"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ffffff', fontSize: '15px', fontWeight: 400 }}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--foreground)', fontSize: '15px', fontWeight: 400 }}
               >
                 <span>{faq.question}</span>
                 <span style={{ color: 'var(--primary)', fontSize: '20px', flexShrink: 0, marginLeft: '16px', lineHeight: 1 }}>
@@ -607,7 +557,7 @@ function FAQFFD() {
               </button>
               {openIndex === i && (
                 <div className="pb-5">
-                  <p className="font-ui" style={{ fontSize: '14px', ...wt, lineHeight: 1.75, fontWeight: 300 }}>
+                  <p className="body-text-rw" style={{ fontSize: '14px', lineHeight: 1.75, fontWeight: 300 }}>
                     {faq.answer}
                   </p>
                 </div>
@@ -625,9 +575,8 @@ function FinalCTAFFD() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
   return (
-    <section ref={ref} className="relative py-20 md:py-32 px-6 md:px-10 overflow-hidden" style={{ backgroundColor: '#080808' }} aria-label="Final call to action">
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.10) 0%, rgba(201,168,76,0.04) 55%, transparent 100%)' }} />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2" style={{ width: '40%', height: '1px', background: 'linear-gradient(90deg, transparent, var(--primary), transparent)', opacity: 0.4 }} />
+    <section ref={ref} className="relative py-20 md:py-32 px-6 md:px-10 overflow-hidden" style={{ backgroundColor: 'var(--surface)' }} aria-label="Final call to action">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2" style={{ width: '40%', height: '1px', background: 'var(--primary)', opacity: 0.4 }} />
       <div className="max-w-3xl mx-auto text-center relative z-10">
         <motion.p className="section-label mb-4" initial={{ opacity: 0, y: 12 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
           Get Started
@@ -635,7 +584,7 @@ function FinalCTAFFD() {
         <motion.h2 className="section-h2-medium mb-6" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
           Your finance team is <em style={{ color: 'var(--primary)' }}>ready.</em>
         </motion.h2>
-        <motion.p className="body-text-rw mb-10 mx-auto" style={{ ...wt, maxWidth: '480px' }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
+        <motion.p className="body-text-rw mb-10 mx-auto" style={{ maxWidth: '480px' }} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
           See what you could save with the calculator above, or book a discovery call to talk through your specific situation.
         </motion.p>
         <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.3 }}>

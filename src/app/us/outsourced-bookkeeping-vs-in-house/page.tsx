@@ -78,31 +78,31 @@ const faqs = [
 function FAQAccordion({ faqs }: { faqs: { question: string; answer: string }[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
-    <div style={{ border: '1px solid rgba(201,168,76,0.18)', borderRadius: '2px' }}>
+    <div style={{ border: '1px solid var(--border)', borderRadius: '2px' }}>
       {faqs.map((faq, index) => {
         const isOpen = openIndex === index;
         const isLast = index === faqs.length - 1;
         return (
-          <div key={index} style={{ borderBottom: isLast ? 'none' : '1px solid rgba(201,168,76,0.18)' }}>
+          <div key={index} style={{ borderBottom: isLast ? 'none' : '1px solid var(--border)' }}>
             <button
               onClick={() => setOpenIndex(isOpen ? null : index)}
               aria-expanded={isOpen}
               style={{
                 width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
-                padding: '18px 16px', background: isOpen ? 'rgba(201,168,76,0.04)' : 'transparent',
+                padding: '18px 16px', background: isOpen ? 'var(--primary-dim)' : 'transparent',
                 border: 'none', cursor: 'pointer', textAlign: 'left', transition: 'background 0.2s ease',
                 minHeight: '60px', gap: '12px',
               }}
             >
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(14px,2vw,16px)', fontWeight: 500, color: '#D4CFC4', lineHeight: 1.5, flex: 1 }}>
+              <span className="font-display" style={{ fontSize: 'clamp(14px,2vw,16px)', fontWeight: 500, color: 'var(--foreground)', lineHeight: 1.5, flex: 1 }}>
                 {faq.question}
               </span>
-              <span aria-hidden="true" style={{ color: '#C9A84C', fontSize: '22px', fontWeight: 300, lineHeight: 1, flexShrink: 0, transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease', display: 'inline-block', width: '22px', textAlign: 'center', marginTop: '2px' }}>
+              <span aria-hidden="true" style={{ color: 'var(--primary)', fontSize: '22px', fontWeight: 300, lineHeight: 1, flexShrink: 0, transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease', display: 'inline-block', width: '22px', textAlign: 'center', marginTop: '2px' }}>
                 +
               </span>
             </button>
             <div style={{ maxHeight: isOpen ? '600px' : '0', overflow: 'hidden', transition: 'max-height 0.4s ease' }}>
-              <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '14px', lineHeight: 1.9, color: '#D4CFC4', padding: '0 16px 18px', margin: 0 }}>
+              <p className="body-text-rw" style={{ fontSize: '14px', lineHeight: 1.9, padding: '0 16px 18px', margin: 0 }}>
                 {faq.answer}
               </p>
             </div>
@@ -124,7 +124,6 @@ export default function OutsourcedVsInHousePage() {
         style={{ backgroundColor: 'var(--background)' }}
         aria-label="Hero"
       >
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 55%, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 55%, transparent 100%)' }} />
         <div className="gold-vertical-line-left" aria-hidden="true" />
         <div className="gold-vertical-line-right" aria-hidden="true" />
 
@@ -143,7 +142,7 @@ export default function OutsourcedVsInHousePage() {
             <span className="gold-italic">vs. in-house: which is right for you?</span>
           </h1>
 
-          <p className="pull-quote mb-8 mx-auto" style={{ maxWidth: '620px', color: '#ffffff', fontSize: 'clamp(16px,2.2vw,22px)' }}>
+          <p className="pull-quote mb-8 mx-auto" style={{ maxWidth: '620px', color: 'var(--body-text)', fontSize: 'clamp(16px,2.2vw,22px)' }}>
             An honest comparison of cost, control, expertise, and risk — so you can make the right decision for your business.
           </p>
 
@@ -158,7 +157,7 @@ export default function OutsourcedVsInHousePage() {
       {/* The real cost of in-house */}
       <section
         className="py-20 md:py-32 px-6 md:px-10"
-        style={{ backgroundColor: '#080808' }}
+        style={{ backgroundColor: 'var(--surface)' }}
         aria-label="The real cost of in-house bookkeeping"
       >
         <div className="max-w-5xl mx-auto">
@@ -206,17 +205,17 @@ export default function OutsourcedVsInHousePage() {
           {/* Mobile: stacked cards */}
           <div className="md:hidden flex flex-col gap-4">
             {comparisonRows.map((row, i) => (
-              <div key={i} className="rounded-sm overflow-hidden" style={{ border: '1px solid var(--gold-border)' }}>
-                <div className="px-4 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.08)' }}>
-                  <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)', margin: 0 }}>{row.label}</p>
+              <div key={i} className="rounded-sm overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                <div className="px-4 py-3" style={{ backgroundColor: 'var(--primary-dim)' }}>
+                  <p className="section-label" style={{ margin: 0 }}>{row.label}</p>
                 </div>
-                <div className="px-4 py-3" style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'var(--card)' }}>
-                  <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: '#888', marginBottom: '6px' }}>In-House</p>
+                <div className="px-4 py-3" style={{ borderBottom: '1px solid var(--border)', backgroundColor: 'var(--card)' }}>
+                  <p className="font-ui" style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '6px' }}>In-House</p>
                   <p className="body-text-rw" style={{ fontSize: '13px', margin: 0 }}>{row.inHouse}</p>
                 </div>
-                <div className="px-4 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.04)' }}>
-                  <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)', marginBottom: '6px' }}>Reckonwell</p>
-                  <p className="body-text-rw" style={{ fontSize: '13px', margin: 0, color: '#D4CFC4' }}>{row.outsourced}</p>
+                <div className="px-4 py-3" style={{ backgroundColor: 'var(--surface)' }}>
+                  <p className="section-label" style={{ marginBottom: '6px' }}>Reckonwell</p>
+                  <p className="body-text-rw" style={{ fontSize: '13px', margin: 0 }}>{row.outsourced}</p>
                 </div>
               </div>
             ))}
@@ -224,30 +223,30 @@ export default function OutsourcedVsInHousePage() {
 
           {/* Desktop: table */}
           <div className="hidden md:block overflow-x-auto">
-            <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid var(--gold-border)' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid var(--border)' }}>
               <thead>
                 <tr>
-                  <th style={{ padding: '14px 16px', textAlign: 'left', fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)', width: '25%' }}>
+                  <th style={{ padding: '14px 16px', textAlign: 'left', fontFamily: 'var(--font-sans)', fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', backgroundColor: 'var(--primary-dim)', borderBottom: '1px solid var(--border)', width: '25%' }}>
                     Factor
                   </th>
-                  <th style={{ padding: '14px 16px', textAlign: 'left', fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: '#888', backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)', width: '37.5%' }}>
+                  <th style={{ padding: '14px 16px', textAlign: 'left', fontFamily: 'var(--font-sans)', fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--muted)', backgroundColor: 'var(--primary-dim)', borderBottom: '1px solid var(--border)', width: '37.5%' }}>
                     In-House Bookkeeper
                   </th>
-                  <th style={{ padding: '14px 16px', textAlign: 'left', fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)', width: '37.5%' }}>
+                  <th style={{ padding: '14px 16px', textAlign: 'left', fontFamily: 'var(--font-sans)', fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', backgroundColor: 'var(--primary-dim)', borderBottom: '1px solid var(--border)', width: '37.5%' }}>
                     Reckonwell
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {comparisonRows.map((row, i) => (
-                  <tr key={i} style={{ borderBottom: i < comparisonRows.length - 1 ? '1px solid rgba(201,168,76,0.12)' : 'none' }}>
-                    <td style={{ padding: '14px 16px', fontFamily: "'Montserrat', sans-serif", fontSize: '12px', color: '#D4CFC4', verticalAlign: 'top', backgroundColor: 'var(--card)' }}>
+                  <tr key={i} style={{ borderBottom: i < comparisonRows.length - 1 ? '1px solid var(--border-subtle)' : 'none' }}>
+                    <td className="body-text-rw" style={{ padding: '14px 16px', fontSize: '12px', verticalAlign: 'top', backgroundColor: 'var(--card)' }}>
                       {row.label}
                     </td>
-                    <td style={{ padding: '14px 16px', fontFamily: "'Montserrat', sans-serif", fontSize: '13px', color: '#888', lineHeight: 1.7, verticalAlign: 'top', backgroundColor: 'var(--card)' }}>
+                    <td className="body-text-rw" style={{ padding: '14px 16px', fontSize: '13px', color: 'var(--muted)', lineHeight: 1.7, verticalAlign: 'top', backgroundColor: 'var(--card)' }}>
                       {row.inHouse}
                     </td>
-                    <td style={{ padding: '14px 16px', fontFamily: "'Montserrat', sans-serif", fontSize: '13px', color: '#D4CFC4', lineHeight: 1.7, verticalAlign: 'top', backgroundColor: 'rgba(201,168,76,0.03)' }}>
+                    <td className="body-text-rw" style={{ padding: '14px 16px', fontSize: '13px', lineHeight: 1.7, verticalAlign: 'top', backgroundColor: 'var(--surface)' }}>
                       {row.outsourced}
                     </td>
                   </tr>
@@ -258,7 +257,7 @@ export default function OutsourcedVsInHousePage() {
 
           <div className="mt-8 p-5 md:p-6 rounded-sm" style={{ borderLeft: '2px solid var(--primary)', backgroundColor: 'var(--gold-dim)' }}>
             <p className="body-text-rw" style={{ fontSize: '14px' }}>
-              <strong style={{ color: '#D4CFC4' }}>When in-house makes sense:</strong> Very high transaction volumes, physical presence requirements, or businesses at a scale where a full finance team is justified. For most founder-led businesses under $10M revenue, outsourced bookkeeping is more cost-effective and more reliable.
+              <strong style={{ color: 'var(--foreground)' }}>When in-house makes sense:</strong> Very high transaction volumes, physical presence requirements, or businesses at a scale where a full finance team is justified. For most founder-led businesses under $10M revenue, outsourced bookkeeping is more cost-effective and more reliable.
             </p>
           </div>
         </div>
@@ -267,7 +266,7 @@ export default function OutsourcedVsInHousePage() {
       {/* CPA note */}
       <section
         className="py-16 md:py-24 px-6 md:px-10"
-        style={{ backgroundColor: '#080808' }}
+        style={{ backgroundColor: 'var(--surface)' }}
         aria-label="Tax filing note"
       >
         <div className="max-w-3xl mx-auto text-center">
@@ -285,17 +284,17 @@ export default function OutsourcedVsInHousePage() {
 
       {/* FAQ */}
       <section
-        style={{ backgroundColor: '#1C1A15' }}
+        style={{ backgroundColor: 'var(--background)' }}
         className="py-16 md:py-32 px-5 md:px-16"
         aria-label="Frequently asked questions"
       >
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', color: '#C9A84C', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '20px' }}>
+          <p className="section-label" style={{ marginBottom: '20px' }}>
             Questions &amp; Answers
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(24px,4vw,42px)', fontWeight: 700, color: '#D4CFC4', marginBottom: '32px', lineHeight: 1.2 }}>
+          <h2 className="section-h2-medium" style={{ marginBottom: '32px' }}>
             Frequently asked{' '}
-            <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>questions</em>
+            <em className="gold-italic">questions</em>
           </h2>
           <FAQAccordion faqs={faqs} />
         </div>
@@ -304,7 +303,7 @@ export default function OutsourcedVsInHousePage() {
       {/* CTA */}
       <section
         className="py-20 md:py-32 px-6 md:px-10 text-center"
-        style={{ backgroundColor: '#080808' }}
+        style={{ backgroundColor: 'var(--surface)' }}
         aria-label="Book a call"
       >
         <div className="max-w-3xl mx-auto">

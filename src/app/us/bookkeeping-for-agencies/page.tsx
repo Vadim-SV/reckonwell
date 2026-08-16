@@ -47,31 +47,31 @@ const faqs = [
 function FAQAccordion({ faqs }: { faqs: { question: string; answer: string }[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
-    <div style={{ border: '1px solid rgba(201,168,76,0.18)', borderRadius: '2px' }}>
+    <div style={{ border: '1px solid var(--border)', borderRadius: '2px' }}>
       {faqs.map((faq, index) => {
         const isOpen = openIndex === index;
         const isLast = index === faqs.length - 1;
         return (
-          <div key={index} style={{ borderBottom: isLast ? 'none' : '1px solid rgba(201,168,76,0.18)' }}>
+          <div key={index} style={{ borderBottom: isLast ? 'none' : '1px solid var(--border)' }}>
             <button
               onClick={() => setOpenIndex(isOpen ? null : index)}
               aria-expanded={isOpen}
               style={{
                 width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
-                padding: '18px 16px', background: isOpen ? 'rgba(201,168,76,0.04)' : 'transparent',
+                padding: '18px 16px', background: isOpen ? 'var(--primary-dim)' : 'transparent',
                 border: 'none', cursor: 'pointer', textAlign: 'left', transition: 'background 0.2s ease',
                 minHeight: '60px', gap: '12px',
               }}
             >
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(14px,2vw,16px)', fontWeight: 500, color: '#D4CFC4', lineHeight: 1.5, flex: 1 }}>
+              <span className="font-display" style={{ fontSize: 'clamp(14px,2vw,16px)', fontWeight: 500, color: 'var(--foreground)', lineHeight: 1.5, flex: 1 }}>
                 {faq.question}
               </span>
-              <span aria-hidden="true" style={{ color: '#C9A84C', fontSize: '22px', fontWeight: 300, lineHeight: 1, flexShrink: 0, transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease', display: 'inline-block', width: '22px', textAlign: 'center', marginTop: '2px' }}>
+              <span aria-hidden="true" style={{ color: 'var(--primary)', fontSize: '22px', fontWeight: 300, lineHeight: 1, flexShrink: 0, transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease', display: 'inline-block', width: '22px', textAlign: 'center', marginTop: '2px' }}>
                 +
               </span>
             </button>
             <div style={{ maxHeight: isOpen ? '600px' : '0', overflow: 'hidden', transition: 'max-height 0.4s ease' }}>
-              <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '14px', lineHeight: 1.9, color: '#D4CFC4', padding: '0 16px 18px', margin: 0 }}>
+              <p className="body-text-rw" style={{ fontSize: '14px', lineHeight: 1.9, padding: '0 16px 18px', margin: 0 }}>
                 {faq.answer}
               </p>
             </div>
@@ -93,7 +93,6 @@ export default function BookkeepingForAgenciesPage() {
         style={{ backgroundColor: 'var(--background)' }}
         aria-label="Hero"
       >
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 55%, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 55%, transparent 100%)' }} />
         <div className="gold-vertical-line-left" aria-hidden="true" />
         <div className="gold-vertical-line-right" aria-hidden="true" />
 
@@ -112,11 +111,11 @@ export default function BookkeepingForAgenciesPage() {
             <span className="gold-italic">agencies.</span>
           </h1>
 
-          <p className="pull-quote mb-8 mx-auto" style={{ maxWidth: '600px', color: '#ffffff', fontSize: 'clamp(16px,2.2vw,22px)' }}>
+          <p className="pull-quote mb-8 mx-auto" style={{ maxWidth: '600px', color: 'var(--body-text)', fontSize: 'clamp(16px,2.2vw,22px)' }}>
             Project-based revenue recognition, retainer reconciliation, and daily finance ops — handled properly, by a team that understands how agency money moves.
           </p>
 
-          <p className="font-ui mb-7" style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(201,168,76,0.7)', fontWeight: 400 }}>
+          <p className="font-ui mb-7" style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}>
             From $300/month
           </p>
 
@@ -131,7 +130,7 @@ export default function BookkeepingForAgenciesPage() {
       {/* Why agency finance ops are different */}
       <section
         className="py-20 md:py-32 px-6 md:px-10"
-        style={{ backgroundColor: '#080808' }}
+        style={{ backgroundColor: 'var(--surface)' }}
         aria-label="Why agency bookkeeping is different"
       >
         <div className="max-w-5xl mx-auto">
@@ -197,7 +196,7 @@ export default function BookkeepingForAgenciesPage() {
                 <p className="font-ui mb-3" style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>
                   {pillar.num}
                 </p>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(18px,2.5vw,22px)', fontWeight: 600, color: '#D4CFC4', marginBottom: '12px', lineHeight: 1.3 }}>
+                <h3 className="font-display" style={{ fontSize: 'clamp(18px,2.5vw,22px)', fontWeight: 600, color: 'var(--foreground)', marginBottom: '12px', lineHeight: 1.3 }}>
                   {pillar.title}
                 </h3>
                 <p className="body-text-rw" style={{ fontSize: '14px', lineHeight: 1.8 }}>{pillar.body}</p>
@@ -210,7 +209,7 @@ export default function BookkeepingForAgenciesPage() {
       {/* What's included */}
       <section
         className="py-20 md:py-32 px-6 md:px-10"
-        style={{ backgroundColor: '#080808' }}
+        style={{ backgroundColor: 'var(--surface)' }}
         aria-label="Services included"
       >
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
@@ -254,8 +253,8 @@ export default function BookkeepingForAgenciesPage() {
               <p className="font-ui mb-3" style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>
                 Pricing
               </p>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px,4vw,40px)', fontWeight: 700, color: '#C9A84C', marginBottom: '8px' }}>
-                From $300<span style={{ fontSize: '16px', color: '#D4CFC4' }}>/month</span>
+              <p style={{ fontSize: 'clamp(28px,4vw,40px)', fontWeight: 700, color: 'var(--primary)', marginBottom: '8px', fontFamily: 'var(--font-display)' }}>
+                From $300<span style={{ fontSize: '16px', color: 'var(--muted)' }}>/month</span>
               </p>
               <p className="body-text-rw" style={{ fontSize: '13px' }}>No setup fees · No long-term contracts · Cancel anytime</p>
             </div>
@@ -265,17 +264,17 @@ export default function BookkeepingForAgenciesPage() {
 
       {/* FAQ */}
       <section
-        style={{ backgroundColor: '#1C1A15' }}
+        style={{ backgroundColor: 'var(--background)' }}
         className="py-16 md:py-32 px-5 md:px-16"
         aria-label="Frequently asked questions"
       >
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', color: '#C9A84C', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '20px' }}>
+          <p className="section-label" style={{ marginBottom: '20px' }}>
             Questions &amp; Answers
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(24px,4vw,42px)', fontWeight: 700, color: '#D4CFC4', marginBottom: '32px', lineHeight: 1.2 }}>
+          <h2 className="section-h2-medium" style={{ marginBottom: '32px' }}>
             Frequently asked{' '}
-            <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>questions</em>
+            <em className="gold-italic">questions</em>
           </h2>
           <FAQAccordion faqs={faqs} />
         </div>
@@ -284,7 +283,7 @@ export default function BookkeepingForAgenciesPage() {
       {/* CTA */}
       <section
         className="py-20 md:py-32 px-6 md:px-10 text-center"
-        style={{ backgroundColor: '#080808' }}
+        style={{ backgroundColor: 'var(--surface)' }}
         aria-label="Book a call"
       >
         <div className="max-w-3xl mx-auto">

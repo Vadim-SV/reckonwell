@@ -32,7 +32,7 @@ export default function SolutionSection() {
     <section
       ref={ref}
       className="py-20 md:py-36 px-6 md:px-10"
-      style={{ backgroundColor: '#080808' }}
+      style={{ backgroundColor: 'var(--surface)' }}
       aria-label="The solution"
     >
       <div className="max-w-7xl mx-auto">

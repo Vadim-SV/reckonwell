@@ -11,7 +11,7 @@ export default function FounderSection() {
     <section
       ref={ref}
       className="py-20 md:py-36 px-6 md:px-10"
-      style={{ backgroundColor: '#080808' }}
+      style={{ backgroundColor: 'var(--surface)' }}
       aria-label="From the founder">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
         {/* Left: portrait with decorative shapes */}
@@ -103,7 +103,7 @@ export default function FounderSection() {
               className="absolute bottom-0 left-0 right-0"
               style={{
                 height: '30%',
-                background: 'linear-gradient(to top, rgba(8,8,8,0.55) 0%, transparent 100%)'
+                background: 'linear-gradient(to top, rgba(246,233,216,0.55) 0%, transparent 100%)'
               }} />
 
             {/* Corner bracket — top-left */}
@@ -186,7 +186,7 @@ export default function FounderSection() {
                 fontStyle: 'italic',
                 fontWeight: 300,
                 fontSize: 'clamp(18px, 2.2vw, 26px)',
-                color: '#ffffff',
+                color: 'var(--body-text)',
                 lineHeight: 1.7,
                 fontFamily: 'var(--font-serif)'
               }}>
