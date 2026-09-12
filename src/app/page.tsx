@@ -5,8 +5,10 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HeroSection from '@/app/components/HeroSection';
 import WhyReckonwellSection from '@/app/components/WhyReckonwellSection';
-import HowItWorksSection from '@/app/components/HowItWorksSection';
-import RealResultsSection from '@/app/components/RealResultsSection';
+import PersonalisedProactiveSection from '@/app/components/PersonalisedProactiveSection';
+import FinanceFunctionSection from '@/app/components/FinanceFunctionSection';
+import FundraisingCapitalSection from '@/app/components/FundraisingCapitalSection';
+import DiscoveryCTASection from '@/app/components/DiscoveryCTASection';
 import ServicesAndPricingSection from '@/app/components/ServicesAndPricingSection';
 import NationwideCoverageSection from '@/app/components/NationwideCoverageSection';
 import ClosingSection from '@/app/components/ClosingSection';
@@ -59,14 +61,20 @@ export default function HomePage() {
           <section role="region" aria-label="Why Reckonwell">
             <WhyReckonwellSection />
           </section>
-          <section role="region" aria-label="How it works">
-            <HowItWorksSection />
+          <section role="region" aria-label="Personalised and proactive">
+            <PersonalisedProactiveSection />
+          </section>
+          <section role="region" aria-label="Finance function">
+            <FinanceFunctionSection />
+          </section>
+          <section role="region" aria-label="Fundraising and capital">
+            <FundraisingCapitalSection />
+          </section>
+          <section role="region" aria-label="Get started">
+            <DiscoveryCTASection />
           </section>
           <section role="region" aria-label="Services and pricing">
             <ServicesAndPricingSection />
-          </section>
-          <section role="region" aria-label="Real results and testimonials">
-            <RealResultsSection />
           </section>
           <section role="region" aria-label="Nationwide coverage">
             <NationwideCoverageSection />
