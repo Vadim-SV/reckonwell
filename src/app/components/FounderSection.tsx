@@ -17,16 +17,6 @@ export default function FounderSection() {
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
         {/* Left: eyebrow + heading */}
         <div>
-          <motion.p
-            className="font-ui mb-5"
-            style={{ fontSize: '10px', letterSpacing: '2.5px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)' }}
-            initial={{ opacity: 0, y: 12 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}>
-
-            A note from Vadim
-          </motion.p>
-
           <motion.h2
             className="font-display"
             style={{ fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 400, color: '#FFFFFF', lineHeight: 1.15 }}
@@ -79,6 +69,7 @@ export default function FounderSection() {
           </motion.div>
         </div>
       </div>
-    </section>);
+    </section>
+  );
 
 }
