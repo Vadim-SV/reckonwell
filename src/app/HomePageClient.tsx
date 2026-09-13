@@ -7,11 +7,9 @@ import HeroSection from '@/app/components/HeroSection';
 import PersonalisedProactiveSection from '@/app/components/PersonalisedProactiveSection';
 import FinanceFunctionSection from '@/app/components/FinanceFunctionSection';
 import FundraisingCapitalSection from '@/app/components/FundraisingCapitalSection';
-import DiscoveryCTASection from '@/app/components/DiscoveryCTASection';
-import ServicesAndPricingSection from '@/app/components/ServicesAndPricingSection';
 import NationwideCoverageSection from '@/app/components/NationwideCoverageSection';
-import ClosingSection from '@/app/components/ClosingSection';
-import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
+import FounderSection from '@/app/components/FounderSection';
+import GetStartedSection from '@/app/components/GetStartedSection';
 import USBanner from '@/components/USBanner';
 
 export default function HomePageClient() {
@@ -53,34 +51,39 @@ export default function HomePageClient() {
       >
         <Header />
         <article role="article">
+          {/* 1. Hero + partner logos (CertifiedPartneredSection is inside HeroSection) */}
           <section role="region" aria-label="Hero section">
             <HeroSection />
           </section>
-          <section role="region" aria-label="Personalised and proactive">
+
+          {/* 2. Personalised finance support */}
+          <section role="region" aria-label="Personalised finance support">
             <PersonalisedProactiveSection />
           </section>
-          <section role="region" aria-label="Finance function">
+
+          {/* 3. Outsourced finance department */}
+          <section role="region" aria-label="Outsourced finance department">
             <FinanceFunctionSection />
           </section>
+
+          {/* 4. Fundraising support */}
           <section role="region" aria-label="Fundraising and capital">
             <FundraisingCapitalSection />
           </section>
-          <section role="region" aria-label="Get started">
-            <DiscoveryCTASection />
-          </section>
-          <section role="region" aria-label="Services and pricing">
-            <ServicesAndPricingSection />
-          </section>
+
+          {/* 5. Nationwide coverage */}
           <section role="region" aria-label="Nationwide coverage">
             <NationwideCoverageSection />
           </section>
-          <section role="region" aria-label="Get in touch">
-            <ClosingSection />
+
+          {/* 6. Message from the Founder — untouched */}
+          <section role="region" aria-label="Message from the founder">
+            <FounderSection />
           </section>
-          <section role="region" aria-label="Trust and transparency">
-          </section>
-          <section role="region" aria-label="Referral partner programme">
-            <ReferralTeaserSection />
+
+          {/* 7. Get started: service-fit selector + callback form + compliance */}
+          <section role="region" aria-label="Get started">
+            <GetStartedSection />
           </section>
         </article>
         <Footer />

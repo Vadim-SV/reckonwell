@@ -2,28 +2,23 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 
 const levels = [
   {
-    label: 'DAY-TO-DAY',
-    items: ['Bookkeeping', 'VAT', 'Payroll', 'Accounts'],
-    color: 'var(--primary)',
+    label: 'Day to day',
+    items: ['Bookkeeping', 'Payments & collections', 'VAT', 'Payroll', 'Accounts'],
     opacity: 0.15,
-    textColor: 'var(--primary)',
   },
   {
-    label: 'MANAGEMENT',
-    items: ['Cash flow', 'Budgets', 'Management reporting', 'Forecasting'],
-    color: 'var(--primary)',
+    label: 'Management',
+    items: ['Cash flow', 'Budgets', 'Management reporting', 'Forecasts'],
     opacity: 0.35,
-    textColor: 'var(--primary)',
   },
   {
-    label: 'STRATEGIC',
+    label: 'Strategic',
     items: ['Financial planning', 'Business modelling', 'FD-level support'],
-    color: 'var(--primary)',
     opacity: 1,
-    textColor: 'var(--primary)',
   },
 ];
 
@@ -31,23 +26,33 @@ export default function FinanceFunctionSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
+  const handleCTA = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById('get-started');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      const event = new CustomEvent('prefill-service', { detail: 'function' });
+      window.dispatchEvent(event);
+    }
+  };
+
   return (
     <section
       id="finance-function"
       ref={ref}
       className="py-14 md:py-28 px-5 md:px-10"
       style={{ backgroundColor: 'var(--surface)' }}
-      aria-label="Finance Function"
+      aria-label="Outsourced finance department"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Kicker */}
+        {/* Eyebrow */}
         <motion.p
           className="section-label mb-4 md:mb-6"
           initial={{ opacity: 0, y: 12 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          Your Finance Function
+          02 / Your finance function
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-start">
@@ -64,58 +69,79 @@ export default function FinanceFunctionSection() {
             </motion.h2>
 
             <motion.p
-              className="body-text-rw mb-5"
+              className="body-text-rw mb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              As your business grows, the finance work grows with it.
+              Reckonwell brings the work of a finance function together under one roof. We can handle the routine accounting, keep cash and performance visible, and give you finance-level input on the decisions ahead.
             </motion.p>
             <motion.p
-              className="body-text-rw mb-5"
+              className="body-text-rw mb-7 md:mb-10"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.25 }}
             >
-              Bookkeeping becomes cash-flow management, reporting, budgeting, forecasting and financial decision-making.
-            </motion.p>
-            <motion.p
-              className="body-text-rw mb-6 md:mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.3 }}
-            >
-              Reckonwell brings these functions together under one roof, with a package built around what your business actually needs.
+              Start with what you need now. Add more management and strategic support as the business grows, without recruiting and managing a team first.
             </motion.p>
 
-            <motion.p
-              className="body-text-rw"
-              style={{ fontStyle: 'italic', color: 'var(--muted)', fontSize: '15px' }}
-              initial={{ opacity: 0, y: 20 }}
+            <motion.a
+              href="#get-started"
+              onClick={handleCTA}
+              className="inline-flex items-center gap-2 font-ui"
+              style={{
+                fontSize: '11px',
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: 'var(--primary)',
+                borderBottom: '1px solid var(--primary)',
+                paddingBottom: '2px',
+                cursor: 'pointer',
+                textDecoration: 'none',
+              }}
+              initial={{ opacity: 0, y: 12 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.35 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
             >
-              Get the level of finance support your business needs today, with the ability to scale it as the business grows.
-            </motion.p>
+              Explore your finance team →
+            </motion.a>
           </div>
 
-          {/* Right: 3-level visual */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-col gap-3 mt-2 md:mt-0"
-          >
-            {levels?.map((level, i) => (
+          {/* Right: illustration + levels */}
+          <div className="flex flex-col gap-4 mt-2 md:mt-0">
+            {/* SVG illustration */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="flex items-center justify-center"
+              style={{
+                border: '1px solid var(--border-subtle)',
+                backgroundColor: 'var(--card)',
+                padding: '24px',
+                marginBottom: '8px',
+              }}
+            >
+              <Image
+                src="/assets/outsourced-finance-function.svg"
+                alt="Diagram of a connected outsourced finance function showing three tiers: day-to-day bookkeeping, management reporting, and strategic FD-level support, all under one roof"
+                width={400}
+                height={200}
+                style={{ width: '100%', height: 'auto', maxWidth: '400px' }}
+              />
+            </motion.div>
+
+            {/* 3-level visual */}
+            {levels.map((level, i) => (
               <motion.div
-                key={level?.label}
+                key={level.label}
                 initial={{ opacity: 0, x: 20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.3 + i * 0.12 }}
-                className="rounded-sm p-4 md:p-6"
+                className="rounded-sm p-4 md:p-5"
                 style={{
-                  backgroundColor: `rgba(18, 35, 63, ${level?.opacity * 0.08})`,
-                  border: `1px solid rgba(18, 35, 63, ${level?.opacity * 0.15})`,
+                  backgroundColor: `rgba(18, 35, 63, ${level.opacity * 0.08})`,
+                  border: `1px solid rgba(18, 35, 63, ${level.opacity * 0.15})`,
                 }}
               >
                 <p
@@ -129,10 +155,10 @@ export default function FinanceFunctionSection() {
                     fontWeight: 400,
                   }}
                 >
-                  {level?.label}
+                  {level.label}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {level?.items?.map((item) => (
+                  {level.items.map((item) => (
                     <span
                       key={item}
                       className="font-ui"
@@ -152,7 +178,7 @@ export default function FinanceFunctionSection() {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
