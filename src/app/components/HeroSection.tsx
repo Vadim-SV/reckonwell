@@ -56,30 +56,6 @@ export default function HeroSection() {
         {/* Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-5 md:px-10 text-center pt-24 md:pt-28 pb-14 md:pb-20">
 
-          {/* Eyebrow */}
-          <motion.div {...fadeUp(0.1)} className="mb-6 md:mb-10" suppressHydrationWarning>
-            <span
-              className="inline-flex items-center gap-2 md:gap-3 font-ui"
-              style={{
-                fontSize: '9px',
-                letterSpacing: '3px',
-                color: 'var(--primary)',
-                textTransform: 'uppercase',
-                fontWeight: 400
-              }}
-            >
-              <span
-                className="hidden sm:inline-block"
-                style={{ width: '16px', height: '1px', backgroundColor: 'var(--primary)', opacity: 0.6, flexShrink: 0 }}
-              />
-              Fractional Finance Department · Accountancy
-              <span
-                className="hidden sm:inline-block"
-                style={{ width: '16px', height: '1px', backgroundColor: 'var(--primary)', opacity: 0.6, flexShrink: 0 }}
-              />
-            </span>
-          </motion.div>
-
           {/* H1 */}
           <motion.h1 {...fadeUp(0.2)} className="hero-h1 mb-5 md:mb-7" suppressHydrationWarning>
             Run your business.
