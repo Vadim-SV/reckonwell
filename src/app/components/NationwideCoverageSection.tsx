@@ -11,18 +11,26 @@ const cities = [
   { name: 'Bristol', slug: 'bristol' },
   { name: 'Cambridge', slug: 'cambridge' },
   { name: 'Cardiff', slug: 'cardiff' },
+  { name: 'City of London', slug: 'city-of-london' },
   { name: 'Coventry', slug: 'coventry' },
   { name: 'Edinburgh', slug: 'edinburgh' },
   { name: 'Glasgow', slug: 'glasgow' },
+  { name: 'Hackney', slug: 'hackney' },
+  { name: 'Hounslow', slug: 'hounslow' },
+  { name: 'Islington', slug: 'islington' },
   { name: 'Leeds', slug: 'leeds' },
   { name: 'Leicester', slug: 'leicester' },
   { name: 'Liverpool', slug: 'liverpool' },
   { name: 'London', slug: 'london' },
   { name: 'Manchester', slug: 'manchester' },
+  { name: 'Moorgate', slug: 'moorgate' },
   { name: 'Newcastle', slug: 'newcastle' },
   { name: 'Nottingham', slug: 'nottingham' },
   { name: 'Oxford', slug: 'oxford' },
   { name: 'Sheffield', slug: 'sheffield' },
+  { name: 'Soho', slug: 'soho' },
+  { name: 'Southwark', slug: 'southwark' },
+  { name: 'Westminster', slug: 'westminster' },
   { name: 'York', slug: 'york' },
 ];
 
@@ -30,45 +38,44 @@ export default function NationwideCoverageSection() {
   return (
     <section
       style={{ backgroundColor: 'var(--background)', borderTop: '0.5px solid var(--border)', borderBottom: '0.5px solid var(--border)' }}
-      className="py-10 md:py-14"
+      className="py-12 md:py-18"
+      aria-label="Nationwide coverage"
     >
-      <div className="max-w-6xl mx-auto px-5 md:px-10">
+      <div className="max-w-5xl mx-auto px-5 md:px-10">
         {/* Label */}
         <p
-          className="text-xs tracking-[0.2em] uppercase mb-3"
-          style={{ color: 'var(--gold)', fontFamily: 'var(--font-montserrat, Montserrat, sans-serif)' }}
+          className="section-label mb-3"
         >
           Nationwide Coverage
         </p>
 
-        {/* Heading */}
+        {/* Headline */}
         <h2
-          className="text-lg md:text-2xl mb-2"
-          style={{
-            color: 'var(--foreground)',
-            fontFamily: 'var(--font-playfair, "Playfair Display", serif)',
-            fontWeight: 400,
-          }}
+          className="section-h2-medium mb-3"
+          style={{ fontSize: 'clamp(22px, 3.5vw, 40px)' }}
         >
           Serving founder-led businesses across the UK.
         </h2>
 
         {/* Sub-copy */}
         <p
-          className="text-sm mb-6 md:mb-7 max-w-xl"
-          style={{
-            color: 'var(--muted)',
-            fontFamily: 'var(--font-cormorant, "Cormorant Garamond", serif)',
-            fontStyle: 'italic',
-            fontSize: '0.95rem',
-          }}
+          className="body-text-rw mb-2"
+          style={{ maxWidth: '520px', fontSize: '15px' }}
         >
           Remote-first accounting for businesses in every major UK city. Same service, same pricing, wherever you are.
         </p>
 
+        {/* Location badge */}
+        <p
+          className="font-ui mb-7 md:mb-8"
+          style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--muted)' }}
+        >
+          London based · UK wide
+        </p>
+
         {/* City grid */}
         <ul
-          className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-x-4 gap-y-2"
+          className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-x-4 gap-y-2"
           role="list"
         >
           {cities.map((city) => (
@@ -78,8 +85,9 @@ export default function NationwideCoverageSection() {
                 className="group inline-flex items-center gap-1.5 text-sm transition-colors duration-200"
                 style={{
                   color: 'var(--muted)',
-                  fontFamily: 'var(--font-montserrat, Montserrat, sans-serif)',
+                  fontFamily: 'var(--font-sans)',
                   letterSpacing: '0.02em',
+                  minHeight: '36px',
                 }}
               >
                 <span
@@ -91,7 +99,7 @@ export default function NationwideCoverageSection() {
                   className="group-hover:underline"
                   style={{ color: 'inherit' }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget.parentElement as HTMLElement).style.color = 'var(--gold)';
+                    (e.currentTarget.parentElement as HTMLElement).style.color = 'var(--primary)';
                   }}
                   onMouseLeave={(e) => {
                     (e.currentTarget.parentElement as HTMLElement).style.color = 'var(--muted)';

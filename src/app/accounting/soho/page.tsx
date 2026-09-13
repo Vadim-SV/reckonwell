@@ -1,252 +1,27 @@
-'use client';
+import type { Metadata } from 'next';
+import SohoClient from './SohoClient';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import CertifiedPartneredSection from '@/app/components/CertifiedPartneredSection';
-import TheDifferenceSection from '@/app/components/TheDifferenceSection';
-import ReferralTeaserSection from '@/app/components/ReferralTeaserSection';
+export const metadata: Metadata = {
+  title: 'Accounting Services in Soho | Daily Bookkeeping from £200/mo | Reckonwell',
+  description: 'Reckonwell provides daily bookkeeping, cash flow monitoring, and real-time financial visibility for founder-led businesses in Soho. Transparent pricing, no hidden fees. Get your instant quote.',
+  alternates: {
+    canonical: 'https://reckonwell.com/accounting/soho',
+  },
+  openGraph: {
+    title: 'Accounting Services in Soho | Reckonwell',
+    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts for Soho businesses from £200/mo.',
+    url: 'https://reckonwell.com/accounting/soho',
+    type: 'website',
+    images: [{ url: '/assets/images/app_logo.png', width: 1200, height: 630, alt: 'Reckonwell - Accounting Services in Soho' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Accounting Services in Soho | Reckonwell',
+    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts for Soho businesses from £200/mo.',
+    images: ['/assets/images/app_logo.png'],
+  },
+};
 
-const cityName = 'Soho';
-const citySlug = 'soho';
-const cityDesc = "Westminster's historic centre of media, advertising, film, and hospitality";
-
-const nearbyCities = [
-  { name: 'Westminster', href: '/accounting/westminster' },
-  { name: 'Camden', href: '/accounting/camden' },
-  { name: 'City of London', href: '/accounting/city-of-london' },
-];
-
-const faqs = [
-  { q: `Do you work with businesses based in ${cityName}?`, a: `Yes. We work with media, creative, and hospitality businesses across ${cityName} and the wider Westminster area remotely. All onboarding, filing, and communication is handled online — no need to visit an office.` },
-  { q: 'How quickly can you take over my accounting?', a: 'We typically onboard new clients within 48 hours. You share access to your bank and invoicing tools, and we start from there.' },
-  { q: 'Do I need to switch accounting software?', a: "We work with Xero, QuickBooks, and FreeAgent. If you're already using one of these, we connect directly. If not, we'll recommend the best fit for your business." },
-  { q: 'What does Making Tax Digital mean for my business?', a: 'If your income exceeds £50,000 from self-employment or property, MTD quarterly filing is mandatory from April 2026. We handle all submissions automatically.' },
-  { q: `Are your prices higher for ${cityName} businesses?`, a: 'No. Our pricing is the same nationwide. You get the same service quality regardless of location.' },
-  { q: 'I run a restaurant in Soho — what accounting do I need?', a: 'Hospitality businesses in Soho typically need VAT returns (including the correct treatment of food and alcohol), payroll for staff, and annual accounts. We handle all of this under one monthly fee, with experience in cash-heavy and tip-reporting requirements.' },
-  { q: 'I work as a freelance editor/director — what do I need?', a: 'Freelancers in the Soho media and film industry typically need Self Assessment, and if you operate through a limited company, CT600 and statutory accounts. We also handle project-based invoicing structures common in post-production.' },
-];
-
-const services = [
-  { title: 'Self-Employed Accounting', desc: 'Self Assessment, MTD compliance, and year-round tax monitoring for freelancers and sole traders in media and creative industries.', href: '/self-employed-accounting', price: 'From £80/mo' },
-  { title: 'Limited Company Accounting', desc: 'CT600, statutory accounts, Companies House filings, and payroll for limited companies.', href: '/limited-company-accounting', price: 'From £150/mo' },
-  { title: 'VAT Returns', desc: 'Quarterly VAT returns for hospitality, retail, and creative businesses — including correct food and alcohol VAT treatment.', href: '/vat-returns', price: 'From £80/mo' },
-  { title: 'Making Tax Digital', desc: 'Quarterly MTD submissions for sole traders and landlords earning £50k+.', href: '/making-tax-digital', price: 'From £100/mo' },
-];
-
-export default function CityPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  return (
-    <>
-      <Header />
-      <main style={{ backgroundColor: 'var(--background)', minHeight: '100vh', paddingTop: '80px' }}>
-
-        <Breadcrumb items={[{ label: 'Accounting', href: '/services' }, { label: 'Westminster', href: '/accounting/westminster' }, { label: cityName, href: `/accounting/${citySlug}` }]} />
-
-        <div className="px-6 md:px-10 py-3" style={{ backgroundColor: 'rgba(201,168,76,0.06)', borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
-            <p className="font-ui text-xs" style={{ color: 'var(--muted)' }}>
-              <span style={{ color: 'var(--primary)' }}>Standalone compliance service</span> — no ongoing engagement required.
-            </p>
-            <Link href="/" className="font-ui text-xs" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-              Need a full finance team? See Fractional Finance →
-            </Link>
-          </div>
-        </div>
-
-        {/* Hero */}
-        <section className="px-6 md:px-10 py-16 md:py-24" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-5xl mx-auto">
-            <p className="section-label mb-4">Remote Accounting &amp; Bookkeeping in {cityName}</p>
-            <h1 className="font-display mb-4" style={{ fontSize: 'clamp(36px,6vw,72px)', fontWeight: 400, color: 'var(--foreground)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
-              Accounting &amp; Bookkeeping<br />in <em style={{ color: 'var(--primary)' }}>{cityName}</em>
-            </h1>
-            <p className="font-ui font-semibold mb-6" style={{ color: 'var(--primary)', fontSize: '16px' }}>
-              100% remote — no trip to Dean Street for a meeting.
-            </p>
-            <p className="font-ui mb-8 max-w-2xl" style={{ color: 'var(--muted)', fontSize: '18px', lineHeight: 1.7 }}>
-              Reckonwell works with media, creative, and hospitality businesses in {cityDesc}. Transparent pricing, no hidden fees, and a named accountant who knows your business.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>
-                Get Your {cityName} Quote →
-              </Link>
-              <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>
-                Ask a Question
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <CertifiedPartneredSection variant="full" />
-
-        <TheDifferenceSection />
-
-        {/* Services Grid */}
-        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-5xl mx-auto">
-            <p className="section-label mb-4">Our Services</p>
-            <h2 className="font-display mb-12" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Compliance for {cityName} businesses starts here
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {services?.map((svc, i) => (
-                <div key={i} className="p-6 border flex flex-col" style={{ borderColor: 'var(--gold-border)' }}>
-                  <p className="font-ui font-medium mb-2" style={{ color: 'var(--foreground)', fontSize: '15px' }}>{svc?.title}</p>
-                  <p className="font-ui text-sm mb-4 flex-1" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>{svc?.desc}</p>
-                  <div className="flex items-center justify-between mt-2">
-                    <span className="font-display" style={{ color: 'var(--primary)', fontSize: '18px', fontWeight: 400 }}>{svc?.price}</span>
-                    <Link href={svc?.href} className="font-ui text-xs uppercase tracking-widest" style={{ color: 'var(--primary)' }}>Learn more →</Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Working With Soho Businesses */}
-        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-3xl mx-auto">
-            <p className="section-label mb-4">Local Context</p>
-            <h2 className="font-display mb-8" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Working With {cityName} Businesses
-            </h2>
-            <div className="space-y-6">
-              <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
-                Soho is part of Westminster and has historically been the centre of London's media, advertising, film, and post-production industry — Wardour Street and the surrounding streets remain home to a dense cluster of production companies, agencies, and freelance creatives. Alongside that, Soho has a thriving hospitality and restaurant trade, with a high concentration of independent restaurants and bars. The compliance picture spans two distinct worlds: creative-industry-specific considerations including freelancer and contractor-heavy payroll, project-based invoicing, and the occasional limited company structure for a sole director, alongside hospitality VAT treatment and the bookkeeping requirements of cash-heavy businesses.
-              </p>
-              <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
-                Reckonwell is a fully remote practice — there's no office near Dean Street or Wardour Street. That means no scheduling around Soho's notoriously difficult parking, no waiting rooms. Onboarding takes 48 hours, everything runs through Xero, QuickBooks, or FreeAgent, and your accountant is reachable directly. For creative businesses that work project-to-project, that flexibility tends to be a better fit than a traditional local firm.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Compliance Deadlines */}
-        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-3xl mx-auto">
-            <p className="section-label mb-4">Compliance Deadlines</p>
-            <h2 className="font-display mb-8" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              MTD &amp; Companies House — what applies to you
-            </h2>
-            <div className="space-y-6">
-              <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
-                Making Tax Digital for Income Tax became mandatory from 6 April 2026 for sole traders and landlords with gross qualifying income over £50,000, based on your 2024/25 Self Assessment return. If that's you, you're already required to keep digital records and file quarterly updates rather than a single annual return — the first quarterly deadline for the 2026/27 tax year fell on 7 August 2026. The threshold drops to £30,000 from April 2027 and £20,000 from April 2028, so many more {cityName} sole traders and landlords currently below the £50k line will be brought into MTD over the next two years. We handle the quarterly submissions directly, so you're not tracking deadlines across four separate filings a year.
-              </p>
-              <p className="font-ui" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8 }}>
-                For limited companies, Companies House filings and Corporation Tax remain unaffected by the MTD ITSA rollout — annual accounts and CT600 deadlines still apply as before. If you're running a limited company from {cityName} and also have personal rental income or self-employment earnings above the threshold, both sets of obligations run in parallel, which is where most of the confusion — and most of the missed deadlines — tends to happen. We track both for clients who fall into that overlap.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Pricing */}
-        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="section-label mb-4">Transparent Pricing</p>
-            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              See your exact {cityName} accounting price
-            </h2>
-            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
-              Pricing is based on your business type, income level, and the services you need. Use our quotation calculator to get your exact monthly price in under 2 minutes — no sales calls required.
-            </p>
-            <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 40px', lineHeight: '48px', display: 'inline-block' }}>
-              Get Your Exact Quote →
-            </Link>
-          </div>
-        </section>
-
-        <ReferralTeaserSection />
-
-        {/* FAQ */}
-        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-3xl mx-auto">
-            <p className="section-label mb-4">FAQ</p>
-            <h2 className="font-display mb-10" style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Questions from {cityName} businesses
-            </h2>
-            <div className="space-y-0">
-              {faqs?.map((faq, i) => (
-                <div key={i} style={{ borderBottom: '1px solid var(--gold-border)' }}>
-                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex justify-between items-center py-5 text-left" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-                    <span className="font-ui font-medium pr-4" style={{ color: 'var(--foreground)', fontSize: '15px' }}>{faq?.q}</span>
-                    <span style={{ color: 'var(--primary)', fontSize: '20px', flexShrink: 0, transition: 'transform 0.2s', transform: openFaq === i ? 'rotate(45deg)' : 'none' }}>+</span>
-                  </button>
-                  {openFaq === i && <p className="font-ui text-sm pb-5" style={{ color: 'var(--muted)', lineHeight: 1.7 }}>{faq?.a}</p>}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="px-6 md:px-10 py-16 md:py-20" style={{ borderBottom: '1px solid var(--gold-border)' }}>
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="section-label mb-4">Get Started</p>
-            <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px,4vw,48px)', fontWeight: 400, color: 'var(--foreground)' }}>
-              Get your {cityName} accounting quote
-            </h2>
-            <p className="font-ui mb-8" style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.7 }}>
-              Transparent pricing. No sales calls. See your exact monthly price in under 2 minutes.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/quotation-calculator" className="btn-gold" style={{ minHeight: '48px', padding: '0 32px', lineHeight: '48px' }}>Get Your Quote →</Link>
-              <Link href="/contact" className="btn-ghost" style={{ minHeight: '48px', padding: '0 24px', lineHeight: '48px' }}>Speak to an Accountant</Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Also Serving Nearby */}
-        <section className="px-6 md:px-10 py-8" style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.03)' }}>
-          <div className="max-w-5xl mx-auto">
-            <p className="font-ui text-xs mb-3" style={{ color: 'var(--muted)', letterSpacing: '1px', textTransform: 'uppercase' }}>Also Serving Nearby</p>
-            <div className="flex flex-wrap gap-4">
-              {nearbyCities?.map((city) => (
-                <Link key={city?.href} href={city?.href} className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-                  {city?.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="px-6 md:px-10 py-6" style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.02)' }}>
-          <div className="max-w-5xl mx-auto">
-            <Link href="/accounting/london" className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-              Part of Greater London — see our full London accounting services →
-            </Link>
-          </div>
-        </section>
-
-        <section className="px-6 md:px-10 py-8" style={{ borderTop: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.04)' }}>
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="font-ui text-sm mb-2" style={{ color: 'var(--muted)', lineHeight: 1.6 }}>Need a full finance team for your {cityName} business?</p>
-            <Link href="/" className="font-ui text-sm" style={{ color: 'var(--primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-              Our Fractional Finance Department handles all of this and more — daily →
-            </Link>
-          </div>
-        </section>
-      </main>
-      <Footer />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'ProfessionalService',
-        name: 'Reckonwell',
-        description: `Accounting and bookkeeping services for businesses in ${cityName}, London. Media, creative, hospitality, VAT, and limited company accounts.`,
-        url: `https://reckonwell.com/accounting/${citySlug}`,
-        areaServed: { '@type': 'Place', name: `${cityName}, London` },
-        priceRange: '££',
-        currenciesAccepted: 'GBP',
-        openingHours: 'Mo-Fr 09:00-17:30',
-      }) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: faqs?.map(f => ({ '@type': 'Question', name: f?.q, acceptedAnswer: { '@type': 'Answer', text: f?.a } })),
-      }) }} />
-    </>
-  );
+export default function Page() {
+  return <SohoClient />;
 }

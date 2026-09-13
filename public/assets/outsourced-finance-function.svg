@@ -1,0 +1,317 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <!-- Grid Pattern -->
+    <pattern id="blueprint-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#275E86" stroke-width="0.5" stroke-opacity="0.1" />
+    </pattern>
+
+    <!-- Dot Pattern for Day-to-Day Tier -->
+    <pattern id="dot-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#275E86" opacity="0.3" />
+    </pattern>
+
+    <!-- Diagonal Hatch Pattern -->
+    <pattern id="hatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#E3E7ED" stroke-width="1" opacity="0.2" />
+    </pattern>
+
+    <!-- Drop Shadows -->
+    <filter id="shadow-tier" x="-5%" y="-10%" width="110%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#12233F" flood-opacity="0.08" result="shadow1" />
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#12233F" flood-opacity="0.12" result="shadow2" />
+      <feMerge>
+        <feMergeNode in="shadow1" />
+        <feMergeNode in="shadow2" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="glow-node" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Reusable Node/Joint -->
+    <g id="joint-navy">
+      <polygon points="0,-4 4,0 0,4 -4,0" fill="#FFF1E0" stroke="#12233F" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="1.5" fill="#12233F" />
+    </g>
+    <g id="joint-blue">
+      <polygon points="0,-4 4,0 0,4 -4,0" fill="#FFF1E0" stroke="#275E86" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="1.5" fill="#275E86" />
+    </g>
+
+    <!-- Architectural Crosshair -->
+    <g id="crosshair">
+      <path d="M -4,0 L 4,0 M 0,-4 L 0,4" fill="none" stroke="#275E86" stroke-width="1" opacity="0.5" />
+    </g>
+
+    <!-- Vignette Overlay -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+      <stop offset="40%" stop-color="#FFF1E0" stop-opacity="0" />
+      <stop offset="100%" stop-color="#275E86" stop-opacity="0.15" />
+    </radialGradient>
+  </defs>
+
+  <style><![CDATA[
+.float {
+      animation: float 6s ease-in-out infinite;
+    }
+    .flow-line {
+      stroke-dasharray: 4 6;
+      animation: flow 20s linear infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes flow {
+      from { stroke-dashoffset: 100; }
+      to { stroke-dashoffset: 0; }
+    }
+    .text-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+    .text-title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+    .text-subtitle {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+]]></style>
+
+  <!-- ================= BACKGROUND ================= -->
+  <rect width="100%" height="100%" fill="#FFF1E0" />
+  <rect width="100%" height="100%" fill="url(#blueprint-grid)" />
+
+  <!-- Title & Meta -->
+  <g transform="translate(40, 50)">
+    <text x="0" y="0" class="text-title" fill="#12233F">RECKONWELL</text>
+    <text x="0" y="16" class="text-subtitle" fill="#275E86">CONNECTED FINANCE ARCHITECTURE</text>
+    <line x1="0" y1="28" x2="40" y2="28" stroke="#275E86" stroke-width="2" />
+  </g>
+
+  <!-- ================= LAYER 1: VERTICAL LINES & PARTICLES ================= -->
+  <g id="structural-lines" opacity="0.8">
+    <!-- Bottom to Middle Lines -->
+    <line x1="240" y1="460" x2="240" y2="300" stroke="#275E86" stroke-width="1.5" class="flow-line" />
+    <line x1="400" y1="460" x2="400" y2="300" stroke="#275E86" stroke-width="1.5" class="flow-line" />
+    <line x1="560" y1="460" x2="560" y2="300" stroke="#275E86" stroke-width="1.5" class="flow-line" />
+
+    <!-- Middle to Top Lines -->
+    <line x1="300" y1="300" x2="300" y2="140" stroke="#12233F" stroke-width="1.5" class="flow-line" />
+    <line x1="400" y1="300" x2="400" y2="140" stroke="#12233F" stroke-width="1.5" class="flow-line" />
+    <line x1="500" y1="300" x2="500" y2="140" stroke="#12233F" stroke-width="1.5" class="flow-line" />
+
+    <!-- Particles Bottom to Middle -->
+    <circle cx="240" cy="460" r="2.5" fill="#12233F" filter="url(#glow-node)">
+      <animate attributeName="cy" values="460;300" dur="3.5s" begin="0s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.8;1" dur="3.5s" begin="0s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="400" cy="460" r="2.5" fill="#12233F" filter="url(#glow-node)">
+      <animate attributeName="cy" values="460;300" dur="4s" begin="1.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.8;1" dur="4s" begin="1.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="560" cy="460" r="2.5" fill="#12233F" filter="url(#glow-node)">
+      <animate attributeName="cy" values="460;300" dur="3s" begin="0.8s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.8;1" dur="3s" begin="0.8s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Particles Middle to Top -->
+    <circle cx="300" cy="300" r="2.5" fill="#FFF1E0" filter="url(#glow-node)">
+      <animate attributeName="cy" values="300;140" dur="3.2s" begin="0.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.8;1" dur="3.2s" begin="0.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="400" cy="300" r="2.5" fill="#FFF1E0" filter="url(#glow-node)">
+      <animate attributeName="cy" values="300;140" dur="3.8s" begin="2.2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.8;1" dur="3.8s" begin="2.2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="500" cy="300" r="2.5" fill="#FFF1E0" filter="url(#glow-node)">
+      <animate attributeName="cy" values="300;140" dur="2.9s" begin="1.1s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.8;1" dur="2.9s" begin="1.1s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- ================= LAYER 2: STATIC TIERS (BOTTOM & MIDDLE) ================= -->
+  
+  <!-- TIER 1: DAY-TO-DAY (Cloud Blue) -->
+  <g id="tier-1" transform="translate(100, 420)">
+    <!-- Main Block -->
+    <rect x="0" y="0" width="600" height="80" fill="#E3E7ED" filter="url(#shadow-tier)" />
+    <!-- Left Accent -->
+    <rect x="0" y="0" width="6" height="80" fill="#275E86" />
+    
+    <!-- Internal Details -->
+    <rect x="20" y="15" width="140" height="50" fill="url(#dot-grid)" />
+    
+    <!-- Abstract Ledger UI -->
+    <g transform="translate(180, 25)" stroke="#275E86" stroke-width="2" opacity="0.4" stroke-linecap="round">
+      <line x1="0" y1="0" x2="40" y2="0" />
+      <line x1="0" y1="10" x2="60" y2="0" />
+      <line x1="0" y1="20" x2="30" y2="0" />
+      <line x1="0" y1="30" x2="50" y2="0" />
+    </g>
+    <g transform="translate(260, 25)" stroke="#275E86" stroke-width="2" opacity="0.4" stroke-linecap="round">
+      <line x1="0" y1="0" x2="50" y2="0" />
+      <line x1="0" y1="10" x2="30" y2="0" />
+      <line x1="0" y1="20" x2="70" y2="0" />
+      <line x1="0" y1="30" x2="40" y2="0" />
+    </g>
+
+    <!-- Processing Gauge -->
+    <g transform="translate(540, 40)">
+      <circle cx="0" cy="0" r="16" fill="none" stroke="#275E86" stroke-width="2" opacity="0.2" />
+      <path d="M 0 -16 A 16 16 0 0 1 16 0" fill="none" stroke="#275E86" stroke-width="2" />
+      <circle cx="0" cy="0" r="4" fill="#275E86" />
+    </g>
+
+    <!-- Text Label -->
+    <text x="20" y="-10" class="text-label" fill="#275E86">TIER 01 // DAY-TO-DAY FINANCE</text>
+
+    <!-- Corner Crosshairs -->
+    <use href="#crosshair" x="0" y="0" />
+    <use href="#crosshair" x="600" y="0" />
+    <use href="#crosshair" x="0" y="80" />
+    <use href="#crosshair" x="600" y="80" />
+  </g>
+
+  <!-- Nodes on Tier 1 (Top Edge) -->
+  <use href="#joint-blue" x="240" y="420" />
+  <use href="#joint-blue" x="400" y="420" />
+  <use href="#joint-blue" x="560" y="420" />
+
+  <!-- External Data Input -->
+  <g opacity="0.7">
+    <line x1="20" y1="460" x2="100" y2="460" stroke="#275E86" stroke-width="1.5" stroke-dasharray="3 3" />
+    <polygon points="95,457 100,460 95,463" fill="#275E86" />
+    <text x="20" y="452" class="text-subtitle" fill="#275E86">DATA INGESTION</text>
+  </g>
+
+
+  <!-- TIER 2: MANAGEMENT (Advisory Blue) -->
+  <g id="tier-2" transform="translate(160, 260)">
+    <!-- Main Block -->
+    <rect x="0" y="0" width="480" height="80" fill="#275E86" filter="url(#shadow-tier)" />
+    <!-- Left Accent -->
+    <rect x="0" y="0" width="6" height="80" fill="#12233F" />
+    
+    <!-- Internal Details -->
+    <rect x="20" y="15" width="120" height="50" fill="url(#hatch)" />
+
+    <!-- Line Chart -->
+    <g transform="translate(160, 0)">
+      <path d="M 0 60 L 40 30 L 80 45 L 120 20 L 160 35 L 200 15" fill="none" stroke="#FFF1E0" stroke-width="1.5" opacity="0.8" stroke-linejoin="round" />
+      <circle cx="40" cy="30" r="2.5" fill="#FFF1E0" />
+      <circle cx="80" cy="45" r="2.5" fill="#FFF1E0" />
+      <circle cx="120" cy="20" r="2.5" fill="#FFF1E0" />
+      <circle cx="160" cy="35" r="2.5" fill="#FFF1E0" />
+      <circle cx="200" cy="15" r="2.5" fill="#FFF1E0" />
+    </g>
+
+    <!-- Bar Chart -->
+    <g transform="translate(390, 20)" opacity="0.9">
+      <rect x="0" y="30" width="8" height="10" fill="#E3E7ED" opacity="0.4" />
+      <rect x="14" y="20" width="8" height="20" fill="#E3E7ED" opacity="0.6" />
+      <rect x="28" y="10" width="8" height="30" fill="#E3E7ED" opacity="0.8" />
+      <rect x="42" y="0" width="8" height="40" fill="#FFF1E0" />
+    </g>
+
+    <!-- Text Label -->
+    <text x="20" y="-10" class="text-label" fill="#275E86">TIER 02 // MANAGEMENT &amp; REPORTING</text>
+
+    <!-- Corner Crosshairs -->
+    <use href="#crosshair" x="0" y="0" />
+    <use href="#crosshair" x="480" y="0" />
+    <use href="#crosshair" x="0" y="80" />
+    <use href="#crosshair" x="480" y="80" />
+  </g>
+
+  <!-- Nodes on Tier 2 (Bottom Edge) -->
+  <use href="#joint-blue" x="240" y="340" />
+  <use href="#joint-blue" x="400" y="340" />
+  <use href="#joint-blue" x="560" y="340" />
+
+  <!-- Nodes on Tier 2 (Top Edge) -->
+  <use href="#joint-navy" x="300" y="260" />
+  <use href="#joint-navy" x="400" y="260" />
+  <use href="#joint-navy" x="500" y="260" />
+
+
+  <!-- ================= LAYER 3: FLOATING TIER (TOP) ================= -->
+  
+  <g class="float">
+    <!-- TIER 3: STRATEGIC (Reckonwell Navy) -->
+    <g id="tier-3" transform="translate(220, 100)">
+      <!-- Main Block -->
+      <rect x="0" y="0" width="360" height="80" fill="#12233F" filter="url(#shadow-tier)" />
+      <!-- Left Accent -->
+      <rect x="0" y="0" width="6" height="80" fill="#E3E7ED" />
+      
+      <!-- Internal Details -->
+      
+      <!-- Upward Trend / Arrow -->
+      <g transform="translate(40, 20)">
+        <path d="M 0 40 L 40 0 L 100 0" fill="none" stroke="#FFF1E0" stroke-width="2" stroke-linejoin="round" />
+        <polygon points="35,-5 45,0 35,5" fill="#FFF1E0" transform="translate(60, 0)" />
+        <circle cx="0" cy="40" r="3" fill="#FFF1E0" />
+      </g>
+
+      <!-- Concentric Target / Vision -->
+      <g transform="translate(280, 40)">
+        <circle cx="0" cy="0" r="24" fill="none" stroke="#275E86" stroke-width="1" />
+        <circle cx="0" cy="0" r="16" fill="none" stroke="#E3E7ED" stroke-width="1" opacity="0.5" />
+        <circle cx="0" cy="0" r="8" fill="none" stroke="#FFF1E0" stroke-width="1.5" />
+        <circle cx="0" cy="0" r="2" fill="#FFF1E0" />
+        <line x1="-30" y1="0" x2="-18" y2="0" stroke="#275E86" stroke-width="1" />
+        <line x1="18" y1="0" x2="30" y2="0" stroke="#275E86" stroke-width="1" />
+        <line x1="0" y1="-30" x2="0" y2="-18" stroke="#275E86" stroke-width="1" />
+        <line x1="0" y1="18" x2="0" y2="30" stroke="#275E86" stroke-width="1" />
+      </g>
+
+      <!-- Abstract Data Blocks -->
+      <g transform="translate(170, 35)" opacity="0.8">
+        <rect x="0" y="0" width="12" height="12" fill="#275E86" />
+        <rect x="16" y="-8" width="12" height="20" fill="#E3E7ED" />
+        <rect x="32" y="-16" width="12" height="28" fill="#FFF1E0" />
+      </g>
+
+      <!-- Text Label -->
+      <text x="20" y="-10" class="text-label" fill="#12233F">TIER 03 // STRATEGIC ADVISORY</text>
+
+      <!-- Corner Crosshairs -->
+      <use href="#crosshair" x="0" y="0" />
+      <use href="#crosshair" x="360" y="0" />
+      <use href="#crosshair" x="0" y="80" />
+      <use href="#crosshair" x="360" y="80" />
+    </g>
+
+    <!-- Nodes on Tier 3 (Bottom Edge) -->
+    <!-- These float with the tier, sliding along the static vertical lines -->
+    <use href="#joint-navy" x="300" y="180" />
+    <use href="#joint-navy" x="400" y="180" />
+    <use href="#joint-navy" x="500" y="180" />
+
+    <!-- Business Growth Output -->
+    <g opacity="0.9" transform="translate(580, 140)">
+      <line x1="0" y1="0" x2="80" y2="0" stroke="#12233F" stroke-width="1.5" stroke-dasharray="3 3" />
+      <polygon points="75,-3 80,0 75,3" fill="#12233F" />
+      <text x="10" y="-8" class="text-subtitle" fill="#12233F">BUSINESS GROWTH</text>
+    </g>
+  </g>
+
+  <!-- ================= OVERLAY ================= -->
+  <rect width="100%" height="100%" fill="url(#vignette)" pointer-events="none" />
+
+</svg>

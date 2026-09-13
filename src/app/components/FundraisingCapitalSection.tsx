@@ -3,172 +3,162 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-const cards = [
-  {
-    title: 'FINANCIAL MODELS & FORECASTS',
-    body: 'Build a credible financial story around the raise.',
-  },
-  {
-    title: 'INVESTOR PREPARATION',
-    body: 'Financial reporting, business planning, funding requirements and use of funds.',
-  },
-  {
-    title: 'CAPITAL INTRODUCTIONS',
-    body: 'Introductions to relevant angel investors, VCs and debt providers where there is a suitable fit.',
-  },
+const steps = [
+  { label: 'Model the raise' },
+  { label: 'Present the case' },
+  { label: 'Make relevant introductions' },
 ];
-
-const progressionSteps = ['Prepare', 'Model', 'Present', 'Introductions', 'Raise'];
 
 export default function FundraisingCapitalSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
+  const handleCTA = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById('get-started');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      const event = new CustomEvent('prefill-service', { detail: 'capital' });
+      window.dispatchEvent(event);
+    }
+  };
+
   return (
     <section
       id="fundraising-capital"
       ref={ref}
-      className="py-14 md:py-28 px-5 md:px-10"
+      className="py-20 md:py-24 px-6 md:px-16"
       style={{ backgroundColor: 'var(--background)' }}
-      aria-label="Fundraising and Capital"
+      aria-label="Fundraising and capital"
     >
-      <div className="max-w-7xl mx-auto">
-        {/* Kicker */}
+      <div className="max-w-5xl mx-auto">
+        {/* Eyebrow */}
         <motion.p
-          className="section-label mb-4 md:mb-6"
+          className="font-ui mb-4 md:mb-5"
+          style={{ fontSize: '10px', letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--muted)' }}
           initial={{ opacity: 0, y: 12 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          Growing or Raising Investment?
+          03 / Growth &amp; capital
         </motion.p>
 
-        {/* Headline + body */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-start mb-10 md:mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
+          {/* Left: text */}
           <div>
             <motion.h2
-              className="section-h2-medium mb-5 md:mb-8"
+              className="font-display mb-6 md:mb-8"
+              style={{ fontSize: 'clamp(36px, 4.5vw, 58px)', fontWeight: 400, color: 'var(--primary)', lineHeight: 1.1 }}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              We don&apos;t just get you ready to raise.
-              <br />
-              <span className="gold-italic">We help you raise.</span>
+              Connecting capital with companies
             </motion.h2>
 
             <motion.p
-              className="body-text-rw mb-5"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              Good numbers are only part of a successful raise.
-            </motion.p>
-            <motion.p
-              className="body-text-rw mb-5"
+              className="mb-8"
+              style={{ fontSize: '14px', color: 'var(--body-text)', lineHeight: 1.7 }}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.25 }}
             >
-              We help businesses build the financial model, forecasts, reporting and investor materials behind the raise — and, where appropriate, connect founders with relevant investors and funding providers through our network.
+              That can include equity or debt routes and support through the questions that follow an introduction. The work is shaped around your stage, funding need and the evidence you have.
             </motion.p>
+
+            {/* Disclaimer */}
             <motion.p
-              className="body-text-rw"
-              initial={{ opacity: 0, y: 20 }}
+              className="font-ui mb-6"
+              style={{ fontSize: '11px', color: 'var(--muted)', lineHeight: 1.6, fontStyle: 'italic' }}
+              initial={{ opacity: 0, y: 12 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
             >
-              From equity investment to debt finance, we can support the process from preparation through to conversations with potential funders.
+              Introductions depend on fit and availability. Funding is never guaranteed; regulated advice or arranging is handled by appropriately authorised parties where required.
             </motion.p>
+
+            {/* CTA link */}
+            <motion.a
+              href="#get-started"
+              onClick={handleCTA}
+              className="inline-flex items-center gap-2 font-ui"
+              style={{
+                fontSize: '11px',
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: 'var(--primary)',
+                borderBottom: '1px solid var(--primary)',
+                paddingBottom: '3px',
+                cursor: 'pointer',
+                textDecoration: 'none',
+              }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              Discuss funding support →
+            </motion.a>
           </div>
 
-          {/* Progression graphic */}
+          {/* Right: illustration in bordered frame */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="rounded-sm overflow-hidden mt-2 md:mt-0"
-            style={{ border: '1px solid var(--border-subtle)', backgroundColor: 'var(--card)' }}
+            className="flex flex-col mt-2 md:mt-0"
+            style={{
+              border: '1px solid var(--border)',
+              backgroundColor: 'var(--card)',
+              padding: '28px',
+            }}
           >
-            <div className="p-5 md:p-8">
-              <p
-                className="font-ui mb-6 md:mb-8"
-                style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--muted)' }}
+            {/* Inline SVG illustration */}
+            <div className="flex items-center justify-center" style={{ minHeight: '260px' }}>
+              <svg
+                viewBox="0 0 320 220"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ width: '100%', maxWidth: '340px', height: 'auto' }}
+                aria-label="Financial story to investor conversation: document with chart connecting to investor network"
               >
-                The Raise Process
-              </p>
-              <div className="flex flex-col gap-0">
-                {progressionSteps?.map((step, i) => (
-                  <div key={step} className="flex items-center gap-4">
-                    <div className="flex flex-col items-center" style={{ width: '20px', flexShrink: 0 }}>
-                      <div
-                        style={{
-                          width: '8px',
-                          height: '8px',
-                          borderRadius: '50%',
-                          backgroundColor: i === progressionSteps?.length - 1 ? 'var(--primary)' : 'var(--border)',
-                          border: `1px solid ${i === progressionSteps?.length - 1 ? 'var(--primary)' : 'var(--border)'}`,
-                          flexShrink: 0,
-                        }}
-                      />
-                      {i < progressionSteps?.length - 1 && (
-                        <div
-                          style={{
-                            width: '1px',
-                            height: '28px',
-                            backgroundColor: 'var(--border-subtle)',
-                          }}
-                        />
-                      )}
-                    </div>
-                    <p
-                      className="font-display"
-                      style={{
-                        fontSize: i === progressionSteps?.length - 1 ? 'clamp(18px, 2.5vw, 26px)' : 'clamp(14px, 1.8vw, 18px)',
-                        color: i === progressionSteps?.length - 1 ? 'var(--foreground)' : 'var(--muted)',
-                        fontWeight: i === progressionSteps?.length - 1 ? 500 : 400,
-                        lineHeight: 1.2,
-                      }}
-                    >
-                      {step}
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <p
-                className="font-ui mt-6"
-                style={{ fontSize: '10px', color: 'var(--muted)', letterSpacing: '0.3px', fontStyle: 'italic' }}
-              >
-                Introductions where appropriate and where there is a suitable fit.
-              </p>
+                {/* Main document */}
+                <rect x="60" y="30" width="130" height="160" rx="3" fill="#F6E9D8" stroke="#12233F" strokeWidth="1.2" strokeOpacity="0.5" />
+                <rect x="75" y="50" width="100" height="8" rx="1" fill="#12233F" fillOpacity="0.15" />
+                <rect x="75" y="65" width="80" height="6" rx="1" fill="#12233F" fillOpacity="0.1" />
+                {/* Bar chart inside doc */}
+                <rect x="80" y="100" width="14" height="50" rx="1" fill="#12233F" fillOpacity="0.25" />
+                <rect x="100" y="85" width="14" height="65" rx="1" fill="#12233F" fillOpacity="0.35" />
+                <rect x="120" y="75" width="14" height="75" rx="1" fill="#12233F" fillOpacity="0.5" />
+                <rect x="140" y="90" width="14" height="60" rx="1" fill="#12233F" fillOpacity="0.4" />
+                {/* Checkmark circle top-right of doc */}
+                <circle cx="175" cy="45" r="16" fill="#F6E9D8" stroke="#12233F" strokeWidth="1.2" strokeOpacity="0.5" />
+                <path d="M168 45 L173 50 L182 40" stroke="#12233F" strokeWidth="1.5" strokeOpacity="0.7" strokeLinecap="round" strokeLinejoin="round" />
+                {/* Dashed lines to investor circles */}
+                <line x1="200" y1="110" x2="245" y2="80" stroke="#12233F" strokeWidth="1" strokeDasharray="5 4" strokeOpacity="0.4" />
+                <line x1="200" y1="130" x2="245" y2="155" stroke="#12233F" strokeWidth="1" strokeDasharray="5 4" strokeOpacity="0.4" />
+                <line x1="200" y1="130" x2="285" y2="140" stroke="#12233F" strokeWidth="1" strokeDasharray="5 4" strokeOpacity="0.4" />
+                {/* Investor circles */}
+                <circle cx="255" cy="70" r="22" fill="#F6E9D8" stroke="#12233F" strokeWidth="1.2" strokeOpacity="0.5" />
+                <circle cx="255" cy="62" r="7" fill="none" stroke="#12233F" strokeWidth="1" strokeOpacity="0.5" />
+                <path d="M242 82 Q255 75 268 82" stroke="#12233F" strokeWidth="1" strokeOpacity="0.5" fill="none" />
+                <circle cx="255" cy="158" r="20" fill="#F6E9D8" stroke="#12233F" strokeWidth="1.2" strokeOpacity="0.5" />
+                <circle cx="255" cy="150" r="7" fill="none" stroke="#12233F" strokeWidth="1" strokeOpacity="0.5" />
+                <path d="M243 170 Q255 163 267 170" stroke="#12233F" strokeWidth="1" strokeOpacity="0.5" fill="none" />
+                <circle cx="292" cy="138" r="18" fill="#F6E9D8" stroke="#12233F" strokeWidth="1.2" strokeOpacity="0.5" />
+                <circle cx="292" cy="131" r="6" fill="none" stroke="#12233F" strokeWidth="1" strokeOpacity="0.5" />
+                <path d="M281 148 Q292 142 303 148" stroke="#12233F" strokeWidth="1" strokeOpacity="0.5" fill="none" />
+                {/* Currency symbol top right */}
+                <circle cx="295" cy="45" r="18" fill="#E3E7ED" stroke="#12233F" strokeWidth="1" strokeOpacity="0.3" />
+                <text x="295" y="51" textAnchor="middle" fontSize="14" fill="#12233F" fillOpacity="0.5" fontFamily="serif">₮</text>
+              </svg>
             </div>
-          </motion.div>
-        </div>
-
-        {/* 3 Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-          {cards?.map((card, i) => (
-            <motion.div
-              key={card?.title}
-              className="solution-card"
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+            <p
+              className="font-ui mt-4"
+              style={{ fontSize: '9px', letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--muted)' }}
             >
-              <div className="relative z-10">
-                <p
-                  className="font-ui mb-3"
-                  style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}
-                >
-                  {card?.title}
-                </p>
-                <p className="body-text-rw" style={{ fontSize: '14px' }}>
-                  {card?.body}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+              From financial story to conversation
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>
