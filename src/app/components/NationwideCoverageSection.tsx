@@ -38,7 +38,7 @@ export default function NationwideCoverageSection() {
   return (
     <section
       style={{ backgroundColor: 'var(--background)', borderTop: '0.5px solid var(--border)', borderBottom: '0.5px solid var(--border)' }}
-      className="py-10 md:py-16"
+      className="py-12 md:py-18"
       aria-label="Nationwide coverage"
     >
       <div className="max-w-5xl mx-auto px-5 md:px-10">

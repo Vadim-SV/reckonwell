@@ -37,7 +37,7 @@ export default function PersonalisedProactiveSection() {
     <section
       id="personalised-proactive"
       ref={ref}
-      className="py-16 md:py-28 px-6 md:px-16"
+      className="py-20 md:py-24 px-6 md:px-16"
       style={{ backgroundColor: 'var(--background)' }}
       aria-label="Personalised finance support"
     >

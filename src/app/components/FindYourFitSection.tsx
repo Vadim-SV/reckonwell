@@ -94,7 +94,7 @@ export default function FindYourFitSection() {
     <section
       id="find-your-fit"
       ref={ref}
-      className="relative py-14 md:py-24 px-5 md:px-10 overflow-hidden"
+      className="relative py-16 md:py-20 px-5 md:px-10 overflow-hidden"
       style={{ backgroundColor: 'var(--surface)' }}
       aria-label="Find your fit"
     >
@@ -104,7 +104,7 @@ export default function FindYourFitSection() {
         style={{ height: '1px', background: 'var(--border-subtle)' }}
       />
         <motion.div
-          className="mt-16 md:mt-20"
+          className="mt-10 md:mt-14"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}

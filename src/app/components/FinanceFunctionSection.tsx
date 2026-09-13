@@ -37,7 +37,7 @@ export default function FinanceFunctionSection() {
     <section
       id="finance-function"
       ref={ref}
-      className="py-16 md:py-28 px-6 md:px-16"
+      className="py-20 md:py-24 px-6 md:px-16"
       style={{ backgroundColor: 'var(--primary)' }}
       aria-label="Outsourced finance department"
     >

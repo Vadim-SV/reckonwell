@@ -10,7 +10,7 @@ export default function PricingBannerSection() {
   return (
     <section
       ref={ref}
-      className="py-8 md:py-10 px-6 md:px-16"
+      className="py-10 md:py-14 px-6 md:px-16"
       style={{ backgroundColor: '#E8EAF0' }}
       aria-label="Pricing banner"
     >
