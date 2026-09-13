@@ -210,6 +210,163 @@ export default function FindYourFitSection() {
           </Link>
         </motion.div>
 
+      {/* ── Repeated "Ready to think like a director again?" after compliance ── */}
+      <div className="max-w-5xl mx-auto relative z-10 mt-20 md:mt-28">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-10 md:mb-14">
+          <div>
+            <motion.p
+              className="section-label mb-3"
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5 }}
+            >
+              Get Started
+            </motion.p>
+            <motion.h2
+              className="section-h2"
+              style={{ maxWidth: '480px' }}
+              initial={{ opacity: 0, y: 18 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Ready to think like a{' '}
+              <span className="gold-italic">director again?</span>
+            </motion.h2>
+          </div>
+          <motion.p
+            className="body-text-rw"
+            style={{ maxWidth: '380px', fontSize: '15px', paddingTop: '4px' }}
+            initial={{ opacity: 0, y: 14 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.65, delay: 0.15 }}
+          >
+            Tell us what is taking up your time. Choose your closest priority below, and we will start a conversation about the right support.
+          </motion.p>
+        </div>
+
+        {/* Find Your Fit card — repeated */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2"
+          style={{ border: '1px solid var(--border)', backgroundColor: 'var(--cloud-blue, #E3E7ED)' }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          {/* Left panel */}
+          <div
+            className="p-7 md:p-10 flex flex-col justify-between"
+            style={{ borderRight: '1px solid var(--border)' }}
+          >
+            <div>
+              <p
+                className="font-ui mb-4"
+                style={{
+                  fontSize: '10px',
+                  letterSpacing: '2.5px',
+                  textTransform: 'uppercase',
+                  color: 'var(--advisory-blue, #275E86)',
+                  fontWeight: 600,
+                }}
+              >
+                Find Your Fit
+              </p>
+              <h3
+                className="section-h2-medium mb-4"
+                style={{ fontSize: 'clamp(22px, 3vw, 30px)', lineHeight: 1.2 }}
+              >
+                What would help you most right now?
+              </h3>
+              <p className="body-text-rw" style={{ fontSize: '14px', maxWidth: '300px' }}>
+                Choose a priority. We will suggest a starting point, then tailor the actual scope with you.
+              </p>
+            </div>
+          </div>
+
+          {/* Right panel */}
+          <div className="p-7 md:p-10 flex flex-col gap-6">
+            {/* Priority buttons */}
+            <div>
+              <p
+                className="font-ui mb-3"
+                style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--muted)' }}
+              >
+                Choose your main priority
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {serviceFitOptions.map((option) => {
+                  const isActive = selected === option.id;
+                  return (
+                    <button
+                      key={`repeat-${option.id}`}
+                      type="button"
+                      onClick={() => setSelected(option.id)}
+                      className="font-ui transition-all duration-200"
+                      style={{
+                        padding: '10px 16px',
+                        fontSize: '12px',
+                        letterSpacing: '0.3px',
+                        border: `1px solid ${isActive ? 'var(--primary)' : 'var(--border)'}`,
+                        backgroundColor: isActive ? 'var(--primary)' : 'transparent',
+                        color: isActive ? '#fff' : 'var(--foreground)',
+                        cursor: 'pointer',
+                        minHeight: '40px',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {option.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: '1px', background: 'var(--border)' }} />
+
+            {/* Suggested starting point */}
+            {selectedOption && (
+              <motion.div
+                key={`repeat-${selectedOption.id}`}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35 }}
+                className="flex flex-col gap-3"
+              >
+                <p
+                  className="font-ui"
+                  style={{
+                    fontSize: '10px',
+                    letterSpacing: '2.5px',
+                    textTransform: 'uppercase',
+                    color: 'var(--advisory-blue, #275E86)',
+                    fontWeight: 600,
+                  }}
+                >
+                  Suggested Starting Point
+                </p>
+                <p
+                  className="section-h2-medium"
+                  style={{ fontSize: '18px', lineHeight: 1.3, color: 'var(--primary)' }}
+                >
+                  {selectedOption.suggestedTitle}
+                </p>
+                <p className="body-text-rw" style={{ fontSize: '14px' }}>
+                  {selectedOption.recommendation}
+                </p>
+                <button
+                  type="button"
+                  onClick={(e) => handleEnquire(e, selectedOption)}
+                  className="btn-gold self-start mt-1"
+                  style={{ padding: '14px 28px', fontSize: '11px', letterSpacing: '2px' }}
+                >
+                  {selectedOption.cta} ↗
+                </button>
+              </motion.div>
+            )}
+          </div>
+        </motion.div>
+      </div>
+
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Section heading */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-10 md:mb-14">
