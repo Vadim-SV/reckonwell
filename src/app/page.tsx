@@ -4,7 +4,6 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HeroSection from '@/app/components/HeroSection';
-import WhyReckonwellSection from '@/app/components/WhyReckonwellSection';
 import PersonalisedProactiveSection from '@/app/components/PersonalisedProactiveSection';
 import FinanceFunctionSection from '@/app/components/FinanceFunctionSection';
 import FundraisingCapitalSection from '@/app/components/FundraisingCapitalSection';
@@ -57,9 +56,6 @@ export default function HomePage() {
         <article role="article">
           <section role="region" aria-label="Hero section">
             <HeroSection />
-          </section>
-          <section role="region" aria-label="Why Reckonwell">
-            <WhyReckonwellSection />
           </section>
           <section role="region" aria-label="Personalised and proactive">
             <PersonalisedProactiveSection />
