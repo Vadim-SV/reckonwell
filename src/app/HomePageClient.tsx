@@ -7,11 +7,9 @@ import HeroSection from '@/app/components/HeroSection';
 import PersonalisedProactiveSection from '@/app/components/PersonalisedProactiveSection';
 import FinanceFunctionSection from '@/app/components/FinanceFunctionSection';
 import FundraisingCapitalSection from '@/app/components/FundraisingCapitalSection';
-import FindYourFitSection from '@/app/components/FindYourFitSection';
 import NationwideCoverageSection from '@/app/components/NationwideCoverageSection';
 import FounderSection from '@/app/components/FounderSection';
 import PricingBannerSection from '@/app/components/PricingBannerSection';
-import GetStartedSection from '@/app/components/GetStartedSection';
 import USBanner from '@/components/USBanner';
 
 export default function HomePageClient() {
@@ -76,18 +74,6 @@ export default function HomePageClient() {
           {/* 4b. Pricing banner strip — right scope for your business */}
           <section role="region" aria-label="Pricing banner">
             <PricingBannerSection />
-          </section>
-
-          {/* 4c. Find Your Fit — Need One Specific Service? */}
-          <div className="my-10 md:my-16">
-            <section role="region" aria-label="Find your fit">
-              <FindYourFitSection />
-            </section>
-          </div>
-
-          {/* 4d. Get started: service-fit selector + callback form + compliance */}
-          <section role="region" aria-label="Get started">
-            <GetStartedSection />
           </section>
 
           {/* 5. Nationwide coverage */}
