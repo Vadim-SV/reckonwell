@@ -83,6 +83,11 @@ export default function HomePageClient() {
             <FindYourFitSection />
           </section>
 
+          {/* 4d. Get started: service-fit selector + callback form + compliance */}
+          <section role="region" aria-label="Get started">
+            <GetStartedSection />
+          </section>
+
           {/* 5. Nationwide coverage */}
           <section role="region" aria-label="Nationwide coverage">
             <NationwideCoverageSection />
@@ -91,11 +96,6 @@ export default function HomePageClient() {
           {/* 6. Message from the Founder — untouched */}
           <section role="region" aria-label="Message from the founder">
             <FounderSection />
-          </section>
-
-          {/* 7. Get started: service-fit selector + callback form + compliance */}
-          <section role="region" aria-label="Get started">
-            <GetStartedSection />
           </section>
         </article>
         <Footer />
