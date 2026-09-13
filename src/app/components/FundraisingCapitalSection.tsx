@@ -57,15 +57,6 @@ export default function FundraisingCapitalSection() {
             </motion.h2>
 
             <motion.p
-              className="mb-4"
-              style={{ fontSize: '14px', color: 'var(--body-text)', lineHeight: 1.7 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              Credible numbers matter, but a spreadsheet alone does not start an investor conversation. We can build the model, forecasts and materials behind the raise, then connect suitable founders with relevant investors or funding providers through our network.
-            </motion.p>
-            <motion.p
               className="mb-8"
               style={{ fontSize: '14px', color: 'var(--body-text)', lineHeight: 1.7 }}
               initial={{ opacity: 0, y: 20 }}
