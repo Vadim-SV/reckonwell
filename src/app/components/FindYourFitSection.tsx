@@ -103,6 +103,112 @@ export default function FindYourFitSection() {
         className="absolute top-0 left-0 right-0"
         style={{ height: '1px', background: 'var(--border-subtle)' }}
       />
+        <motion.div
+          className="mt-16 md:mt-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.3 }}
+        >
+          {/* Divider */}
+          <div style={{ height: '1px', background: 'var(--border-subtle)', marginBottom: '40px' }} />
+
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-8">
+            <div>
+              <p
+                className="font-ui mb-2"
+                style={{ fontSize: '10px', letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--muted)' }}
+              >
+                Need one specific service?
+              </p>
+              <h3 className="section-h2" style={{ fontSize: 'clamp(28px, 4vw, 42px)' }}>
+                Compliance, sorted.
+              </h3>
+            </div>
+            <p
+              className="body-text-rw"
+              style={{ maxWidth: '360px', fontSize: '14px', paddingTop: '4px' }}
+            >
+              If your need is a filing or a tax service, go straight to the relevant Reckonwell quote calculator.
+            </p>
+          </div>
+
+          {/* Compliance cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            {complianceServices.map((service) => (
+              <Link
+                key={service.label}
+                href={service.href}
+                className="group flex flex-col p-5 transition-all duration-200"
+                style={{
+                  border: '1px solid var(--border)',
+                  backgroundColor: 'transparent',
+                  textDecoration: 'none',
+                  minHeight: '180px',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = 'var(--primary)';
+                  (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(18,35,63,0.03)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)';
+                  (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
+                }}
+              >
+                <p
+                  className="font-ui mb-3"
+                  style={{
+                    fontSize: '10px',
+                    letterSpacing: '2px',
+                    textTransform: 'uppercase',
+                    color: 'var(--advisory-blue, #275E86)',
+                    fontWeight: 500,
+                  }}
+                >
+                  Compliance / {service.index}
+                </p>
+                <p
+                  className="section-h2-medium mb-2 flex-1"
+                  style={{ fontSize: '18px', lineHeight: 1.3 }}
+                >
+                  {service.label}
+                </p>
+                <p className="font-ui mb-4" style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: 1.5 }}>
+                  {service.description}
+                </p>
+                <div style={{ height: '1px', background: 'var(--border)', marginBottom: '12px' }} />
+                <div className="flex items-center justify-between">
+                  <p
+                    className="font-ui"
+                    style={{
+                      fontSize: '10px',
+                      letterSpacing: '1.5px',
+                      textTransform: 'uppercase',
+                      color: 'var(--primary)',
+                      fontWeight: 500,
+                    }}
+                  >
+                    {service.ctaLabel}
+                  </p>
+                  <span style={{ color: 'var(--primary)', fontSize: '12px' }}>↗</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <Link
+            href="/quotation-calculator"
+            className="font-ui"
+            style={{
+              fontSize: '12px',
+              letterSpacing: '0.5px',
+              color: 'var(--foreground)',
+              textDecoration: 'underline',
+              textUnderlineOffset: '3px',
+            }}
+          >
+            Not sure? Explore all services in the quote calculator ↗
+          </Link>
+        </motion.div>
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Section heading */}
@@ -261,112 +367,6 @@ export default function FindYourFitSection() {
         </motion.div>
 
         {/* Compliance section */}
-        <motion.div
-          className="mt-16 md:mt-20"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.3 }}
-        >
-          {/* Divider */}
-          <div style={{ height: '1px', background: 'var(--border-subtle)', marginBottom: '40px' }} />
-
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-8">
-            <div>
-              <p
-                className="font-ui mb-2"
-                style={{ fontSize: '10px', letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--muted)' }}
-              >
-                Need one specific service?
-              </p>
-              <h3 className="section-h2" style={{ fontSize: 'clamp(28px, 4vw, 42px)' }}>
-                Compliance, sorted.
-              </h3>
-            </div>
-            <p
-              className="body-text-rw"
-              style={{ maxWidth: '360px', fontSize: '14px', paddingTop: '4px' }}
-            >
-              If your need is a filing or a tax service, go straight to the relevant Reckonwell quote calculator.
-            </p>
-          </div>
-
-          {/* Compliance cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            {complianceServices.map((service) => (
-              <Link
-                key={service.label}
-                href={service.href}
-                className="group flex flex-col p-5 transition-all duration-200"
-                style={{
-                  border: '1px solid var(--border)',
-                  backgroundColor: 'transparent',
-                  textDecoration: 'none',
-                  minHeight: '180px',
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = 'var(--primary)';
-                  (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(18,35,63,0.03)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)';
-                  (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
-                }}
-              >
-                <p
-                  className="font-ui mb-3"
-                  style={{
-                    fontSize: '10px',
-                    letterSpacing: '2px',
-                    textTransform: 'uppercase',
-                    color: 'var(--advisory-blue, #275E86)',
-                    fontWeight: 500,
-                  }}
-                >
-                  Compliance / {service.index}
-                </p>
-                <p
-                  className="section-h2-medium mb-2 flex-1"
-                  style={{ fontSize: '18px', lineHeight: 1.3 }}
-                >
-                  {service.label}
-                </p>
-                <p className="font-ui mb-4" style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: 1.5 }}>
-                  {service.description}
-                </p>
-                <div style={{ height: '1px', background: 'var(--border)', marginBottom: '12px' }} />
-                <div className="flex items-center justify-between">
-                  <p
-                    className="font-ui"
-                    style={{
-                      fontSize: '10px',
-                      letterSpacing: '1.5px',
-                      textTransform: 'uppercase',
-                      color: 'var(--primary)',
-                      fontWeight: 500,
-                    }}
-                  >
-                    {service.ctaLabel}
-                  </p>
-                  <span style={{ color: 'var(--primary)', fontSize: '12px' }}>↗</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <Link
-            href="/quotation-calculator"
-            className="font-ui"
-            style={{
-              fontSize: '12px',
-              letterSpacing: '0.5px',
-              color: 'var(--foreground)',
-              textDecoration: 'underline',
-              textUnderlineOffset: '3px',
-            }}
-          >
-            Not sure? Explore all services in the quote calculator ↗
-          </Link>
-        </motion.div>
       </div>
     </section>
   );
