@@ -4,24 +4,6 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 
-const levels = [
-  {
-    label: 'Day to day',
-    items: ['Bookkeeping', 'Payments & collections', 'VAT', 'Payroll', 'Accounts'],
-    opacity: 0.15,
-  },
-  {
-    label: 'Management',
-    items: ['Cash flow', 'Budgets', 'Management reporting', 'Forecasts'],
-    opacity: 0.35,
-  },
-  {
-    label: 'Strategic',
-    items: ['Financial planning', 'Business modelling', 'FD-level support'],
-    opacity: 1,
-  },
-];
-
 export default function FinanceFunctionSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -131,53 +113,6 @@ export default function FinanceFunctionSection() {
               />
             </motion.div>
 
-            {/* 3-level visual */}
-            {levels.map((level, i) => (
-              <motion.div
-                key={level.label}
-                initial={{ opacity: 0, x: 20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 + i * 0.12 }}
-                className="rounded-sm p-4 md:p-5"
-                style={{
-                  backgroundColor: `rgba(18, 35, 63, ${level.opacity * 0.08})`,
-                  border: `1px solid rgba(18, 35, 63, ${level.opacity * 0.15})`,
-                }}
-              >
-                <p
-                  className="font-ui mb-3"
-                  style={{
-                    fontSize: '9px',
-                    letterSpacing: '3px',
-                    textTransform: 'uppercase',
-                    color: 'var(--primary)',
-                    opacity: 0.5 + i * 0.25,
-                    fontWeight: 400,
-                  }}
-                >
-                  {level.label}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {level.items.map((item) => (
-                    <span
-                      key={item}
-                      className="font-ui"
-                      style={{
-                        fontSize: '11px',
-                        letterSpacing: '0.5px',
-                        color: 'var(--foreground)',
-                        backgroundColor: `rgba(18, 35, 63, ${0.04 + i * 0.03})`,
-                        border: '1px solid var(--border-subtle)',
-                        padding: '4px 10px',
-                        borderRadius: '2px',
-                      }}
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </div>
