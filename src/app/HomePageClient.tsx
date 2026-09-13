@@ -79,9 +79,11 @@ export default function HomePageClient() {
           </section>
 
           {/* 4c. Find Your Fit — Need One Specific Service? */}
-          <section role="region" aria-label="Find your fit">
-            <FindYourFitSection />
-          </section>
+          <div className="my-10 md:my-16">
+            <section role="region" aria-label="Find your fit">
+              <FindYourFitSection />
+            </section>
+          </div>
 
           {/* 4d. Get started: service-fit selector + callback form + compliance */}
           <section role="region" aria-label="Get started">
