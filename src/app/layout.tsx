@@ -40,7 +40,6 @@ export const metadata: Metadata = {
     apple: '/assets/images/99C61B88-2C2A-4A13-BD74-35EE79D48106-1783188578397.PNG'
   },
   alternates: {
-    canonical: 'https://reckonwell.com/',
     languages: {
       'en-GB': 'https://reckonwell.com/',
       'en-US': 'https://reckonwell.com/us/'
