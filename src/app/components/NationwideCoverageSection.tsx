@@ -32,7 +32,7 @@ export default function NationwideCoverageSection() {
       style={{ backgroundColor: 'var(--background)', borderTop: '0.5px solid var(--border)', borderBottom: '0.5px solid var(--border)' }}
       className="py-10 md:py-14"
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-10">
+      <div className="max-w-6xl mx-auto px-5 md:px-10">
         {/* Label */}
         <p
           className="text-xs tracking-[0.2em] uppercase mb-3"
@@ -43,7 +43,7 @@ export default function NationwideCoverageSection() {
 
         {/* Heading */}
         <h2
-          className="text-xl md:text-2xl mb-2"
+          className="text-lg md:text-2xl mb-2"
           style={{
             color: 'var(--foreground)',
             fontFamily: 'var(--font-playfair, "Playfair Display", serif)',
@@ -55,7 +55,7 @@ export default function NationwideCoverageSection() {
 
         {/* Sub-copy */}
         <p
-          className="text-sm mb-7 max-w-xl"
+          className="text-sm mb-6 md:mb-7 max-w-xl"
           style={{
             color: 'var(--muted)',
             fontFamily: 'var(--font-cormorant, "Cormorant Garamond", serif)',

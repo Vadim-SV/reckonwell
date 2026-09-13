@@ -59,7 +59,7 @@ export default function ReferralTeaserSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-16 md:py-32 px-5 md:px-16"
+      className="py-14 md:py-32 px-5 md:px-16"
       style={{
         backgroundColor: 'var(--surface)',
         position: 'relative',
@@ -100,7 +100,8 @@ export default function ReferralTeaserSection() {
               lineHeight: 1.7,
               marginBottom: '20px',
               maxWidth: '680px',
-              margin: '0 auto 20px'
+              margin: '0 auto 20px',
+              fontSize: 'clamp(15px, 2vw, 22px)',
             }}>
             Refer them to Reckonwell and earn 10% of their monthly bill — every single month, for as long as they stay with us.
           </p>
@@ -121,7 +122,7 @@ export default function ReferralTeaserSection() {
 
         {/* Badges */}
         <Reveal delay={0.35}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginBottom: '40px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', marginBottom: '36px' }}>
             {['10% lifetime commission', 'No cap on earnings', 'Paid monthly, automatically'].map((b) =>
             <span key={b} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: 'var(--muted)', letterSpacing: '0.5px' }}>
                 <span style={{ color: 'var(--primary)', fontSize: '14px' }}>✓</span>{b}

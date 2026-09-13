@@ -26,11 +26,11 @@ const textBadges = [
 export default function CertifiedPartneredSection({ variant = 'full' }: CertifiedPartneredSectionProps) {
   return (
     <section
-      className="px-6 md:px-10 py-8 md:py-10"
+      className="px-5 md:px-10 py-8 md:py-10"
       style={{ borderBottom: '1px solid var(--gold-border)', backgroundColor: 'rgba(201,168,76,0.03)' }}
       aria-label="Certifications and partnerships"
     >
-      <div className="max-w-5xl mx-auto flex flex-col items-center gap-6">
+      <div className="max-w-5xl mx-auto flex flex-col items-center gap-5 md:gap-6">
 
         {/* Partner logos strip */}
         <div className="flex flex-col items-center gap-4 w-full">
@@ -40,7 +40,7 @@ export default function CertifiedPartneredSection({ variant = 'full' }: Certifie
           >
             Certified &amp; Partnering With
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-10">
             {partners.map((partner) => (
               <div
                 key={partner.name}
@@ -51,7 +51,8 @@ export default function CertifiedPartneredSection({ variant = 'full' }: Certifie
                 <img
                   src={partner.logo}
                   alt={partner.name + ' logo'}
-                  style={{ width: '160px', height: '80px', objectFit: 'contain' }}
+                  style={{ width: '120px', height: '60px', objectFit: 'contain' }}
+                  className="md:w-[160px] md:h-[80px]"
                 />
               </div>
             ))}

@@ -101,7 +101,7 @@ export default function ClosingSection() {
     <section
       id="get-in-touch"
       ref={ref}
-      className="relative py-16 md:py-28 px-5 md:px-10 overflow-hidden"
+      className="relative py-14 md:py-28 px-5 md:px-10 overflow-hidden"
       style={{ backgroundColor: 'var(--surface)' }}
       aria-label="Get in Touch"
     >
@@ -138,14 +138,14 @@ export default function ClosingSection() {
         </motion.p>
 
         {/* ── Block 1: Founder message ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-14 md:mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12 md:mb-20">
           {/* Portrait */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="mx-auto md:mx-0 md:ml-auto"
-            style={{ maxWidth: '180px', width: '100%', position: 'relative' }}
+            style={{ maxWidth: '160px', width: '100%', position: 'relative' }}
           >
             <div
               className="hidden md:block"
@@ -239,7 +239,7 @@ export default function ClosingSection() {
         />
 
         {/* ── Block 2: 3-question FAQ ── */}
-        <div className="max-w-3xl mx-auto mb-14 md:mb-20">
+        <div className="max-w-3xl mx-auto mb-12 md:mb-20">
           <motion.p
             className="section-label mb-4"
             initial={{ opacity: 0, y: 12 }}
@@ -280,7 +280,7 @@ export default function ClosingSection() {
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'flex-start',
-                      padding: '18px 16px',
+                      padding: '16px 14px',
                       background: isOpen ? 'rgba(201, 168, 76, 0.04)' : 'transparent',
                       border: 'none',
                       cursor: 'pointer',
@@ -433,7 +433,7 @@ export default function ClosingSection() {
                   type="submit"
                   disabled={status === 'submitting'}
                   className="btn-gold w-full sm:w-auto"
-                  style={{ padding: '18px 48px', fontSize: '12px', letterSpacing: '2.5px', maxWidth: '360px', opacity: status === 'submitting' ? 0.7 : 1 }}
+                  style={{ padding: '16px 48px', fontSize: '12px', letterSpacing: '2.5px', maxWidth: '360px', opacity: status === 'submitting' ? 0.7 : 1 }}
                 >
                   {status === 'submitting' ? 'Sending...' : 'Request a Callback'}
                 </button>

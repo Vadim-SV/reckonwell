@@ -81,7 +81,7 @@ export default function HeroSection() {
                   opacity: 0.6,
                   flexShrink: 0
                 }} />
-              Virtual Finance Office
+              Fractional Finance Department
               <span
                 className="hidden sm:inline-block"
                 style={{
@@ -105,7 +105,7 @@ export default function HeroSection() {
           <motion.p
             {...fadeUp(0.3)}
             className="pull-quote mb-4 mx-auto"
-            style={{ maxWidth: '620px', color: 'var(--body-text)', fontSize: 'clamp(16px,2.2vw,26px)' }}
+            style={{ maxWidth: '620px', color: 'var(--body-text)', fontSize: 'clamp(15px,2.2vw,26px)' }}
             suppressHydrationWarning>The only accounting firm that acts as finance department - taking on day-to-day finance workload that consumes founders.
           </motion.p>
 
@@ -116,7 +116,7 @@ export default function HeroSection() {
             style={{
               fontStyle: 'italic',
               fontWeight: 300,
-              fontSize: 'clamp(16px,2.2vw,26px)',
+              fontSize: 'clamp(15px,2.2vw,26px)',
               color: 'var(--muted)',
               fontFamily: 'var(--font-serif)'
             }}
@@ -147,7 +147,7 @@ export default function HeroSection() {
             <Link
               href="/quotation-calculator/"
               className="btn-gold w-full sm:w-auto"
-              style={{ minWidth: '220px', maxWidth: '320px', textAlign: 'center' }}
+              style={{ minWidth: '220px', maxWidth: '100%', textAlign: 'center' }}
               onClick={() => {
                 trackEvent('homepage_cta_click', { cta: 'get_instant_quote', location: 'hero', page: 'home' });
               }}>

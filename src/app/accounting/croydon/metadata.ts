@@ -1,13 +1,23 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Accounting & Bookkeeping in Croydon | Reckonwell',
-  description: 'Remote accounting and bookkeeping for Croydon businesses. Self-employed, limited company, monthly bookkeeping, MTD, and R&D tax relief. From £80/month. Get an instant quote.',
-  alternates: { canonical: 'https://reckonwell.com/accounting/croydon' },
+  metadataBase: new URL('https://reckonwell.com'),
+  title: 'Accounting Services in Croydon | Daily Bookkeeping from £200/mo | Reckonwell',
+  description: 'Reckonwell provides daily bookkeeping, cash flow monitoring, and real-time financial visibility for founder-led businesses in Croydon. Transparent pricing, no hidden fees. Get your instant quote.',
+  alternates: {
+    canonical: 'https://reckonwell.com/accounting/croydon',
+  },
   openGraph: {
-    title: 'Accounting & Bookkeeping in Croydon | Reckonwell',
-    description: 'Remote accounting and bookkeeping for Croydon businesses. Self-employed, limited company, monthly bookkeeping, MTD, and R&D tax relief. From £80/month.',
+    title: 'Accounting Services in Croydon | Reckonwell',
+    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts for Croydon businesses from £200/mo.',
     url: 'https://reckonwell.com/accounting/croydon',
     type: 'website',
+    images: [{ url: '/assets/images/app_logo.png', width: 1200, height: 630, alt: 'Reckonwell - Accounting Services in Croydon' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Accounting Services in Croydon | Reckonwell',
+    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts for Croydon businesses from £200/mo.',
+    images: ['/assets/images/app_logo.png'],
   },
 };
