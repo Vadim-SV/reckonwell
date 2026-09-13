@@ -73,9 +73,9 @@ export default function HomePageClient() {
             <FundraisingCapitalSection />
           </section>
 
-          {/* 4b. Find Your Fit + Compliance — replicated just below Growth & Capital */}
-          <section role="region" aria-label="Find your fit">
-            <FindYourFitSection />
+          {/* 4b. Pricing banner strip — right scope for your business */}
+          <section role="region" aria-label="Pricing banner">
+            <PricingBannerSection />
           </section>
 
           {/* 5. Nationwide coverage */}
@@ -88,9 +88,9 @@ export default function HomePageClient() {
             <FounderSection />
           </section>
 
-          {/* 6b. Pricing banner strip */}
-          <section role="region" aria-label="Pricing banner">
-            <PricingBannerSection />
+          {/* 6b. Find Your Fit + Need a Specific Service? — above Get Started */}
+          <section role="region" aria-label="Find your fit">
+            <FindYourFitSection />
           </section>
 
           {/* 7. Get started: service-fit selector + callback form + compliance */}
