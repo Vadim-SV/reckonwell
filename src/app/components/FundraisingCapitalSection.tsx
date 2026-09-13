@@ -66,33 +66,6 @@ export default function FundraisingCapitalSection() {
               That can include equity or debt routes and support through the questions that follow an introduction. The work is shaped around your stage, funding need and the evidence you have.
             </motion.p>
 
-            {/* Three inline step labels */}
-            <motion.div
-              className="flex flex-wrap gap-0 mb-6"
-              style={{ borderTop: '1px solid var(--border)' }}
-              initial={{ opacity: 0, y: 12 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              {steps.map((step, i) => (
-                <div
-                  key={step.label}
-                  className="font-ui py-3 pr-6"
-                  style={{
-                    fontSize: '10px',
-                    letterSpacing: '1.5px',
-                    textTransform: 'uppercase',
-                    color: 'var(--primary)',
-                    fontWeight: 600,
-                    borderRight: i < steps.length - 1 ? '1px solid var(--border)' : 'none',
-                    paddingLeft: i > 0 ? '24px' : '0',
-                  }}
-                >
-                  {step.label}
-                </div>
-              ))}
-            </motion.div>
-
             {/* Disclaimer */}
             <motion.p
               className="font-ui mb-6"
