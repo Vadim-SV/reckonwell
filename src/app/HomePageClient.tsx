@@ -9,6 +9,7 @@ import FinanceFunctionSection from '@/app/components/FinanceFunctionSection';
 import FundraisingCapitalSection from '@/app/components/FundraisingCapitalSection';
 import NationwideCoverageSection from '@/app/components/NationwideCoverageSection';
 import FounderSection from '@/app/components/FounderSection';
+import ClarityFAQSection from '@/app/components/ClarityFAQSection';
 import PricingBannerSection from '@/app/components/PricingBannerSection';
 import ComplianceCalculatorsSection from '@/app/components/ComplianceCalculatorsSection';
 import ReadyToThinkSection from '@/app/components/ReadyToThinkSection';
@@ -96,6 +97,11 @@ export default function HomePageClient() {
           {/* 6. Message from the Founder — untouched */}
           <section role="region" aria-label="Message from the founder">
             <FounderSection />
+          </section>
+
+          {/* 7. Questions & Answers */}
+          <section role="region" aria-label="Questions and answers">
+            <ClarityFAQSection />
           </section>
         </article>
         <Footer />
