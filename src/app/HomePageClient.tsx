@@ -78,6 +78,11 @@ export default function HomePageClient() {
             <PricingBannerSection />
           </section>
 
+          {/* 4c. Find Your Fit — Need One Specific Service? */}
+          <section role="region" aria-label="Find your fit">
+            <FindYourFitSection />
+          </section>
+
           {/* 5. Nationwide coverage */}
           <section role="region" aria-label="Nationwide coverage">
             <NationwideCoverageSection />
@@ -86,11 +91,6 @@ export default function HomePageClient() {
           {/* 6. Message from the Founder — untouched */}
           <section role="region" aria-label="Message from the founder">
             <FounderSection />
-          </section>
-
-          {/* 6b. Find Your Fit + Need a Specific Service? — above Get Started */}
-          <section role="region" aria-label="Find your fit">
-            <FindYourFitSection />
           </section>
 
           {/* 7. Get started: service-fit selector + callback form + compliance */}
