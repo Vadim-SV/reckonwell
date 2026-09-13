@@ -128,30 +128,6 @@ export default function PersonalisedProactiveSection() {
           </motion.div>
         </div>
 
-        {/* 3 Points */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-          {points.map((point, i) => (
-            <motion.div
-              key={point.title}
-              className="solution-card"
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="relative z-10">
-                <p
-                  className="font-ui mb-3"
-                  style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}
-                >
-                  {point.title}
-                </p>
-                <p className="body-text-rw" style={{ fontSize: '14px' }}>
-                  {point.body}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );
