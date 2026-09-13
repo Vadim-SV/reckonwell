@@ -11,6 +11,7 @@ import NationwideCoverageSection from '@/app/components/NationwideCoverageSectio
 import FounderSection from '@/app/components/FounderSection';
 import PricingBannerSection from '@/app/components/PricingBannerSection';
 import ComplianceCalculatorsSection from '@/app/components/ComplianceCalculatorsSection';
+import ReadyToThinkSection from '@/app/components/ReadyToThinkSection';
 import USBanner from '@/components/USBanner';
 
 export default function HomePageClient() {
@@ -80,6 +81,11 @@ export default function HomePageClient() {
           {/* 4c. Compliance, sorted — specific service cards */}
           <section role="region" aria-label="Compliance services">
             <ComplianceCalculatorsSection />
+          </section>
+
+          {/* 4d. Ready to think like a director again */}
+          <section role="region" aria-label="Ready to think like a director again">
+            <ReadyToThinkSection />
           </section>
 
           {/* 5. Nationwide coverage */}
