@@ -53,8 +53,7 @@ export default function FundraisingCapitalSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              We help you reach capital,{' '}
-              <em style={{ fontStyle: 'italic', color: 'var(--secondary)' }}>not just get ready for it.</em>
+              Connecting capital with companies
             </motion.h2>
 
             <motion.p
