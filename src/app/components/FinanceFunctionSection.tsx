@@ -41,7 +41,7 @@ export default function FinanceFunctionSection() {
       style={{ backgroundColor: 'var(--primary)' }}
       aria-label="Outsourced finance department"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
           {/* Left: illustration */}
           <motion.div

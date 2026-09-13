@@ -41,7 +41,7 @@ export default function PersonalisedProactiveSection() {
       style={{ backgroundColor: 'var(--background)' }}
       aria-label="Personalised finance support"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Eyebrow */}
         <motion.p
           className="font-ui mb-4 md:mb-5"

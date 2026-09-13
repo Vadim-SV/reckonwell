@@ -14,7 +14,7 @@ export default function PricingBannerSection() {
       style={{ backgroundColor: '#E8EAF0' }}
       aria-label="Pricing banner"
     >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
         {/* Left: heading + sub */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}

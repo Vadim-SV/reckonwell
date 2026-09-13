@@ -104,7 +104,7 @@ export default function FindYourFitSection() {
         style={{ height: '1px', background: 'var(--border-subtle)' }}
       />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto relative z-10">
         {/* Section heading */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-10 md:mb-14">
           <div>

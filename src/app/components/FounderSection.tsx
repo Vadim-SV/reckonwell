@@ -14,7 +14,7 @@ export default function FounderSection() {
       style={{ backgroundColor: 'var(--primary)' }}
       aria-label="From the founder"
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
         {/* Left: eyebrow + heading */}
         <div>
           <motion.p

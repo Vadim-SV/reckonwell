@@ -31,7 +31,7 @@ export default function FundraisingCapitalSection() {
       style={{ backgroundColor: 'var(--background)' }}
       aria-label="Fundraising and capital"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Eyebrow */}
         <motion.p
           className="font-ui mb-4 md:mb-5"
