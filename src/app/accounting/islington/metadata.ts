@@ -1,13 +1,23 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Accounting & Bookkeeping in Islington | Reckonwell',
-  description: 'Remote accounting and bookkeeping for Islington businesses. Self-employed, limited company, monthly bookkeeping, MTD, and R&D tax relief. From £80/month. Get an instant quote.',
-  alternates: { canonical: 'https://reckonwell.com/accounting/islington' },
+  metadataBase: new URL('https://reckonwell.com'),
+  title: 'Accounting Services in Islington | Daily Bookkeeping from £200/mo | Reckonwell',
+  description: 'Reckonwell provides daily bookkeeping, cash flow monitoring, and real-time financial visibility for founder-led businesses in Islington. Transparent pricing, no hidden fees. Get your instant quote.',
+  alternates: {
+    canonical: 'https://reckonwell.com/accounting/islington',
+  },
   openGraph: {
-    title: 'Accounting & Bookkeeping in Islington | Reckonwell',
-    description: 'Remote accounting and bookkeeping for Islington businesses. Self-employed, limited company, monthly bookkeeping, MTD, and R&D tax relief. From £80/month.',
+    title: 'Accounting Services in Islington | Reckonwell',
+    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts for Islington businesses from £200/mo.',
     url: 'https://reckonwell.com/accounting/islington',
     type: 'website',
+    images: [{ url: '/assets/images/app_logo.png', width: 1200, height: 630, alt: 'Reckonwell - Accounting Services in Islington' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Accounting Services in Islington | Reckonwell',
+    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts for Islington businesses from £200/mo.',
+    images: ['/assets/images/app_logo.png'],
   },
 };

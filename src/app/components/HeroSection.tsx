@@ -81,7 +81,7 @@ export default function HeroSection() {
                   opacity: 0.6,
                   flexShrink: 0
                 }} />
-              Virtual Finance Office
+              Fractional Finance Department
               <span
                 className="hidden sm:inline-block"
                 style={{
