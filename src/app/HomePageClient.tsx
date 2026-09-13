@@ -10,6 +10,7 @@ import FundraisingCapitalSection from '@/app/components/FundraisingCapitalSectio
 import FindYourFitSection from '@/app/components/FindYourFitSection';
 import NationwideCoverageSection from '@/app/components/NationwideCoverageSection';
 import FounderSection from '@/app/components/FounderSection';
+import PricingBannerSection from '@/app/components/PricingBannerSection';
 import GetStartedSection from '@/app/components/GetStartedSection';
 import USBanner from '@/components/USBanner';
 
@@ -85,6 +86,11 @@ export default function HomePageClient() {
           {/* 6. Message from the Founder — untouched */}
           <section role="region" aria-label="Message from the founder">
             <FounderSection />
+          </section>
+
+          {/* 6b. Pricing banner strip */}
+          <section role="region" aria-label="Pricing banner">
+            <PricingBannerSection />
           </section>
 
           {/* 7. Get started: service-fit selector + callback form + compliance */}
