@@ -12,8 +12,8 @@ export default function FounderSection() {
       ref={ref}
       className="py-16 md:py-24 px-6 md:px-16"
       style={{ backgroundColor: 'var(--primary)' }}
-      aria-label="From the founder"
-    >
+      aria-label="From the founder">
+
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
         {/* Left: eyebrow + heading */}
         <div>
@@ -22,8 +22,8 @@ export default function FounderSection() {
             style={{ fontSize: '10px', letterSpacing: '2.5px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)' }}
             initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
+            transition={{ duration: 0.6 }}>
+
             A note from Vadim
           </motion.p>
 
@@ -32,8 +32,8 @@ export default function FounderSection() {
             style={{ fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 400, color: '#FFFFFF', lineHeight: 1.15 }}
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          >
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
+
             Message from the Founder
           </motion.h2>
         </div>
@@ -44,17 +44,17 @@ export default function FounderSection() {
             className="mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
+            transition={{ duration: 0.7, delay: 0.2 }}>
+
             <p
               className="font-display"
               style={{
                 fontSize: 'clamp(20px, 2.5vw, 30px)',
                 fontWeight: 400,
                 color: '#FFFFFF',
-                lineHeight: 1.45,
-              }}
-            >
+                lineHeight: 1.45
+              }}>
+
               &ldquo;You should be able to make business decisions with a clear picture of your finances, not wait for the year-end accounts to find out what happened.&rdquo;
             </p>
           </motion.blockquote>
@@ -64,21 +64,21 @@ export default function FounderSection() {
             style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
+            transition={{ duration: 0.7, delay: 0.3 }}>
+
             At Reckonwell, I want founders to have someone who knows their business and stays close to the numbers. We shape the support around what you need now, from everyday accounting to a wider finance function and help with the next stage of growth.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.38 }}
-          >
-            <p style={{ fontSize: '14px', fontWeight: 600, color: '#FFFFFF' }}>Vadim Siubaev</p>
+            transition={{ duration: 0.6, delay: 0.38 }}>
+
+            <p style={{ fontSize: '14px', fontWeight: 600, color: '#FFFFFF' }}>Vadim Siubaeff</p>
             <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>Founder, Reckonwell</p>
           </motion.div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
