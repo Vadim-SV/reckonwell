@@ -82,13 +82,13 @@ export default function ServicesAndPricingSection() {
     <section
       id="quote"
       ref={ref}
-      className="py-16 md:py-28 px-6 md:px-10"
+      className="py-14 md:py-28 px-5 md:px-10"
       style={{ backgroundColor: 'var(--background)' }}
       aria-label="Services and Pricing">
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-10 md:mb-14">
+        <div className="mb-8 md:mb-14">
           <motion.p
             className="section-label mb-4 md:mb-5"
             initial={{ opacity: 0, y: 12 }}
@@ -129,7 +129,7 @@ export default function ServicesAndPricingSection() {
 
 
             <div
-              className="p-7 md:p-10 rounded-sm h-full"
+              className="p-6 md:p-10 rounded-sm h-full"
               style={{
                 backgroundColor: 'var(--card)',
                 border: '1px solid var(--primary)',
@@ -227,12 +227,12 @@ export default function ServicesAndPricingSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.35 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
               style={{
-                padding: '18px 20px',
+                padding: '16px 16px',
                 backgroundColor: card.cta ? 'transparent' : 'var(--card)',
                 border: card.cta ? '1px dashed var(--gold-border)' : '1px solid var(--border-subtle)'
               }}>
 
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start justify-between gap-3 flex-wrap sm:flex-nowrap">
                   <div className="flex-1 min-w-0">
                     <p
                     className="font-ui mb-1"
@@ -253,7 +253,7 @@ export default function ServicesAndPricingSection() {
                       {card.body}
                     </p>
                   </div>
-                  <div className="flex flex-col items-end gap-2 flex-shrink-0">
+                  <div className="flex flex-col items-end gap-2 flex-shrink-0 mt-2 sm:mt-0">
                     <p
                     className="font-ui"
                     style={{ fontSize: '9px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--muted)', whiteSpace: 'nowrap' }}>

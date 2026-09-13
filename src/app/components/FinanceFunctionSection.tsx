@@ -35,7 +35,7 @@ export default function FinanceFunctionSection() {
     <section
       id="finance-function"
       ref={ref}
-      className="py-16 md:py-28 px-6 md:px-10"
+      className="py-14 md:py-28 px-5 md:px-10"
       style={{ backgroundColor: 'var(--surface)' }}
       aria-label="Finance Function"
     >
@@ -80,7 +80,7 @@ export default function FinanceFunctionSection() {
               Bookkeeping becomes cash-flow management, reporting, budgeting, forecasting and financial decision-making.
             </motion.p>
             <motion.p
-              className="body-text-rw mb-8"
+              className="body-text-rw mb-6 md:mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.3 }}
@@ -104,7 +104,7 @@ export default function FinanceFunctionSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-3 mt-2 md:mt-0"
           >
             {levels?.map((level, i) => (
               <motion.div
@@ -112,7 +112,7 @@ export default function FinanceFunctionSection() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.3 + i * 0.12 }}
-                className="rounded-sm p-5 md:p-6"
+                className="rounded-sm p-4 md:p-6"
                 style={{
                   backgroundColor: `rgba(18, 35, 63, ${level?.opacity * 0.08})`,
                   border: `1px solid rgba(18, 35, 63, ${level?.opacity * 0.15})`,

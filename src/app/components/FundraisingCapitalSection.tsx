@@ -28,7 +28,7 @@ export default function FundraisingCapitalSection() {
     <section
       id="fundraising-capital"
       ref={ref}
-      className="py-16 md:py-28 px-6 md:px-10"
+      className="py-14 md:py-28 px-5 md:px-10"
       style={{ backgroundColor: 'var(--background)' }}
       aria-label="Fundraising and Capital"
     >
@@ -44,7 +44,7 @@ export default function FundraisingCapitalSection() {
         </motion.p>
 
         {/* Headline + body */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-start mb-14 md:mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-start mb-10 md:mb-20">
           <div>
             <motion.h2
               className="section-h2-medium mb-5 md:mb-8"
@@ -88,12 +88,12 @@ export default function FundraisingCapitalSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="rounded-sm overflow-hidden"
+            className="rounded-sm overflow-hidden mt-2 md:mt-0"
             style={{ border: '1px solid var(--border-subtle)', backgroundColor: 'var(--card)' }}
           >
-            <div className="p-6 md:p-8">
+            <div className="p-5 md:p-8">
               <p
-                className="font-ui mb-8"
+                className="font-ui mb-6 md:mb-8"
                 style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--muted)' }}
               >
                 The Raise Process
@@ -128,7 +128,6 @@ export default function FundraisingCapitalSection() {
                         fontSize: i === progressionSteps?.length - 1 ? 'clamp(18px, 2.5vw, 26px)' : 'clamp(14px, 1.8vw, 18px)',
                         color: i === progressionSteps?.length - 1 ? 'var(--foreground)' : 'var(--muted)',
                         fontWeight: i === progressionSteps?.length - 1 ? 500 : 400,
-                        paddingBottom: i < progressionSteps?.length - 1 ? '0' : '0',
                         lineHeight: 1.2,
                       }}
                     >
@@ -148,7 +147,7 @@ export default function FundraisingCapitalSection() {
         </div>
 
         {/* 3 Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {cards?.map((card, i) => (
             <motion.div
               key={card?.title}

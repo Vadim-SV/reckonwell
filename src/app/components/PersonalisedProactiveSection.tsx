@@ -26,7 +26,7 @@ export default function PersonalisedProactiveSection() {
     <section
       id="personalised-proactive"
       ref={ref}
-      className="py-16 md:py-28 px-6 md:px-10"
+      className="py-14 md:py-28 px-5 md:px-10"
       style={{ backgroundColor: 'var(--background)' }}
       aria-label="Personalised and Proactive"
     >
@@ -42,7 +42,7 @@ export default function PersonalisedProactiveSection() {
         </motion.p>
 
         {/* Headline */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-start mb-14 md:mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-start mb-10 md:mb-20">
           <div>
             <motion.h2
               className="section-h2-medium mb-5 md:mb-8"
@@ -80,26 +80,26 @@ export default function PersonalisedProactiveSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="rounded-sm overflow-hidden"
+            className="rounded-sm overflow-hidden mt-2 md:mt-0"
             style={{ border: '1px solid var(--border-subtle)', backgroundColor: 'var(--card)' }}
           >
-            <div className="p-6 md:p-8">
+            <div className="p-5 md:p-8">
               <p
-                className="font-ui mb-6"
+                className="font-ui mb-5 md:mb-6"
                 style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--muted)' }}
               >
                 Cash Position Visibility
               </p>
 
               {/* Traditional accountant row */}
-              <div className="mb-6">
+              <div className="mb-5 md:mb-6">
                 <p
                   className="font-ui mb-3"
                   style={{ fontSize: '9px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--muted)' }}
                 >
                   Traditional Accountant
                 </p>
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-1.5 mb-2">
                   {[1, 2, 3, 4, 5, 6, 7, 8]?.map((i) => (
                     <div
                       key={i}
@@ -122,7 +122,7 @@ export default function PersonalisedProactiveSection() {
               </div>
 
               {/* Divider */}
-              <div style={{ height: '1px', backgroundColor: 'var(--border-subtle)', marginBottom: '24px' }} />
+              <div style={{ height: '1px', backgroundColor: 'var(--border-subtle)', marginBottom: '20px' }} />
 
               {/* Reckonwell row */}
               <div>
@@ -132,7 +132,7 @@ export default function PersonalisedProactiveSection() {
                 >
                   Reckonwell
                 </p>
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-1.5 mb-2">
                   {[1, 2, 3, 4, 5, 6, 7, 8]?.map((i) => (
                     <div
                       key={i}
@@ -158,7 +158,7 @@ export default function PersonalisedProactiveSection() {
         </div>
 
         {/* 3 Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {cards?.map((card, i) => (
             <motion.div
               key={card?.title}
