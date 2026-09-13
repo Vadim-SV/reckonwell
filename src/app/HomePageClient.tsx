@@ -10,6 +10,7 @@ import FundraisingCapitalSection from '@/app/components/FundraisingCapitalSectio
 import NationwideCoverageSection from '@/app/components/NationwideCoverageSection';
 import FounderSection from '@/app/components/FounderSection';
 import PricingBannerSection from '@/app/components/PricingBannerSection';
+import ComplianceCalculatorsSection from '@/app/components/ComplianceCalculatorsSection';
 import USBanner from '@/components/USBanner';
 
 export default function HomePageClient() {
@@ -74,6 +75,11 @@ export default function HomePageClient() {
           {/* 4b. Pricing banner strip — right scope for your business */}
           <section role="region" aria-label="Pricing banner">
             <PricingBannerSection />
+          </section>
+
+          {/* 4c. Compliance, sorted — specific service cards */}
+          <section role="region" aria-label="Compliance services">
+            <ComplianceCalculatorsSection />
           </section>
 
           {/* 5. Nationwide coverage */}
