@@ -7,6 +7,7 @@ import HeroSection from '@/app/components/HeroSection';
 import PersonalisedProactiveSection from '@/app/components/PersonalisedProactiveSection';
 import FinanceFunctionSection from '@/app/components/FinanceFunctionSection';
 import FundraisingCapitalSection from '@/app/components/FundraisingCapitalSection';
+import FindYourFitSection from '@/app/components/FindYourFitSection';
 import NationwideCoverageSection from '@/app/components/NationwideCoverageSection';
 import FounderSection from '@/app/components/FounderSection';
 import GetStartedSection from '@/app/components/GetStartedSection';
@@ -69,6 +70,11 @@ export default function HomePageClient() {
           {/* 4. Fundraising support */}
           <section role="region" aria-label="Fundraising and capital">
             <FundraisingCapitalSection />
+          </section>
+
+          {/* 4b. Find Your Fit + Compliance — replicated just below Growth & Capital */}
+          <section role="region" aria-label="Find your fit">
+            <FindYourFitSection />
           </section>
 
           {/* 5. Nationwide coverage */}
