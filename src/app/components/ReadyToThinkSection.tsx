@@ -78,20 +78,6 @@ export default function ReadyToThinkSection() {
 
             </motion.h2>
           </div>
-          <motion.p
-            style={{
-              maxWidth: '380px',
-              fontSize: '15px',
-              color: '#C17A3A',
-              lineHeight: 1.6,
-              paddingTop: '4px'
-            }}
-            initial={{ opacity: 0, y: 14 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.65, delay: 0.15 }}>
-
-            Tell us what is taking up your time. Choose your closest priority below, and we will start a conversation about the right support.
-          </motion.p>
         </div>
 
         {/* Find Your Fit card */}
