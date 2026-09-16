@@ -18,7 +18,7 @@ export default function FundraisingCapitalSection() {
       <div className="max-w-5xl mx-auto">
         {/* Eyebrow */}
         <motion.p
-          className="font-ui mb-5"
+          className="font-ui mb-5 text-[rgba(102,96,92,1)]"
           style={{ fontSize: '10px', letterSpacing: '2.5px', textTransform: 'uppercase', color: '#1a6b6b' }}
           initial={{ opacity: 0, y: 12 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -187,7 +187,7 @@ export default function FundraisingCapitalSection() {
           </motion.div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 
 }
