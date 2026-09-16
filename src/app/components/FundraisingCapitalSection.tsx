@@ -136,47 +136,11 @@ export default function FundraisingCapitalSection() {
                 padding: '24px'
               }}>
 
-              <svg
-                viewBox="0 0 340 240"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ width: '100%', maxWidth: '360px', height: 'auto' }}
-                aria-label="Connecting companies and capital: document with chart connecting to investor network">
-
-                {/* Main document */}
-                <rect x="50" y="25" width="140" height="175" rx="3" fill="#f5ede0" stroke="#0d1b2e" strokeWidth="1.2" strokeOpacity="0.4" />
-                <rect x="68" y="48" width="104" height="8" rx="1" fill="#0d1b2e" fillOpacity="0.15" />
-                <rect x="68" y="62" width="80" height="5" rx="1" fill="#0d1b2e" fillOpacity="0.1" />
-                {/* Bar chart inside doc */}
-                <rect x="72" y="108" width="16" height="52" rx="1" fill="#0d1b2e" fillOpacity="0.2" />
-                <rect x="94" y="92" width="16" height="68" rx="1" fill="#0d1b2e" fillOpacity="0.3" />
-                <rect x="116" y="80" width="16" height="80" rx="1" fill="#0d1b2e" fillOpacity="0.45" />
-                <rect x="138" y="96" width="16" height="64" rx="1" fill="#0d1b2e" fillOpacity="0.35" />
-                {/* Baseline */}
-                <line x1="68" y1="162" x2="168" y2="162" stroke="#0d1b2e" strokeWidth="0.8" strokeOpacity="0.25" />
-                {/* Checkmark circle top-right of doc */}
-                <circle cx="178" cy="42" r="18" fill="#f5ede0" stroke="#0d1b2e" strokeWidth="1.2" strokeOpacity="0.4" />
-                <path d="M170 42 L176 48 L186 36" stroke="#0d1b2e" strokeWidth="1.6" strokeOpacity="0.6" strokeLinecap="round" strokeLinejoin="round" />
-                {/* Dashed connector lines */}
-                <line x1="205" y1="105" x2="252" y2="75" stroke="#0d1b2e" strokeWidth="1" strokeDasharray="5 4" strokeOpacity="0.35" />
-                <line x1="205" y1="125" x2="252" y2="162" stroke="#0d1b2e" strokeWidth="1" strokeDasharray="5 4" strokeOpacity="0.35" />
-                <line x1="205" y1="125" x2="295" y2="148" stroke="#0d1b2e" strokeWidth="1" strokeDasharray="5 4" strokeOpacity="0.35" />
-                {/* Top investor circle */}
-                <circle cx="264" cy="65" r="24" fill="#e3e7ed" stroke="#0d1b2e" strokeWidth="1.2" strokeOpacity="0.4" />
-                <circle cx="264" cy="57" r="8" fill="none" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.5" />
-                <path d="M250 79 Q264 72 278 79" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.5" fill="none" />
-                {/* Bottom-left investor circle */}
-                <circle cx="258" cy="168" r="22" fill="#f5ede0" stroke="#0d1b2e" strokeWidth="1.2" strokeOpacity="0.4" />
-                <circle cx="258" cy="160" r="7" fill="none" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.5" />
-                <path d="M246 178 Q258 172 270 178" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.5" fill="none" />
-                {/* Bottom-right investor circle */}
-                <circle cx="300" cy="148" r="20" fill="#f5ede0" stroke="#0d1b2e" strokeWidth="1.2" strokeOpacity="0.4" />
-                <circle cx="300" cy="141" r="7" fill="none" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.5" />
-                <path d="M289 158 Q300 152 311 158" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.5" fill="none" />
-                {/* Currency symbol top right */}
-                <circle cx="308" cy="38" r="20" fill="#e3e7ed" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.3" />
-                <text x="308" y="45" textAnchor="middle" fontSize="15" fill="#0d1b2e" fillOpacity="0.45" fontFamily="serif">₮</text>
-              </svg>
+              <img
+                src="/assets/images/Image_Sep_16__2026__11_09_14_PM-1789599360628.png"
+                alt="Debt and equity finance illustration"
+                style={{ width: '100%', maxWidth: '360px', height: 'auto', display: 'block' }}
+              />
             </div>
             <p
               className="font-ui mt-4"
@@ -187,7 +151,8 @@ export default function FundraisingCapitalSection() {
           </motion.div>
         </div>
       </div>
-    </section>);
+    </section>
+  );
 
 
 }
