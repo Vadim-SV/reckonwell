@@ -89,26 +89,12 @@ export default function IndustriesSection() {
         {/* Top: eyebrow + headline left, paragraph right */}
         <div className="flex flex-col lg:flex-row lg:items-end gap-8 mb-14">
           <div className="lg:w-1/2">
-            <p
-              className="text-xs tracking-widest uppercase mb-4 font-medium text-[rgba(102,96,92,1)]"
-              style={{ color: '#2a7c8a' }}>
-
-              INDUSTRIES WE WORK WITH
-            </p>
             <h2
               className="leading-tight font-serif"
               style={{ color: '#0d1b2e', fontSize: 'clamp(32px, 5vw, 60px)' }}>
 
               Finance support shaped around how your business operates.
             </h2>
-          </div>
-          <div className="lg:w-1/2 lg:pl-16 lg:pb-2">
-            <p
-              className="text-base leading-relaxed text-[rgba(102,96,92,1)]"
-              style={{ color: '#2a7c8a' }}>
-
-              Different industries create different financial pressures. We combine day-to-day accounting with an understanding of the numbers, systems and controls that matter to your business.
-            </p>
           </div>
         </div>
 
