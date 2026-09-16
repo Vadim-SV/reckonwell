@@ -3,100 +3,115 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-const steps = [
-  { label: 'Model the raise' },
-  { label: 'Present the case' },
-  { label: 'Make relevant introductions' },
-];
-
 export default function FundraisingCapitalSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
-
-  const handleCTA = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const el = document.getElementById('get-started');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      const event = new CustomEvent('prefill-service', { detail: 'capital' });
-      window.dispatchEvent(event);
-    }
-  };
 
   return (
     <section
       id="fundraising-capital"
       ref={ref}
-      className="py-20 md:py-24 px-6 md:px-16"
-      style={{ backgroundColor: 'var(--background)' }}
-      aria-label="Fundraising and capital"
+      className="py-20 md:py-28 px-6 md:px-16"
+      style={{ backgroundColor: '#f5ede0' }}
+      aria-label="Debt and equity finance"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Eyebrow */}
         <motion.p
-          className="font-ui mb-4 md:mb-5"
-          style={{ fontSize: '10px', letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--muted)' }}
+          className="font-ui mb-5"
+          style={{ fontSize: '10px', letterSpacing: '2.5px', textTransform: 'uppercase', color: '#1a6b6b' }}
           initial={{ opacity: 0, y: 12 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          03 / Growth &amp; capital
+          03 / Debt &amp; Equity Finance
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
           {/* Left: text */}
           <div>
+            {/* Headline */}
             <motion.h2
-              className="font-display mb-6 md:mb-8"
-              style={{ fontSize: 'clamp(36px, 4.5vw, 58px)', fontWeight: 400, color: 'var(--primary)', lineHeight: 1.1 }}
+              className="font-display mb-8"
+              style={{ fontSize: 'clamp(38px, 4.8vw, 62px)', fontWeight: 400, color: '#0d1b2e', lineHeight: 1.08 }}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              Connecting capital with companies
+              The bridge between growing companies{' '}
+              <em style={{ fontStyle: 'italic', color: '#b5813a' }}>and capital.</em>
             </motion.h2>
 
+            {/* Body paragraph 1 */}
             <motion.p
-              className="mb-8"
-              style={{ fontSize: '14px', color: 'var(--body-text)', lineHeight: 1.7 }}
+              className="mb-5"
+              style={{ fontSize: '14px', color: '#0d1b2e', lineHeight: 1.75, opacity: 0.85 }}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.25 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
             >
-              That can include equity or debt routes and support through the questions that follow an introduction. The work is shaped around your stage, funding need and the evidence you have.
+              Reckonwell helps businesses access debt and equity finance through our network of lenders, investors and funding partners. We start by understanding how much capital you need, what it will be used for and which route is appropriate for the business.
             </motion.p>
 
-            {/* Disclaimer */}
+            {/* Body paragraph 2 */}
             <motion.p
-              className="font-ui mb-6"
-              style={{ fontSize: '11px', color: 'var(--muted)', lineHeight: 1.6, fontStyle: 'italic' }}
+              className="mb-8"
+              style={{ fontSize: '14px', color: '#0d1b2e', lineHeight: 1.75, opacity: 0.85 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.28 }}
+            >
+              Where there is a suitable fit, we connect you with relevant capital providers and help keep the conversation moving — whether you are seeking business finance without giving up equity or bringing investors into the next stage of growth.
+            </motion.p>
+
+            {/* Inline labels */}
+            <motion.div
+              className="flex flex-wrap gap-6 mb-5 pb-5"
+              style={{ borderBottom: '1px solid rgba(13,27,46,0.2)' }}
               initial={{ opacity: 0, y: 12 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.35 }}
             >
-              Introductions depend on fit and availability. Funding is never guaranteed; regulated advice or arranging is handled by appropriately authorised parties where required.
-            </motion.p>
+              {['Debt Finance', 'Equity Investment', 'Relevant Introductions']?.map((label) => (
+                <span
+                  key={label}
+                  className="font-ui"
+                  style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: '#0d1b2e', fontWeight: 700 }}
+                >
+                  {label}
+                </span>
+              ))}
+            </motion.div>
 
-            {/* CTA link */}
-            <motion.a
-              href="#get-started"
-              onClick={handleCTA}
-              className="inline-flex items-center gap-2 font-ui"
-              style={{
-                fontSize: '11px',
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-                color: 'var(--primary)',
-                borderBottom: '1px solid var(--primary)',
-                paddingBottom: '3px',
-                cursor: 'pointer',
-                textDecoration: 'none',
-              }}
+            {/* Disclaimer */}
+            <motion.p
+              className="font-ui mb-8"
+              style={{ fontSize: '10px', color: '#0d1b2e', lineHeight: 1.65, opacity: 0.55 }}
               initial={{ opacity: 0, y: 12 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Discuss funding support →
+              Reckonwell does not lend or invest directly and cannot guarantee an introduction or funding. Decisions remain with lenders and investors; regulated activity is handled by appropriately authorised parties where required.
+            </motion.p>
+
+            {/* CTA link */}
+            <motion.a
+              href="/contact"
+              className="inline-flex items-center gap-2 font-ui"
+              style={{
+                fontSize: '10px',
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: '#0d1b2e',
+                borderBottom: '1px solid #0d1b2e',
+                paddingBottom: '3px',
+                textDecoration: 'none',
+              }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.45 }}
+            >
+              Discuss Access to Capital →
             </motion.a>
           </div>
 
@@ -105,58 +120,69 @@ export default function FundraisingCapitalSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-col mt-2 md:mt-0"
+            className="flex flex-col"
             style={{
-              border: '1px solid var(--border)',
-              backgroundColor: 'var(--card)',
-              padding: '28px',
+              border: '1px solid rgba(13,27,46,0.18)',
+              backgroundColor: '#f5ede0',
+              padding: '32px',
             }}
           >
-            {/* Inline SVG illustration */}
-            <div className="flex items-center justify-center" style={{ minHeight: '260px' }}>
+            <div
+              className="flex items-center justify-center"
+              style={{
+                minHeight: '300px',
+                border: '1px solid rgba(13,27,46,0.12)',
+                backgroundColor: '#f9f3ea',
+                padding: '24px',
+              }}
+            >
               <svg
-                viewBox="0 0 320 220"
+                viewBox="0 0 340 240"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                style={{ width: '100%', maxWidth: '340px', height: 'auto' }}
-                aria-label="Financial story to investor conversation: document with chart connecting to investor network"
+                style={{ width: '100%', maxWidth: '360px', height: 'auto' }}
+                aria-label="Connecting companies and capital: document with chart connecting to investor network"
               >
                 {/* Main document */}
-                <rect x="60" y="30" width="130" height="160" rx="3" fill="#F6E9D8" stroke="#12233F" strokeWidth="1.2" strokeOpacity="0.5" />
-                <rect x="75" y="50" width="100" height="8" rx="1" fill="#12233F" fillOpacity="0.15" />
-                <rect x="75" y="65" width="80" height="6" rx="1" fill="#12233F" fillOpacity="0.1" />
+                <rect x="50" y="25" width="140" height="175" rx="3" fill="#f5ede0" stroke="#0d1b2e" strokeWidth="1.2" strokeOpacity="0.4" />
+                <rect x="68" y="48" width="104" height="8" rx="1" fill="#0d1b2e" fillOpacity="0.15" />
+                <rect x="68" y="62" width="80" height="5" rx="1" fill="#0d1b2e" fillOpacity="0.1" />
                 {/* Bar chart inside doc */}
-                <rect x="80" y="100" width="14" height="50" rx="1" fill="#12233F" fillOpacity="0.25" />
-                <rect x="100" y="85" width="14" height="65" rx="1" fill="#12233F" fillOpacity="0.35" />
-                <rect x="120" y="75" width="14" height="75" rx="1" fill="#12233F" fillOpacity="0.5" />
-                <rect x="140" y="90" width="14" height="60" rx="1" fill="#12233F" fillOpacity="0.4" />
+                <rect x="72" y="108" width="16" height="52" rx="1" fill="#0d1b2e" fillOpacity="0.2" />
+                <rect x="94" y="92" width="16" height="68" rx="1" fill="#0d1b2e" fillOpacity="0.3" />
+                <rect x="116" y="80" width="16" height="80" rx="1" fill="#0d1b2e" fillOpacity="0.45" />
+                <rect x="138" y="96" width="16" height="64" rx="1" fill="#0d1b2e" fillOpacity="0.35" />
+                {/* Baseline */}
+                <line x1="68" y1="162" x2="168" y2="162" stroke="#0d1b2e" strokeWidth="0.8" strokeOpacity="0.25" />
                 {/* Checkmark circle top-right of doc */}
-                <circle cx="175" cy="45" r="16" fill="#F6E9D8" stroke="#12233F" strokeWidth="1.2" strokeOpacity="0.5" />
-                <path d="M168 45 L173 50 L182 40" stroke="#12233F" strokeWidth="1.5" strokeOpacity="0.7" strokeLinecap="round" strokeLinejoin="round" />
-                {/* Dashed lines to investor circles */}
-                <line x1="200" y1="110" x2="245" y2="80" stroke="#12233F" strokeWidth="1" strokeDasharray="5 4" strokeOpacity="0.4" />
-                <line x1="200" y1="130" x2="245" y2="155" stroke="#12233F" strokeWidth="1" strokeDasharray="5 4" strokeOpacity="0.4" />
-                <line x1="200" y1="130" x2="285" y2="140" stroke="#12233F" strokeWidth="1" strokeDasharray="5 4" strokeOpacity="0.4" />
-                {/* Investor circles */}
-                <circle cx="255" cy="70" r="22" fill="#F6E9D8" stroke="#12233F" strokeWidth="1.2" strokeOpacity="0.5" />
-                <circle cx="255" cy="62" r="7" fill="none" stroke="#12233F" strokeWidth="1" strokeOpacity="0.5" />
-                <path d="M242 82 Q255 75 268 82" stroke="#12233F" strokeWidth="1" strokeOpacity="0.5" fill="none" />
-                <circle cx="255" cy="158" r="20" fill="#F6E9D8" stroke="#12233F" strokeWidth="1.2" strokeOpacity="0.5" />
-                <circle cx="255" cy="150" r="7" fill="none" stroke="#12233F" strokeWidth="1" strokeOpacity="0.5" />
-                <path d="M243 170 Q255 163 267 170" stroke="#12233F" strokeWidth="1" strokeOpacity="0.5" fill="none" />
-                <circle cx="292" cy="138" r="18" fill="#F6E9D8" stroke="#12233F" strokeWidth="1.2" strokeOpacity="0.5" />
-                <circle cx="292" cy="131" r="6" fill="none" stroke="#12233F" strokeWidth="1" strokeOpacity="0.5" />
-                <path d="M281 148 Q292 142 303 148" stroke="#12233F" strokeWidth="1" strokeOpacity="0.5" fill="none" />
+                <circle cx="178" cy="42" r="18" fill="#f5ede0" stroke="#0d1b2e" strokeWidth="1.2" strokeOpacity="0.4" />
+                <path d="M170 42 L176 48 L186 36" stroke="#0d1b2e" strokeWidth="1.6" strokeOpacity="0.6" strokeLinecap="round" strokeLinejoin="round" />
+                {/* Dashed connector lines */}
+                <line x1="205" y1="105" x2="252" y2="75" stroke="#0d1b2e" strokeWidth="1" strokeDasharray="5 4" strokeOpacity="0.35" />
+                <line x1="205" y1="125" x2="252" y2="162" stroke="#0d1b2e" strokeWidth="1" strokeDasharray="5 4" strokeOpacity="0.35" />
+                <line x1="205" y1="125" x2="295" y2="148" stroke="#0d1b2e" strokeWidth="1" strokeDasharray="5 4" strokeOpacity="0.35" />
+                {/* Top investor circle */}
+                <circle cx="264" cy="65" r="24" fill="#e3e7ed" stroke="#0d1b2e" strokeWidth="1.2" strokeOpacity="0.4" />
+                <circle cx="264" cy="57" r="8" fill="none" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.5" />
+                <path d="M250 79 Q264 72 278 79" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.5" fill="none" />
+                {/* Bottom-left investor circle */}
+                <circle cx="258" cy="168" r="22" fill="#f5ede0" stroke="#0d1b2e" strokeWidth="1.2" strokeOpacity="0.4" />
+                <circle cx="258" cy="160" r="7" fill="none" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.5" />
+                <path d="M246 178 Q258 172 270 178" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.5" fill="none" />
+                {/* Bottom-right investor circle */}
+                <circle cx="300" cy="148" r="20" fill="#f5ede0" stroke="#0d1b2e" strokeWidth="1.2" strokeOpacity="0.4" />
+                <circle cx="300" cy="141" r="7" fill="none" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.5" />
+                <path d="M289 158 Q300 152 311 158" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.5" fill="none" />
                 {/* Currency symbol top right */}
-                <circle cx="295" cy="45" r="18" fill="#E3E7ED" stroke="#12233F" strokeWidth="1" strokeOpacity="0.3" />
-                <text x="295" y="51" textAnchor="middle" fontSize="14" fill="#12233F" fillOpacity="0.5" fontFamily="serif">₮</text>
+                <circle cx="308" cy="38" r="20" fill="#e3e7ed" stroke="#0d1b2e" strokeWidth="1" strokeOpacity="0.3" />
+                <text x="308" y="45" textAnchor="middle" fontSize="15" fill="#0d1b2e" fillOpacity="0.45" fontFamily="serif">₮</text>
               </svg>
             </div>
             <p
               className="font-ui mt-4"
-              style={{ fontSize: '9px', letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--muted)' }}
+              style={{ fontSize: '9px', letterSpacing: '2.5px', textTransform: 'uppercase', color: '#1a6b6b' }}
             >
-              From financial story to conversation
+              Connecting Companies and Capital
             </p>
           </motion.div>
         </div>
