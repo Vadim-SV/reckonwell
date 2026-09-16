@@ -139,12 +139,6 @@ export default function PersonalisedProactiveSection() {
                 style={{ width: '100%', height: 'auto', maxWidth: '400px' }}
               />
             </div>
-            <p
-              className="font-ui mt-4"
-              style={{ fontSize: '9px', letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--muted)' }}
-            >
-              Attention before the surprise
-            </p>
           </motion.div>
         </div>
       </div>
