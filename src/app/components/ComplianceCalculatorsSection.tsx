@@ -50,43 +50,26 @@ export default function ComplianceCalculatorsSection() {
         {/* Header row */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
           <motion.div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-end',
+            }}
             initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <p
-              className="font-ui mb-2"
-              style={{
-                fontSize: '10px',
-                letterSpacing: '2.5px',
-                textTransform: 'uppercase',
-                color: 'var(--muted)',
-              }}
-            >
-              Need one specific service?
-            </p>
             <h2
-              className="font-display"
               style={{
-                fontSize: 'clamp(28px, 4vw, 48px)',
-                fontWeight: 400,
-                color: 'var(--primary)',
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontWeight: 700,
                 lineHeight: 1.1,
+                textAlign: 'right',
               }}
             >
               Compliance, sorted.
             </h2>
           </motion.div>
-
-          <motion.p
-            className="md:text-right md:max-w-xs"
-            style={{ fontSize: '13px', color: '#C17A3A', lineHeight: 1.5 }}
-            initial={{ opacity: 0, y: 12 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            If your need is a filing or a tax service, go straight to the relevant Reckonwell quote calculator.
-          </motion.p>
         </div>
 
         {/* Cards grid */}
