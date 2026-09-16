@@ -82,7 +82,7 @@ const industries: Industry[] = [
 export default function IndustriesSection() {
   return (
     <section
-      style={{ backgroundColor: '#f5ede0' }}
+      style={{ backgroundColor: 'var(--background)' }}
       className="py-20 px-6 md:px-16"
     >
       <div className="max-w-5xl mx-auto">

@@ -12,7 +12,7 @@ export default function FundraisingCapitalSection() {
       id="fundraising-capital"
       ref={ref}
       className="py-20 md:py-28 px-6 md:px-16"
-      style={{ backgroundColor: '#f5ede0' }}
+      style={{ backgroundColor: 'var(--background)' }}
       aria-label="Debt and equity finance">
 
       <div className="max-w-5xl mx-auto">
@@ -187,6 +187,7 @@ export default function FundraisingCapitalSection() {
           </motion.div>
         </div>
       </div>
-    </section>);
+    </section>
+  );
 
 }
