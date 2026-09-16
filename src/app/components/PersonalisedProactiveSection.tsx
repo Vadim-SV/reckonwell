@@ -33,15 +33,6 @@ export default function PersonalisedProactiveSection() {
 
       <div className="max-w-5xl mx-auto">
         {/* Eyebrow */}
-        <motion.p
-          className="font-ui mb-4 md:mb-5"
-          style={{ fontSize: '10px', letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--muted)' }}
-          initial={{ opacity: 0, y: 12 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}>THE WAY WE WORK
-
-
-        </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
           {/* Left: text */}
@@ -142,6 +133,7 @@ export default function PersonalisedProactiveSection() {
           </motion.div>
         </div>
       </div>
-    </section>);
+    </section>
+  );
 
 }
