@@ -6,16 +6,16 @@ import Image from 'next/image';
 
 const points = [
   {
-    title: 'Your cadence',
-    body: 'Weekly call, monthly review or timely alerts.',
+    title: 'Easy to reach',
+    body: 'Approachable support over email and WhatsApp.',
   },
   {
-    title: 'Early visibility',
-    body: 'Know what has changed and what needs a decision.',
+    title: 'Proactive oversight',
+    body: 'Cash flow and spending monitored as the business moves.',
   },
   {
-    title: 'Named contact',
-    body: 'Speak to someone who knows the context.',
+    title: 'Finance-team thinking',
+    body: 'Practical input from people who know the context.',
   },
 ];
 
@@ -23,23 +23,13 @@ export default function PersonalisedProactiveSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
-  const handleCTA = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const el = document.getElementById('get-started');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      const event = new CustomEvent('prefill-service', { detail: 'daily' });
-      window.dispatchEvent(event);
-    }
-  };
-
   return (
     <section
       id="personalised-proactive"
       ref={ref}
       className="py-20 md:py-24 px-6 md:px-16"
       style={{ backgroundColor: 'var(--background)' }}
-      aria-label="Personalised finance support"
+      aria-label="The way we work"
     >
       <div className="max-w-5xl mx-auto">
         {/* Eyebrow */}
@@ -50,7 +40,7 @@ export default function PersonalisedProactiveSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          01 / The way we work
+          01 / The Way We Work
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
@@ -63,8 +53,10 @@ export default function PersonalisedProactiveSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              Your finance support,{' '}
-              <em style={{ fontStyle: 'italic', color: 'var(--secondary)' }}>built around you.</em>
+              An accountant who answers{' '}
+              <em style={{ fontStyle: 'italic', color: 'var(--secondary)' }}>
+                – and acts before you ask.
+              </em>
             </motion.h2>
 
             <motion.p
@@ -74,7 +66,7 @@ export default function PersonalisedProactiveSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              Tell us what you want taken off your plate and how you prefer to work. We tailor the package, contact and reporting to your business instead of asking you to fit a fixed accounting schedule.
+              Founders should not have to chase their accountant for a reply or discover a cash problem weeks after it happened. With Reckonwell, you can reach your finance team by email or WhatsApp and speak to someone who already understands your business.
             </motion.p>
             <motion.p
               className="mb-8 md:mb-10"
@@ -83,7 +75,7 @@ export default function PersonalisedProactiveSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.25 }}
             >
-              Behind the scenes, we stay close to the numbers every working day. Cash, transactions and overdue invoices are reviewed as the business moves, so a question can be raised while you still have time to act.
+              We keep an eye on the numbers every working day — tracking cash flow, watching for overspending and flagging overdue invoices or unusual movements early. It is the access, attention and commercial awareness you would expect from an in-house finance department, without having to build one.
             </motion.p>
 
             {/* Three mini points */}
@@ -94,13 +86,13 @@ export default function PersonalisedProactiveSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              {points.map((pt) => (
-                <div key={pt.title}>
+              {points?.map((pt) => (
+                <div key={pt?.title}>
                   <p className="font-ui mb-1" style={{ fontSize: '11px', fontWeight: 600, color: 'var(--primary)', letterSpacing: '0.3px' }}>
-                    {pt.title}
+                    {pt?.title}
                   </p>
                   <p style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: 1.5 }}>
-                    {pt.body}
+                    {pt?.body}
                   </p>
                 </div>
               ))}
@@ -108,8 +100,7 @@ export default function PersonalisedProactiveSection() {
 
             {/* CTA link */}
             <motion.a
-              href="#get-started"
-              onClick={handleCTA}
+              href="/contact"
               className="inline-flex items-center gap-2 font-ui"
               style={{
                 fontSize: '11px',
@@ -125,7 +116,7 @@ export default function PersonalisedProactiveSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.38 }}
             >
-              Discuss tailored oversight →
+              Talk to your finance team →
             </motion.a>
           </div>
 
@@ -144,7 +135,7 @@ export default function PersonalisedProactiveSection() {
             <div className="flex items-center justify-center" style={{ minHeight: '260px' }}>
               <Image
                 src="/assets/proactive-finance-oversight.svg"
-                alt="Diagram showing proactive daily financial oversight with real-time alerts"
+                alt="Dashboard illustration showing proactive finance monitoring with alerts and cash flow tracking"
                 width={400}
                 height={280}
                 style={{ width: '100%', height: 'auto', maxWidth: '400px' }}
