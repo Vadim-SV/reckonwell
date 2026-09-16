@@ -62,20 +62,6 @@ export default function FinanceFunctionSection() {
           {/* Right: text */}
           <div>
             {/* Eyebrow */}
-            <motion.p
-              className="font-ui mb-4 md:mb-5"
-              style={{
-                fontSize: '10px',
-                letterSpacing: '2.5px',
-                textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.5)'
-              }}
-              initial={{ opacity: 0, y: 12 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}>FINANCE CONTROL FOR AI
-
-
-            </motion.p>
 
             <motion.h2
               className="font-display mb-6 md:mb-8"
