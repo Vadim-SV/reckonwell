@@ -16,17 +16,6 @@ export default function FundraisingCapitalSection() {
       aria-label="Debt and equity finance">
 
       <div className="max-w-5xl mx-auto">
-        {/* Eyebrow */}
-        <motion.p
-          className="font-ui mb-5 text-[rgba(102,96,92,1)]"
-          style={{ fontSize: '10px', letterSpacing: '2.5px', textTransform: 'uppercase', color: '#1a6b6b' }}
-          initial={{ opacity: 0, y: 12 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}>DEBT & EQUITY FINANCE
-
-
-        </motion.p>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
           {/* Left: text */}
           <div>
