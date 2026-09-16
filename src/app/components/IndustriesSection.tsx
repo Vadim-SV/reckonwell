@@ -83,9 +83,9 @@ export default function IndustriesSection() {
   return (
     <section
       style={{ backgroundColor: '#f5ede0' }}
-      className="py-20 px-6 md:px-12 lg:px-20"
+      className="py-20 px-6 md:px-16"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Top: eyebrow + headline left, paragraph right */}
         <div className="flex flex-col lg:flex-row lg:items-end gap-8 mb-14">
           <div className="lg:w-1/2">

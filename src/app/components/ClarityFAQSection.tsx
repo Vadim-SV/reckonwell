@@ -48,7 +48,7 @@ export default function ClarityFAQSection() {
       className="py-16 md:py-24 px-5 md:px-16"
       aria-label="Questions and answers"
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row md:gap-16 lg:gap-24">
           {/* Left column — heading */}
           <div className="md:w-2/5 lg:w-1/3 mb-10 md:mb-0 flex-shrink-0">

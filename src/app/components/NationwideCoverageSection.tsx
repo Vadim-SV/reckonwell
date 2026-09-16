@@ -41,7 +41,7 @@ export default function NationwideCoverageSection() {
       className="py-12 md:py-18"
       aria-label="Nationwide coverage"
     >
-      <div className="max-w-5xl mx-auto px-5 md:px-10">
+      <div className="max-w-5xl mx-auto px-6 md:px-16">
         {/* Label */}
         <p
           className="section-label mb-3"

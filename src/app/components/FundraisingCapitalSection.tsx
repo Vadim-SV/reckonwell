@@ -15,7 +15,7 @@ export default function FundraisingCapitalSection() {
       style={{ backgroundColor: '#f5ede0' }}
       aria-label="Debt and equity finance"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Eyebrow */}
         <motion.p
           className="font-ui mb-5"
