@@ -56,17 +56,7 @@ export default function FinanceFunctionSection() {
                 style={{ width: '100%', height: 'auto', maxWidth: '400px' }} />
 
             </div>
-            <p
-              className="font-ui mt-4"
-              style={{
-                fontSize: '9px',
-                letterSpacing: '2.5px',
-                textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.45)'
-              }}>
 
-              Automation with accountable checks
-            </p>
           </motion.div>
 
           {/* Right: text */}
