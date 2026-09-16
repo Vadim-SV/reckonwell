@@ -134,7 +134,7 @@ export default function PersonalisedProactiveSection() {
           >
             <div className="flex items-center justify-center" style={{ minHeight: '260px' }}>
               <Image
-                src="/assets/proactive-finance-oversight.svg"
+                src="/assets/images/Image_Sep_13__2026__11_58_09_PM-1789543557327.png"
                 alt="Dashboard illustration showing proactive finance monitoring with alerts and cash flow tracking"
                 width={400}
                 height={280}
