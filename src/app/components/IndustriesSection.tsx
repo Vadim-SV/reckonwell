@@ -104,7 +104,7 @@ export default function IndustriesSection() {
           </div>
           <div className="lg:w-1/2 lg:pl-16 lg:pb-2">
             <p
-              className="text-base leading-relaxed"
+              className="text-base leading-relaxed text-[rgba(102,96,92,1)]"
               style={{ color: '#2a7c8a' }}>
 
               Different industries create different financial pressures. We combine day-to-day accounting with an understanding of the numbers, systems and controls that matter to your business.
