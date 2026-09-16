@@ -49,8 +49,8 @@ export default function FinanceFunctionSection() {
               }}>
 
               <Image
-                src="/assets/outsourced-finance-function.svg"
-                alt="Diagram showing automation with accountable checks — finance workflows connected through a central dashboard with verification nodes"
+                src="/assets/images/Image_Sep_16__2026__11_10_08_PM-1789597368697.png"
+                alt="Finance control for AI — human oversight layer around automated finance workflows"
                 width={400}
                 height={280}
                 style={{ width: '100%', height: 'auto', maxWidth: '400px' }} />
@@ -183,6 +183,7 @@ export default function FinanceFunctionSection() {
           </div>
         </div>
       </div>
-    </section>);
+    </section>
+  );
 
 }
