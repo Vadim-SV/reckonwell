@@ -62,20 +62,6 @@ export default function ReadyToThinkSection() {
         {/* Section heading row */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-10 md:mb-14">
           <div>
-            <motion.p
-              className="font-ui mb-3"
-              style={{
-                fontSize: '10px',
-                letterSpacing: '2.5px',
-                textTransform: 'uppercase',
-                color: 'var(--muted)'
-              }}
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}>
-
-              Get Started
-            </motion.p>
             <motion.h2
               className="font-display"
               style={{
