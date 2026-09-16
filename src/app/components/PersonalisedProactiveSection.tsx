@@ -127,8 +127,6 @@ export default function PersonalisedProactiveSection() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="flex flex-col mt-2 md:mt-0"
             style={{
-              border: '1px solid var(--border)',
-              backgroundColor: 'var(--card)',
               padding: '28px',
             }}
           >
