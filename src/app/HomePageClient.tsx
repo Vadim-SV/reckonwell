@@ -7,6 +7,7 @@ import HeroSection from '@/app/components/HeroSection';
 import PersonalisedProactiveSection from '@/app/components/PersonalisedProactiveSection';
 import FinanceFunctionSection from '@/app/components/FinanceFunctionSection';
 import FundraisingCapitalSection from '@/app/components/FundraisingCapitalSection';
+import IndustriesSection from '@/app/components/IndustriesSection';
 import NationwideCoverageSection from '@/app/components/NationwideCoverageSection';
 import FounderSection from '@/app/components/FounderSection';
 import ClarityFAQSection from '@/app/components/ClarityFAQSection';
@@ -72,6 +73,11 @@ export default function HomePageClient() {
           {/* 4. Fundraising support */}
           <section role="region" aria-label="Fundraising and capital">
             <FundraisingCapitalSection />
+          </section>
+
+          {/* 4a. Industries we work with */}
+          <section role="region" aria-label="Industries we work with">
+            <IndustriesSection />
           </section>
 
           {/* 4b. Pricing banner strip — right scope for your business */}
