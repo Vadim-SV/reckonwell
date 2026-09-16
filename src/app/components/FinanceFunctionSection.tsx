@@ -45,7 +45,7 @@ export default function FinanceFunctionSection() {
               style={{
                 backgroundColor: '#f5ede0',
                 padding: '32px',
-                minHeight: '320px',
+                minHeight: '200px',
               }}
             >
               <Image
@@ -134,7 +134,7 @@ export default function FinanceFunctionSection() {
               {rows?.map((row, i) => (
                 <div
                   key={row?.label}
-                  className="grid gap-4 py-4"
+                  className="flex flex-col sm:grid gap-2 sm:gap-4 py-4"
                   style={{
                     gridTemplateColumns: '120px 1fr',
                     borderTop: '1px solid rgba(255,255,255,0.15)',

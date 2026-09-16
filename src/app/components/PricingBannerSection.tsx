@@ -62,7 +62,7 @@ export default function PricingBannerSection() {
 
           <a
             href="/quotation-calculator"
-            className="font-ui inline-flex items-center gap-2"
+            className="font-ui inline-flex items-center justify-center gap-2 w-full sm:w-auto"
             style={{
               backgroundColor: 'var(--primary)',
               color: '#FFFFFF',

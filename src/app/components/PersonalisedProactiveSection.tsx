@@ -80,7 +80,7 @@ export default function PersonalisedProactiveSection() {
 
             {/* Three mini points */}
             <motion.div
-              className="grid grid-cols-3 gap-4 mb-8"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"
               style={{ borderTop: '1px solid var(--border)', paddingTop: '20px' }}
               initial={{ opacity: 0, y: 12 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}

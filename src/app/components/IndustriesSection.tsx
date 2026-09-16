@@ -96,8 +96,8 @@ export default function IndustriesSection() {
               INDUSTRIES WE WORK WITH
             </p>
             <h2
-              className="text-5xl md:text-6xl leading-tight font-serif"
-              style={{ color: '#0d1b2e' }}
+              className="leading-tight font-serif"
+              style={{ color: '#0d1b2e', fontSize: 'clamp(32px, 5vw, 60px)' }}
             >
               Finance support shaped around how your business operates.
             </h2>
@@ -113,7 +113,7 @@ export default function IndustriesSection() {
         </div>
 
         {/* Industry cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {industries.map((industry) => (
             <div
               key={industry.name}

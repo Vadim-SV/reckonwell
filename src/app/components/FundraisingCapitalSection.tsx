@@ -130,7 +130,7 @@ export default function FundraisingCapitalSection() {
             <div
               className="flex items-center justify-center"
               style={{
-                minHeight: '300px',
+                minHeight: '200px',
                 border: '1px solid rgba(13,27,46,0.12)',
                 backgroundColor: '#f9f3ea',
                 padding: '24px',

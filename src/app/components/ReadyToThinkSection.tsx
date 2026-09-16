@@ -122,7 +122,10 @@ export default function ReadyToThinkSection() {
           {/* Left panel */}
           <div
             className="p-7 md:p-10 flex flex-col justify-between"
-            style={{ borderRight: '1px solid #D6D8E0' }}>
+            style={{ borderBottom: '1px solid #D6D8E0', borderRight: 'none' }}
+            data-panel="left"
+          >
+            <style>{`@media (min-width: 768px) { [data-panel="left"] { border-bottom: none !important; border-right: 1px solid #D6D8E0 !important; } }`}</style>
 
             <div>
               <p
@@ -194,7 +197,7 @@ export default function ReadyToThinkSection() {
                         color: isActive ? '#fff' : 'var(--foreground)',
                         cursor: 'pointer',
                         minHeight: '40px',
-                        whiteSpace: 'nowrap'
+                        whiteSpace: 'normal'
                       }}>
 
                       {option.label}
