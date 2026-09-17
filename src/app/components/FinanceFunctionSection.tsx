@@ -49,7 +49,7 @@ export default function FinanceFunctionSection() {
               }}>
 
               <Image
-                src="/assets/images/Image_Sep_16__2026__11_10_08_PM-1789597368697.png"
+                src="/assets/images/Image_Sep_17__2026__12_57_33_AM-1789603570277.png"
                 alt="Finance control for AI — human oversight layer around automated finance workflows"
                 width={400}
                 height={280}
