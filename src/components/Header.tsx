@@ -126,7 +126,7 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-5 md:px-10 h-16 md:h-20 flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-3 group" aria-label="Reckonwell home">
+          <a href="/" className="flex items-center gap-3 group" aria-label="Reckonwell home" style={{ marginLeft: '-8px' }}>
             <img
               src="/assets/images/reckonwell-high-resolution-logo-grayscale-transparent-1786798505479.png"
               alt="Reckonwell"
