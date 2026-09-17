@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 
 export default function FundraisingCapitalSection() {
   const ref = useRef(null);
@@ -103,6 +104,21 @@ export default function FundraisingCapitalSection() {
               Discuss Access to Capital →
             </motion.a>
           </div>
+
+          {/* Right: image */}
+          <motion.div
+            className="flex items-start justify-center"
+            initial={{ opacity: 0, x: 20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}>
+            <Image
+              src="/assets/images/Image_Sep_17__2026__12_52_59_AM-1789603804497.png"
+              alt="The bridge between growing companies and capital"
+              width={520}
+              height={420}
+              className="w-full h-auto object-contain"
+            />
+          </motion.div>
 
         </div>
       </div>
