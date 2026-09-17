@@ -21,7 +21,7 @@ const rows = [
 
 export default function FinanceFunctionSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <section

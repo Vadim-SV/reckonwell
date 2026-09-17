@@ -35,7 +35,7 @@ const serviceFitOptions = [
 
 export default function ReadyToThinkSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [selected, setSelected] = useState<string>('capital');
 
   const selectedOption = serviceFitOptions.find((o) => o.id === selected) ?? serviceFitOptions[2];

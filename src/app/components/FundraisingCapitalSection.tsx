@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function FundraisingCapitalSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <section
