@@ -38,7 +38,7 @@ export default function FinanceFunctionSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex flex-col">
+            className="flex flex-col order-2 md:order-1">
 
             <div
               className="flex items-center justify-center"
@@ -60,7 +60,7 @@ export default function FinanceFunctionSection() {
           </motion.div>
 
           {/* Right: text */}
-          <div>
+          <div className="order-1 md:order-2">
             {/* Eyebrow */}
 
             <motion.h2
