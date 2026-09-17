@@ -2,21 +2,22 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 
-const cards = [
-  {
-    title: 'YOUR SCHEDULE, NOT OURS',
-    body: 'Weekly calls, monthly reviews or simply an alert when something needs your attention.',
-  },
-  {
-    title: 'SOMEONE WHO KNOWS YOUR NUMBERS',
-    body: 'Direct access to someone who understands your business rather than starting from scratch every time you need help.',
-  },
-  {
-    title: 'PROBLEMS SPOTTED EARLY',
-    body: 'We keep an eye on the numbers throughout the year, not just when accounts or tax returns are due.',
-  },
-];
+const points = [
+{
+  title: 'Easy to reach',
+  body: 'Approachable support over email and WhatsApp.'
+},
+{
+  title: 'Proactive oversight',
+  body: 'Cash flow and spending monitored as the business moves.'
+},
+{
+  title: 'Finance-team thinking',
+  body: 'Practical input from people who know the context.'
+}];
+
 
 export default function PersonalisedProactiveSection() {
   const ref = useRef(null);
@@ -26,162 +27,113 @@ export default function PersonalisedProactiveSection() {
     <section
       id="personalised-proactive"
       ref={ref}
-      className="py-14 md:py-28 px-5 md:px-10"
+      className="py-20 md:py-24 px-6 md:px-16"
       style={{ backgroundColor: 'var(--background)' }}
-      aria-label="Personalised and Proactive"
-    >
-      <div className="max-w-7xl mx-auto">
-        {/* Kicker */}
-        <motion.p
-          className="section-label mb-4 md:mb-6"
-          initial={{ opacity: 0, y: 12 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          The Way We Work
-        </motion.p>
+      aria-label="The way we work">
 
-        {/* Headline */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-start mb-10 md:mb-20">
+      <div className="max-w-5xl mx-auto">
+        {/* Eyebrow */}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
+          {/* Left: text */}
           <div>
             <motion.h2
-              className="section-h2-medium mb-5 md:mb-8"
+              className="font-display mb-6 md:mb-8"
+              style={{ fontSize: 'clamp(36px, 4.5vw, 58px)', fontWeight: 400, color: 'var(--primary)', lineHeight: 1.1 }}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              Most accountants tell you{' '}
-              <span className="gold-italic">what happened.</span>
-              <br />
-              We help you see{' '}
-              <span className="gold-italic">what&apos;s happening.</span>
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
+
+              An accountant who answers{' '}
+              <em style={{ fontStyle: 'italic', color: 'var(--secondary)' }}>
+                – and acts before you ask.
+              </em>
             </motion.h2>
 
             <motion.p
-              className="body-text-rw mb-5"
+              className="mb-4"
+              style={{ fontSize: '14px', color: 'var(--body-text)', lineHeight: 1.7 }}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              Once we understand how your business operates, we build the service around you.
+              transition={{ duration: 0.7, delay: 0.2 }}>
+
+              Founders should not have to chase their accountant for a reply or discover a cash problem weeks after it happened. With Reckonwell, you can reach your finance team by email or WhatsApp and speak to someone who already understands your business.
             </motion.p>
             <motion.p
-              className="body-text-rw"
+              className="mb-8 md:mb-10"
+              style={{ fontSize: '14px', color: 'var(--body-text)', lineHeight: 1.7 }}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.25 }}
-            >
-              We keep an eye on cash flow, spending, budgets and forecasts, and stay as involved as you need us to be — weekly, monthly or whenever something needs attention.
+              transition={{ duration: 0.7, delay: 0.25 }}>
+
+              We keep an eye on the numbers every working day — tracking cash flow, watching for overspending and flagging overdue invoices or unusual movements early. It is the access, attention and commercial awareness you would expect from an in-house finance department, without having to build one.
             </motion.p>
+
+            {/* Three mini points */}
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"
+              style={{ borderTop: '1px solid var(--border)', paddingTop: '20px' }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}>
+
+              {points?.map((pt) =>
+              <div key={pt?.title}>
+                  <p className="font-ui mb-1" style={{ fontSize: '11px', fontWeight: 600, color: 'var(--primary)', letterSpacing: '0.3px' }}>
+                    {pt?.title}
+                  </p>
+                  <p style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: 1.5 }}>
+                    {pt?.body}
+                  </p>
+                </div>
+              )}
+            </motion.div>
+
+            {/* CTA link */}
+            <motion.a
+              href="/book"
+              className="inline-flex items-center gap-2 font-ui"
+              style={{
+                fontSize: '11px',
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: 'var(--primary)',
+                borderBottom: '1px solid var(--primary)',
+                paddingBottom: '3px',
+                cursor: 'pointer',
+                textDecoration: 'none'
+              }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.38 }}>
+
+              Talk to your finance team →
+            </motion.a>
           </div>
 
-          {/* Cash flow visibility visual */}
+          {/* Right: illustration in bordered frame */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="rounded-sm overflow-hidden mt-2 md:mt-0"
-            style={{ border: '1px solid var(--border-subtle)', backgroundColor: 'var(--card)' }}
-          >
-            <div className="p-5 md:p-8">
-              <p
-                className="font-ui mb-5 md:mb-6"
-                style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--muted)' }}
-              >
-                Cash Position Visibility
-              </p>
+            className="flex flex-col mt-2 md:mt-0"
+            style={{
+              padding: '28px'
+            }}>
 
-              {/* Traditional accountant row */}
-              <div className="mb-5 md:mb-6">
-                <p
-                  className="font-ui mb-3"
-                  style={{ fontSize: '9px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--muted)' }}
-                >
-                  Traditional Accountant
-                </p>
-                <div className="flex items-center gap-1.5 mb-2">
-                  {[1, 2, 3, 4, 5, 6, 7, 8]?.map((i) => (
-                    <div
-                      key={i}
-                      style={{
-                        flex: 1,
-                        height: '6px',
-                        borderRadius: '2px',
-                        backgroundColor: i <= 6 ? 'var(--border)' : '#8C3D2B',
-                        opacity: i <= 6 ? 0.3 : 1,
-                      }}
-                    />
-                  ))}
-                </div>
-                <p
-                  className="font-ui"
-                  style={{ fontSize: '10px', color: '#8C3D2B', letterSpacing: '0.5px' }}
-                >
-                  Cash problem discovered weeks later
-                </p>
-              </div>
+            <div className="flex items-center justify-center" style={{ minHeight: '260px' }}>
+              <Image
+                src="/assets/images/Image_Sep_17__2026__12_52_40_AM-1789603119353.png"
+                alt="Dashboard illustration showing proactive finance monitoring with alerts and cash flow tracking"
+                width={400}
+                height={280}
+                style={{ width: '100%', height: 'auto', maxWidth: '400px' }} />
 
-              {/* Divider */}
-              <div style={{ height: '1px', backgroundColor: 'var(--border-subtle)', marginBottom: '20px' }} />
-
-              {/* Reckonwell row */}
-              <div>
-                <p
-                  className="font-ui mb-3"
-                  style={{ fontSize: '9px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--primary)' }}
-                >
-                  Reckonwell
-                </p>
-                <div className="flex items-center gap-1.5 mb-2">
-                  {[1, 2, 3, 4, 5, 6, 7, 8]?.map((i) => (
-                    <div
-                      key={i}
-                      style={{
-                        flex: 1,
-                        height: '6px',
-                        borderRadius: '2px',
-                        backgroundColor: i === 3 ? '#2D6A4F' : 'var(--primary)',
-                        opacity: i === 3 ? 1 : i < 3 ? 0.8 : 0.2,
-                      }}
-                    />
-                  ))}
-                </div>
-                <p
-                  className="font-ui"
-                  style={{ fontSize: '10px', color: '#2D6A4F', letterSpacing: '0.5px' }}
-                >
-                  Cash issue identified early and flagged
-                </p>
-              </div>
             </div>
           </motion.div>
-        </div>
-
-        {/* 3 Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-          {cards?.map((card, i) => (
-            <motion.div
-              key={card?.title}
-              className="solution-card"
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="relative z-10">
-                <p
-                  className="font-ui mb-3"
-                  style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 400 }}
-                >
-                  {card?.title}
-                </p>
-                <p className="body-text-rw" style={{ fontSize: '14px' }}>
-                  {card?.body}
-                </p>
-              </div>
-            </motion.div>
-          ))}
         </div>
       </div>
     </section>
   );
+
 }

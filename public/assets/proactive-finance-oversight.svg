@@ -1,0 +1,349 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <!-- Color Palette:
+         Reckonwell Navy: #12233F
+         Warm Ivory: #FFF1E0
+         Advisory Blue: #275E86
+         Parchment: #F6E9D8
+    -->
+
+    <!-- Background Gradient -->
+    <radialGradient id="bg-grad" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#FFF1E0" />
+      <stop offset="100%" stop-color="#F6E9D8" />
+    </radialGradient>
+
+    <!-- Vignette Overlay -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+      <stop offset="60%" stop-color="#12233F" stop-opacity="0" />
+      <stop offset="100%" stop-color="#12233F" stop-opacity="0.08" />
+    </radialGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#275E86" stroke-width="0.5" opacity="0.15" />
+    </pattern>
+
+    <!-- Card Drop Shadow -->
+    <filter id="card-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#12233F" flood-opacity="0.06" />
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#12233F" flood-opacity="0.04" />
+    </filter>
+
+    <!-- Alert Glow -->
+    <filter id="alert-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur1" />
+      <feGaussianBlur stdDeviation="8" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Chart Gradient -->
+    <linearGradient id="chart-fill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#275E86" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#FFF1E0" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Timeline Bar Gradient -->
+    <linearGradient id="bar-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#12233F" />
+      <stop offset="100%" stop-color="#275E86" />
+    </linearGradient>
+
+    <!-- Scanline Gradient -->
+    <linearGradient id="scan-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFF1E0" stop-opacity="0" />
+      <stop offset="50%" stop-color="#FFF1E0" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#FFF1E0" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <style><![CDATA[
+/* Floating Animations for Cards */
+    .float-card-1 { animation: float1 7s ease-in-out infinite; }
+    .float-card-2 { animation: float2 8.5s ease-in-out infinite; }
+    .float-card-3 { animation: float3 6s ease-in-out infinite; }
+    .float-card-4 { animation: float1 7.5s ease-in-out infinite reverse; }
+
+    @keyframes float1 {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes float3 {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-10px) translateX(4px); }
+    }
+
+    /* Floating Animations for Nodes */
+    .float-node-1 { animation: floatNode 4s ease-in-out infinite; }
+    .float-node-2 { animation: floatNode 5s ease-in-out infinite 1s; }
+    .float-node-3 { animation: floatNode 4.5s ease-in-out infinite 2s; }
+
+    @keyframes floatNode {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+
+    /* Pulse Animations */
+    .pulse-bar { animation: pulseBar 4s ease-in-out infinite; }
+    @keyframes pulseBar {
+      0%, 100% { opacity: 0.85; }
+      50% { opacity: 1; }
+    }
+
+    /* Reticle Rotation */
+    .rotate-reticle {
+      transform-origin: 580px 250px;
+      animation: spin 12s linear infinite;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+]]></style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bg-grad)" />
+  <rect width="100%" height="100%" fill="url(#grid)" />
+
+  <!-- Atmospheric Particles -->
+  <g opacity="0.6">
+    <circle cx="120" cy="420" r="2" fill="#275E86">
+      <animate attributeName="opacity" values="0.2;0.8;0.2" dur="4s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="720" cy="120" r="3" fill="#12233F">
+      <animate attributeName="opacity" values="0.1;0.5;0.1" dur="6s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="380" cy="80" r="1.5" fill="#275E86">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="480" cy="440" r="2.5" fill="#12233F">
+      <animate attributeName="opacity" values="0.2;0.6;0.2" dur="5s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- Data Connection Lines (Background Layer) -->
+  <g stroke="#275E86" stroke-width="1.5" stroke-dasharray="4 6" fill="none" opacity="0.35">
+    <!-- Node 1 to Card 1 -->
+    <path d="M 220 250 C 220 180, 160 180, 160 180">
+      <animate attributeName="stroke-dashoffset" from="100" to="0" dur="4s" repeatCount="indefinite" />
+    </path>
+    <!-- Node 1 to Card 4 -->
+    <path d="M 220 250 C 220 320, 150 320, 150 320">
+      <animate attributeName="stroke-dashoffset" from="0" to="100" dur="5s" repeatCount="indefinite" />
+    </path>
+    <!-- Node 2 to Card 3 -->
+    <path d="M 400 250 C 400 130, 660 250, 660 210">
+      <animate attributeName="stroke-dashoffset" from="100" to="0" dur="6s" repeatCount="indefinite" />
+    </path>
+    <!-- Node 3 to Card 2 -->
+    <path d="M 580 250 C 580 290, 660 290, 660 320">
+      <animate attributeName="stroke-dashoffset" from="0" to="100" dur="3.5s" repeatCount="indefinite" />
+    </path>
+  </g>
+
+  <!-- Central Timeline Bar -->
+  <g>
+    <!-- Base Track -->
+    <rect x="90" y="246" width="620" height="8" rx="4" fill="#F6E9D8" stroke="#275E86" stroke-width="1" opacity="0.4" />
+    
+    <!-- Active Progress -->
+    <rect x="90" y="246" width="500" height="8" rx="4" fill="url(#bar-grad)" class="pulse-bar" />
+    
+    <!-- Animated Scanline on Timeline -->
+    <rect x="90" y="246" width="80" height="8" rx="4" fill="url(#scan-grad)">
+      <animate attributeName="x" from="50" to="650" dur="3.5s" repeatCount="indefinite" />
+    </rect>
+  </g>
+
+  <!-- Alert Nodes -->
+  <!-- Node 1 -->
+  <g class="float-node-1">
+    <circle cx="220" cy="250" r="8" fill="#275E86" opacity="0.8">
+      <animate attributeName="r" from="8" to="24" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.6" to="0" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="220" cy="250" r="7" fill="#FFF1E0" stroke="#12233F" stroke-width="2.5" />
+    <circle cx="220" cy="250" r="2.5" fill="#275E86" />
+  </g>
+
+  <!-- Node 2 -->
+  <g class="float-node-2">
+    <circle cx="400" cy="250" r="8" fill="#275E86" opacity="0.8">
+      <animate attributeName="r" from="8" to="20" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.5" to="0" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="400" cy="250" r="7" fill="#FFF1E0" stroke="#12233F" stroke-width="2.5" />
+    <circle cx="400" cy="250" r="2.5" fill="#275E86" />
+  </g>
+
+  <!-- Node 3 (Active Alert) -->
+  <g class="float-node-3">
+    <!-- Target Reticle -->
+    <g class="rotate-reticle">
+      <circle cx="580" cy="250" r="18" fill="none" stroke="#12233F" stroke-width="1" stroke-dasharray="2 6" opacity="0.6" />
+      <circle cx="580" cy="250" r="26" fill="none" stroke="#275E86" stroke-width="0.5" opacity="0.8" />
+      <path d="M 580 218 L 580 224 M 580 276 L 580 282 M 548 250 L 554 250 M 606 250 L 612 250" stroke="#12233F" stroke-width="1.5" stroke-linecap="round" />
+    </g>
+    
+    <!-- Pulsing Core -->
+    <circle cx="580" cy="250" r="8" fill="#12233F" filter="url(#alert-glow)">
+      <animate attributeName="r" from="8" to="28" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.7" to="0" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="580" cy="250" r="8" fill="#12233F" />
+    <circle cx="580" cy="250" r="3" fill="#FFF1E0" />
+  </g>
+
+  <!-- Floating Data Cards -->
+
+  <!-- Card 1: Cash Position (Top Left) -->
+  <g transform="translate(60, 50)">
+    <g class="float-card-1">
+      <rect width="200" height="130" rx="8" fill="#FFF1E0" stroke="#12233F" stroke-width="1.5" filter="url(#card-shadow)" />
+      
+      <!-- Header -->
+      <rect x="16" y="16" width="45" height="8" rx="4" fill="#12233F" />
+      <rect x="16" y="32" width="85" height="4" rx="2" fill="#275E86" opacity="0.4" />
+      
+      <!-- Trend Arrow -->
+      <path d="M 165 22 L 175 12 L 185 22 M 175 12 L 175 32" stroke="#275E86" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      
+      <!-- Chart Area -->
+      <g transform="translate(0, 10)">
+        <!-- Grid Lines -->
+        <line x1="16" y1="100" x2="184" y2="100" stroke="#F6E9D8" stroke-width="1" />
+        <line x1="16" y1="75" x2="184" y2="75" stroke="#F6E9D8" stroke-width="1" />
+        <line x1="16" y1="50" x2="184" y2="50" stroke="#F6E9D8" stroke-width="1" />
+        
+        <!-- Area Fill -->
+        <path d="M 16 100 Q 45 95, 70 70 T 120 65 T 155 40 T 184 45 L 184 100 Z" fill="url(#chart-fill)" />
+        
+        <!-- Line -->
+        <path d="M 16 100 Q 45 95, 70 70 T 120 65 T 155 40 T 184 45" fill="none" stroke="#275E86" stroke-width="2" stroke-linecap="round" />
+        
+        <!-- Data Points -->
+        <circle cx="70" cy="70" r="3" fill="#FFF1E0" stroke="#12233F" stroke-width="1.5" />
+        <circle cx="120" cy="65" r="3" fill="#FFF1E0" stroke="#12233F" stroke-width="1.5" />
+        <circle cx="155" cy="40" r="4" fill="#12233F" />
+      </g>
+    </g>
+  </g>
+
+  <!-- Card 2: Transaction Flags (Bottom Right) -->
+  <g transform="translate(550, 320)">
+    <g class="float-card-2">
+      <rect width="210" height="140" rx="8" fill="#FFF1E0" stroke="#12233F" stroke-width="1.5" filter="url(#card-shadow)" />
+      
+      <!-- Header -->
+      <rect x="16" y="16" width="65" height="8" rx="4" fill="#12233F" />
+      
+      <!-- Rows -->
+      <!-- Row 1 (Normal) -->
+      <rect x="16" y="38" width="12" height="12" rx="3" fill="#F6E9D8" />
+      <rect x="38" y="42" width="120" height="4" rx="2" fill="#F6E9D8" />
+      
+      <!-- Row 2 (Flagged/Active) -->
+      <rect x="12" y="59" width="186" height="24" rx="4" fill="#F6E9D8" opacity="0.5" />
+      <rect x="16" y="65" width="12" height="12" rx="3" fill="#275E86" />
+      <rect x="38" y="69" width="145" height="4" rx="2" fill="#275E86" />
+      
+      <!-- Alert Icon in Row 2 -->
+      <g transform="translate(185, 63)">
+        <path d="M 5 0 L 10 9 L 0 9 Z" fill="none" stroke="#12233F" stroke-width="1.2" stroke-linejoin="round" />
+        <line x1="5" y1="3" x2="5" y2="6" stroke="#12233F" stroke-width="1.2" stroke-linecap="round" />
+        <circle cx="5" cy="7.5" r="0.6" fill="#12233F" />
+        <!-- Pulsing Dot -->
+        <circle cx="5" cy="4.5" r="6" fill="#275E86" opacity="0.4">
+          <animate attributeName="r" from="4" to="12" dur="1.5s" repeatCount="indefinite" />
+          <animate attributeName="opacity" from="0.6" to="0" dur="1.5s" repeatCount="indefinite" />
+        </circle>
+      </g>
+      
+      <!-- Row 3 (Normal) -->
+      <rect x="16" y="92" width="12" height="12" rx="3" fill="#F6E9D8" />
+      <rect x="38" y="96" width="95" height="4" rx="2" fill="#F6E9D8" />
+      
+      <!-- Row 4 (Normal) -->
+      <rect x="16" y="116" width="12" height="12" rx="3" fill="#F6E9D8" />
+      <rect x="38" y="120" width="130" height="4" rx="2" fill="#F6E9D8" />
+    </g>
+  </g>
+
+  <!-- Card 3: Oversight Metric Gauge (Top Right) -->
+  <g transform="translate(580, 50)">
+    <g class="float-card-3">
+      <rect width="160" height="160" rx="8" fill="#FFF1E0" stroke="#12233F" stroke-width="1.5" filter="url(#card-shadow)" />
+      
+      <!-- Gauge Background -->
+      <circle cx="80" cy="80" r="48" fill="none" stroke="#F6E9D8" stroke-width="10" />
+      
+      <!-- Gauge Progress -->
+      <circle cx="80" cy="80" r="48" fill="none" stroke="#275E86" stroke-width="10" stroke-dasharray="220 301.59" stroke-linecap="round" transform="rotate(-90 80 80)" />
+      
+      <!-- Inner Details -->
+      <circle cx="80" cy="80" r="32" fill="none" stroke="#F6E9D8" stroke-width="1" stroke-dasharray="2 4" />
+      
+      <!-- Needle -->
+      <g>
+        <animateTransform attributeName="transform" type="rotate" values="0 80 80; 18 80 80; -8 80 80; 0 80 80" dur="6s" repeatCount="indefinite" />
+        <line x1="80" y1="80" x2="52" y2="52" stroke="#12233F" stroke-width="2.5" stroke-linecap="round" />
+        <circle cx="80" cy="80" r="5" fill="#12233F" />
+        <circle cx="80" cy="80" r="2" fill="#FFF1E0" />
+      </g>
+      
+      <!-- Metric Value Block -->
+      <rect x="65" y="105" width="30" height="10" rx="3" fill="#12233F" />
+      
+      <!-- Corner Accents -->
+      <circle cx="16" cy="16" r="1.5" fill="#275E86" opacity="0.5" />
+      <circle cx="144" cy="16" r="1.5" fill="#275E86" opacity="0.5" />
+      <circle cx="16" cy="144" r="1.5" fill="#275E86" opacity="0.5" />
+      <circle cx="144" cy="144" r="1.5" fill="#275E86" opacity="0.5" />
+    </g>
+  </g>
+
+  <!-- Card 4: Activity Feed (Bottom Left) -->
+  <g transform="translate(60, 320)">
+    <g class="float-card-4">
+      <rect width="180" height="120" rx="8" fill="#FFF1E0" stroke="#12233F" stroke-width="1.5" filter="url(#card-shadow)" />
+      
+      <!-- Header -->
+      <rect x="16" y="16" width="55" height="8" rx="4" fill="#12233F" />
+      
+      <!-- Feed Container -->
+      <g transform="translate(0, 10)">
+        <!-- Vertical Connecting Line -->
+        <line x1="24" y1="32" x2="24" y2="84" stroke="#F6E9D8" stroke-width="2" stroke-linecap="round" />
+        
+        <!-- Item 1 (Active) -->
+        <circle cx="24" cy="32" r="5" fill="#275E86">
+          <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="24" cy="32" r="2" fill="#FFF1E0" />
+        <rect x="40" y="28" width="110" height="4" rx="2" fill="#275E86" />
+        <rect x="40" y="36" width="60" height="3" rx="1.5" fill="#F6E9D8" />
+        
+        <!-- Item 2 -->
+        <circle cx="24" cy="58" r="4" fill="#F6E9D8" stroke="#12233F" stroke-width="1.5" />
+        <rect x="40" y="56" width="120" height="4" rx="2" fill="#F6E9D8" />
+        
+        <!-- Item 3 -->
+        <circle cx="24" cy="84" r="4" fill="#F6E9D8" stroke="#12233F" stroke-width="1.5" />
+        <rect x="40" y="82" width="85" height="4" rx="2" fill="#F6E9D8" />
+      </g>
+    </g>
+  </g>
+
+  <!-- Foreground Vignette Overlay for Depth -->
+  <rect width="100%" height="100%" fill="url(#vignette)" pointer-events="none" />
+
+  <!-- Subtle Border Framing -->
+  <rect x="12" y="12" width="776" height="476" rx="4" fill="none" stroke="#275E86" stroke-width="1" opacity="0.15" pointer-events="none" />
+</svg>

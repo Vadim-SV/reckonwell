@@ -2,30 +2,22 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 
-const levels = [
-  {
-    label: 'DAY-TO-DAY',
-    items: ['Bookkeeping', 'VAT', 'Payroll', 'Accounts'],
-    color: 'var(--primary)',
-    opacity: 0.15,
-    textColor: 'var(--primary)',
-  },
-  {
-    label: 'MANAGEMENT',
-    items: ['Cash flow', 'Budgets', 'Management reporting', 'Forecasting'],
-    color: 'var(--primary)',
-    opacity: 0.35,
-    textColor: 'var(--primary)',
-  },
-  {
-    label: 'STRATEGIC',
-    items: ['Financial planning', 'Business modelling', 'FD-level support'],
-    color: 'var(--primary)',
-    opacity: 1,
-    textColor: 'var(--primary)',
-  },
-];
+const rows = [
+{
+  label: 'Verify',
+  desc: 'Check transaction coding, supporting records, duplicates and VAT treatment.'
+},
+{
+  label: 'Reconcile',
+  desc: 'Review balances, exceptions, integrations and the audit trail.'
+},
+{
+  label: 'Control',
+  desc: 'Monitor approvals, unusual activity and the integrity of the overall system.'
+}];
+
 
 export default function FinanceFunctionSection() {
   const ref = useRef(null);
@@ -35,126 +27,139 @@ export default function FinanceFunctionSection() {
     <section
       id="finance-function"
       ref={ref}
-      className="py-14 md:py-28 px-5 md:px-10"
-      style={{ backgroundColor: 'var(--surface)' }}
-      aria-label="Finance Function"
-    >
-      <div className="max-w-7xl mx-auto">
-        {/* Kicker */}
-        <motion.p
-          className="section-label mb-4 md:mb-6"
-          initial={{ opacity: 0, y: 12 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          Your Finance Function
-        </motion.p>
+      className="py-20 md:py-28 px-6 md:px-16"
+      style={{ backgroundColor: '#0d1b2e' }}
+      aria-label="AI finance control">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-start">
-          {/* Left: text */}
-          <div>
-            <motion.h2
-              className="section-h2-medium mb-5 md:mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              The finance department experience —{' '}
-              <span className="gold-italic">without hiring in-house.</span>
-            </motion.h2>
-
-            <motion.p
-              className="body-text-rw mb-5"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              As your business grows, the finance work grows with it.
-            </motion.p>
-            <motion.p
-              className="body-text-rw mb-5"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.25 }}
-            >
-              Bookkeeping becomes cash-flow management, reporting, budgeting, forecasting and financial decision-making.
-            </motion.p>
-            <motion.p
-              className="body-text-rw mb-6 md:mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.3 }}
-            >
-              Reckonwell brings these functions together under one roof, with a package built around what your business actually needs.
-            </motion.p>
-
-            <motion.p
-              className="body-text-rw"
-              style={{ fontStyle: 'italic', color: 'var(--muted)', fontSize: '15px' }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.35 }}
-            >
-              Get the level of finance support your business needs today, with the ability to scale it as the business grows.
-            </motion.p>
-          </div>
-
-          {/* Right: 3-level visual */}
+      <div className="max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
+          {/* Left: illustration */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-col gap-3 mt-2 md:mt-0"
-          >
-            {levels?.map((level, i) => (
-              <motion.div
-                key={level?.label}
-                initial={{ opacity: 0, x: 20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 + i * 0.12 }}
-                className="rounded-sm p-4 md:p-6"
-                style={{
-                  backgroundColor: `rgba(18, 35, 63, ${level?.opacity * 0.08})`,
-                  border: `1px solid rgba(18, 35, 63, ${level?.opacity * 0.15})`,
-                }}
-              >
-                <p
-                  className="font-ui mb-3"
-                  style={{
-                    fontSize: '9px',
-                    letterSpacing: '3px',
-                    textTransform: 'uppercase',
-                    color: 'var(--primary)',
-                    opacity: 0.5 + i * 0.25,
-                    fontWeight: 400,
-                  }}
-                >
-                  {level?.label}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {level?.items?.map((item) => (
-                    <span
-                      key={item}
-                      className="font-ui"
-                      style={{
-                        fontSize: '11px',
-                        letterSpacing: '0.5px',
-                        color: 'var(--foreground)',
-                        backgroundColor: `rgba(18, 35, 63, ${0.04 + i * 0.03})`,
-                        border: '1px solid var(--border-subtle)',
-                        padding: '4px 10px',
-                        borderRadius: '2px',
-                      }}
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="flex flex-col">
+
+            <div
+              className="flex items-center justify-center"
+              style={{
+                backgroundColor: '#f5ede0',
+                padding: '32px',
+                minHeight: '200px'
+              }}>
+
+              <Image
+                src="/assets/images/Image_Sep_17__2026__12_57_33_AM-1789603570277.png"
+                alt="Finance control for AI — human oversight layer around automated finance workflows"
+                width={400}
+                height={280}
+                style={{ width: '100%', height: 'auto', maxWidth: '400px' }} />
+
+            </div>
+
           </motion.div>
+
+          {/* Right: text */}
+          <div>
+            {/* Eyebrow */}
+
+            <motion.h2
+              className="font-display mb-6 md:mb-8"
+              style={{
+                fontSize: 'clamp(36px, 4.5vw, 58px)',
+                fontWeight: 400,
+                color: '#FFFFFF',
+                lineHeight: 1.1
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
+
+              AI can process the transactions.{' '}
+              <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.7)' }}>
+                We make sure you can trust them.
+              </em>
+            </motion.h2>
+
+            <motion.p
+              className="mb-4"
+              style={{ fontSize: '14px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.2 }}>
+
+              AI can automate bookkeeping and finance workflows at speed, but automation still needs oversight. Reckonwell verifies transactions, reviews exceptions and reconciles the accounts so errors do not quietly flow into reports, tax filings or business decisions.
+            </motion.p>
+            <motion.p
+              className="mb-8 md:mb-10"
+              style={{ fontSize: '14px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.25 }}>
+
+              We act as the human control layer around your finance technology — checking that data is complete, integrations are working, approvals remain appropriate and the system continues to produce reliable information.
+            </motion.p>
+
+            {/* Three-row table */}
+            <motion.div
+              className="mb-8"
+              initial={{ opacity: 0, y: 12 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}>
+
+              {rows?.map((row, i) =>
+              <div
+                key={row?.label}
+                className="flex flex-col sm:grid gap-2 sm:gap-4 py-4"
+                style={{
+                  gridTemplateColumns: '120px 1fr',
+                  borderTop: '1px solid rgba(255,255,255,0.15)',
+                  borderBottom: i === rows?.length - 1 ? '1px solid rgba(255,255,255,0.15)' : 'none'
+                }}>
+
+                  <p
+                  className="font-ui"
+                  style={{
+                    fontSize: '10px',
+                    letterSpacing: '1.5px',
+                    textTransform: 'uppercase',
+                    color: 'rgba(255,255,255,0.55)',
+                    fontWeight: 600,
+                    paddingTop: '2px'
+                  }}>
+
+                    {row?.label}
+                  </p>
+                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.8)', lineHeight: 1.5 }}>
+                    {row?.desc}
+                  </p>
+                </div>
+              )}
+            </motion.div>
+
+            {/* CTA link */}
+            <motion.a
+              href="/book"
+              className="inline-flex items-center gap-2 font-ui"
+              style={{
+                fontSize: '11px',
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: '#FFFFFF',
+                borderBottom: '1px solid rgba(255,255,255,0.6)',
+                paddingBottom: '3px',
+                textDecoration: 'none'
+              }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.38 }}>
+
+              Discuss AI Finance Controls →
+            </motion.a>
+          </div>
         </div>
       </div>
     </section>
   );
+
 }
