@@ -126,7 +126,7 @@ export default function FundraisingCapitalSection() {
               }}>
 
               <img
-                src="/assets/images/Image_Sep_16__2026__11_09_14_PM-1789600651388.png"
+                src="/assets/images/Image_Sep_17__2026__12_52_59_AM-1789603660095.png"
                 alt="Debt and equity finance illustration"
                 style={{ width: '100%', maxWidth: '360px', height: 'auto', display: 'block' }}
               />
