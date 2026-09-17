@@ -104,40 +104,6 @@ export default function FundraisingCapitalSection() {
             </motion.a>
           </div>
 
-          {/* Right: illustration in bordered frame */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-col"
-            style={{
-              border: '1px solid rgba(13,27,46,0.18)',
-              backgroundColor: '#f5ede0',
-              padding: '32px'
-            }}>
-
-            <div
-              className="flex items-center justify-center"
-              style={{
-                minHeight: '200px',
-                border: '1px solid rgba(13,27,46,0.12)',
-                backgroundColor: '#f9f3ea',
-                padding: '24px'
-              }}>
-
-              <img
-                src="/assets/images/Image_Sep_17__2026__12_52_59_AM-1789603660095.png"
-                alt="Debt and equity finance illustration"
-                style={{ width: '100%', maxWidth: '360px', height: 'auto', display: 'block' }}
-              />
-            </div>
-            <p
-              className="font-ui mt-4"
-              style={{ fontSize: '9px', letterSpacing: '2.5px', textTransform: 'uppercase', color: '#1a6b6b' }}>
-
-              Connecting Companies and Capital
-            </p>
-          </motion.div>
         </div>
       </div>
     </section>
