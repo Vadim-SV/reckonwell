@@ -9,6 +9,7 @@ export default function PricingBannerSection() {
 
   return (
     <section
+      id="pricing"
       ref={ref}
       className="py-10 md:py-14 px-6 md:px-16"
       style={{ backgroundColor: '#E8EAF0' }}

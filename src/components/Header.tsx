@@ -148,56 +148,38 @@ export default function Header() {
               Home
             </Link>
 
-            {/* Fractional Finance Dropdown */}
-            <div className="relative" ref={fractionalRef}>
-              <button
-                onClick={() => { setFractionalOpen(!fractionalOpen); setComplianceOpen(false); }}
-                className="font-ui text-xs tracking-widest uppercase transition-colors duration-200 flex items-center gap-1"
-                style={{ ...navLinkStyle, background: 'none', border: 'none', color: fractionalOpen ? 'var(--foreground)' : 'var(--muted)' }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-                onMouseLeave={(e) => { if (!fractionalOpen) e.currentTarget.style.color = 'var(--muted)'; }}
-                aria-expanded={fractionalOpen}
-                aria-haspopup="true"
-              >
-                Fractional Finance
-                <span style={{ fontSize: '10px', transition: 'transform 0.2s', transform: fractionalOpen ? 'rotate(180deg)' : 'none', display: 'inline-block' }}>▾</span>
-              </button>
+            {/* Accounting */}
+            <Link
+              href="/#personalised-proactive"
+              className="font-ui text-xs tracking-widest uppercase transition-colors duration-200"
+              style={navLinkStyle}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+            >
+              Accounting
+            </Link>
 
-              {fractionalOpen && (
-                <div
-                  className="absolute top-full left-1/2 mt-3 py-4 px-0"
-                  style={{
-                    transform: 'translateX(-50%)',
-                    backgroundColor: 'var(--background)',
-                    border: '1px solid var(--border)',
-                    minWidth: '220px',
-                    zIndex: 100,
-                    borderRadius: '2px',
-                  }}
-                >
-                  <div className="px-6 py-2">
-                    <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 500 }}>
-                      Fractional Finance
-                    </p>
-                    <div className="space-y-1">
-                      {fractionalLinks.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          onClick={() => setFractionalOpen(false)}
-                          className="block font-ui text-xs py-2 transition-colors duration-150"
-                          style={{ color: 'var(--muted)', letterSpacing: '0.5px' }}
-                          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-                          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+            {/* Industries */}
+            <Link
+              href="/#industries"
+              className="font-ui text-xs tracking-widest uppercase transition-colors duration-200"
+              style={navLinkStyle}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+            >
+              Industries
+            </Link>
+
+            {/* Pricing */}
+            <Link
+              href="/#pricing"
+              className="font-ui text-xs tracking-widest uppercase transition-colors duration-200"
+              style={navLinkStyle}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+            >
+              Pricing
+            </Link>
 
             {/* Compliance Services Dropdown */}
             {!isUSSite && (
@@ -337,24 +319,35 @@ export default function Header() {
             Home
           </Link>
 
-          {/* Mobile Fractional Finance Section */}
-          <div className="w-full text-center py-4" style={{ borderBottom: '1px solid var(--border)' }}>
-            <p className="font-display mb-4" style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px' }}>Fractional Finance</p>
-            <div>
-              <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 500 }}>Fractional Finance</p>
-              {fractionalLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="block font-ui py-3 text-sm"
-                  style={{ color: 'var(--muted)', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
+          {/* Mobile Accounting Link */}
+          <Link
+            href="/#personalised-proactive"
+            onClick={() => setMenuOpen(false)}
+            className="w-full text-center font-display py-4 transition-colors duration-200"
+            style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px', borderBottom: '1px solid var(--border)' }}
+          >
+            Accounting
+          </Link>
+
+          {/* Mobile Industries Link */}
+          <Link
+            href="/#industries"
+            onClick={() => setMenuOpen(false)}
+            className="w-full text-center font-display py-4 transition-colors duration-200"
+            style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px', borderBottom: '1px solid var(--border)' }}
+          >
+            Industries
+          </Link>
+
+          {/* Mobile Pricing Link */}
+          <Link
+            href="/#pricing"
+            onClick={() => setMenuOpen(false)}
+            className="w-full text-center font-display py-4 transition-colors duration-200"
+            style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px', borderBottom: '1px solid var(--border)' }}
+          >
+            Pricing
+          </Link>
 
           {/* Mobile Compliance Services Section */}
           {!isUSSite && (
