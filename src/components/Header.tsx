@@ -181,58 +181,7 @@ export default function Header() {
               Pricing
             </Link>
 
-            {/* Compliance Services Dropdown */}
-            {!isUSSite && (
-            <div className="relative" ref={complianceRef}>
-              <button
-                onClick={() => { setComplianceOpen(!complianceOpen); setFractionalOpen(false); }}
-                className="font-ui text-xs tracking-widest uppercase transition-colors duration-200 flex items-center gap-1"
-                style={{ ...navLinkStyle, background: 'none', border: 'none', color: complianceOpen ? 'var(--foreground)' : 'var(--muted)' }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-                onMouseLeave={(e) => { if (!complianceOpen) e.currentTarget.style.color = 'var(--muted)'; }}
-                aria-expanded={complianceOpen}
-                aria-haspopup="true"
-              >
-                Compliance
-                <span style={{ fontSize: '10px', transition: 'transform 0.2s', transform: complianceOpen ? 'rotate(180deg)' : 'none', display: 'inline-block' }}>▾</span>
-              </button>
-
-              {complianceOpen && (
-                <div
-                  className="absolute top-full left-1/2 mt-3 py-4 px-0"
-                  style={{
-                    transform: 'translateX(-50%)',
-                    backgroundColor: 'var(--background)',
-                    border: '1px solid var(--border)',
-                    minWidth: '240px',
-                    zIndex: 100,
-                    borderRadius: '2px',
-                  }}
-                >
-                  <div className="px-6 py-2">
-                    <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 500 }}>
-                      UK Compliance Services
-                    </p>
-                    <div className="space-y-1">
-                      {complianceLinks.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          onClick={() => setComplianceOpen(false)}
-                          className="block font-ui text-xs py-2 transition-colors duration-150"
-                          style={{ color: link.href === '/quotation-calculator' ? 'var(--primary)' : 'var(--muted)', letterSpacing: '0.5px' }}
-                          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-                          onMouseLeave={(e) => (e.currentTarget.style.color = link.href === '/quotation-calculator' ? 'var(--primary)' : 'var(--muted)')}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-            )}
+            {/* Compliance removed */}
 
             {/* Partner with Us */}
             <Link
@@ -349,26 +298,7 @@ export default function Header() {
             Pricing
           </Link>
 
-          {/* Mobile Compliance Services Section */}
-          {!isUSSite && (
-          <div className="w-full text-center py-4" style={{ borderBottom: '1px solid var(--border)' }}>
-            <p className="font-display mb-4" style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px' }}>Compliance Services</p>
-            <div>
-              <p className="font-ui mb-3" style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 500 }}>UK Compliance Services</p>
-              {complianceLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="block font-ui py-3 text-sm"
-                  style={{ color: 'var(--muted)', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-          )}
+          {/* Mobile Compliance removed */}
 
           {/* Mobile Region Toggle */}
           <div className="w-full flex justify-center py-5" style={{ borderBottom: '1px solid var(--border)' }}>
