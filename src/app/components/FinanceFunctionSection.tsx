@@ -139,7 +139,7 @@ export default function FinanceFunctionSection() {
 
             {/* CTA link */}
             <motion.a
-              href="/contact"
+              href="/book"
               className="inline-flex items-center gap-2 font-ui"
               style={{
                 fontSize: '11px',

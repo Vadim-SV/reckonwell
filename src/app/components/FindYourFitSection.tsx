@@ -12,7 +12,7 @@ const serviceFitOptions = [
     recommendation:
       'Shape a package around your preferred contact and proactive daily oversight of cash, transactions and invoices.',
     cta: 'Enquire about this support',
-    ctaHref: '#personalised-proactive',
+    ctaHref: '/book',
     prefillId: 'daily',
   },
   {
@@ -22,7 +22,7 @@ const serviceFitOptions = [
     recommendation:
       'Bring bookkeeping, management reporting and FD-level support together under one roof — start with what you need now.',
     cta: 'Enquire about this support',
-    ctaHref: '#finance-function',
+    ctaHref: '/book',
     prefillId: 'function',
   },
   {
@@ -32,7 +32,7 @@ const serviceFitOptions = [
     recommendation:
       'We build the financial model and investor materials, then connect suitable founders with relevant investors through our network.',
     cta: 'Enquire about this support',
-    ctaHref: '#fundraising-capital',
+    ctaHref: '/book',
     prefillId: 'capital',
   },
 ];
@@ -81,13 +81,7 @@ export default function FindYourFitSection() {
 
   const handleEnquire = (e: React.MouseEvent, option: typeof serviceFitOptions[0]) => {
     e.preventDefault();
-    const el = document.getElementById('get-started');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => {
-        window.dispatchEvent(new CustomEvent('prefill-service', { detail: option.prefillId }));
-      }, 400);
-    }
+    window.location.href = '/book';
   };
 
   return (

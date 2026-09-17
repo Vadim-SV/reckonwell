@@ -86,7 +86,7 @@ export default function FundraisingCapitalSection() {
 
             {/* CTA link */}
             <motion.a
-              href="/contact"
+              href="/book"
               className="inline-flex items-center gap-2 font-ui"
               style={{
                 fontSize: '10px',

@@ -42,13 +42,7 @@ export default function ReadyToThinkSection() {
 
   const handleEnquire = (e: React.MouseEvent) => {
     e.preventDefault();
-    const el = document.getElementById('get-started');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => {
-        window.dispatchEvent(new CustomEvent('prefill-service', { detail: selectedOption.prefillId }));
-      }, 400);
-    }
+    window.location.href = '/book';
   };
 
   return (
