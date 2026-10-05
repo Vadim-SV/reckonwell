@@ -4,16 +4,11 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HeroSection from '@/app/components/HeroSection';
-import PersonalisedProactiveSection from '@/app/components/PersonalisedProactiveSection';
-import FinanceFunctionSection from '@/app/components/FinanceFunctionSection';
-import FundraisingCapitalSection from '@/app/components/FundraisingCapitalSection';
+import WhatYouGetSection from '@/app/components/WhatYouGetSection';
 import IndustriesSection from '@/app/components/IndustriesSection';
-import NationwideCoverageSection from '@/app/components/NationwideCoverageSection';
+import PricingComplianceSection from '@/app/components/PricingComplianceSection';
 import FounderSection from '@/app/components/FounderSection';
 import ClarityFAQSection from '@/app/components/ClarityFAQSection';
-import PricingBannerSection from '@/app/components/PricingBannerSection';
-import ComplianceCalculatorsSection from '@/app/components/ComplianceCalculatorsSection';
-import ReadyToThinkSection from '@/app/components/ReadyToThinkSection';
 import USBanner from '@/components/USBanner';
 
 export default function HomePageClient() {
@@ -21,22 +16,15 @@ export default function HomePageClient() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     '@id': 'https://reckonwell.com#bookkeeping-service',
-    name: 'Daily Bookkeeping & Cash Flow Management',
-    description: 'Real-time bookkeeping, cash flow monitoring, and financial alerts for UK founder-led businesses. From £200 per month.',
+    name: 'Fractional Finance Department for Founder-Led Businesses',
+    description: 'A part-time finance department for founder-led businesses: daily oversight of cash, bookkeeping, management accounts, and help raising capital.',
     provider: {
       '@type': 'LocalBusiness',
       name: 'Reckonwell',
       url: 'https://reckonwell.com',
     },
-    areaServed: ['GB', 'US'],
-    serviceType: 'Bookkeeping',
-    priceRange: '£200-£1000',
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'GBP',
-      price: '200',
-      description: 'Starting from £200 per month for daily bookkeeping services',
-    },
+    areaServed: ['GB'],
+    serviceType: 'Fractional Finance Department',
   };
 
   return (
@@ -55,57 +43,32 @@ export default function HomePageClient() {
       >
         <Header />
         <article role="article">
-          {/* 1. Hero + partner logos (CertifiedPartneredSection is inside HeroSection) */}
+          {/* 1. Hero + partner logos */}
           <section role="region" aria-label="Hero section">
             <HeroSection />
           </section>
 
-          {/* 2. Personalised finance support */}
-          <section role="region" aria-label="Personalised finance support">
-            <PersonalisedProactiveSection />
+          {/* 2. What You Get */}
+          <section role="region" aria-label="What you get">
+            <WhatYouGetSection />
           </section>
 
-          {/* 3. Outsourced finance department */}
-          <section role="region" aria-label="Outsourced finance department">
-            <FinanceFunctionSection />
-          </section>
-
-          {/* 4. Fundraising support */}
-          <section role="region" aria-label="Fundraising and capital">
-            <FundraisingCapitalSection />
-          </section>
-
-          {/* 4a. Industries we work with */}
+          {/* 3. Industries */}
           <section role="region" aria-label="Industries we work with">
             <IndustriesSection />
           </section>
 
-          {/* 4b. Pricing banner strip — right scope for your business */}
-          <section role="region" aria-label="Pricing banner">
-            <PricingBannerSection />
+          {/* 4. Pricing & Compliance */}
+          <section role="region" aria-label="Pricing and compliance">
+            <PricingComplianceSection />
           </section>
 
-          {/* 4c. Compliance, sorted — specific service cards */}
-          <section role="region" aria-label="Compliance services">
-            <ComplianceCalculatorsSection />
-          </section>
-
-          {/* 4d. Ready to think like a director again */}
-          <section role="region" aria-label="Ready to think like a director again">
-            <ReadyToThinkSection />
-          </section>
-
-          {/* 5. Nationwide coverage */}
-          <section role="region" aria-label="Nationwide coverage">
-            <NationwideCoverageSection />
-          </section>
-
-          {/* 6. Message from the Founder — untouched */}
+          {/* 5. Founder */}
           <section role="region" aria-label="Message from the founder">
             <FounderSection />
           </section>
 
-          {/* 7. Questions & Answers */}
+          {/* 6. FAQ */}
           <section role="region" aria-label="Questions and answers">
             <ClarityFAQSection />
           </section>

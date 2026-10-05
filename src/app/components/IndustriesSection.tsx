@@ -101,7 +101,7 @@ export default function IndustriesSection() {
               className="leading-tight font-serif"
               style={{ color: '#0d1b2e', fontSize: 'clamp(32px, 5vw, 60px)' }}
             >
-              Finance support shaped around how your business operates.
+              Built around how your business works.
             </h2>
           </div>
         </div>

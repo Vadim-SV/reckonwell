@@ -31,7 +31,7 @@ export default function Footer() {
             className="font-ui text-xs text-center md:text-left"
             style={{ color: '#B8B8B8', letterSpacing: '0.5px', maxWidth: '260px', lineHeight: 1.6 }}
           >
-            Fractional finance department for founder-led businesses. Daily bookkeeping, real-time insights, zero surprises.
+            Your part-time finance department. London-based, UK-wide.
           </p>
           <p
             className="font-ui text-xs text-center md:text-left"

@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Link from 'next/link';
 
 export default function FounderSection() {
   const ref = useRef(null);
@@ -28,7 +29,7 @@ export default function FounderSection() {
           </motion.h2>
         </div>
 
-        {/* Right: large pull quote + body + attribution */}
+        {/* Right: large pull quote + attribution + CTA */}
         <div>
           <motion.blockquote
             className="mb-6"
@@ -45,27 +46,40 @@ export default function FounderSection() {
                 lineHeight: 1.45
               }}>
 
-              &ldquo;You should be able to make business decisions with a clear picture of your finances, not wait for the year-end accounts to find out what happened.&rdquo;
+              &ldquo;You should make decisions with a clear picture of your finances, not wait for the year-end accounts to find out what happened.&rdquo;
             </p>
           </motion.blockquote>
 
-          <motion.p
-            className="mb-6"
-            style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}
-            initial={{ opacity: 0, y: 20 }}
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}>
+            transition={{ duration: 0.6, delay: 0.3 }}>
 
-            At Reckonwell, I want founders to have someone who knows their business and stays close to the numbers. We shape the support around what you need now, from everyday accounting to a wider finance function and help with the next stage of growth.
-          </motion.p>
+            <p style={{ fontSize: '14px', fontWeight: 600, color: '#FFFFFF' }}>Vadim Siubaeff, Founder</p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.38 }}>
 
-            <p style={{ fontSize: '14px', fontWeight: 600, color: '#FFFFFF' }}>Vadim Siubaeff</p>
-            <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>Founder, Reckonwell</p>
+            <Link
+              href="/book"
+              className="font-ui inline-flex items-center justify-center"
+              style={{
+                backgroundColor: '#FFFFFF',
+                color: 'var(--primary)',
+                fontSize: '11px',
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                padding: '14px 24px',
+                textDecoration: 'none',
+                fontWeight: 600,
+              }}
+            >
+              Book a call with Vadim
+            </Link>
           </motion.div>
         </div>
       </div>

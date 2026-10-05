@@ -9,29 +9,24 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: 'What does Reckonwell handle?',
+    question: 'What do you handle?',
     answer:
-      'Reckonwell is your dedicated finance team — not just a filing service. We handle bookkeeping, management accounts, payroll, VAT returns, year-end accounts, and tax planning. We work with you on an ongoing basis so your numbers are always current and decision-ready.',
+      'Bookkeeping, management accounts, payroll, VAT, year-end accounts and tax, kept up to date all year.',
   },
   {
-    question: 'Will we need to change our existing team?',
+    question: 'Do we have to replace our current team?',
     answer:
-      'No. We work alongside your existing team, not instead of them. Whether you have an in-house bookkeeper, a part-time finance manager, or nothing at all, we slot in where we are needed and complement what you already have in place.',
-  },
-  {
-    question: 'Does fundraising support guarantee an introduction or investment?',
-    answer:
-      'No — and we will always be honest about that. What we do is make sure your financials, forecasts, and data room are investor-ready so that when you do get in front of the right people, nothing falls apart under scrutiny.',
+      'No. We work alongside whoever you already have, or act as your whole finance function.',
   },
   {
     question: 'How long does onboarding take?',
     answer:
-      'Most clients are fully onboarded within two to three weeks. We handle the transfer from your previous accountant, migrate your data, and set up your reporting structure. You don\'t need to do anything except give us access — we coordinate everything else.',
+      'Two to three weeks. We handle the switch from your previous accountant.',
   },
   {
-    question: 'Is there a long-term contract?',
+    question: 'Is there a contract?',
     answer:
-      'No lock-ins. We work on a rolling monthly basis. We\'re confident enough in what we deliver that we don\'t need to trap you with minimum terms.',
+      'No. Rolling monthly, cancel any time.',
   },
 ];
 
@@ -52,12 +47,6 @@ export default function ClarityFAQSection() {
         <div className="flex flex-col md:flex-row md:gap-16 lg:gap-24">
           {/* Left column — heading */}
           <div className="md:w-2/5 lg:w-1/3 mb-10 md:mb-0 flex-shrink-0">
-            <p
-              className="section-label"
-              style={{ marginBottom: '16px', letterSpacing: '0.12em' }}
-            >
-              Questions &amp; Answers
-            </p>
             <h2
               className="font-display"
               style={{
@@ -68,7 +57,7 @@ export default function ClarityFAQSection() {
                 margin: 0,
               }}
             >
-              A little more clarity.
+              Quick answers.
             </h2>
           </div>
 
