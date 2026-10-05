@@ -29,8 +29,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://reckonwell.com'),
-  title: 'Reckonwell | Accounting Firm Working on Your Finances Every Day',
-  description: 'Finally, an accounting firm that doesn\'t wait until month end. Daily bookkeeping, cash flow monitoring, and real-time alerts — from £200 per month. British accounting firm for UK founder-led businesses.',
+  title: 'Reckonwell | Fractional Finance Department for Founder-Led Businesses',
+  description: 'Part-time finance department for owner-managed businesses. Daily oversight of cash, real-time bookkeeping, and a qualified accountant who signs off the numbers.',
   icons: {
     icon: [
     { url: '/assets/images/99C61B88-2C2A-4A13-BD74-35EE79D48106-1783188578397.PNG', type: 'image/png' },
@@ -46,14 +46,14 @@ export const metadata: Metadata = {
     }
   },
   openGraph: {
-    title: 'Reckonwell | Daily Accounting for UK Businesses',
-    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts from £200 per month.',
+    title: 'Reckonwell | Fractional Finance Department for Founder-Led Businesses',
+    description: 'Part-time finance department for owner-managed businesses. Daily oversight of cash, real-time bookkeeping, and a qualified accountant who signs off the numbers.',
     images: [
     {
       url: '/assets/images/app_logo.png',
       width: 1200,
       height: 630,
-      alt: 'Reckonwell - Premium accounting firm for daily bookkeeping and financial management'
+      alt: 'Reckonwell - Fractional Finance Department for Founder-Led Businesses'
     }],
 
     type: 'website',
@@ -61,11 +61,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Reckonwell | Daily Accounting for UK Businesses',
-    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts from £200 per month.',
+    title: 'Reckonwell | Fractional Finance Department for Founder-Led Businesses',
+    description: 'Part-time finance department for owner-managed businesses. Daily oversight of cash, real-time bookkeeping, and a qualified accountant who signs off the numbers.',
     images: ['/assets/images/app_logo.png']
   },
-  keywords: 'accounting firm, bookkeeping services, cash flow management, accounting for startups, UK accounting, USA accounting, financial management, tax accounting'
+  keywords: 'fractional finance department, accounting firm, bookkeeping services, cash flow management, accounting for startups, UK accounting, USA accounting, financial management, tax accounting'
 };
 
 export default function RootLayout({
@@ -76,7 +76,7 @@ export default function RootLayout({
     '@type': 'LocalBusiness',
     '@id': 'https://reckonwell.com',
     name: 'Reckonwell',
-    description: 'Premium accounting firm providing daily bookkeeping, cash flow monitoring, and real-time financial alerts for UK and USA businesses.',
+    description: 'Fractional finance department for founder-led businesses. Daily bookkeeping, cash flow monitoring, and real-time financial oversight.',
     url: 'https://reckonwell.com',
     telephone: '+442038186205',
     address: {
@@ -97,8 +97,10 @@ export default function RootLayout({
     }],
 
     priceRange: '£200-£1000',
-    image: "https://img.rocket.new/generatedImages/rocket_gen_img_159a07ed4-1783372294630.png",
-    sameAs: []
+    image: "https://img.rocket.new/generatedImages/rocket_gen_img_469967d97-1791160519080.png",
+    sameAs: [
+    'https://www.linkedin.com/company/reckonwell']
+
   };
 
   const accountingServiceSchema = {
@@ -114,25 +116,6 @@ export default function RootLayout({
     areaServed: ['GB', 'US'],
     serviceType: ['Bookkeeping', 'Cash Flow Management', 'Financial Monitoring', 'Tax Accounting'],
     description: 'Daily bookkeeping, real-time cash flow monitoring, and financial alerts for growing businesses.'
-  };
-
-  const webPageSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    '@id': 'https://reckonwell.com',
-    name: 'Reckonwell | Accounting Firm Working on Your Finances Every Day',
-    description: 'Finally, an accounting firm that doesn\'t wait until month end. Daily bookkeeping, cash flow monitoring, and real-time alerts — from £200 per month.',
-    url: 'https://reckonwell.com',
-    isPartOf: {
-      '@id': 'https://reckonwell.com'
-    },
-    inLanguage: 'en-GB',
-    image: {
-      '@type': 'ImageObject',
-      url: 'https://reckonwell.com/assets/images/app_logo.png',
-      width: 1200,
-      height: 630
-    }
   };
 
   return (
@@ -151,12 +134,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(accountingServiceSchema)
-          }} />
-        
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(webPageSchema)
           }} />
 
         <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Freckonwell9518back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.20" />

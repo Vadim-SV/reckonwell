@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import CityPageClient from './CityPageClient';
 
 export const metadata: Metadata = {
-  title: 'Accounting Services in London | Daily Bookkeeping from £200/mo | Reckonwell',
-  description: 'Reckonwell provides daily bookkeeping, cash flow monitoring, and real-time financial visibility for founder-led businesses in London. Transparent pricing, no hidden fees. Get your instant quote.',
+  title: 'Accounting & Fractional Finance in London | Reckonwell',
+  description: 'Reckonwell provides daily bookkeeping, cash flow monitoring, and real-time financial visibility for founder-led businesses in London. Transparent pricing, no hidden fees.',
   alternates: {
     canonical: 'https://reckonwell.com/accounting/london',
   },
   openGraph: {
-    title: 'Accounting Services in London | Reckonwell',
-    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts for London businesses from £200/mo.',
+    title: 'Accounting & Fractional Finance in London | Reckonwell',
+    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts for London businesses.',
     url: 'https://reckonwell.com/accounting/london',
     type: 'website',
     images: [
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Accounting Services in London | Reckonwell',
-    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts for London businesses from £200/mo.',
+    title: 'Accounting & Fractional Finance in London | Reckonwell',
+    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts for London businesses.',
     images: ['/assets/images/app_logo.png'],
   },
 };

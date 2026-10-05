@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import HomePageClient from './HomePageClient';
 
 export const metadata: Metadata = {
-  title: 'Reckonwell | Accounting Firm Working on Your Finances Every Day',
-  description: 'Finally, an accounting firm that doesn\'t wait until month end. Daily bookkeeping, cash flow monitoring, and real-time alerts — from £200 per month. British accounting firm for UK founder-led businesses.',
+  title: 'Reckonwell | Fractional Finance Department for Founder-Led Businesses',
+  description: 'Part-time finance department for owner-managed businesses. Daily oversight of cash, real-time bookkeeping, and a qualified accountant who signs off the numbers.',
   alternates: {
     canonical: 'https://reckonwell.com/',
   },
   openGraph: {
-    title: 'Reckonwell | Daily Accounting for UK Businesses',
-    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts from £200 per month.',
+    title: 'Reckonwell | Fractional Finance Department for Founder-Led Businesses',
+    description: 'Part-time finance department for owner-managed businesses. Daily oversight of cash, real-time bookkeeping, and a qualified accountant who signs off the numbers.',
     url: 'https://reckonwell.com/',
     type: 'website',
     images: [
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
         url: '/assets/images/app_logo.png',
         width: 1200,
         height: 630,
-        alt: 'Reckonwell - Premium accounting firm for daily bookkeeping and financial management',
+        alt: 'Reckonwell - Fractional Finance Department for Founder-Led Businesses',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Reckonwell | Daily Accounting for UK Businesses',
-    description: 'Daily bookkeeping, cash flow monitoring & real-time alerts from £200 per month.',
+    title: 'Reckonwell | Fractional Finance Department for Founder-Led Businesses',
+    description: 'Part-time finance department for owner-managed businesses. Daily oversight of cash, real-time bookkeeping, and a qualified accountant who signs off the numbers.',
     images: ['/assets/images/app_logo.png'],
   },
 };
