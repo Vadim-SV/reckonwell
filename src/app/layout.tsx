@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Metadata, Viewport } from 'next';
-import { Newsreader, Work_Sans } from 'next/font/google';
+import { Newsreader, Work_Sans, Caveat } from 'next/font/google';
 import { Suspense } from 'react';
 import '../styles/tailwind.css';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
@@ -19,6 +19,13 @@ const workSans = Work_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-work-sans',
+  display: 'swap'
+});
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-caveat',
   display: 'swap'
 });
 
@@ -121,7 +128,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${workSans.variable}`}>
+      className={`${newsreader.variable} ${workSans.variable} ${caveat.variable}`}>
       
       <head>
         <script
@@ -136,7 +143,7 @@ export default function RootLayout({
             __html: JSON.stringify(accountingServiceSchema)
           }} />
 
-        <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Freckonwell9518back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.20" />
+        <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Freckonwell9518back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.21" />
         <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.3" /></head>
       <body className={workSans.className}>
         <CustomCursor />

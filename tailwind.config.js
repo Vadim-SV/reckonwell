@@ -35,6 +35,7 @@ module.exports = {
         sans: ['var(--font-work-sans)', 'sans-serif'],
         display: ['var(--font-newsreader)', 'serif'],
         serif: ['var(--font-newsreader)', 'serif'],
+        handwriting: ['var(--font-caveat)', 'cursive'],
       },
       borderRadius: {
         DEFAULT: 'var(--radius)',
