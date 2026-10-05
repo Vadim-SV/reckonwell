@@ -104,10 +104,10 @@ export default function HospitalityIndustryPage() {
 
       <main style={{ backgroundColor: 'var(--background)' }}>
         {/* Hero */}
-        <section className="pt-32 pb-16 px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="pt-24 md:pt-32 pb-10 md:pb-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
           <div className="max-w-4xl mx-auto">
-            <nav aria-label="Breadcrumb" className="mb-8">
-              <ol className="flex items-center gap-2 font-ui text-xs tracking-widest uppercase" style={{ color: 'var(--muted)' }}>
+            <nav aria-label="Breadcrumb" className="mb-6 md:mb-8">
+              <ol className="flex flex-wrap items-center gap-2 font-ui text-xs tracking-widest uppercase" style={{ color: 'var(--muted)' }}>
                 <li><Link href="/" style={{ color: 'var(--muted)' }}>Home</Link></li>
                 <li aria-hidden="true">›</li>
                 <li><Link href="/industries" style={{ color: 'var(--muted)' }}>Industries</Link></li>
@@ -118,16 +118,16 @@ export default function HospitalityIndustryPage() {
 
             <h1
               className="font-serif leading-tight mb-4"
-              style={{ color: '#0d1b2e', fontSize: 'clamp(32px, 5vw, 58px)' }}
+              style={{ color: '#0d1b2e', fontSize: 'clamp(26px, 5vw, 58px)' }}
             >
               Accounting for restaurants, bars and hospitality businesses
             </h1>
-            <p className="font-body text-lg mb-8" style={{ color: 'var(--muted)' }}>
+            <p className="font-body text-base md:text-lg mb-7 md:mb-8" style={{ color: 'var(--muted)' }}>
               Daily takings reconciliation, food cost tracking, payroll, tips compliance and VAT — so you always know where your cash is going.
             </p>
             <Link
               href="/book"
-              className="font-ui text-xs tracking-widest uppercase inline-block"
+              className="font-ui text-xs tracking-widest uppercase inline-block w-full sm:w-auto text-center"
               style={{ padding: '14px 32px', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', border: '1px solid var(--primary)', borderRadius: '2px', letterSpacing: '2px', fontWeight: 600 }}
             >
               Book a discovery call
@@ -136,15 +136,15 @@ export default function HospitalityIndustryPage() {
         </section>
 
         {/* Pain Points */}
-        <section className="py-16 px-6 md:px-16" style={{ backgroundColor: '#f5f0e8' }}>
+        <section className="py-10 md:py-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: '#f5f0e8' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-8" style={{ color: '#0d1b2e' }}>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8" style={{ color: '#0d1b2e' }}>
               The finance problems hospitality businesses face
             </h2>
-            <p className="font-body text-base leading-relaxed mb-8" style={{ color: 'var(--muted)' }}>
+            <p className="font-body text-base leading-relaxed mb-6 md:mb-8" style={{ color: 'var(--muted)' }}>
               Restaurants and bars operate on thin margins with high transaction volumes, variable staffing costs and complex VAT rules. The financial problems that cause businesses to fail are often not visible until it is too late — because the numbers are not being tracked closely enough.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               {[
                 {
                   title: 'Daily takings vs EPOS vs bank reconciliation',
@@ -171,8 +171,8 @@ export default function HospitalityIndustryPage() {
                   body: 'Many hospitality businesses have pronounced seasonal patterns — busy periods generate cash, quiet periods consume it. Without a cash flow forecast that models these patterns, operators can find themselves short of cash in January or August despite being profitable over the year as a whole.',
                 },
               ].map((item) => (
-                <div key={item.title} className="bg-white border border-gray-200 p-6">
-                  <h3 className="font-serif text-xl mb-3" style={{ color: '#0d1b2e' }}>{item.title}</h3>
+                <div key={item.title} className="bg-white border border-gray-200 p-5 md:p-6">
+                  <h3 className="font-serif text-lg md:text-xl mb-3" style={{ color: '#0d1b2e' }}>{item.title}</h3>
                   <p className="font-body text-sm leading-relaxed" style={{ color: '#2a7c8a' }}>{item.body}</p>
                 </div>
               ))}
@@ -181,9 +181,9 @@ export default function HospitalityIndustryPage() {
         </section>
 
         {/* How Reckonwell Helps */}
-        <section className="py-16 px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="py-10 md:py-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-8" style={{ color: '#0d1b2e' }}>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8" style={{ color: '#0d1b2e' }}>
               How Reckonwell helps hospitality businesses
             </h2>
             <p className="font-body text-base leading-relaxed mb-6" style={{ color: 'var(--muted)' }}>
@@ -208,9 +208,9 @@ export default function HospitalityIndustryPage() {
         </section>
 
         {/* What's Included */}
-        <section className="py-16 px-6 md:px-16" style={{ backgroundColor: '#f5f0e8' }}>
+        <section className="py-10 md:py-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: '#f5f0e8' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-8" style={{ color: '#0d1b2e' }}>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8" style={{ color: '#0d1b2e' }}>
               What&apos;s included
             </h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -238,9 +238,9 @@ export default function HospitalityIndustryPage() {
         </section>
 
         {/* Software */}
-        <section className="py-16 px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="py-10 md:py-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-6" style={{ color: '#0d1b2e' }}>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-5 md:mb-6" style={{ color: '#0d1b2e' }}>
               Software we work with
             </h2>
             <p className="font-body text-base leading-relaxed mb-6" style={{ color: 'var(--muted)' }}>
@@ -261,12 +261,12 @@ export default function HospitalityIndustryPage() {
         </section>
 
         {/* Related Links */}
-        <section className="py-16 px-6 md:px-16" style={{ backgroundColor: '#f5f0e8' }}>
+        <section className="py-10 md:py-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: '#f5f0e8' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-2xl mb-6" style={{ color: '#0d1b2e' }}>
+            <h2 className="font-serif text-xl md:text-2xl mb-5 md:mb-6" style={{ color: '#0d1b2e' }}>
               Related services and resources
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 { label: 'Payroll Services', href: '/payroll-services' },
                 { label: 'VAT Returns', href: '/vat-returns' },
@@ -290,15 +290,15 @@ export default function HospitalityIndustryPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-16 px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="py-10 md:py-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-10" style={{ color: '#0d1b2e' }}>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-8 md:mb-10" style={{ color: '#0d1b2e' }}>
               Frequently asked questions
             </h2>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6 md:gap-8">
               {faqs.map((faq) => (
-                <div key={faq.question} className="border-b pb-8" style={{ borderColor: '#e5e7eb' }}>
-                  <h3 className="font-serif text-xl mb-4" style={{ color: '#0d1b2e' }}>{faq.question}</h3>
+                <div key={faq.question} className="border-b pb-6 md:pb-8" style={{ borderColor: '#e5e7eb' }}>
+                  <h3 className="font-serif text-lg md:text-xl mb-3 md:mb-4" style={{ color: '#0d1b2e' }}>{faq.question}</h3>
                   <p className="font-body text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>{faq.answer}</p>
                 </div>
               ))}
@@ -307,17 +307,17 @@ export default function HospitalityIndustryPage() {
         </section>
 
         {/* Closing CTA */}
-        <section className="py-20 px-6 md:px-16 text-center" style={{ backgroundColor: '#0d1b2e' }}>
+        <section className="py-12 md:py-20 px-4 sm:px-6 md:px-16 text-center" style={{ backgroundColor: '#0d1b2e' }}>
           <div className="max-w-2xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-6" style={{ color: '#f5f0e8' }}>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-5 md:mb-6" style={{ color: '#f5f0e8' }}>
               Tell us about your business
             </h2>
-            <p className="font-body text-base leading-relaxed mb-8" style={{ color: '#B8B8B8' }}>
+            <p className="font-body text-base leading-relaxed mb-7 md:mb-8" style={{ color: '#B8B8B8' }}>
               Book a free discovery call and we&apos;ll explain exactly how Reckonwell&apos;s fractional finance department works for your restaurant or hospitality business.
             </p>
             <Link
               href="/book"
-              className="font-ui text-xs tracking-widest uppercase inline-block"
+              className="font-ui text-xs tracking-widest uppercase inline-block w-full sm:w-auto text-center"
               style={{ padding: '14px 32px', backgroundColor: '#D69AAB', color: '#0d1b2e', border: '1px solid #D69AAB', borderRadius: '2px', letterSpacing: '2px', fontWeight: 600 }}
             >
               Book a discovery call

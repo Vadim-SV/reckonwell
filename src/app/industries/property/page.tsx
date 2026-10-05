@@ -104,10 +104,10 @@ export default function PropertyIndustryPage() {
 
       <main style={{ backgroundColor: 'var(--background)' }}>
         {/* Hero */}
-        <section className="pt-32 pb-16 px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="pt-24 md:pt-32 pb-10 md:pb-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
           <div className="max-w-4xl mx-auto">
-            <nav aria-label="Breadcrumb" className="mb-8">
-              <ol className="flex items-center gap-2 font-ui text-xs tracking-widest uppercase" style={{ color: 'var(--muted)' }}>
+            <nav aria-label="Breadcrumb" className="mb-6 md:mb-8">
+              <ol className="flex flex-wrap items-center gap-2 font-ui text-xs tracking-widest uppercase" style={{ color: 'var(--muted)' }}>
                 <li><Link href="/" style={{ color: 'var(--muted)' }}>Home</Link></li>
                 <li aria-hidden="true">›</li>
                 <li><Link href="/industries" style={{ color: 'var(--muted)' }}>Industries</Link></li>
@@ -118,16 +118,16 @@ export default function PropertyIndustryPage() {
 
             <h1
               className="font-serif leading-tight mb-4"
-              style={{ color: '#0d1b2e', fontSize: 'clamp(32px, 5vw, 58px)' }}
+              style={{ color: '#0d1b2e', fontSize: 'clamp(26px, 5vw, 58px)' }}
             >
               Accounting for property businesses, landlords and SPVs
             </h1>
-            <p className="font-body text-lg mb-8" style={{ color: 'var(--muted)' }}>
+            <p className="font-body text-base md:text-lg mb-7 md:mb-8" style={{ color: 'var(--muted)' }}>
               Rental income, mortgage interest, portfolio cash flow and Making Tax Digital — handled by a qualified team that understands property finance.
             </p>
             <Link
               href="/book"
-              className="font-ui text-xs tracking-widest uppercase inline-block"
+              className="font-ui text-xs tracking-widest uppercase inline-block w-full sm:w-auto text-center"
               style={{ padding: '14px 32px', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', border: '1px solid var(--primary)', borderRadius: '2px', letterSpacing: '2px', fontWeight: 600 }}
             >
               Book a discovery call
@@ -136,15 +136,15 @@ export default function PropertyIndustryPage() {
         </section>
 
         {/* Pain Points */}
-        <section className="py-16 px-6 md:px-16" style={{ backgroundColor: '#f5f0e8' }}>
+        <section className="py-10 md:py-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: '#f5f0e8' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-8" style={{ color: '#0d1b2e' }}>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8" style={{ color: '#0d1b2e' }}>
               The finance problems property businesses face
             </h2>
-            <p className="font-body text-base leading-relaxed mb-8" style={{ color: 'var(--muted)' }}>
+            <p className="font-body text-base leading-relaxed mb-6 md:mb-8" style={{ color: 'var(--muted)' }}>
               Property investment looks straightforward on paper — buy an asset, collect rent, pay the mortgage. In practice, the accounting and tax obligations are more complex than most landlords expect, and the cost of getting them wrong can be significant.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               {[
                 {
                   title: 'SPV set-up and annual accounts',
@@ -171,8 +171,8 @@ export default function PropertyIndustryPage() {
                   body: 'Capital gains tax on property disposals must be reported and paid within 60 days of completion. The calculation requires accurate records of the original purchase price, improvement costs and any reliefs available. Late reporting attracts penalties.',
                 },
               ].map((item) => (
-                <div key={item.title} className="bg-white border border-gray-200 p-6">
-                  <h3 className="font-serif text-xl mb-3" style={{ color: '#0d1b2e' }}>{item.title}</h3>
+                <div key={item.title} className="bg-white border border-gray-200 p-5 md:p-6">
+                  <h3 className="font-serif text-lg md:text-xl mb-3" style={{ color: '#0d1b2e' }}>{item.title}</h3>
                   <p className="font-body text-sm leading-relaxed" style={{ color: '#2a7c8a' }}>{item.body}</p>
                 </div>
               ))}
@@ -181,9 +181,9 @@ export default function PropertyIndustryPage() {
         </section>
 
         {/* How Reckonwell Helps */}
-        <section className="py-16 px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="py-10 md:py-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-8" style={{ color: '#0d1b2e' }}>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8" style={{ color: '#0d1b2e' }}>
               How Reckonwell helps property businesses
             </h2>
             <p className="font-body text-base leading-relaxed mb-6" style={{ color: 'var(--muted)' }}>
@@ -205,9 +205,9 @@ export default function PropertyIndustryPage() {
         </section>
 
         {/* What's Included */}
-        <section className="py-16 px-6 md:px-16" style={{ backgroundColor: '#f5f0e8' }}>
+        <section className="py-10 md:py-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: '#f5f0e8' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-8" style={{ color: '#0d1b2e' }}>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8" style={{ color: '#0d1b2e' }}>
               What&apos;s included
             </h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -235,9 +235,9 @@ export default function PropertyIndustryPage() {
         </section>
 
         {/* Software */}
-        <section className="py-16 px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="py-10 md:py-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-6" style={{ color: '#0d1b2e' }}>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-5 md:mb-6" style={{ color: '#0d1b2e' }}>
               Software we work with
             </h2>
             <p className="font-body text-base leading-relaxed mb-6" style={{ color: 'var(--muted)' }}>
@@ -258,12 +258,12 @@ export default function PropertyIndustryPage() {
         </section>
 
         {/* Related Links */}
-        <section className="py-16 px-6 md:px-16" style={{ backgroundColor: '#f5f0e8' }}>
+        <section className="py-10 md:py-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: '#f5f0e8' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-2xl mb-6" style={{ color: '#0d1b2e' }}>
+            <h2 className="font-serif text-xl md:text-2xl mb-5 md:mb-6" style={{ color: '#0d1b2e' }}>
               Related services and resources
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 { label: 'Company Formation', href: '/company-formation' },
                 { label: 'Limited Company Accounting', href: '/limited-company-accounting' },
@@ -288,15 +288,15 @@ export default function PropertyIndustryPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-16 px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="py-10 md:py-16 px-4 sm:px-6 md:px-16" style={{ backgroundColor: 'var(--background)' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-10" style={{ color: '#0d1b2e' }}>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-8 md:mb-10" style={{ color: '#0d1b2e' }}>
               Frequently asked questions
             </h2>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6 md:gap-8">
               {faqs.map((faq) => (
-                <div key={faq.question} className="border-b pb-8" style={{ borderColor: '#e5e7eb' }}>
-                  <h3 className="font-serif text-xl mb-4" style={{ color: '#0d1b2e' }}>{faq.question}</h3>
+                <div key={faq.question} className="border-b pb-6 md:pb-8" style={{ borderColor: '#e5e7eb' }}>
+                  <h3 className="font-serif text-lg md:text-xl mb-3 md:mb-4" style={{ color: '#0d1b2e' }}>{faq.question}</h3>
                   <p className="font-body text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>{faq.answer}</p>
                 </div>
               ))}
@@ -305,17 +305,17 @@ export default function PropertyIndustryPage() {
         </section>
 
         {/* Closing CTA */}
-        <section className="py-20 px-6 md:px-16 text-center" style={{ backgroundColor: '#0d1b2e' }}>
+        <section className="py-12 md:py-20 px-4 sm:px-6 md:px-16 text-center" style={{ backgroundColor: '#0d1b2e' }}>
           <div className="max-w-2xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl mb-6" style={{ color: '#f5f0e8' }}>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-5 md:mb-6" style={{ color: '#f5f0e8' }}>
               Tell us about your business
             </h2>
-            <p className="font-body text-base leading-relaxed mb-8" style={{ color: '#B8B8B8' }}>
+            <p className="font-body text-base leading-relaxed mb-7 md:mb-8" style={{ color: '#B8B8B8' }}>
               Book a free discovery call and we&apos;ll explain exactly how Reckonwell&apos;s fractional finance department works for your property business.
             </p>
             <Link
               href="/book"
-              className="font-ui text-xs tracking-widest uppercase inline-block"
+              className="font-ui text-xs tracking-widest uppercase inline-block w-full sm:w-auto text-center"
               style={{ padding: '14px 32px', backgroundColor: '#D69AAB', color: '#0d1b2e', border: '1px solid #D69AAB', borderRadius: '2px', letterSpacing: '2px', fontWeight: 600 }}
             >
               Book a discovery call
