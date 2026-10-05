@@ -99,7 +99,7 @@ export default function RootLayout({
     priceRange: '£200-£1000',
     image: "https://img.rocket.new/generatedImages/rocket_gen_img_469967d97-1791160519080.png",
     sameAs: [
-    'https://www.linkedin.com/company/reckonwell']
+    'https://www.linkedin.com/company/reckonwell/']
 
   };
 
