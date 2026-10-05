@@ -21,6 +21,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
+    // ── Industry Pages ────────────────────────────────────────────────────────
+    {
+      url: `${base}/industries`,
+      lastModified: new Date('2026-10-05'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${base}/industries/technology`,
+      lastModified: new Date('2026-10-05'),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${base}/industries/ecommerce`,
+      lastModified: new Date('2026-10-05'),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${base}/industries/property`,
+      lastModified: new Date('2026-10-05'),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${base}/industries/manufacturing`,
+      lastModified: new Date('2026-10-05'),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${base}/industries/hospitality`,
+      lastModified: new Date('2026-10-05'),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
     {
       url: `${base}/fractional-finance-department`,
       lastModified: new Date('2026-09-01'),

@@ -81,6 +81,45 @@ export default function Footer() {
           </nav>
         </div>
 
+        {/* Industries */}
+        <div className="flex flex-col items-center md:items-start gap-3">
+          <p
+            className="font-ui text-xs uppercase tracking-widest"
+            style={{ color: '#B8B8B8', letterSpacing: '2px', fontSize: '10px' }}
+          >
+            Industries
+          </p>
+          <nav className="flex flex-col gap-2" aria-label="Industries">
+            {[
+              { label: 'Technology & SaaS', href: '/industries/technology' },
+              { label: 'E-Commerce', href: '/industries/ecommerce' },
+              { label: 'Property', href: '/industries/property' },
+              { label: 'Manufacturing', href: '/industries/manufacturing' },
+              { label: 'Hospitality', href: '/industries/hospitality' },
+            ]?.map((item) => (
+              <Link
+                key={item?.href}
+                href={item?.href}
+                className="font-ui text-xs transition-colors duration-200"
+                style={{ color: '#B8B8B8', letterSpacing: '0.5px' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#D69AAB')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#B8B8B8')}
+              >
+                {item?.label}
+              </Link>
+            ))}
+            <Link
+              href="/industries"
+              className="font-ui text-xs transition-colors duration-200"
+              style={{ color: '#D69AAB', letterSpacing: '0.5px', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#D69AAB')}
+            >
+              All industries →
+            </Link>
+          </nav>
+        </div>
+
         {/* Right: Contact + Legal */}
         <div className="flex flex-col items-center md:items-end gap-3">
           <p

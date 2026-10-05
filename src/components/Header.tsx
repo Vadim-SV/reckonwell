@@ -280,7 +280,7 @@ export default function Header() {
 
           {/* Mobile Industries Link */}
           <Link
-            href="/#industries"
+            href="/industries"
             onClick={() => setMenuOpen(false)}
             className="w-full text-center font-display py-4 transition-colors duration-200"
             style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px', borderBottom: '1px solid var(--border)' }}
