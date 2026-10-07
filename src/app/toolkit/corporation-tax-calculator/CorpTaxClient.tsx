@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from 'react';
 import Link from 'next/link';
-import { CORPORATION_TAX, TOOLKIT_META, TAX_YEAR } from '@/lib/tax-config';
+import { CORPORATION_TAX } from '@/lib/tax-config';
 import { formatCurrency, formatPercent, trackToolStarted, trackToolCompleted, trackCtaClicked, buildShareUrl } from '@/lib/toolkit-share';
 import ShareBar from '../components/ShareBar';
 

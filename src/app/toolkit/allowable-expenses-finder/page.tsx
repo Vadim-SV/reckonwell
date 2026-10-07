@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import ToolPageLayout from '@/components/toolkit/ToolPageLayout';
 import ExpensesClient from './ExpensesClient';
 import { getToolBySlug, TOOLS, PROFESSIONS, CLAIM_ITEMS } from '@/lib/toolkit-data';
-import { TAX_YEAR } from '@/lib/tax-config';
+
 
 const tool = getToolBySlug('allowable-expenses-finder')!;
 const relatedTools = TOOLS.filter(t => tool.relatedTools.includes(t.slug));

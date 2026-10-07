@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { TAX_YEAR, TAX_YEAR_REVIEWED } from '@/lib/tax-config';
