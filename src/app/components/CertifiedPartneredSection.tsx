@@ -11,7 +11,7 @@ const partners = [
   { name: 'Tide Bank', logo: '/assets/images/Tide-1779494967883.png' },
   { name: 'Xero', logo: '/assets/images/Xero-1779495015718.png' },
   { name: 'QuickBooks', logo: '/assets/images/Quickbooks-1779494986853.png' },
-  { name: 'IAB', logo: '/assets/images/iab-logo-1785704327906.png' },
+  { name: 'IAB', logo: '/assets/images/IAB_logo_on_transparent_background-1791357447663.png' },
   { name: 'HMRC AML Supervised', logo: '/assets/images/photo_2025-08-02_16-32-37-removebg-preview-300x300-1786798510237.png' },
   { name: 'ICO Registered', logo: '/assets/images/ICO_logo-1785706115266.png' },
 ];
