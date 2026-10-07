@@ -1,89 +1,73 @@
-import React from 'react';
 import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { TOOLS } from '@/lib/toolkit-data';
+import { TOOLKIT_TOOLS } from '@/lib/toolkit-share';
 
-// Embed pages are noindexed and have canonical to the full tool page
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const tool = TOOLS.find(t => t.slug === slug);
-  if (!tool) return {};
-  return {
-    robots: { index: false, follow: false },
-    alternates: { canonical: `https://reckonwell.com/toolkit/${slug}` },
-    title: `${tool.title} — Reckonwell`,
-  };
+interface EmbedPageProps {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string>>;
 }
 
 export async function generateStaticParams() {
-  return TOOLS.map(t => ({ slug: t.slug }));
+  return TOOLKIT_TOOLS.map((tool) => ({ slug: tool.slug }));
 }
 
-// Embed layout — lightweight, no site nav
-export default async function EmbedPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function EmbedPage({ params, searchParams }: EmbedPageProps) {
   const { slug } = await params;
-  const tool = TOOLS.find(t => t.slug === slug);
+  const sp = await searchParams;
+  const tool = TOOLKIT_TOOLS.find((t) => t.slug === slug);
   if (!tool) notFound();
 
+  const theme = sp.theme === 'dark' ? 'dark' : 'light';
+  const toolUrl = `https://reckonwell.com/toolkit/${slug}?utm_source=embed&utm_medium=backlink&utm_campaign=toolkit-embed`;
+
+  const bgColor = theme === 'dark' ? '#18213E' : '#FFF1E0';
+  const textColor = theme === 'dark' ? '#FBF1E3' : '#000000';
+  const borderColor = theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(18,35,63,0.15)';
+  const mutedColor = theme === 'dark' ? 'rgba(251,241,227,0.5)' : '#66605C';
+  const linkColor = theme === 'dark' ? '#FBF1E3' : '#12233F';
+  const bodyTextColor = theme === 'dark' ? 'rgba(251,241,227,0.75)' : '#333333';
+
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif', background: '#fff', color: '#18213E', minHeight: '100vh', padding: '16px' }}>
-      {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', paddingBottom: '12px', borderBottom: '1px solid #e5e7eb' }}>
-        <span style={{ fontSize: '16px', fontWeight: 600, color: '#18213E' }}>
-          {tool.icon} {tool.title}
-        </span>
-        <span style={{ fontSize: '11px', color: '#888' }}>
-          Powered by{' '}
+    <html lang="en" style={{ margin: 0, padding: 0 }}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href={`https://reckonwell.com/toolkit/${slug}`} />
+        <title>{tool.title} | Reckonwell</title>
+        <style>{`
+          * { box-sizing: border-box; margin: 0; padding: 0; }
+          body { font-family: 'Work Sans', sans-serif; background: ${bgColor}; color: ${textColor}; min-height: 100vh; }
+          .embed-header { padding: 16px 20px; border-bottom: 1px solid ${borderColor}; display: flex; align-items: center; justify-content: space-between; }
+          .embed-title { font-size: 14px; font-weight: 600; color: ${textColor}; }
+          .embed-content { padding: 20px; }
+          .embed-footer { padding: 12px 20px; border-top: 1px solid ${borderColor}; text-align: center; font-size: 11px; color: ${mutedColor}; }
+          .embed-footer a { color: ${linkColor}; text-decoration: underline; }
+        `}</style>
+      </head>
+      <body>
+        <div className="embed-header">
+          <span className="embed-title">{tool.title}</span>
+          <a href={toolUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: '11px', color: mutedColor, textDecoration: 'none' }}>
+            Open full tool ↗
+          </a>
+        </div>
+        <div className="embed-content">
+          <p style={{ fontSize: '14px', lineHeight: 1.6, marginBottom: '16px', color: bodyTextColor }}>
+            {tool.description}
+          </p>
           <a
-            href={`https://reckonwell.com/toolkit/${slug}?utm_source=embed&utm_medium=backlink&utm_campaign=toolkit`}
+            href={toolUrl}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: '#18213E', fontWeight: 600, textDecoration: 'none' }}
+            style={{ display: 'inline-block', padding: '12px 24px', background: '#12233F', color: '#FBF1E3', fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase', fontWeight: 600, textDecoration: 'none', borderRadius: '2px' }}
           >
-            Reckonwell
+            Use free tool →
           </a>
-        </span>
-      </div>
-
-      {/* Question */}
-      <p style={{ fontSize: '14px', color: '#555', marginBottom: '20px', lineHeight: 1.5 }}>
-        {tool.question}
-      </p>
-
-      {/* CTA */}
-      <Link
-        href={`https://reckonwell.com/toolkit/${slug}?utm_source=embed&utm_medium=iframe&utm_campaign=toolkit`}
-        style={{
-          display: 'block',
-          textAlign: 'center',
-          padding: '12px 24px',
-          background: '#18213E',
-          color: '#FBF1E3',
-          borderRadius: '4px',
-          textDecoration: 'none',
-          fontSize: '13px',
-          fontWeight: 600,
-          letterSpacing: '1px',
-          textTransform: 'uppercase',
-          marginBottom: '12px',
-        }}
-      >
-        Open free calculator →
-      </Link>
-
-      <p style={{ fontSize: '10px', color: '#999', textAlign: 'center' }}>
-        Free tool by{' '}
-        <a
-          href="https://reckonwell.com/toolkit?utm_source=embed&utm_medium=backlink&utm_campaign=toolkit"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: '#18213E', textDecoration: 'none' }}
-        >
-          Reckonwell
-        </a>
-        {' '}— no sign-up required
-      </p>
-    </div>
+        </div>
+        <div className="embed-footer">
+          Powered by <a href={toolUrl} target="_blank" rel="noopener noreferrer">Reckonwell</a> · Free founder finance tools · No sign-up
+        </div>
+      </body>
+    </html>
   );
 }
