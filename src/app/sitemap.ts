@@ -371,5 +371,74 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.75,
     },
+    // ── Free Founder Finance Toolkit ──────────────────────────────────────────
+    {
+      url: `${base}/toolkit`,
+      lastModified: new Date('2026-10-07'),
+      changeFrequency: 'monthly',
+      priority: 0.95,
+    },
+    {
+      url: `${base}/toolkit/salary-vs-dividend-calculator`,
+      lastModified: new Date('2026-10-07'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${base}/toolkit/sole-trader-vs-limited-company`,
+      lastModified: new Date('2026-10-07'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${base}/toolkit/corporation-tax-calculator`,
+      lastModified: new Date('2026-10-07'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${base}/toolkit/working-capital-calculator`,
+      lastModified: new Date('2026-10-07'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${base}/toolkit/uk-tax-residence-checker`,
+      lastModified: new Date('2026-10-07'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${base}/toolkit/tax-relief-finder`,
+      lastModified: new Date('2026-10-07'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${base}/toolkit/allowable-expenses-finder`,
+      lastModified: new Date('2026-10-07'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${base}/toolkit/vat-scheme-calculator`,
+      lastModified: new Date('2026-10-07'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    // ── Tax Relief child pages ─────────────────────────────────────────────────
+    ...['annual-investment-allowance','employment-allowance','rd-tax-relief','seis','eis','emi','business-asset-disposal-relief','patent-box','trading-loss-relief','structures-and-buildings-allowance','full-expensing','marginal-relief'].map(slug => ({
+      url: `${base}/toolkit/tax-reliefs/${slug}`,
+      lastModified: new Date('2026-10-07'),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+    // ── Can I Claim child pages ────────────────────────────────────────────────
+    ...['phone','broadband','laptop','home-office','gym','clothing','meals','travel','mileage','training','subscriptions','accountant-fees','pension','client-entertainment','gifts'].map(slug => ({
+      url: `${base}/toolkit/can-i-claim/${slug}`,
+      lastModified: new Date('2026-10-07'),
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    })),
   ];
 }
