@@ -19,6 +19,17 @@ const fractionalLinks = [
   { label: 'Additional Services', href: '/#additional-services' },
 ];
 
+const toolkitLinks = [
+  { label: 'Salary vs Dividend', href: '/toolkit/salary-vs-dividend-calculator' },
+  { label: 'Sole Trader vs Ltd', href: '/toolkit/sole-trader-vs-limited-company' },
+  { label: 'Corporation Tax', href: '/toolkit/corporation-tax-calculator' },
+  { label: 'Working Capital', href: '/toolkit/working-capital-calculator' },
+  { label: 'Tax Residence Checker', href: '/toolkit/uk-tax-residence-checker' },
+  { label: 'Tax Relief Finder', href: '/toolkit/tax-relief-finder' },
+  { label: 'Expenses Finder', href: '/toolkit/allowable-expenses-finder' },
+  { label: 'VAT Scheme Calculator', href: '/toolkit/vat-scheme-calculator' },
+];
+
 function RegionToggle({ compact = false }: { compact?: boolean }) {
   const { region, setRegion } = useRegion();
 
@@ -77,8 +88,10 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [fractionalOpen, setFractionalOpen] = useState(false);
   const [complianceOpen, setComplianceOpen] = useState(false);
+  const [toolkitOpen, setToolkitOpen] = useState(false);
   const fractionalRef = useRef<HTMLDivElement>(null);
   const complianceRef = useRef<HTMLDivElement>(null);
+  const toolkitRef = useRef<HTMLDivElement>(null);
 
   const pathname = usePathname();
   const isUSSite = pathname?.startsWith('/us');
@@ -105,6 +118,9 @@ export default function Header() {
       }
       if (complianceRef.current && !complianceRef.current.contains(e.target as Node)) {
         setComplianceOpen(false);
+      }
+      if (toolkitRef.current && !toolkitRef.current.contains(e.target as Node)) {
+        setToolkitOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -181,7 +197,52 @@ export default function Header() {
               Pricing
             </Link>
 
-            {/* Compliance removed */}
+            {/* Toolkit dropdown */}
+            <div ref={toolkitRef} className="relative">
+              <button
+                onClick={() => setToolkitOpen(!toolkitOpen)}
+                className="font-ui text-xs tracking-widest uppercase transition-colors duration-200 flex items-center gap-1"
+                style={{ ...navLinkStyle, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+                aria-expanded={toolkitOpen}
+                aria-haspopup="true"
+              >
+                Toolkit
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ transform: toolkitOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              {toolkitOpen && (
+                <div
+                  className="absolute top-full left-0 mt-2 w-56 rounded-lg shadow-lg z-50 py-2"
+                  style={{ background: 'var(--background)', border: '1px solid var(--border)' }}
+                >
+                  <Link
+                    href="/toolkit"
+                    className="block px-4 py-2 text-xs font-ui font-semibold uppercase tracking-widest transition-colors"
+                    style={{ color: 'var(--primary)', letterSpacing: '1.5px' }}
+                    onClick={() => setToolkitOpen(false)}
+                  >
+                    All Tools →
+                  </Link>
+                  <div className="border-t my-1" style={{ borderColor: 'var(--border)' }} />
+                  {toolkitLinks.map(link => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block px-4 py-2 text-xs font-ui transition-colors"
+                      style={{ color: 'var(--muted)' }}
+                      onClick={() => setToolkitOpen(false)}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Partner with Us */}
             <Link
@@ -288,6 +349,16 @@ export default function Header() {
             Industries
           </Link>
 
+          {/* Mobile Toolkit Link */}
+          <Link
+            href="/toolkit"
+            onClick={() => setMenuOpen(false)}
+            className="w-full text-center font-display py-4 transition-colors duration-200"
+            style={{ color: 'var(--foreground)', fontWeight: 400, fontSize: '28px', borderBottom: '1px solid var(--border)' }}
+          >
+            Free Toolkit
+          </Link>
+
           {/* Mobile Pricing Link */}
           <Link
             href="/#pricing"
@@ -297,8 +368,6 @@ export default function Header() {
           >
             Pricing
           </Link>
-
-          {/* Mobile Compliance removed */}
 
           {/* Mobile Region Toggle */}
           <div className="w-full flex justify-center py-5" style={{ borderBottom: '1px solid var(--border)' }}>

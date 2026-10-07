@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 
@@ -39,6 +41,46 @@ export default function Footer() {
           >
             ICO Registered · Data Protection Reg. CSN3799691
           </p>
+        </div>
+
+        {/* Free Toolkit */}
+        <div className="flex flex-col items-center md:items-start gap-3">
+          <p
+            className="font-ui text-xs uppercase tracking-widest"
+            style={{ color: '#B8B8B8', letterSpacing: '2px', fontSize: '10px' }}
+          >
+            Free Toolkit
+          </p>
+          <nav className="flex flex-col gap-2" aria-label="Free Toolkit">
+            {[
+              { label: 'Salary vs Dividend', href: '/toolkit/salary-vs-dividend-calculator' },
+              { label: 'Sole Trader vs Ltd', href: '/toolkit/sole-trader-vs-limited-company' },
+              { label: 'Corporation Tax', href: '/toolkit/corporation-tax-calculator' },
+              { label: 'Tax Relief Finder', href: '/toolkit/tax-relief-finder' },
+              { label: 'Expenses Finder', href: '/toolkit/allowable-expenses-finder' },
+              { label: 'VAT Scheme Calculator', href: '/toolkit/vat-scheme-calculator' },
+            ]?.map((item) => (
+              <Link
+                key={item?.href}
+                href={item?.href}
+                className="font-ui text-xs transition-colors duration-200"
+                style={{ color: '#B8B8B8', letterSpacing: '0.5px' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#D69AAB')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#B8B8B8')}
+              >
+                {item?.label}
+              </Link>
+            ))}
+            <Link
+              href="/toolkit"
+              className="font-ui text-xs transition-colors duration-200"
+              style={{ color: '#D69AAB', letterSpacing: '0.5px', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#D69AAB')}
+            >
+              All free tools →
+            </Link>
+          </nav>
         </div>
 
         {/* Centre: Areas we serve */}
