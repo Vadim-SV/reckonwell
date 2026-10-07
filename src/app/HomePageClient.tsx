@@ -7,6 +7,7 @@ import HeroSection from '@/app/components/HeroSection';
 import WhatYouGetSection from '@/app/components/WhatYouGetSection';
 import IndustriesSection from '@/app/components/IndustriesSection';
 import PricingComplianceSection from '@/app/components/PricingComplianceSection';
+import FreeToolkitSection from '@/app/components/FreeToolkitSection';
 import FounderSection from '@/app/components/FounderSection';
 import ClarityFAQSection from '@/app/components/ClarityFAQSection';
 import USBanner from '@/components/USBanner';
@@ -63,7 +64,12 @@ export default function HomePageClient() {
             <PricingComplianceSection />
           </section>
 
-          {/* 5. Founder */}
+          {/* 5. Free Toolkit */}
+          <section role="region" aria-label="Free Founder Finance Toolkit">
+            <FreeToolkitSection />
+          </section>
+
+          {/* 6. Founder */}
           <section role="region" aria-label="Message from the founder">
             <FounderSection />
           </section>

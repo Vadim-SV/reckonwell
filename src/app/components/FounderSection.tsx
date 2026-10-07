@@ -60,16 +60,16 @@ export default function FounderSection() {
       <div
         className="max-w-7xl mx-auto"
         style={{
-          padding: 'clamp(48px, 8vw, 110px) clamp(28px, 8vw, 120px)',
+          padding: 'clamp(36px, 5vw, 64px) clamp(28px, 8vw, 120px)',
         }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
           {/* ── LEFT COLUMN: eyebrow + heading ── */}
           <div>
             {/* Eyebrow */}
             <p
-              className="uppercase tracking-widest mb-6 lg:mb-8"
+              className="uppercase tracking-widest mb-4 lg:mb-5"
               style={{
                 fontSize: '11px',
                 letterSpacing: '0.18em',
@@ -96,7 +96,7 @@ export default function FounderSection() {
                 className="block"
                 style={{
                   fontFamily: 'var(--font-newsreader), serif',
-                  fontSize: 'clamp(54px, 7vw, 96px)',
+                  fontSize: 'clamp(40px, 5vw, 72px)',
                   fontWeight: 400,
                   color: '#FBF1E3',
                   lineHeight: 1.1,
@@ -111,11 +111,11 @@ export default function FounderSection() {
                 className="block relative"
                 style={{
                   fontFamily: 'var(--font-newsreader), serif',
-                  fontSize: 'clamp(54px, 7vw, 96px)',
+                  fontSize: 'clamp(40px, 5vw, 72px)',
                   fontWeight: 400,
                   color: '#FBF1E3',
                   lineHeight: 1.1,
-                  marginTop: '0.55em', // space for "Vadim" above
+                  marginTop: '0.45em',
                   display: 'inline-block',
                 }}
               >
@@ -124,10 +124,10 @@ export default function FounderSection() {
                   aria-hidden="true"
                   style={{
                     position: 'absolute',
-                    top: 'clamp(-38px, -3.5vw, -52px)',
+                    top: 'clamp(-30px, -2.8vw, -40px)',
                     left: '8%',
                     fontFamily: 'var(--font-caveat), cursive',
-                    fontSize: 'clamp(28px, 3.5vw, 52px)',
+                    fontSize: 'clamp(22px, 2.8vw, 40px)',
                     fontWeight: 700,
                     color: '#E8A35C',
                     transform: 'rotate(-7deg)',
@@ -206,11 +206,11 @@ export default function FounderSection() {
             }}
           >
             {/* Pull quote */}
-            <blockquote className="mb-7">
+            <blockquote className="mb-5">
               <p
                 style={{
                   fontFamily: 'var(--font-newsreader), serif',
-                  fontSize: 'clamp(20px, 2vw, 26px)',
+                  fontSize: 'clamp(17px, 1.6vw, 22px)',
                   fontWeight: 400,
                   color: '#FBF1E3',
                   lineHeight: 1.5,
@@ -222,26 +222,26 @@ export default function FounderSection() {
 
             {/* Body copy */}
             <p
-              className="mb-10"
+              className="mb-7"
               style={{
                 fontFamily: 'var(--font-work-sans), sans-serif',
-                fontSize: 'clamp(15px, 1.1vw, 17px)',
+                fontSize: 'clamp(14px, 1vw, 16px)',
                 fontWeight: 400,
                 color: '#C4C9D8',
-                lineHeight: 1.7,
+                lineHeight: 1.65,
               }}
             >
               At Reckonwell, I want founders to have someone who knows their business and stays close to the numbers. We shape the support around what you need now, from everyday accounting to a wider finance function and help with the next stage of growth.
             </p>
 
             {/* Signature + CTA row */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               {/* Signature */}
               <div>
                 <p
                   style={{
                     fontFamily: 'var(--font-work-sans), sans-serif',
-                    fontSize: '15px',
+                    fontSize: '14px',
                     fontWeight: 600,
                     color: '#FBF1E3',
                     lineHeight: 1.4,
@@ -252,7 +252,7 @@ export default function FounderSection() {
                 <p
                   style={{
                     fontFamily: 'var(--font-work-sans), sans-serif',
-                    fontSize: '14px',
+                    fontSize: '13px',
                     fontWeight: 400,
                     color: '#A9B0C6',
                     lineHeight: 1.4,
@@ -270,11 +270,11 @@ export default function FounderSection() {
                   backgroundColor: '#FBF1E3',
                   color: '#18213E',
                   fontFamily: 'var(--font-work-sans), sans-serif',
-                  fontSize: '15px',
+                  fontSize: '14px',
                   fontWeight: 600,
-                  padding: '14px 28px',
+                  padding: '12px 24px',
                   borderRadius: '9999px',
-                  minHeight: '52px',
+                  minHeight: '46px',
                   textDecoration: 'none',
                   whiteSpace: 'nowrap',
                   display: 'inline-flex',
@@ -292,8 +292,8 @@ export default function FounderSection() {
                 Book a call with Vadim
                 <svg
                   aria-hidden="true"
-                  width="16"
-                  height="16"
+                  width="14"
+                  height="14"
                   viewBox="0 0 16 16"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
