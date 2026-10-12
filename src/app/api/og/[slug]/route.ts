@@ -1,2 +1,2 @@
-// Route implementation is in route.tsx — this file intentionally left without exports.
-export {};
+// OG image route handler is implemented in route.tsx
+// This file intentionally has no exports to avoid duplicate route registration
